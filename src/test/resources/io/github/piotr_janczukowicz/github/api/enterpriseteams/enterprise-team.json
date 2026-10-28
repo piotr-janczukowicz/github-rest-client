@@ -1,0 +1,16 @@
+{
+  "id": 1,
+  "name": "Justice League",
+  "description": "A great team.",
+  "slug": "justice-league",
+  "url": "https://api.github.com/enterprises/octo-enterprise/teams/justice-league",
+  "sync_to_organizations": "disabled",
+  "organization_selection_type": "disabled",
+  "group_id": "62ab9291-fae2-468e-974b-7e45096d5021",
+  "group_name": "Octo group",
+  "html_url": "https://github.com/enterprises/octo-enterprise/teams/justice-league",
+  "members_url": "https://api.github.com/enterprises/octo-enterprise/teams/justice-league/members{/member}",
+  "created_at": "2023-01-01T00:00:00Z",
+  "updated_at": "2023-01-01T12:00:00Z",
+  "notification_setting": "notifications_enabled"
+}

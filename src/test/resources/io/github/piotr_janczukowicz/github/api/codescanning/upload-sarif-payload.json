@@ -1,0 +1,9 @@
+{
+  "commit_sha": "c2e6d3d6c7b7a3f1e0d5b4a3928170f6e5d4c3b2",
+  "ref": "refs/heads/main",
+  "sarif": "H4sIAAAAAAAAA",
+  "checkout_uri": "file:///github/workspace/",
+  "started_at": "2025-01-01T00:00:00Z",
+  "tool_name": "CodeQL",
+  "validate": true
+}

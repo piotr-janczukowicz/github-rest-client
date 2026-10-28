@@ -1,0 +1,6 @@
+{
+  "url": "https://example.com/webhook",
+  "content_type": "json",
+  "secret": "very-secret",
+  "insecure_ssl": "0"
+}

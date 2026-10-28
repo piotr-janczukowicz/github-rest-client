@@ -1,0 +1,7 @@
+{
+  "token_types": "classic_pat,ssh_key",
+  "authorization_state": "currently_authorized",
+  "owner": "octocat",
+  "organization": "octo-org",
+  "application": "octo-app"
+}

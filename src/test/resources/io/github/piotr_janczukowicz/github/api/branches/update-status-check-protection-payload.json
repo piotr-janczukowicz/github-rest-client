@@ -1,0 +1,12 @@
+{
+  "strict": true,
+  "contexts": [
+    "continuous-integration/travis-ci"
+  ],
+  "checks": [
+    {
+      "context": "continuous-integration/travis-ci",
+      "app_id": 1
+    }
+  ]
+}

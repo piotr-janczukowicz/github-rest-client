@@ -1,0 +1,55 @@
+{
+  "type": [
+    {
+      "value": "Bug",
+      "rationale": "looks like a bug",
+      "suggest": true,
+      "confidence": "high",
+      "ignored": false,
+      "ignored_reason": "already_applied"
+    }
+  ],
+  "issue_field_values": [
+    {
+      "field_id": 1,
+      "value": "High",
+      "rationale": "priority",
+      "suggest": true,
+      "confidence": "medium",
+      "ignored": false,
+      "ignored_reason": "already_applied"
+    }
+  ],
+  "labels": [
+    {
+      "name": "bug",
+      "rationale": "because",
+      "suggest": true,
+      "confidence": "high",
+      "ignored": false,
+      "ignored_reason": "already_applied"
+    }
+  ],
+  "assignees": [
+    {
+      "login": "octocat",
+      "rationale": "because",
+      "suggest": true,
+      "confidence": "low",
+      "ignored": false,
+      "ignored_reason": "issue_already_closed"
+    }
+  ],
+  "state": [
+    {
+      "value": "closed",
+      "state_reason": "completed",
+      "duplicate_issue_id": 99,
+      "rationale": "done",
+      "suggest": true,
+      "confidence": "high",
+      "ignored": false,
+      "ignored_reason": "already_applied"
+    }
+  ]
+}

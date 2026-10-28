@@ -1,0 +1,10 @@
+[
+  {
+    "property_name": "environment",
+    "value": "production"
+  },
+  {
+    "property_name": "team",
+    "value": ["core", "platform"]
+  }
+]

@@ -1,0 +1,21 @@
+package io.github.piotr_janczukowicz.github.api.activity;
+
+import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonNull;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import io.github.piotr_janczukowicz.annotation.RecordBuilder;
+import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+
+/** Pull request review event payload. */
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@CatalogSchema("components/schemas/pull-request-review-event")
+@RecordBuilder
+public record GitHubPullRequestReviewEvent(
+        String action, GitHubPullRequestReviewEventReview review, GitHubPullRequestEventPullRequest pullRequest)
+        implements GitHubEventPayload {
+    public GitHubPullRequestReviewEvent {
+        requireNonNull(action, "action");
+        requireNonNull(review, "review");
+        requireNonNull(pullRequest, "pullRequest");
+    }
+}

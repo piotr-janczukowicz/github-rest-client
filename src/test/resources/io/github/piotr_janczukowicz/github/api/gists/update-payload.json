@@ -1,0 +1,9 @@
+{
+  "description": "An updated gist description",
+  "files": {
+    "hello.rb": {
+      "content": "blah",
+      "filename": "goodbye.rb"
+    }
+  }
+}

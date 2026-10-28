@@ -1,0 +1,10 @@
+{
+  "query": "is:open label:bug",
+  "paths": [
+    "src/**"
+  ],
+  "labels": [
+    "bug"
+  ],
+  "write_scope": "trigger"
+}

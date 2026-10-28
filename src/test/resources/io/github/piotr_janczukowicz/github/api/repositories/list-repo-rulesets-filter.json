@@ -1,0 +1,4 @@
+{
+  "includes_parents": true,
+  "targets": "branch,tag,push"
+}

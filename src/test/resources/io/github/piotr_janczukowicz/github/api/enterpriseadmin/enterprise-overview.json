@@ -1,0 +1,56 @@
+{
+  "repos": {
+    "total_repos": 1,
+    "root_repos": 1,
+    "fork_repos": 1,
+    "org_repos": 1,
+    "total_pushes": 1,
+    "total_wikis": 1
+  },
+  "hooks": {
+    "total_hooks": 1,
+    "active_hooks": 1,
+    "inactive_hooks": 1
+  },
+  "pages": {
+    "total_pages": 1
+  },
+  "orgs": {
+    "total_orgs": 1,
+    "disabled_orgs": 1,
+    "total_teams": 1,
+    "total_team_members": 1
+  },
+  "users": {
+    "total_users": 1,
+    "admin_users": 1,
+    "suspended_users": 1
+  },
+  "pulls": {
+    "total_pulls": 1,
+    "merged_pulls": 1,
+    "mergeable_pulls": 1,
+    "unmergeable_pulls": 1
+  },
+  "issues": {
+    "total_issues": 1,
+    "open_issues": 1,
+    "closed_issues": 1
+  },
+  "milestones": {
+    "total_milestones": 1,
+    "open_milestones": 1,
+    "closed_milestones": 1
+  },
+  "gists": {
+    "total_gists": 1,
+    "private_gists": 1,
+    "public_gists": 1
+  },
+  "comments": {
+    "total_commit_comments": 1,
+    "total_gist_comments": 1,
+    "total_issue_comments": 1,
+    "total_pull_request_comments": 1
+  }
+}

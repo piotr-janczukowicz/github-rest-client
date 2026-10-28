@@ -1,0 +1,1 @@
+{"type": "workflows", "parameters": {"workflows": [{"path": ".github/workflows/ci.yml", "repository_id": 1, "ref": "refs/heads/main"}]}, "ruleset_source_type": "Repository", "ruleset_source": "org/repo", "ruleset_id": 1}

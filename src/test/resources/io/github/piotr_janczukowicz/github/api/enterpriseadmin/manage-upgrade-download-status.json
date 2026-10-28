@@ -1,0 +1,27 @@
+{
+  "download_id": "download_id",
+  "package_name": "package_name",
+  "status": "not_started",
+  "error_message": "error_message",
+  "nodes": [
+    {
+      "hostname": "hostname",
+      "uuid": "uuid",
+      "download_id": "download_id",
+      "package_name": "package_name",
+      "status": "not_started",
+      "progress": "progress",
+      "error": "error"
+    }
+  ],
+  "orchestration": {
+    "phase": "running",
+    "error_message": "error_message",
+    "max_parallel": 1,
+    "queued": 1,
+    "in_flight": 1,
+    "completed": 1,
+    "failed": 1,
+    "total": 1
+  }
+}

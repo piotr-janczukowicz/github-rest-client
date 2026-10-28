@@ -1,0 +1,8 @@
+{
+  "allowed_actors": [
+    {
+      "id": 1234,
+      "type": "Team"
+    }
+  ]
+}

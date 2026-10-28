@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "node_id": "nodeId-sample",
+  "name": "name-sample",
+  "path": "path-sample",
+  "state": "active",
+  "created_at": "2024-01-02T03:04:05Z",
+  "updated_at": "2024-01-02T03:04:05Z",
+  "url": "https://api.github.com/example",
+  "html_url": "https://github.com/example",
+  "badge_url": "https://api.github.com/example",
+  "deleted_at": "2024-01-02T03:04:05Z"
+}

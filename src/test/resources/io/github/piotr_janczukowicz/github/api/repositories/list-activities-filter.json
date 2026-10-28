@@ -1,0 +1,7 @@
+{
+  "direction": "desc",
+  "ref": "main",
+  "actor": "octocat",
+  "time_period": "week",
+  "activity_type": "push"
+}

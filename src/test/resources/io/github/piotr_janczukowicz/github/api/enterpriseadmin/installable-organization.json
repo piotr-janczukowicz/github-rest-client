@@ -1,0 +1,5 @@
+{
+  "id": 1,
+  "login": "octo-org",
+  "accessible_repositories_url": "https://api.github.com/enterprises/octo-enterprise/apps/installable_organizations/octo-org/accessible_repositories"
+}

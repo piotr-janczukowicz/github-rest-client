@@ -1,0 +1,54 @@
+{
+  "schemas": [
+    "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+  ],
+  "totalResults": 1,
+  "Resources": [
+    {
+      "schemas": [
+        "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "a7d0f98c-e026-40e8-9a1e-4cb1a3dd8e4d",
+      "active": true,
+      "userName": "monalisa@github.example",
+      "name": {
+        "formatted": "Mona Lisa Octocat",
+        "familyName": "Octocat",
+        "givenName": "Mona",
+        "middleName": "Lisa"
+      },
+      "displayName": "Mona Lisa",
+      "emails": [
+        {
+          "value": "monalisa@github.example",
+          "type": "work",
+          "primary": true
+        }
+      ],
+      "roles": [
+        {
+          "display": "User",
+          "type": "user",
+          "value": "user",
+          "primary": true
+        }
+      ],
+      "id": "2819c223-7f76-453a-919d-413861904646",
+      "groups": [
+        {
+          "value": "24b28bbb-5fc4-4686-a153-a020debb1155",
+          "$ref": "https://api.github.com/scim/v2/Groups/24b28bbb-5fc4-4686-a153-a020debb1155",
+          "display": "Engineering"
+        }
+      ],
+      "meta": {
+        "resourceType": "Group",
+        "created": "2023-01-01T00:00:00Z",
+        "lastModified": "2023-01-01T12:00:00Z",
+        "location": "https://api.github.com/scim/v2/Groups/24b28bbb-5fc4-4686-a153-a020debb1155"
+      }
+    }
+  ],
+  "startIndex": 1,
+  "itemsPerPage": 20
+}

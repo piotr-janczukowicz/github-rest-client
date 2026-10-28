@@ -1,0 +1,7 @@
+{
+  "issues": "read",
+  "checks": "read",
+  "metadata": "read",
+  "contents": "read",
+  "deployments": "write"
+}

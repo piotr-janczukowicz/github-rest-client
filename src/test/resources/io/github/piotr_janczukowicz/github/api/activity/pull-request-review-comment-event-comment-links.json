@@ -1,0 +1,11 @@
+{
+  "self": {
+    "href": "href"
+  },
+  "html": {
+    "href": "href"
+  },
+  "pull_request": {
+    "href": "href"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "commit_id": "ecdd80bb57125d7ba9641ffaa4d7d2c19d3f3091",
+  "body": "This is close to perfect!",
+  "event": "REQUEST_CHANGES",
+  "comments": [
+    {
+      "path": "file.md",
+      "body": "Please fix",
+      "position": 4,
+      "line": 6,
+      "side": "RIGHT",
+      "start_line": 1,
+      "start_side": "RIGHT"
+    }
+  ]
+}

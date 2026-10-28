@@ -1,0 +1,25 @@
+{
+  "timePeriod": {
+    "year": 2026,
+    "month": 8,
+    "day": 1
+  },
+  "user": "octocat",
+  "repository": "octo-org/octo-repo",
+  "product": "actions",
+  "sku": "actions_linux",
+  "usageItems": [
+    {
+      "product": "actions",
+      "sku": "actions_linux",
+      "unitType": "minutes",
+      "pricePerUnit": 0.04,
+      "grossQuantity": 100.0,
+      "grossAmount": 4.0,
+      "discountQuantity": 0.0,
+      "discountAmount": 0.0,
+      "netQuantity": 100.0,
+      "netAmount": 4.0
+    }
+  ]
+}

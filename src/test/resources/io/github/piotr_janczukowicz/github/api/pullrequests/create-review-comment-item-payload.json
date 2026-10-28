@@ -1,0 +1,9 @@
+{
+  "path": "file.md",
+  "body": "Please fix",
+  "position": 4,
+  "line": 6,
+  "side": "RIGHT",
+  "start_line": 1,
+  "start_side": "RIGHT"
+}

@@ -1,0 +1,11 @@
+{
+  "budget_amount": 500,
+  "prevent_further_usage": true,
+  "budget_alerting": {
+    "will_alert": true,
+    "alert_recipients": [
+      "octocat"
+    ]
+  },
+  "expires_at": "2027-12-31"
+}

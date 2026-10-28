@@ -1,0 +1,19 @@
+{
+  "node": "node",
+  "last_request_id": "last_request_id",
+  "events": [
+    {
+      "timestamp": "timestamp",
+      "severity_text": "severity_text",
+      "body": "body",
+      "event_name": "event_name",
+      "topology": "topology",
+      "hostname": "hostname",
+      "config_run_id": "config_run_id",
+      "trace_id": "trace_id",
+      "span_id": "span_id",
+      "span_parent_id": "span_parent_id",
+      "span_depth": 1
+    }
+  ]
+}

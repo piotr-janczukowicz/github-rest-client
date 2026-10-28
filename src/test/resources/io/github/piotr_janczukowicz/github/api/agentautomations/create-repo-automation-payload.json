@@ -1,0 +1,172 @@
+{
+  "name": "Nightly triage",
+  "triggers": {
+    "interval": {
+      "cadence": [
+        "hourly"
+      ],
+      "hour_utc": 9,
+      "day_of_week": 1,
+      "minute_utc": 15,
+      "write_scope": "trigger"
+    },
+    "issue_opened": {
+      "query": "is:open label:bug",
+      "write_scope": "trigger"
+    },
+    "issue_labeled": {
+      "query": "is:open label:bug",
+      "labels": [
+        "bug"
+      ],
+      "write_scope": "trigger"
+    },
+    "workflow_run": {
+      "workflows": [
+        "CI"
+      ],
+      "conclusions": [
+        "failure"
+      ],
+      "query": "is:open label:bug",
+      "write_scope": "trigger"
+    },
+    "pull_request_opened": {
+      "query": "is:open label:bug",
+      "paths": [
+        "src/**"
+      ],
+      "write_scope": "trigger"
+    },
+    "pull_request_synchronize": {
+      "query": "is:open label:bug",
+      "paths": [
+        "src/**"
+      ],
+      "write_scope": "trigger"
+    },
+    "pull_request_merged": {
+      "query": "is:open label:bug",
+      "paths": [
+        "src/**"
+      ],
+      "write_scope": "trigger"
+    },
+    "issue_comment": {
+      "body_substring": "/triage",
+      "write_scope": "trigger"
+    },
+    "pull_request_comment": {
+      "comment_types": [
+        "timeline_comment"
+      ],
+      "body_substring": "/triage",
+      "write_scope": "trigger"
+    },
+    "discussion_opened": {
+      "categories": [
+        "General"
+      ],
+      "body_substring": "/triage",
+      "write_scope": "trigger"
+    },
+    "discussion_updated": {
+      "categories": [
+        "General"
+      ],
+      "body_substring": "/triage",
+      "write_scope": "trigger"
+    },
+    "discussion_comment": {
+      "comment_types": [
+        "comment"
+      ],
+      "categories": [
+        "General"
+      ],
+      "body_substring": "/triage",
+      "write_scope": "trigger"
+    },
+    "issue_assigned": {
+      "query": "is:open label:bug",
+      "assignees": [
+        "octocat"
+      ],
+      "write_scope": "trigger"
+    },
+    "pull_request_assigned": {
+      "query": "is:open label:bug",
+      "paths": [
+        "src/**"
+      ],
+      "assignees": [
+        "octocat"
+      ],
+      "write_scope": "trigger"
+    },
+    "sub_issue_added": {
+      "query": "is:open label:bug",
+      "write_scope": "trigger"
+    },
+    "pull_request_ready_for_review": {
+      "query": "is:open label:bug",
+      "paths": [
+        "src/**"
+      ],
+      "write_scope": "trigger"
+    },
+    "pull_request_labeled": {
+      "query": "is:open label:bug",
+      "paths": [
+        "src/**"
+      ],
+      "labels": [
+        "bug"
+      ],
+      "write_scope": "trigger"
+    },
+    "pull_request_merge_conflict": {
+      "query": "is:open label:bug",
+      "paths": [
+        "src/**"
+      ],
+      "write_scope": "trigger"
+    },
+    "pull_request_review_submitted": {
+      "query": "is:open label:bug",
+      "paths": [
+        "src/**"
+      ],
+      "states": [
+        "approved"
+      ],
+      "write_scope": "trigger"
+    },
+    "pull_request_review_requested": {
+      "query": "is:open label:bug",
+      "paths": [
+        "src/**"
+      ],
+      "write_scope": "trigger"
+    },
+    "automation_completed": {
+      "automation_ids": [
+        "automation-2"
+      ],
+      "write_scope": "trigger"
+    }
+  },
+  "prompt": "Triage new issues and label them.",
+  "model": "gpt-5",
+  "reasoning_effort": "medium",
+  "tools": [
+    "issues_read"
+  ],
+  "allowed_custom_agents": [
+    "triage-agent"
+  ],
+  "enabled": true,
+  "owner_type": "user",
+  "write_scope": "trigger",
+  "require_actor_write_permission": true
+}

@@ -1,0 +1,9 @@
+{
+  "type": "commit_message_pattern",
+  "parameters": {
+    "name": "main-branch",
+    "negate": false,
+    "operator": "starts_with",
+    "pattern": "example"
+  }
+}

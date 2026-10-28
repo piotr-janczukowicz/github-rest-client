@@ -1,0 +1,10 @@
+{
+  "assignees": [
+    {
+      "login": "octocat",
+      "rationale": "because",
+      "suggest": true,
+      "confidence": "high"
+    }
+  ]
+}

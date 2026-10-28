@@ -1,0 +1,12 @@
+{
+  "repository_property": {
+    "include": [
+      {
+        "name": "environment",
+        "property_values": ["production"],
+        "source": "custom"
+      }
+    ],
+    "exclude": []
+  }
+}

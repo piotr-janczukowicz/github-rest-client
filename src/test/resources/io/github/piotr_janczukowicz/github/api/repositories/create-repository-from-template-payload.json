@@ -1,0 +1,7 @@
+{
+  "owner": "octocat",
+  "name": "Hello-World-Template",
+  "description": "From template",
+  "include_all_branches": true,
+  "private": false
+}

@@ -1,0 +1,5 @@
+{
+  "reason": "fix_started",
+  "alert_number": "1",
+  "alert_title": "Prototype pollution in lodash"
+}

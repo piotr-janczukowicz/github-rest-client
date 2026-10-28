@@ -1,0 +1,7 @@
+{
+  "comment_types": [
+    "timeline_comment"
+  ],
+  "body_substring": "/triage",
+  "write_scope": "trigger"
+}

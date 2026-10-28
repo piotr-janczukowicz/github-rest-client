@@ -1,0 +1,22 @@
+{
+  "id": "automation-1",
+  "title": "Issue tools",
+  "description": "Reads issues and pull requests.",
+  "fields": [
+    {
+      "id": "automation-1",
+      "label": "Branch",
+      "required": true,
+      "description": "Reads issues and pull requests.",
+      "schema": {
+        "type": "string",
+        "enum": [
+          "low",
+          "high"
+        ],
+        "minLength": 1
+      }
+    }
+  ],
+  "supports_run_now": true
+}

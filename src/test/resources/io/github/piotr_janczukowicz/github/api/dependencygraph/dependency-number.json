@@ -1,0 +1,11 @@
+{
+  "package_url": "pkg:/maven/org.apache.commons/commons-lang3@3.12.0",
+  "metadata": {
+    "example": 42
+  },
+  "relationship": "direct",
+  "scope": "runtime",
+  "dependencies": [
+    "pkg:/maven/commons-io/commons-io@2.11.0"
+  ]
+}

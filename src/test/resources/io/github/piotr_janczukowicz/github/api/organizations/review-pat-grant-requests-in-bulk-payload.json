@@ -1,0 +1,8 @@
+{
+  "pat_request_ids": [
+    42,
+    73
+  ],
+  "action": "deny",
+  "reason": "Access is too broad."
+}

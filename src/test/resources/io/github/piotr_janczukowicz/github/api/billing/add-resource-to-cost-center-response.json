@@ -1,0 +1,10 @@
+{
+  "message": "Resources added.",
+  "reassigned_resources": [
+    {
+      "resource_type": "User",
+      "name": "octocat",
+      "previous_cost_center": "Default"
+    }
+  ]
+}

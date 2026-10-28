@@ -1,0 +1,14 @@
+{
+  "bundle": {
+    "mediaType": "application/vnd.dev.sigstore.bundle.v0.3+json",
+    "verificationMaterial": {
+      "certificate": {
+        "chain": ["cert-data"]
+      }
+    },
+    "dsseEnvelope": {
+      "payload": "eyJhbGci",
+      "payloadType": "application/vnd.in-toto+json"
+    }
+  }
+}

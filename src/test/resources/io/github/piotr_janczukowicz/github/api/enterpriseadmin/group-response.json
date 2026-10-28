@@ -1,0 +1,15 @@
+{
+  "schemas": [
+    "urn:ietf:params:scim:schemas:core:2.0:Group",
+    "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+  ],
+  "externalId": "8aa1a0c0-c4c3-4bc0-b4a5-2ef676900159",
+  "displayName": "Engineering",
+  "members": [
+    {
+      "value": "879db59-3bdf-4490-ad68-ab880a2694745",
+      "$ref": "https://api.github.com/scim/v2/Users/879db59-3bdf-4490-ad68-ab880a2694745",
+      "display": "Mona Lisa"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "admin": true,
+  "pull": true,
+  "triage": false,
+  "push": true,
+  "maintain": false
+}

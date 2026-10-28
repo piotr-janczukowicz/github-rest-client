@@ -1,0 +1,44 @@
+{
+  "name": "Require approved actors",
+  "enforcement": "active",
+  "conditions": {
+    "organization_name": {
+      "include": [
+        "octo-org"
+      ],
+      "exclude": [
+        "octo-org-archive"
+      ]
+    },
+    "repository_name": {
+      "include": [
+        "Hello-World"
+      ],
+      "exclude": [
+        "secret-*"
+      ],
+      "protected": false
+    },
+    "workflow_path": {
+      "include": [
+        ".github/workflows/ci.yml"
+      ],
+      "exclude": [
+        ".github/workflows/legacy.yml"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "restrict_actions_actors",
+      "parameters": {
+        "allowed_actors": [
+          {
+            "id": 1234,
+            "type": "Team"
+          }
+        ]
+      }
+    }
+  ]
+}

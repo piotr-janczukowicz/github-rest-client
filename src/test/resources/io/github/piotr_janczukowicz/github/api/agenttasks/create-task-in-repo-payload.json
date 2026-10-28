@@ -1,0 +1,8 @@
+{
+  "prompt": "Fix the flaky test",
+  "model": "gpt-5",
+  "custom_agent": "reviewer",
+  "create_pull_request": true,
+  "base_ref": "main",
+  "head_ref": "feature/fix"
+}

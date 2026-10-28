@@ -1,0 +1,14 @@
+{
+  "scopes": [
+    "scopes"
+  ],
+  "add_scopes": [
+    "add_scopes"
+  ],
+  "remove_scopes": [
+    "remove_scopes"
+  ],
+  "note": "Update all gems",
+  "note_url": "note_url",
+  "fingerprint": "fingerprint"
+}

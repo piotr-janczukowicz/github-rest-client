@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "stream_type": "Azure Event Hubs",
+  "vendor_specific": {
+    "name": "octo-hub",
+    "encrypted_connstring": "encrypted-connstring",
+    "key_id": "key-1"
+  }
+}

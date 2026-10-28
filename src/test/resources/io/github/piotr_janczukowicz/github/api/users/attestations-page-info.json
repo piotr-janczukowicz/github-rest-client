@@ -1,0 +1,6 @@
+{
+  "has_next": true,
+  "has_previous": false,
+  "next": "cursor-next",
+  "previous": "cursor-prev"
+}

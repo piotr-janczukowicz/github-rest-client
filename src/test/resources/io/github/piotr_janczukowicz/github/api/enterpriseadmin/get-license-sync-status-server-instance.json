@@ -1,0 +1,9 @@
+{
+  "server_id": "sample-server_id",
+  "hostname": "sample-hostname",
+  "last_sync": {
+    "date": "sample-date",
+    "status": "sample-status",
+    "error": "sample-error"
+  }
+}

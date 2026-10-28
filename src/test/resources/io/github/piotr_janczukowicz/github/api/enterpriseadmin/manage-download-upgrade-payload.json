@@ -1,0 +1,10 @@
+{
+  "version": "3.22.1",
+  "force": true,
+  "uuids": [
+    "uuids"
+  ],
+  "max_parallel": 1,
+  "node_timeout": "1h",
+  "max_attempts": 1
+}

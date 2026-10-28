@@ -1,0 +1,19 @@
+{
+  "change_type": "added",
+  "manifest": "path/to/package-lock.json",
+  "ecosystem": "npm",
+  "name": "@actions/core",
+  "version": "1.0.0",
+  "package_url": "pkg:/npm/%40actions/core@1.1.0",
+  "license": "MIT",
+  "source_repository_url": "https://github.com/github/actions",
+  "vulnerabilities": [
+    {
+      "severity": "critical",
+      "advisory_ghsa_id": "GHSA-rf4j-j272-fj86",
+      "advisory_summary": "A summary of the advisory.",
+      "advisory_url": "https://github.com/advisories/GHSA-rf4j-j272-fj86"
+    }
+  ],
+  "scope": "runtime"
+}

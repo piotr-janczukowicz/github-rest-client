@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "node_id": "MDQ6VGVhbTE=",
+  "name": "Justice League",
+  "slug": "justice-league",
+  "permission": "admin",
+  "url": "https://api.github.com/teams/1",
+  "html_url": "https://github.com/orgs/github/teams/justice-league",
+  "members_url": "https://api.github.com/teams/1/members{/member}",
+  "repositories_url": "https://api.github.com/teams/1/repos",
+  "type": "organization"
+}

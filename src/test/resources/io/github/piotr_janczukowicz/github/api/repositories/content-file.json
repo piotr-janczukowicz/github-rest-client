@@ -1,0 +1,20 @@
+{
+  "type": "file",
+  "encoding": "base64",
+  "size": 5362,
+  "name": "README.md",
+  "path": "README.md",
+  "content": "SGVsbG8gV29ybGQ=",
+  "sha": "95b966ae1c166bd92f8ae7d1c313e738c731dfc3",
+  "url": "https://api.github.com/repos/octocat/Hello-World/contents/README.md",
+  "git_url": "https://api.github.com/repos/octocat/Hello-World/git/blobs/95b966ae1c166bd92f8ae7d1c313e738c731dfc3",
+  "html_url": "https://github.com/octocat/Hello-World/blob/master/README.md",
+  "download_url": "https://raw.githubusercontent.com/octocat/Hello-World/master/README.md",
+  "_links": {
+    "git": "https://api.github.com/repos/octocat/Hello-World/git/blobs/95b966ae1c166bd92f8ae7d1c313e738c731dfc3",
+    "html": "https://github.com/octocat/Hello-World/blob/master/README.md",
+    "self": "https://api.github.com/repos/octocat/Hello-World/contents/README.md"
+  },
+  "target": "actual/actual.md",
+  "submodule_git_url": "git://example.com/defunkt/dotjs.git"
+}

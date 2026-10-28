@@ -1,0 +1,6 @@
+{
+  "type": "PullRequest",
+  "owner": "octocat",
+  "repo": "hello-world",
+  "number": 123
+}

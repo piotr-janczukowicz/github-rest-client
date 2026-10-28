@@ -1,0 +1,7 @@
+{
+  "title": "new-feature",
+  "body": "Please pull these awesome changes",
+  "state": "open",
+  "base": "master",
+  "maintainer_can_modify": true
+}

@@ -1,0 +1,11 @@
+{
+  "repository_names": [
+    "Hello-World"
+  ],
+  "properties": [
+    {
+      "property_name": "environment",
+      "value": "production"
+    }
+  ]
+}

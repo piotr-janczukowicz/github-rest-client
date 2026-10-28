@@ -1,0 +1,33 @@
+{
+  "type": "pull_request",
+  "parameters": {
+    "allowed_merge_methods": [
+      "merge",
+      "squash"
+    ],
+    "dismiss_stale_reviews_on_push": false,
+    "dismissal_restriction": {
+      "allowed_actors": [
+        {
+          "id": 1,
+          "type": "Team"
+        }
+      ],
+      "enabled": false
+    },
+    "require_code_owner_review": false,
+    "require_last_push_approval": false,
+    "required_approving_review_count": 1,
+    "required_review_thread_resolution": false,
+    "required_reviewers": [
+      {
+        "file_patterns": ["*.java"],
+        "minimum_approvals": 1,
+        "reviewer": {
+          "id": 1,
+          "type": "Team"
+        }
+      }
+    ]
+  }
+}

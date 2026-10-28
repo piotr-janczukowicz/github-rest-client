@@ -1,0 +1,8 @@
+{
+  "status": "queued",
+  "conclusion": "conclusion-sample",
+  "name": "name-sample",
+  "number": 1,
+  "started_at": "2024-01-02T03:04:05Z",
+  "completed_at": "2024-01-02T03:04:05Z"
+}

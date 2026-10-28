@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "server": "server",
+  "port": 1,
+  "encryption": "encryption",
+  "username": "username",
+  "password": "password"
+}

@@ -1,0 +1,7 @@
+{
+  "subject_digests": [
+    "sha256:abc123",
+    "sha512:def456"
+  ],
+  "predicate_type": "provenance"
+}

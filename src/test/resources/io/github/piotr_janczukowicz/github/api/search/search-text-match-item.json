@@ -1,0 +1,15 @@
+{
+  "object_url": "https://api.github.com/repositories/1300192/contents/src/attributes/classes.js?ref=master",
+  "object_type": "FileContent",
+  "property": "content",
+  "fragment": "jQuery.fn.extend({\n\taddClass: function( value ) {\n\t\tvar classes, elem, cur, clazz, j, finalValue,\n\t\t\ti = 0,\n\t\t\tlen = this.length,\n\t\t\tproceed = typeof value === \"string\" && value;",
+  "matches": [
+    {
+      "text": "addClass",
+      "indices": [
+        18,
+        26
+      ]
+    }
+  ]
+}

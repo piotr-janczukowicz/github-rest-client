@@ -1,0 +1,8 @@
+{
+  "full_domains": [
+    "actions.example.com"
+  ],
+  "wildcard_domains": [
+    "*.actions.example.com"
+  ]
+}

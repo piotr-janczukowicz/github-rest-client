@@ -1,0 +1,14 @@
+{
+  "id": "automation-1",
+  "label": "Branch",
+  "required": true,
+  "description": "Reads issues and pull requests.",
+  "schema": {
+    "type": "string",
+    "enum": [
+      "low",
+      "high"
+    ],
+    "minLength": 1
+  }
+}

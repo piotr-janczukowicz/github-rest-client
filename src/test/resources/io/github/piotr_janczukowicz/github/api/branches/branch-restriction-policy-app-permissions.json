@@ -1,0 +1,6 @@
+{
+  "metadata": "read",
+  "contents": "read",
+  "issues": "write",
+  "single_file": "write"
+}

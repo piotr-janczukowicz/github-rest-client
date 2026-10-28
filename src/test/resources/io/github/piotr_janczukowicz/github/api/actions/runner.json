@@ -1,0 +1,17 @@
+{
+  "id": 1,
+  "runner_group_id": 1,
+  "name": "name-sample",
+  "os": "os-sample",
+  "status": "status-sample",
+  "busy": true,
+  "labels": [
+    {
+      "id": 1,
+      "name": "name-sample",
+      "type": "read-only"
+    }
+  ],
+  "ephemeral": true,
+  "version": "version-sample"
+}

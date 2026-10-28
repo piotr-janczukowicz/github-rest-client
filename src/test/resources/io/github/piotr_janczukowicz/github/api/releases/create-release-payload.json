@@ -1,0 +1,11 @@
+{
+  "tag_name": "v1.0.0",
+  "target_commitish": "master",
+  "name": "v1.0.0",
+  "body": "Description of the release",
+  "draft": false,
+  "prerelease": false,
+  "generate_release_notes": false,
+  "discussion_category_name": "Announcements",
+  "make_latest": "true"
+}

@@ -1,0 +1,7 @@
+{
+  "ref": "main",
+  "time_period": "week",
+  "actor_name": "octocat",
+  "rule_suite_result": "all",
+  "evaluate_status": "all"
+}

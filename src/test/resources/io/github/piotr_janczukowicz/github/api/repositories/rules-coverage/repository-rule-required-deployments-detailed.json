@@ -1,0 +1,1 @@
+{"type": "required_deployments", "parameters": {"required_deployment_environments": ["production"]}, "ruleset_source_type": "Repository", "ruleset_source": "org/repo", "ruleset_id": 1}

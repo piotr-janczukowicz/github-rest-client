@@ -1,0 +1,31 @@
+{
+  "vcs": "subversion",
+  "use_lfs": 1,
+  "vcs_url": "http://svn.example.com/svn/myproject",
+  "svc_root": "http://svn.example.com/svn",
+  "tfvc_project": "myproject",
+  "status": "complete",
+  "status_text": "Done",
+  "failed_step": "import",
+  "error_message": "",
+  "import_percent": 100,
+  "commit_count": 4,
+  "push_percent": 100,
+  "has_large_files": true,
+  "large_files_size": 132331036,
+  "large_files_count": 1,
+  "project_choices": [
+    {
+      "vcs": "subversion",
+      "tfvc_project": "proj",
+      "human_name": "My Project"
+    }
+  ],
+  "message": "",
+  "authors_count": 4,
+  "url": "https://api.github.com/repos/octocat/socm/import",
+  "html_url": "https://import.github.com/octocat/socm/import",
+  "authors_url": "https://api.github.com/repos/octocat/socm/import/authors",
+  "repository_url": "https://api.github.com/repos/octocat/socm",
+  "svn_root": "http://svn.example.com/svn"
+}

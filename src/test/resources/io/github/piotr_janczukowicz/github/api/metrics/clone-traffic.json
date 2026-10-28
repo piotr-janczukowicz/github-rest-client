@@ -1,0 +1,11 @@
+{
+  "count": 173,
+  "uniques": 128,
+  "clones": [
+    {
+      "timestamp": "2016-10-10T00:00:00Z",
+      "uniques": 18,
+      "count": 23
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "total_count": 1,
+  "images": [
+    {
+      "id": "id-sample",
+      "platform": "platform-sample",
+      "size_gb": 1,
+      "display_name": "displayName-sample",
+      "source": "github"
+    }
+  ]
+}

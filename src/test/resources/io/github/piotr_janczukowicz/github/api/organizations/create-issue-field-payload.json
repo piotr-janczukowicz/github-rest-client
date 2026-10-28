@@ -1,0 +1,14 @@
+{
+  "name": "Priority",
+  "description": "Issue priority for triage",
+  "data_type": "single_select",
+  "visibility": "organization_members_only",
+  "options": [
+    {
+      "name": "High",
+      "description": "High priority work",
+      "color": "red",
+      "priority": 0
+    }
+  ]
+}

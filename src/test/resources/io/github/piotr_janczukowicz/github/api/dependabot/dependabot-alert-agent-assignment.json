@@ -1,0 +1,5 @@
+{
+  "custom_instructions" : "Prefer minimal upgrades.",
+  "custom_agent" : "security-fixer",
+  "model" : "claude-sonnet"
+}

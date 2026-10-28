@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "address": "address",
+  "authentication": "authentication",
+  "port": "port",
+  "domain": "domain",
+  "username": "username",
+  "user_name": "user_name",
+  "enable_starttls_auto": true,
+  "password": "password",
+  "discard-to-noreply-address": true,
+  "support_address": "support_address",
+  "support_address_type": "support_address_type",
+  "noreply_address": "noreply_address"
+}

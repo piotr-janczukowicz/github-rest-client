@@ -1,0 +1,4 @@
+{
+  "enforced_repositories": "all",
+  "selected_repositories_url": "https://api.github.com/orgs/github/immutable-releases/repositories"
+}

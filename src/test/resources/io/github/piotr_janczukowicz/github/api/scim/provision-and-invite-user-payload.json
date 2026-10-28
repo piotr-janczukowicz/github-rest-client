@@ -1,0 +1,24 @@
+{
+  "userName": "mona.octocat@okta.example.com",
+  "displayName": "Monalisa Octocat",
+  "name": {
+    "givenName": "Monalisa",
+    "familyName": "Octocat",
+    "formatted": "Monalisa Octocat"
+  },
+  "emails": [
+    {
+      "type": "work",
+      "value": "mona.octocat@okta.example.com",
+      "primary": true
+    }
+  ],
+  "schemas": [
+    "urn:ietf:params:scim:schemas:core:2.0:User"
+  ],
+  "externalId": "a7d0f98382",
+  "groups": [
+    "engineering"
+  ],
+  "active": true
+}

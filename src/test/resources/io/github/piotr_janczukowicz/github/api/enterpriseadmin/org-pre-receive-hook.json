@@ -1,0 +1,7 @@
+{
+  "id": 1,
+  "name": "name",
+  "enforcement": "enforcement",
+  "configuration_url": "configuration_url",
+  "allow_downstream_configuration": true
+}

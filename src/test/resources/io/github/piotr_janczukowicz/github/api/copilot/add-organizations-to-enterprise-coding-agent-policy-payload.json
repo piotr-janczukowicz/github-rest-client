@@ -1,0 +1,13 @@
+{
+  "organizations": [
+    "octo-org"
+  ],
+  "custom_properties": [
+    {
+      "property_name": "environment",
+      "values": [
+        "production"
+      ]
+    }
+  ]
+}

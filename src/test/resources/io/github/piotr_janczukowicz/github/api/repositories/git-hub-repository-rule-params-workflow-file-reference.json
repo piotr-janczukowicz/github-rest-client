@@ -1,0 +1,6 @@
+{
+  "path": ".github/workflows/ci.yml",
+  "ref": "refs/heads/main",
+  "repository_id": 1,
+  "sha": "abc123"
+}

@@ -1,0 +1,49 @@
+{
+  "vulnerabilities": [
+    {
+      "id": "sample-id",
+      "schema_version": "sample-schema_version",
+      "summary": "sample-summary",
+      "details": "sample-details",
+      "aliases": [
+        "sample-aliases"
+      ],
+      "severity": [
+        {
+          "type": "sample-type",
+          "score": "sample-score"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "ecosystem": "sample-ecosystem",
+            "name": "sample-name"
+          },
+          "ranges": [
+            {
+              "type": "sample-type",
+              "events": [
+                {
+                  "introduced": "sample-introduced",
+                  "fixed": "sample-fixed",
+                  "last_affected": "sample-last_affected",
+                  "limit": "sample-limit"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "type": "sample-type",
+          "url": "sample-url"
+        }
+      ],
+      "published": "2026-01-02T03:04:05Z",
+      "modified": "2026-01-02T03:04:05Z",
+      "withdrawn": "2026-01-02T03:04:05Z"
+    }
+  ]
+}

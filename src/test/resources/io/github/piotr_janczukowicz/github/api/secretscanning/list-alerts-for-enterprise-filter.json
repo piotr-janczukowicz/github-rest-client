@@ -1,0 +1,18 @@
+{
+  "state": "open",
+  "secret_type": "adafruit_io_key",
+  "exclude_secret_types": "github_personal_access_token",
+  "exclude_providers": "github_secret_scanning",
+  "providers": "adafruit_io",
+  "resolution": "false_positive",
+  "assignee": "octocat",
+  "sort": "updated",
+  "direction": "asc",
+  "validity": "active",
+  "is_publicly_leaked": true,
+  "is_multi_repo": false,
+  "hide_secret": false,
+  "is_bypassed": true,
+  "included_metadata": "owner_email",
+  "owner_email_hash": "abc123hash"
+}

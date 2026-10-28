@@ -1,0 +1,60 @@
+package io.github.piotr_janczukowicz.github.api.agenttasks;
+
+import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonNull;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import io.github.piotr_janczukowicz.annotation.RecordBuilder;
+import io.github.piotr_janczukowicz.github.api.Flavors;
+import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
+import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import java.time.Instant;
+import java.util.List;
+import org.jspecify.annotations.Nullable;
+
+/**
+ * Agent task in a repository.
+ *
+ * @param id Id
+ * @param url Url
+ * @param htmlUrl Html url
+ * @param name Name
+ * @param creator Creator
+ * @param creatorType Creator type
+ * @param userCollaborators User collaborators
+ * @param owner Owner
+ * @param repository Repository
+ * @param state State
+ * @param sessionCount Session count
+ * @param artifacts Artifacts
+ * @param archivedAt Archived at
+ * @param updatedAt Updated at
+ * @param createdAt Created at
+ * @param customAgent Custom agent
+ */
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@RecordBuilder
+@CatalogSchema("operations/agent-tasks/list-tasks/200/properties/tasks/items")
+@Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+public record GitHubListTasksTask(
+        String id,
+        @Nullable String url,
+        @Nullable String htmlUrl,
+        @Nullable String name,
+        @Nullable GitHubListTasksTaskCreator creator,
+        @Nullable GitHubListTasksTaskCreatorType creatorType,
+        @Deprecated @Nullable List<GitHubListTasksTaskUserCollaborator> userCollaborators,
+        @Nullable GitHubListTasksTaskOwner owner,
+        @Nullable GitHubListTasksTaskRepository repository,
+        GitHubListTasksTaskState state,
+        @Nullable Integer sessionCount,
+        @Nullable List<GitHubListTasksTaskArtifact> artifacts,
+        @Nullable Instant archivedAt,
+        @Nullable Instant updatedAt,
+        Instant createdAt,
+        @Nullable GitHubListTasksTaskCustomAgent customAgent) {
+    public GitHubListTasksTask {
+        requireNonNull(id, "id");
+        requireNonNull(state, "state");
+        requireNonNull(createdAt, "createdAt");
+    }
+}

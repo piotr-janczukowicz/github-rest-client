@@ -1,0 +1,8 @@
+{
+  "name": "Reviewer",
+  "description": "Reviews pull requests",
+  "base_role": "read",
+  "permissions": [
+    "pull"
+  ]
+}

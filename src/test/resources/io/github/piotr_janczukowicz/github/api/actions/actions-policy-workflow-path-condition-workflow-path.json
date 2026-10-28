@@ -1,0 +1,8 @@
+{
+  "include": [
+    ".github/workflows/ci.yml"
+  ],
+  "exclude": [
+    ".github/workflows/legacy.yml"
+  ]
+}

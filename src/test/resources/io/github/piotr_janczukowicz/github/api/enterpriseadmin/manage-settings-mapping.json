@@ -1,0 +1,6 @@
+{
+  "enabled": true,
+  "tileserver": "tileserver",
+  "basemap": "basemap",
+  "token": "token"
+}

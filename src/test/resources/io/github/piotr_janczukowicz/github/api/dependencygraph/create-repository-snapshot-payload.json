@@ -1,0 +1,43 @@
+{
+  "version": 0,
+  "job": {
+    "id": "5622a2b0-63f6-4732-8c34-a1ab27e102a11",
+    "correlator": "yourworkflowname_yourjobname",
+    "html_url": "http://example.com/build"
+  },
+  "sha": "ce587453ced02b1526dfb4cb910479d431683101",
+  "ref": "refs/heads/main",
+  "detector": {
+    "name": "docker buildtools",
+    "version": "1.0.0",
+    "url": "http://example.com/docker-buildtools"
+  },
+  "metadata": {
+    "environment": "production"
+  },
+  "manifests": {
+    "package-lock.json": {
+      "name": "package-lock.json",
+      "file": {
+        "source_location": "src/build.package-lock.json"
+      },
+      "metadata": {
+        "example": "value"
+      },
+      "resolved": {
+        "@actions/core": {
+          "package_url": "pkg:/maven/org.apache.commons/commons-lang3@3.12.0",
+          "metadata": {
+            "example": "value"
+          },
+          "relationship": "direct",
+          "scope": "runtime",
+          "dependencies": [
+            "pkg:/maven/commons-io/commons-io@2.11.0"
+          ]
+        }
+      }
+    }
+  },
+  "scanned": "2022-06-14T20:25:00Z"
+}

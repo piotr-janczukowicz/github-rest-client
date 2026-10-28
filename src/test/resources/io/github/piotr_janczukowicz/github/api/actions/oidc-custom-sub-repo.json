@@ -1,0 +1,8 @@
+{
+  "use_default": true,
+  "include_claim_keys": [
+    "includeClaimKeys-sample"
+  ],
+  "use_immutable_subject": true,
+  "sub_claim_prefix": "subClaimPrefix-sample"
+}

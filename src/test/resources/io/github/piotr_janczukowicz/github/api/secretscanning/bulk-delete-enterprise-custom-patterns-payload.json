@@ -1,0 +1,9 @@
+{
+  "patterns": [
+    {
+      "pattern_id": 1,
+      "custom_pattern_version": "0ujsswThIGTUYm2K8FjOOfXtY1K"
+    }
+  ],
+  "post_delete_action": "delete_alerts"
+}

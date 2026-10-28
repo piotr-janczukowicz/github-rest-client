@@ -1,0 +1,7 @@
+{
+  "id": 1,
+  "node_id": "nodeId-sample",
+  "name": "name-sample",
+  "url": "https://api.github.com/example",
+  "html_url": "https://github.com/example"
+}

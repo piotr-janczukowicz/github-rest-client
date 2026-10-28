@@ -1,0 +1,75 @@
+{
+  "status": "status",
+  "last_updated": "2026-01-01T00:00:00Z",
+  "target_unavailable": true,
+  "repository_summaries": [
+    {
+      "namespace": "namespace",
+      "repository": "repository",
+      "total": 1,
+      "total_backfill": 1,
+      "total_live_update": 1,
+      "total_processed": 1,
+      "total_failed": 1,
+      "total_pending": 1,
+      "total_eligible": 1,
+      "total_acknowledged": 1,
+      "initial_git_push_complete": true,
+      "backfill": {
+        "total": 1,
+        "total_pending": 1,
+        "total_processed": 1,
+        "total_failed": 1,
+        "total_eligible": 1,
+        "total_acknowledged": 1,
+        "breakdown": [
+          {
+            "state": "state",
+            "kind": "kind",
+            "type": "type",
+            "count": 1
+          }
+        ]
+      },
+      "live_update": {
+        "total": 1,
+        "total_pending": 1,
+        "total_processed": 1,
+        "total_failed": 1,
+        "total_eligible": 1,
+        "total_acknowledged": 1,
+        "breakdown": [
+          {
+            "state": "state",
+            "kind": "kind",
+            "type": "type",
+            "count": 1
+          }
+        ]
+      }
+    }
+  ],
+  "repository_progress": [
+    {
+      "repository_nwo": "repository_nwo",
+      "backfill_resources_added": 1,
+      "backfill_resources_processed": 1,
+      "backfill_resources_failed": 1,
+      "backfill_resources_eligible": 1,
+      "backfill_resources_acknowledged": 1,
+      "live_update_resources_added": 1,
+      "live_update_resources_processed": 1,
+      "live_update_resources_eligible": 1,
+      "live_update_resources_acknowledged": 1,
+      "live_update_resources_failed": 1,
+      "all_resources_sent": true,
+      "initial_git_push_complete": true,
+      "repository_locked": true
+    }
+  ],
+  "terminal_failure": {
+    "code": "code",
+    "summary": "summary",
+    "occurred_at": "2026-01-01T00:00:00Z"
+  }
+}

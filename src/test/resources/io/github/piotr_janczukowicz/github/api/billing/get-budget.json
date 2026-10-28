@@ -1,0 +1,17 @@
+{
+  "id": "2066deda-923f-43f9-88d2-62395a28c0cd",
+  "budget_scope": "enterprise",
+  "budget_entity_name": "octo-org",
+  "user": "octocat",
+  "budget_amount": 500,
+  "prevent_further_usage": true,
+  "budget_product_sku": "actions",
+  "budget_type": "ProductPricing",
+  "budget_alerting": {
+    "will_alert": false,
+    "alert_recipients": [
+      "octocat"
+    ]
+  },
+  "consumed_amount": 12.5
+}

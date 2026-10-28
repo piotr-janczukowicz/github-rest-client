@@ -1,0 +1,8 @@
+{
+  "package_type": "container",
+  "container": {
+    "tags": [
+      "latest"
+    ]
+  }
+}

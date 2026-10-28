@@ -1,0 +1,61 @@
+name: Release
+
+# Run by hand on main. Deploys the next version to GitHub Packages, tags it and creates the GitHub release. Publishing to
+# Maven Central is a separate workflow that takes the tag. The version follows the OpenAPI version of the pom (`2026.3.10.N-SNAPSHOT`): it is
+# `2026.3.10.` plus the newest `v2026.3.10.*` tag plus one, or the N of the pom when that is higher or there is no tag
+# yet. Nothing is pushed to main, so branch protection stays on.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GITHUB_ACTOR: ${{ github.actor }}
+      GITHUB_TOKEN: ${{ github.token }}
+      PACKAGES_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+          server-id: github
+      - name: Resolve release version
+        id: version
+        run: |
+          current=$(mvn -B -ntp -s .github/maven-settings.xml -q help:evaluate -Dexpression=project.version -DforceStdout)
+          if [[ ! "$current" =~ ^([0-9]+\.[0-9]+\.[0-9]+)\.([0-9]+)-SNAPSHOT$ ]]; then
+            echo "::error::Expected version X.Y.Z.N-SNAPSHOT with integer N, found '$current'"
+            exit 1
+          fi
+          base=${BASH_REMATCH[1]}
+          floor=${BASH_REMATCH[2]}
+          last=$(git ls-remote --tags --refs origin "refs/tags/v${base}.*" | sed -E "s#.*refs/tags/v${base}\.##" | grep -E '^[0-9]+$' | sort -n | tail -1 || true)
+          if [ -z "$last" ]; then revision=$floor; else revision=$(( floor > last ? floor : last + 1 )); fi
+          echo "release=${base}.${revision}" >> "$GITHUB_OUTPUT"
+      - name: Fail if tag exists
+        run: |
+          if git ls-remote --exit-code --tags origin "refs/tags/v${{ steps.version.outputs.release }}"; then
+            echo "::error::Tag v${{ steps.version.outputs.release }} already exists"
+            exit 1
+          fi
+      - name: Set release version
+        run: mvn -B -ntp -s .github/maven-settings.xml versions:set -DnewVersion=${{ steps.version.outputs.release }} -DgenerateBackupPoms=false
+      - name: Deploy to GitHub Packages
+        run: mvn -B -ntp -s .github/maven-settings.xml deploy -DdeployAtEnd=false -Prelease -Dproject.build.outputTimestamp="$(git log -1 --format=%cI)"
+      - name: Tag and create GitHub release
+        run: gh release create "v${{ steps.version.outputs.release }}" --target "$GITHUB_SHA" --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}

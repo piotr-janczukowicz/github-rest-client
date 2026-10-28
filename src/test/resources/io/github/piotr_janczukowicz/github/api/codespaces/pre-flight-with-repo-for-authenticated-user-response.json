@@ -1,0 +1,30 @@
+{
+  "billable_owner": {
+    "login": "monalisa",
+    "id": 2,
+    "node_id": "MDQ6VXNlcjI=",
+    "avatar_url": "https://alambic.github.com/avatars/u/2?",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/monalisa",
+    "html_url": "https://github.com/monalisa",
+    "followers_url": "https://api.github.com/users/monalisa/followers",
+    "following_url": "https://api.github.com/users/monalisa/following{/other_user}",
+    "gists_url": "https://api.github.com/users/monalisa/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/monalisa/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/monalisa/subscriptions",
+    "organizations_url": "https://api.github.com/users/monalisa/orgs",
+    "repos_url": "https://api.github.com/users/monalisa/repos",
+    "events_url": "https://api.github.com/users/monalisa/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/monalisa/received_events",
+    "type": "User",
+    "site_admin": true,
+    "name": "Mona Lisa",
+    "email": "monalisa@github.com",
+    "starred_at": "2020-11-02T16:12:33Z",
+    "user_view_type": "public"
+  },
+  "defaults": {
+    "location": "WestUs2",
+    "devcontainer_path": ".devcontainer/devcontainer.json"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "octocat/Hello-World",
+  "advanced_security_committers": 25,
+  "advanced_security_committers_breakdown": [
+    {
+      "user_login": "octocat",
+      "last_pushed_date": "2021-11-03",
+      "last_pushed_email": "monalisa@github.com"
+    }
+  ]
+}

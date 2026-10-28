@@ -1,0 +1,11 @@
+{
+  "op": "replace",
+  "path": "name",
+  "value": {
+    "active": false,
+    "userName": "mona.octocat@okta.example.com",
+    "externalId": "a7d0f98382",
+    "givenName": "Monalisa",
+    "familyName": "Octocat"
+  }
+}

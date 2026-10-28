@@ -1,0 +1,73 @@
+{
+  "users": [
+    {
+      "login": "octocat",
+      "id": 1,
+      "node_id": "MDQ6VXNlcjE=",
+      "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/octocat",
+      "html_url": "https://github.com/octocat",
+      "followers_url": "https://api.github.com/users/octocat/followers",
+      "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+      "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+      "organizations_url": "https://api.github.com/users/octocat/orgs",
+      "repos_url": "https://api.github.com/users/octocat/repos",
+      "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/octocat/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": "monalisa octocat",
+      "email": "octocat@github.com",
+      "starred_at": "2020-11-02T16:12:33Z",
+      "user_view_type": "public"
+    }
+  ],
+  "teams": [
+    {
+      "id": 1,
+      "node_id": "MDQ6VGVhbTE=",
+      "url": "https://api.github.com/organizations/1/team/1",
+      "members_url": "https://api.github.com/organizations/1/team/1/members{/member}",
+      "name": "Justice League",
+      "description": "A great team.",
+      "permission": "admin",
+      "permissions": {
+        "admin": true,
+        "maintain": false,
+        "push": true,
+        "triage": false,
+        "pull": true
+      },
+      "privacy": "closed",
+      "notification_setting": "notifications_enabled",
+      "html_url": "https://github.com/orgs/rails/teams/core",
+      "repositories_url": "https://api.github.com/organizations/1/team/1/repos",
+      "slug": "justice-league",
+      "type": "organization",
+      "organization_id": 1,
+      "enterprise_id": 2,
+      "access_source": "direct",
+      "parent": {
+        "id": 2,
+        "node_id": "MDQ6VGVhbTI=",
+        "url": "https://api.github.com/organizations/1/team/2",
+        "members_url": "https://api.github.com/organizations/1/team/2/members{/member}",
+        "name": "Parent Team",
+        "description": "Parent team.",
+        "permission": "admin",
+        "privacy": "closed",
+        "notification_setting": "notifications_enabled",
+        "html_url": "https://github.com/orgs/rails/teams/parent",
+        "repositories_url": "https://api.github.com/organizations/1/team/2/repos",
+        "slug": "parent-team",
+        "ldap_dn": "cn=parent-team,ou=groups,dc=github,dc=com",
+        "type": "organization",
+        "organization_id": 1,
+        "enterprise_id": 2
+      }
+    }
+  ]
+}

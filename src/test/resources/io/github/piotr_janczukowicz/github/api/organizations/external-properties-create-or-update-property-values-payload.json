@@ -1,0 +1,12 @@
+{
+  "repository_values": [
+    {
+      "repository_name": "Hello-World",
+      "value": "production"
+    },
+    {
+      "repository_name": "octo-repo",
+      "value": null
+    }
+  ]
+}

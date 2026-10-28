@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "stream_type": "Datadog",
+  "vendor_specific": {
+    "encrypted_token": "encrypted-token",
+    "site": "US",
+    "key_id": "key-1"
+  }
+}

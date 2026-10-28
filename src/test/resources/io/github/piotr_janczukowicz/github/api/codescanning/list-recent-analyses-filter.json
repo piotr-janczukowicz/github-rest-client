@@ -1,0 +1,9 @@
+{
+  "tool_name": "CodeQL",
+  "tool_guid": "0a9b3c7d-e8f1-4b2a-9c3d-5e6f7a8b9c0d",
+  "pr": 123,
+  "ref": "refs/heads/main",
+  "sarif_id": "47177e22-5642-11ec-8d3d-0242ac130003",
+  "direction": "desc",
+  "sort": "created"
+}

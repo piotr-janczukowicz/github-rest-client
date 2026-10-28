@@ -1,0 +1,10 @@
+{
+  "value": "closed",
+  "state_reason": "completed",
+  "duplicate_issue_id": 99,
+  "rationale": "done",
+  "suggest": true,
+  "confidence": "high",
+  "ignored": false,
+  "ignored_reason": "already_applied"
+}

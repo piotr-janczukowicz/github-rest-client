@@ -1,0 +1,1 @@
+{"type": "commit_message_pattern", "parameters": {"operator": "contains", "pattern": "fix"}}

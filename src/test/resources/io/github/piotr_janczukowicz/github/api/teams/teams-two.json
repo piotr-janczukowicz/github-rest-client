@@ -1,0 +1,16 @@
+[
+  {
+    "id": 2,
+    "node_id": "MDQ6VGVhbTI=",
+    "name": "Avengers",
+    "slug": "avengers",
+    "description": "Earth's mightiest heroes.",
+    "permission": "push",
+    "url": "https://api.github.com/organizations/1/team/2",
+    "html_url": "https://github.com/orgs/octo-org/teams/avengers",
+    "members_url": "https://api.github.com/organizations/1/team/2/members{/member}",
+    "repositories_url": "https://api.github.com/organizations/1/team/2/repos",
+    "type": "organization",
+    "parent": null
+  }
+]

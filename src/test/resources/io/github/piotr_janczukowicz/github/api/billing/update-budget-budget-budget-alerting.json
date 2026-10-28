@@ -1,0 +1,6 @@
+{
+  "will_alert": false,
+  "alert_recipients": [
+    "octocat"
+  ]
+}

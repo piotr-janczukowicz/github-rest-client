@@ -1,0 +1,5 @@
+{
+  "base": "main",
+  "head": "feature",
+  "commit_message": "Merge feature into main"
+}

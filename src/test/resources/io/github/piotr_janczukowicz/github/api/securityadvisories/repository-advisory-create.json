@@ -1,0 +1,26 @@
+{
+  "summary": "A new important advisory",
+  "description": "A more in-depth description.",
+  "vulnerabilities": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "a-package"
+      },
+      "vulnerable_version_range": "< 1.0.0",
+      "patched_versions": "1.0.0",
+      "vulnerable_functions": ["important_function"]
+    }
+  ],
+  "cve_id": "CVE-2022-99999",
+  "cwe_ids": ["CWE-79"],
+  "credits": [
+    {
+      "login": "octocat",
+      "type": "finder"
+    }
+  ],
+  "severity": "high",
+  "cvss_vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+  "start_private_fork": true
+}

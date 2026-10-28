@@ -1,0 +1,27 @@
+{
+  "organization_name": {
+    "include": [
+      "octo-org"
+    ],
+    "exclude": [
+      "octo-org-archive"
+    ]
+  },
+  "repository_name": {
+    "include": [
+      "Hello-World"
+    ],
+    "exclude": [
+      "secret-*"
+    ],
+    "protected": false
+  },
+  "workflow_path": {
+    "include": [
+      ".github/workflows/ci.yml"
+    ],
+    "exclude": [
+      ".github/workflows/legacy.yml"
+    ]
+  }
+}

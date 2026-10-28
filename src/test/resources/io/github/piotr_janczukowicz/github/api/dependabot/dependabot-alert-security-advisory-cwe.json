@@ -1,0 +1,4 @@
+{
+  "cwe_id" : "CWE-200",
+  "name" : "Exposure of Sensitive Information to an Unauthorized Actor"
+}

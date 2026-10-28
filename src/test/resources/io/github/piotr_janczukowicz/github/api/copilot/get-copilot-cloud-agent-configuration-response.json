@@ -1,0 +1,19 @@
+{
+  "mcp_configuration": {
+    "server": "https://example.com/mcp"
+  },
+  "enabled_tools": {
+    "codeql": true,
+    "copilot_code_review": true,
+    "secret_scanning": false,
+    "dependency_vulnerability_checks": true
+  },
+  "require_actions_workflow_approval": true,
+  "is_firewall_enabled": true,
+  "is_firewall_recommended_allowlist_enabled": true,
+  "custom_allowlist": [
+    "example.com"
+  ],
+  "is_automations_enabled": true,
+  "require_write_access_for_automation_triggers": false
+}

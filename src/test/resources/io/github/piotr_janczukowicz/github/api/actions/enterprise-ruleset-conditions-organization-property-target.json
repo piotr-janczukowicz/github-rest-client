@@ -1,0 +1,20 @@
+{
+  "organization_property": {
+    "include": [
+      {
+        "name": "tier",
+        "property_values": [
+          "gold"
+        ]
+      }
+    ],
+    "exclude": [
+      {
+        "name": "status",
+        "property_values": [
+          "archived"
+        ]
+      }
+    ]
+  }
+}

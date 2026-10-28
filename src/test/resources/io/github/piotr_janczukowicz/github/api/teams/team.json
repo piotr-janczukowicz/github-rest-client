@@ -1,0 +1,43 @@
+{
+  "id": 1,
+  "node_id": "MDQ6VGVhbTE=",
+  "name": "Justice League",
+  "slug": "justice-league",
+  "description": "A great team.",
+  "privacy": "closed",
+  "notification_setting": "notifications_enabled",
+  "permission": "push",
+  "permissions": {
+    "admin": true,
+    "maintain": false,
+    "push": true,
+    "triage": false,
+    "pull": true
+  },
+  "url": "https://api.github.com/organizations/1/team/1",
+  "html_url": "https://github.com/orgs/rails/teams/core",
+  "members_url": "https://api.github.com/organizations/1/team/1/members{/member}",
+  "repositories_url": "https://api.github.com/organizations/1/team/1/repos",
+  "type": "organization",
+  "access_source": "organization",
+  "organization_id": 1,
+  "enterprise_id": 2,
+  "parent": {
+    "id": 2,
+    "node_id": "MDQ6VGVhbTI=",
+    "url": "https://api.github.com/organizations/1/team/2",
+    "members_url": "https://api.github.com/organizations/1/team/2/members{/member}",
+    "name": "Parent Team",
+    "description": "Parent team.",
+    "permission": "admin",
+    "privacy": "closed",
+    "notification_setting": "notifications_enabled",
+    "html_url": "https://github.com/orgs/rails/teams/parent",
+    "repositories_url": "https://api.github.com/organizations/1/team/2/repos",
+    "slug": "parent-team",
+    "ldap_dn": "cn=parent-team,ou=groups,dc=github,dc=com",
+    "type": "organization",
+    "organization_id": 1,
+    "enterprise_id": 2
+  }
+}

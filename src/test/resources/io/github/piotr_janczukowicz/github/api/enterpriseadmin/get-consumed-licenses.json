@@ -1,0 +1,38 @@
+{
+  "total_seats_consumed": 1,
+  "total_seats_purchased": 1,
+  "users": [
+    {
+      "github_com_login": "sample-github_com_login",
+      "github_com_name": "sample-github_com_name",
+      "enterprise_server_user_ids": [
+        "sample-enterprise_server_user_ids"
+      ],
+      "github_com_user": true,
+      "enterprise_server_user": true,
+      "visual_studio_subscription_user": true,
+      "license_type": "sample-license_type",
+      "github_com_profile": "sample-github_com_profile",
+      "github_com_member_roles": [
+        "sample-github_com_member_roles"
+      ],
+      "github_com_enterprise_roles": [
+        "sample-github_com_enterprise_roles"
+      ],
+      "github_com_verified_domain_emails": [
+        "sample-github_com_verified_domain_emails"
+      ],
+      "github_com_saml_name_id": "sample-github_com_saml_name_id",
+      "github_com_orgs_with_pending_invites": [
+        "sample-github_com_orgs_with_pending_invites"
+      ],
+      "github_com_two_factor_auth": true,
+      "enterprise_server_emails": [
+        "sample-enterprise_server_emails"
+      ],
+      "visual_studio_license_status": "sample-visual_studio_license_status",
+      "visual_studio_subscription_email": "sample-visual_studio_subscription_email",
+      "total_user_accounts": 1
+    }
+  ]
+}

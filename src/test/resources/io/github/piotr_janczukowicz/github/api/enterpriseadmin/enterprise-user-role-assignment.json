@@ -1,0 +1,43 @@
+{
+  "name": "Mona Lisa",
+  "email": "monalisa@github.example",
+  "login": "monalisa",
+  "id": 2,
+  "node_id": "MDQ6VXNlcjI=",
+  "avatar_url": "https://github.com/images/error/monalisa_happy.gif",
+  "gravatar_id": "41d064eb2195891e12d0413f63227ea7",
+  "url": "https://api.github.com/users/monalisa",
+  "html_url": "https://github.com/monalisa",
+  "followers_url": "https://api.github.com/users/monalisa/followers",
+  "following_url": "https://api.github.com/users/monalisa/following{/other_user}",
+  "gists_url": "https://api.github.com/users/monalisa/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/monalisa/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/monalisa/subscriptions",
+  "organizations_url": "https://api.github.com/users/monalisa/orgs",
+  "repos_url": "https://api.github.com/users/monalisa/repos",
+  "events_url": "https://api.github.com/users/monalisa/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/monalisa/received_events",
+  "type": "User",
+  "site_admin": false,
+  "starred_at": "2023-01-01T00:00:00Z",
+  "user_view_type": "public",
+  "assignment": "direct",
+  "inherited_from": [
+    {
+      "id": 1,
+      "name": "Justice League",
+      "description": "A great team.",
+      "slug": "justice-league",
+      "url": "https://api.github.com/enterprises/octo-enterprise/teams/justice-league",
+      "sync_to_organizations": "disabled",
+      "organization_selection_type": "disabled",
+      "group_id": "62ab9291-fae2-468e-974b-7e45096d5021",
+      "group_name": "Octo group",
+      "html_url": "https://github.com/enterprises/octo-enterprise/teams/justice-league",
+      "members_url": "https://api.github.com/enterprises/octo-enterprise/teams/justice-league/members{/member}",
+      "created_at": "2023-01-01T00:00:00Z",
+      "updated_at": "2023-01-01T12:00:00Z",
+      "notification_setting": "notifications_enabled"
+    }
+  ]
+}

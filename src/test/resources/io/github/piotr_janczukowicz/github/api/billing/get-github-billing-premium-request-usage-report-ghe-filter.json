@@ -1,0 +1,10 @@
+{
+  "year": 2026,
+  "month": 8,
+  "day": 1,
+  "organization": "octo-org",
+  "user": "octocat",
+  "model": "gpt-5",
+  "product": "copilot",
+  "cost_center_id": "cc-1a2b3c"
+}

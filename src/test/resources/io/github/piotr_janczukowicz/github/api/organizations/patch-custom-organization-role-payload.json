@@ -1,0 +1,8 @@
+{
+  "name": "Auditor",
+  "description": "Updated auditor",
+  "permissions": [
+    "read_audit_logs"
+  ],
+  "base_role": "none"
+}

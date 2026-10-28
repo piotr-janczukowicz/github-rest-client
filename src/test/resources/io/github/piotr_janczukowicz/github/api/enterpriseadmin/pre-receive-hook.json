@@ -1,0 +1,29 @@
+{
+  "id": 1,
+  "name": "name",
+  "enforcement": "enforcement",
+  "script": "script",
+  "script_repository": {
+    "id": 1,
+    "full_name": "full_name",
+    "url": "url",
+    "html_url": "html_url"
+  },
+  "environment": {
+    "id": 1,
+    "name": "name",
+    "image_url": "image_url",
+    "url": "url",
+    "html_url": "html_url",
+    "default_environment": true,
+    "created_at": "created_at",
+    "hooks_count": 1,
+    "download": {
+      "url": "url",
+      "state": "state",
+      "downloaded_at": "downloaded_at",
+      "message": "message"
+    }
+  },
+  "allow_downstream_configuration": true
+}

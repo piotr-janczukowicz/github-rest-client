@@ -1,0 +1,36 @@
+{
+  "total_count": 1,
+  "runners": [
+    {
+      "id": 1,
+      "name": "name-sample",
+      "runner_group_id": 1,
+      "image_details": {
+        "id": "id-sample",
+        "size_gb": 1,
+        "display_name": "displayName-sample",
+        "source": "github",
+        "version": "version-sample"
+      },
+      "machine_size_details": {
+        "id": "id-sample",
+        "cpu_cores": 1,
+        "memory_gb": 1,
+        "storage_gb": 1
+      },
+      "status": "Ready",
+      "platform": "platform-sample",
+      "maximum_runners": 1,
+      "public_ip_enabled": true,
+      "public_ips": [
+        {
+          "enabled": true,
+          "prefix": "prefix-sample",
+          "length": 1
+        }
+      ],
+      "last_active_on": "2024-01-02T03:04:05Z",
+      "image_gen": true
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "restrict_action_events",
+  "parameters": {
+    "allowed_events": [
+      "push",
+      "pull_request"
+    ]
+  }
+}

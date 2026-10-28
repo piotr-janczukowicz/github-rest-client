@@ -1,0 +1,26 @@
+{
+  "timePeriod": {
+    "year": 2026,
+    "month": 8,
+    "day": 1
+  },
+  "organization": "octo-org",
+  "user": "octocat",
+  "product": "actions",
+  "model": "Claude Sonnet",
+  "usageItems": [
+    {
+      "product": "actions",
+      "sku": "actions_linux",
+      "model": "Claude Sonnet",
+      "unitType": "minutes",
+      "pricePerUnit": 0.04,
+      "grossQuantity": 100.0,
+      "grossAmount": 4.0,
+      "discountQuantity": 0.0,
+      "discountAmount": 0.0,
+      "netQuantity": 100.0,
+      "netAmount": 4.0
+    }
+  ]
+}

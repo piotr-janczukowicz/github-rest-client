@@ -1,0 +1,11 @@
+{
+  "ruleset_source_type": "Repository",
+  "ruleset_source": "my-org/my-repo",
+  "ruleset_id": 42,
+  "type": "file_path_restriction",
+  "parameters": {
+    "restricted_file_paths": [
+      "example"
+    ]
+  }
+}

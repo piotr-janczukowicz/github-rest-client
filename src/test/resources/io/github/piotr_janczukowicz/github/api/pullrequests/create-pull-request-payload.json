@@ -1,0 +1,10 @@
+{
+  "title": "Amazing new feature",
+  "head": "octocat:new-feature",
+  "base": "master",
+  "head_repo": "octocat/Hello-World",
+  "body": "Please pull these awesome changes",
+  "maintainer_can_modify": true,
+  "draft": false,
+  "issue": 1347
+}

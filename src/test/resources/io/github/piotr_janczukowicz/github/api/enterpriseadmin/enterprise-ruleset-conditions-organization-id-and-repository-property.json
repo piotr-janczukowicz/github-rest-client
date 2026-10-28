@@ -1,0 +1,35 @@
+{
+  "organization_id": {
+    "organization_ids": [
+      42
+    ]
+  },
+  "repository_property": {
+    "include": [
+      {
+        "name": "team",
+        "property_values": [
+          "core"
+        ],
+        "source": "custom"
+      }
+    ],
+    "exclude": [
+      {
+        "name": "lifecycle",
+        "property_values": [
+          "deprecated"
+        ],
+        "source": "custom"
+      }
+    ]
+  },
+  "ref_name": {
+    "include": [
+      "refs/heads/main"
+    ],
+    "exclude": [
+      "refs/heads/dev*"
+    ]
+  }
+}

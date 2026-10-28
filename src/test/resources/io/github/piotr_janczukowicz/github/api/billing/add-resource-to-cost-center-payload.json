@@ -1,0 +1,14 @@
+{
+  "users": [
+    "octocat"
+  ],
+  "organizations": [
+    "octo-org"
+  ],
+  "repositories": [
+    "octo-org/octo-repo"
+  ],
+  "enterprise_teams": [
+    "octo-team"
+  ]
+}

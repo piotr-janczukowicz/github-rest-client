@@ -1,0 +1,12 @@
+{
+  "state": "configured",
+  "languages": [
+    "javascript-typescript",
+    "python"
+  ],
+  "runner_type": "standard",
+  "runner_label": "code-scanning",
+  "updated_at": "2023-01-01T00:00:00Z",
+  "schedule": "weekly",
+  "ai_findings_option": "on_push"
+}

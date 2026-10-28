@@ -1,0 +1,4 @@
+{
+  "ref": "main",
+  "devcontainer_path": ".devcontainer/devcontainer.json"
+}

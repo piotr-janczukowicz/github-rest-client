@@ -1,0 +1,16 @@
+{
+  "status": "UNKNOWN",
+  "nodes": [
+    {
+      "hostname": "hostname",
+      "status": "UNKNOWN",
+      "services": [
+        {
+          "status": "UNKNOWN",
+          "name": "name",
+          "details": "details"
+        }
+      ]
+    }
+  ]
+}

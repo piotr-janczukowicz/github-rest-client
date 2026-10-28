@@ -1,0 +1,41 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 1,
+      "run_id": 1,
+      "run_url": "https://api.github.com/example",
+      "run_attempt": 1,
+      "node_id": "nodeId-sample",
+      "head_sha": "0123456789abcdef0123456789abcdef01234567",
+      "url": "https://api.github.com/example",
+      "html_url": "https://github.com/example",
+      "status": "queued",
+      "conclusion": "success",
+      "created_at": "2024-01-02T03:04:05Z",
+      "started_at": "2024-01-02T03:04:05Z",
+      "completed_at": "2024-01-02T03:04:05Z",
+      "name": "name-sample",
+      "steps": [
+        {
+          "status": "queued",
+          "conclusion": "conclusion-sample",
+          "name": "name-sample",
+          "number": 1,
+          "started_at": "2024-01-02T03:04:05Z",
+          "completed_at": "2024-01-02T03:04:05Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/example",
+      "labels": [
+        "labels-sample"
+      ],
+      "runner_id": 1,
+      "runner_name": "runnerName-sample",
+      "runner_group_id": 1,
+      "runner_group_name": "runnerGroupName-sample",
+      "workflow_name": "workflowName-sample",
+      "head_branch": "headBranch-sample"
+    }
+  ]
+}

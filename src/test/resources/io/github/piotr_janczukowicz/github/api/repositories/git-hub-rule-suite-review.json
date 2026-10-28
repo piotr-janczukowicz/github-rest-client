@@ -1,0 +1,9 @@
+{
+  "id": 80,
+  "user": {
+    "id": 2,
+    "login": "hubot",
+    "type": "Bot"
+  },
+  "state": "APPROVED"
+}

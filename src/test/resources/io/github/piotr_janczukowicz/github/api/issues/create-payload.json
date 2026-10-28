@@ -1,0 +1,19 @@
+{
+  "title": "n",
+  "body": "Issue body",
+  "milestone": 1,
+  "labels": [
+    "bug"
+  ],
+  "assignees": [
+    "octocat"
+  ],
+  "issue_field_values": [
+    {
+      "field_id": 1,
+      "value": "value"
+    }
+  ],
+  "type": "Bug",
+  "parent_issue_id": 1000
+}

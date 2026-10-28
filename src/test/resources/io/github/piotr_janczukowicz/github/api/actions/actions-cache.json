@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "ref": "ref-sample",
+  "key": "key-sample",
+  "version": "version-sample",
+  "last_accessed_at": "2024-01-02T03:04:05Z",
+  "created_at": "2024-01-02T03:04:05Z",
+  "size_in_bytes": 1
+}

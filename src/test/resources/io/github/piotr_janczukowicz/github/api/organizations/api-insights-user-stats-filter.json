@@ -1,0 +1,7 @@
+{
+  "min_timestamp": "2024-09-11T15:00:00Z",
+  "max_timestamp": "2024-09-18T15:43:03Z",
+  "direction": "desc",
+  "sort": ["total_request_count"],
+  "actor_name_substring": "Actions"
+}

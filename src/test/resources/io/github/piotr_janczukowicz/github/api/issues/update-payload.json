@@ -1,0 +1,24 @@
+{
+  "title": "Updated title",
+  "body": "Updated body",
+  "state": "open",
+  "state_reason": "reopened",
+  "duplicate_issue_id": 99,
+  "milestone": 1,
+  "labels": [
+    "bug"
+  ],
+  "assignees": [
+    "octocat"
+  ],
+  "issue_field_values": [
+    {
+      "field_id": 1,
+      "value": "value",
+      "rationale": "because",
+      "suggest": true,
+      "confidence": "high"
+    }
+  ],
+  "type": "bug"
+}

@@ -1,0 +1,14 @@
+{
+  "sort": "created_at",
+  "direction": "desc",
+  "owner": [
+    "octocat"
+  ],
+  "repository": "Hello-World",
+  "permission": "metadata",
+  "last_used_before": "2024-01-01T00:00:00Z",
+  "last_used_after": "2023-01-01T00:00:00Z",
+  "token_id": [
+    "42"
+  ]
+}

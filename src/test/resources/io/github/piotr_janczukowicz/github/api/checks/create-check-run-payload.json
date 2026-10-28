@@ -1,0 +1,42 @@
+{
+  "name": "mighty_readme",
+  "head_sha": "ce587453ced02b1526dfb4cb910479d431683101",
+  "details_url": "https://example.com",
+  "external_id": "42",
+  "status": "completed",
+  "started_at": "2018-05-04T01:14:52Z",
+  "conclusion": "success",
+  "completed_at": "2018-05-04T01:14:52Z",
+  "output": {
+    "title": "Mighty Readme report",
+    "summary": "There are 0 failures, 2 warnings, and 1 notice.",
+    "text": "You may have some misspelled words on lines 2 and 4.",
+    "annotations": [
+      {
+        "path": "README.md",
+        "start_line": 2,
+        "end_line": 2,
+        "start_column": 5,
+        "end_column": 10,
+        "annotation_level": "warning",
+        "message": "Check your spelling for 'banaas'.",
+        "title": "Spell Checker",
+        "raw_details": "Do you mean 'bananas' or 'banana'?"
+      }
+    ],
+    "images": [
+      {
+        "alt": "Octocat",
+        "image_url": "https://github.com/images/error/octocat_happy.gif",
+        "caption": "Octocat happy"
+      }
+    ]
+  },
+  "actions": [
+    {
+      "label": "Fix",
+      "description": "Fix the issue",
+      "identifier": "fix_it"
+    }
+  ]
+}

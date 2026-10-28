@@ -1,0 +1,15 @@
+{
+  "name": "Justice League",
+  "description": "A great team.",
+  "maintainers": [
+    "octocat"
+  ],
+  "repo_names": [
+    "github/Hello-World"
+  ],
+  "privacy": "closed",
+  "notification_setting": "notifications_enabled",
+  "parent_team_id": 1,
+  "parent_team_slug": "avengers",
+  "ldap_dn": "cn=justice-league,ou=Teams,dc=example,dc=com"
+}

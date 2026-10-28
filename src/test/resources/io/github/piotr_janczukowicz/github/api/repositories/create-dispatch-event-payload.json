@@ -1,0 +1,6 @@
+{
+  "event_type": "deploy",
+  "client_payload": {
+    "environment": "production"
+  }
+}

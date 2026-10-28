@@ -1,0 +1,10 @@
+{
+  "file_patterns": [
+    "example"
+  ],
+  "minimum_approvals": 1,
+  "reviewer": {
+    "id": 1,
+    "type": "Team"
+  }
+}

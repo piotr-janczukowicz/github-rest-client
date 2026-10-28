@@ -1,0 +1,8 @@
+{
+  "ref": "refs/heads/main",
+  "repository_name": "Hello-World",
+  "time_period": "day",
+  "actor_name": "octocat",
+  "rule_suite_result": "pass",
+  "evaluate_status": "active"
+}

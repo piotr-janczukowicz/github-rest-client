@@ -1,0 +1,6 @@
+{
+  "ref": "ref-sample",
+  "key": "key-sample",
+  "sort": "created_at",
+  "direction": "asc"
+}

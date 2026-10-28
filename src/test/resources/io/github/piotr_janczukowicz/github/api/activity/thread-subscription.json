@@ -1,0 +1,9 @@
+{
+  "subscribed": true,
+  "ignored": false,
+  "reason": "subscribed",
+  "created_at": "2024-01-01T00:00:00Z",
+  "url": "https://api.github.com/repos/octocat/Hello-World/notifications/threads/1/subscription",
+  "thread_url": "https://api.github.com/repos/octocat/Hello-World/notifications/threads/1",
+  "repository_url": "https://api.github.com/repos/octocat/Hello-World"
+}

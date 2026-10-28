@@ -1,0 +1,10 @@
+{
+  "seats": 1,
+  "evaluation": true,
+  "perpetual": true,
+  "unlimited_seating": true,
+  "support_key": "support_key",
+  "ssh_allowed": true,
+  "cluster_support": true,
+  "expire_at": "expire_at"
+}

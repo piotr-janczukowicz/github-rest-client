@@ -1,0 +1,9 @@
+{
+  "name": "USERNAME",
+  "value": "octocat",
+  "visibility": "selected",
+  "selected_repository_ids": [
+    1296269,
+    1296280
+  ]
+}

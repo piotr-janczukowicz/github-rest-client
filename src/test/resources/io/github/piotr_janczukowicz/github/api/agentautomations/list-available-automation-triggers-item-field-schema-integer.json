@@ -1,0 +1,9 @@
+{
+  "type": "integer",
+  "enum": [
+    1,
+    2
+  ],
+  "minimum": 0,
+  "maximum": 10
+}

@@ -1,0 +1,34 @@
+{
+  "ref_name": {
+    "include": [
+      "refs/heads/main"
+    ],
+    "exclude": [
+      "refs/heads/dev*"
+    ]
+  },
+  "repository_name": {
+    "include": ["Hello-World"],
+    "exclude": ["secret-*"],
+    "protected": false
+  },
+  "repository_id": {
+    "repository_ids": [1]
+  },
+  "repository_property": {
+    "include": [
+      {
+        "name": "team",
+        "property_values": ["core"],
+        "source": "custom"
+      }
+    ],
+    "exclude": [
+      {
+        "name": "lifecycle",
+        "property_values": ["deprecated"],
+        "source": "custom"
+      }
+    ]
+  }
+}

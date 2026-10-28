@@ -1,0 +1,22 @@
+{
+  "ref": "refs/heads/main",
+  "analysis_key": ".github/workflows/codeql-analysis.yml:analyze",
+  "environment": "{\"language\":\"javascript\"}",
+  "category": "/language:javascript",
+  "state": "open",
+  "commit_sha": "c2e6d3d6c7b7a3f1e0d5b4a3928170f6e5d4c3b2",
+  "message": {
+    "text": "Use of a hard-coded password."
+  },
+  "location": {
+    "path": "src/main/java/Example.java",
+    "start_line": 1,
+    "end_line": 10,
+    "start_column": 5,
+    "end_column": 20
+  },
+  "html_url": "https://github.com/octo-org/octo-repo/security/code-scanning/1",
+  "classifications": [
+    "source"
+  ]
+}

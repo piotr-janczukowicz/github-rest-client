@@ -1,0 +1,4 @@
+{
+  "text": "This check is useless. o cannot be null at this check, since it is guarded by instanceof.",
+  "markdown": "This check is useless. [o](java/UselessNullCheck.java#L9C4-L9C18) cannot be null at this check, since it is guarded by [...instanceof...](java/UselessNullCheck.java#L7C13-L7C25)."
+}

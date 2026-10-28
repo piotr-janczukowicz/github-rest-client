@@ -1,0 +1,9 @@
+{
+  "content": "Q29udGVudCBvZiB0aGUgYmxvYg==",
+  "encoding": "base64",
+  "url": "https://api.github.com/repos/octocat/Hello-World/git/blobs/7638417db6d59f3c431d3e1f261cc637155684cd",
+  "sha": "7638417db6d59f3c431d3e1f261cc637155684cd",
+  "size": 19,
+  "node_id": "MDM6VGFnOTQwYmQzMzYyNDhlZmFlMGY5ZWU1YmM3YjJkNWM5ODU4ODdiMTZhYw==",
+  "highlighted_content": "<div>Content of the blob</div>"
+}

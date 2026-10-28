@@ -1,0 +1,6 @@
+{
+  "codeql": true,
+  "copilot_code_review": true,
+  "secret_scanning": false,
+  "dependency_vulnerability_checks": true
+}

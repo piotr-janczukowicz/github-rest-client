@@ -1,0 +1,25 @@
+{
+  "hostname": "hostname",
+  "uuid": "uuid",
+  "release_version": "release_version",
+  "release_sha": "release_sha",
+  "status": "not_started",
+  "pre_upgrade_status": "not_started",
+  "upgrade_last_completed_step": "upgrade_last_completed_step",
+  "is_running": true,
+  "failed": true,
+  "steps": [
+    {
+      "phase": "phase",
+      "step": "step",
+      "status": "status",
+      "started_at": "2026-01-01T00:00:00Z",
+      "ended_at": "2026-01-01T00:00:00Z",
+      "error": "error"
+    }
+  ],
+  "messages": [
+    "messages"
+  ],
+  "error": "error"
+}

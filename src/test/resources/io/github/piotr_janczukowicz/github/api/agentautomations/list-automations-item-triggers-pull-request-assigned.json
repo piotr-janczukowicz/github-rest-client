@@ -1,0 +1,10 @@
+{
+  "query": "is:open label:bug",
+  "paths": [
+    "src/**"
+  ],
+  "assignees": [
+    "octocat"
+  ],
+  "write_scope": "trigger"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "name-sample",
+  "visibility": "selected",
+  "allows_public_repositories": true,
+  "restricted_to_workflows": true,
+  "selected_workflows": [
+    "selectedWorkflows-sample"
+  ],
+  "network_configuration_id": "networkConfigurationId-sample"
+}

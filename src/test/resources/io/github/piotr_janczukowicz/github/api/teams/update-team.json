@@ -1,0 +1,9 @@
+{
+  "name": "new team name",
+  "description": "Updated description",
+  "privacy": "secret",
+  "notification_setting": "notifications_disabled",
+  "permission": "pull",
+  "parent_team_id": 2,
+  "parent_team_slug": "avengers"
+}

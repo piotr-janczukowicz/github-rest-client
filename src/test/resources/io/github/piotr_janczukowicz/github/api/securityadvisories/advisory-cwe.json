@@ -1,0 +1,4 @@
+{
+  "cwe_id": "CWE-79",
+  "name": "Cross-site Scripting (XSS)"
+}

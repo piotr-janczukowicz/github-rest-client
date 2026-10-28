@@ -1,0 +1,5 @@
+{
+  "alerts_threshold": "none",
+  "security_alerts_threshold": "none",
+  "tool": "example"
+}

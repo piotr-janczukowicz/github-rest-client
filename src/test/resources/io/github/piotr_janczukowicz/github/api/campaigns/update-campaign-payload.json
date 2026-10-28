@@ -1,0 +1,13 @@
+{
+  "name": "Critical CodeQL alerts",
+  "description": "Address critical alerts before they are exploited.",
+  "managers": [
+    "octocat"
+  ],
+  "team_managers": [
+    "justice-league"
+  ],
+  "ends_at": "2024-03-14T00:00:00Z",
+  "contact_link": "https://example.com/campaigns/critical-codeql",
+  "state": "open"
+}

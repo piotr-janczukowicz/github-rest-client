@@ -1,0 +1,4 @@
+{
+  "filter": "displayName eq \"Engineering\"",
+  "excludedAttributes": "members"
+}

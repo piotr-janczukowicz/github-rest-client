@@ -1,0 +1,8 @@
+{
+  "url": "https://api.github.com/projects/columns/cards/1",
+  "id": 1,
+  "project_url": "https://api.github.com/projects/1",
+  "project_id": 1,
+  "column_name": "Done",
+  "previous_column_name": "In Progress"
+}

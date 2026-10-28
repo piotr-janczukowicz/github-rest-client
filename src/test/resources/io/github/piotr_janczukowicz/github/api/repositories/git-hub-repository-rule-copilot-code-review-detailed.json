@@ -1,0 +1,10 @@
+{
+  "ruleset_source_type": "Repository",
+  "ruleset_source": "my-org/my-repo",
+  "ruleset_id": 42,
+  "type": "copilot_code_review",
+  "parameters": {
+    "review_draft_pull_requests": false,
+    "review_on_push": true
+  }
+}

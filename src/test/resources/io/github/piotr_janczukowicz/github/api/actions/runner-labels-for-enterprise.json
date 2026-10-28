@@ -1,0 +1,10 @@
+{
+  "total_count": 1,
+  "labels": [
+    {
+      "id": 1,
+      "name": "name-sample",
+      "type": "read-only"
+    }
+  ]
+}

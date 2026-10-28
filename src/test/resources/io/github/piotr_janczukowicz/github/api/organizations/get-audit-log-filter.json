@@ -1,0 +1,5 @@
+{
+  "phrase": "action:team.add",
+  "include": "all",
+  "order": "desc"
+}

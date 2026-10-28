@@ -1,0 +1,21 @@
+{
+  "attestations_subject_digests": {
+    "sha256:abc123": [
+      {
+        "repository_id": 1,
+        "bundle_url": "https://example.com/bundle/1.json"
+      },
+      {
+        "repository_id": 2,
+        "bundle_url": "https://example.com/bundle/2.json"
+      }
+    ],
+    "sha512:def456": null
+  },
+  "page_info": {
+    "has_next": true,
+    "has_previous": false,
+    "next": "cursor-next",
+    "previous": "cursor-prev"
+  }
+}

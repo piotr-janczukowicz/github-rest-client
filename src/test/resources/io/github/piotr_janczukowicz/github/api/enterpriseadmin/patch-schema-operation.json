@@ -1,0 +1,5 @@
+{
+  "op": "replace",
+  "path": "name.givenName",
+  "value": "Mona"
+}

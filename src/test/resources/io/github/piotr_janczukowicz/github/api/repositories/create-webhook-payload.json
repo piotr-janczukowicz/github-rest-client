@@ -1,0 +1,11 @@
+{
+  "name": "web",
+  "config": {
+    "url": "https://example.com/webhook",
+    "content_type": "json",
+    "secret": "webhook-secret",
+    "insecure_ssl": "0"
+  },
+  "events": ["push", "pull_request"],
+  "active": true
+}

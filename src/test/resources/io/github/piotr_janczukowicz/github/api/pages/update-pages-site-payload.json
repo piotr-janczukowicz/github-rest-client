@@ -1,0 +1,10 @@
+{
+  "cname": "example.com",
+  "https_enforced": true,
+  "build_type": "workflow",
+  "source": {
+    "branch": "main",
+    "path": "/docs"
+  },
+  "public": true
+}

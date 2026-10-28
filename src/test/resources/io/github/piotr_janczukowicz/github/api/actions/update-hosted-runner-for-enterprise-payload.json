@@ -1,0 +1,11 @@
+{
+  "name": "name-sample",
+  "runner_group_id": 1,
+  "maximum_runners": 1,
+  "enable_static_ip": true,
+  "size": "size-sample",
+  "image_source": "github",
+  "image_id": "imageId-sample",
+  "image_version": "imageVersion-sample",
+  "image_gen": true
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Check Commits",
+  "script": "scripts/commit_check.sh",
+  "script_repository": {
+    "full_name": "DevIns/hooks-repo"
+  },
+  "environment": {
+    "id": 2
+  },
+  "enforcement": "enabled",
+  "allow_downstream_configuration": true
+}

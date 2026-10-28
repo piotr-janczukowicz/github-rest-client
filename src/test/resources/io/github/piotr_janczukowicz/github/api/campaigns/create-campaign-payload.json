@@ -1,0 +1,22 @@
+{
+  "name": "Critical CodeQL alerts",
+  "description": "Address critical alerts before they are exploited to prevent breaches, protect sensitive data, and mitigate financial and reputational damage.",
+  "managers": [
+    "octocat"
+  ],
+  "team_managers": [
+    "justice-league"
+  ],
+  "ends_at": "2024-03-14T00:00:00Z",
+  "contact_link": "https://example.com/campaigns/critical-codeql",
+  "code_scanning_alerts": [
+    {
+      "repository_id": 1296269,
+      "alert_numbers": [
+        1,
+        2
+      ]
+    }
+  ],
+  "generate_issues": true
+}

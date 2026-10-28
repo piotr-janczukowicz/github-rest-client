@@ -1,0 +1,9 @@
+{
+  "state": "success",
+  "target_url": "https://example.com/deployment/42/output",
+  "log_url": "https://example.com/deployment/42/output",
+  "description": "Deployment finished successfully.",
+  "environment": "production",
+  "environment_url": "https://example.com/environment",
+  "auto_inactive": true
+}

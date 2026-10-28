@@ -1,0 +1,11 @@
+{
+  "default_availability": {
+    "policy_state": "enabled"
+  },
+  "models": [
+    {
+      "model_name": "sample-model_name",
+      "policy_state": "enabled"
+    }
+  ]
+}

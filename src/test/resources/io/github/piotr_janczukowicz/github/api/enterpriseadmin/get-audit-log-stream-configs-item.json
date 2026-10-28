@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "stream_type": "Splunk",
+  "stream_details": "splunk.example.com",
+  "enabled": true,
+  "created_at": "2023-01-01T00:00:00Z",
+  "updated_at": "2023-01-01T12:00:00Z",
+  "paused_at": "2023-01-02T00:00:00Z"
+}

@@ -1,0 +1,14 @@
+{
+  "classification" : "general,malware",
+  "state" : "open,fixed",
+  "severity" : "high,critical",
+  "ecosystem" : "npm,pip",
+  "package" : "django,lodash",
+  "epss_percentage" : ">0.5",
+  "has" : [ "patch" ],
+  "assignee" : "octocat",
+  "scope" : "runtime",
+  "relationship" : "direct",
+  "sort" : "epss_percentage",
+  "direction" : "asc"
+}

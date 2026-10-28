@@ -1,0 +1,12 @@
+{
+  "config": {
+    "url": "url",
+    "content_type": "content_type",
+    "secret": "secret",
+    "insecure_ssl": "insecure_ssl"
+  },
+  "events": [
+    "events"
+  ],
+  "active": true
+}

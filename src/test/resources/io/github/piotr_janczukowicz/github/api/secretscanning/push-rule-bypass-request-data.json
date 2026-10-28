@@ -1,0 +1,6 @@
+{
+  "ruleset_id": 42,
+  "ruleset_name": "protect main",
+  "total_violations": 1,
+  "rule_type": "commit_message_pattern"
+}

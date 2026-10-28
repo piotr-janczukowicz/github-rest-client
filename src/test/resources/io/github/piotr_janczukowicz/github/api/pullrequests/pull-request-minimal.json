@@ -1,0 +1,23 @@
+{
+  "id": 100001,
+  "number": 101,
+  "url": "https://api.github.com/repos/octocat/hello-world/pulls/101",
+  "head": {
+    "ref": "user-model",
+    "sha": "aaa1111aaa1111aaa1111aaa1111aaa1111aaa11",
+    "repo": {
+      "id": 1296269,
+      "url": "https://api.github.com/repos/octocat/hello-world",
+      "name": "hello-world"
+    }
+  },
+  "base": {
+    "ref": "main",
+    "sha": "6dcb09b5b57875f334f61aebed695e2e4193db5e",
+    "repo": {
+      "id": 1296269,
+      "url": "https://api.github.com/repos/octocat/hello-world",
+      "name": "hello-world"
+    }
+  }
+}

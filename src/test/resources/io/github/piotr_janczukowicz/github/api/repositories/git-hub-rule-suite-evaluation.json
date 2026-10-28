@@ -1,0 +1,11 @@
+{
+  "rule_source": {
+    "type": "Repository",
+    "id": 42,
+    "name": "super cool ruleset"
+  },
+  "enforcement": "active",
+  "result": "pass",
+  "rule_type": "creation",
+  "details": "Rule passed successfully"
+}

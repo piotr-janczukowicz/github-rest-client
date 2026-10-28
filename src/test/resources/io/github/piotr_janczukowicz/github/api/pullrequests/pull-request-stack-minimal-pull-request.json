@@ -1,0 +1,10 @@
+{
+  "number": 101,
+  "state": "open",
+  "draft": false,
+  "merged_at": "2022-04-28T12:00:00Z",
+  "head": {
+    "ref": "user-model",
+    "sha": "aaa1111aaa1111aaa1111aaa1111aaa1111aaa11"
+  }
+}
