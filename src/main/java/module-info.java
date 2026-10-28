@@ -1,4 +1,4 @@
-module io.github.piotr_janczukowicz.githubapi {
+module io.github.piotr_janczukowicz.githubrestclient {
     requires transitive okhttp3;
     requires okio;
     requires transitive tools.jackson.databind;

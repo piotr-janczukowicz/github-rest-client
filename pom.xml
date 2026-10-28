@@ -22,7 +22,7 @@
     <common-json.version>5</common-json.version>
     <common-http.version>4</common-http.version>
     <common-test-support.version>3</common-test-support.version>
-    <test.module.args>--add-modules jdk.httpserver --add-reads io.github.piotr_janczukowicz.githubapi=jdk.httpserver --add-opens io.github.piotr_janczukowicz.githubapi/io.github.piotr_janczukowicz.test.support=common.util --add-opens io.github.piotr_janczukowicz.githubapi/io.github.piotr_janczukowicz.test=ALL-UNNAMED</test.module.args>
+    <test.module.args>--add-modules jdk.httpserver --add-reads io.github.piotr_janczukowicz.githubrestclient=jdk.httpserver --add-opens io.github.piotr_janczukowicz.githubrestclient/io.github.piotr_janczukowicz.test.support=common.util --add-opens io.github.piotr_janczukowicz.githubrestclient/io.github.piotr_janczukowicz.test=ALL-UNNAMED</test.module.args>
   </properties>
 
   <dependencies>
@@ -107,7 +107,7 @@
                 <arg>--add-modules</arg>
                 <arg>jdk.httpserver</arg>
                 <arg>--add-reads</arg>
-                <arg>io.github.piotr_janczukowicz.githubapi=jdk.httpserver</arg>
+                <arg>io.github.piotr_janczukowicz.githubrestclient=jdk.httpserver</arg>
               </compilerArgs>
             </configuration>
           </execution>

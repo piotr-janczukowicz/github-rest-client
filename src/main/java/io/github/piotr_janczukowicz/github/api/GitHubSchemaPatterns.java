@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 /**
  * Shared OpenAPI string patterns for GitHub REST request bodies and parameters.
  *
- * <p>All spec {@code pattern} values that github-api validates live here. Regex text is copied verbatim from the spec,
- * with only Java string escaping added.
+ * <p>All spec {@code pattern} values that github-rest-client validates live here. Regex text is copied verbatim from
+ * the spec, with only Java string escaping added.
  */
 public final class GitHubSchemaPatterns {
 

@@ -26,7 +26,7 @@ GitHub Enterprise Server 3.21 and 3.22. Each GitHub resource has a typed `GitHub
 aggregator gives access to all of them. The client waits out rate limits, follows pagination and keeps responses
 immutable. Keep the defaults on github.com and Enterprise Cloud; tune an Enterprise Server client to the instance.
 
-**Requirements:** Java 21. The library is a Java module, `io.github.piotr_janczukowicz.githubapi`, and also works on the class
+**Requirements:** Java 21. The library is a Java module, `io.github.piotr_janczukowicz.githubrestclient`, and also works on the class
 path. It is published on [Maven Central](https://central.sonatype.com/artifact/io.github.piotr-janczukowicz/github-rest-client):
 
 ```xml
