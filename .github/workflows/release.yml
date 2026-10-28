@@ -3,7 +3,9 @@ name: Release
 # Run by hand on main. Deploys the next version to GitHub Packages, tags it and creates the GitHub release. Publishing to
 # Maven Central is a separate workflow that takes the tag. The version follows the OpenAPI version of the pom (`2026.3.10.N-SNAPSHOT`): it is
 # `2026.3.10.` plus the newest `v2026.3.10.*` tag plus one, or the N of the pom when that is higher or there is no tag
-# yet. Nothing is pushed to main, so branch protection stays on.
+# yet. Nothing is pushed to main, so branch protection stays on: the next `-SNAPSHOT` version goes into a pull request that
+# is merged by hand. It is a separate job, so "Re-run failed jobs" retries it after a transient failure without
+# touching the tag.
 on:
   workflow_dispatch:
 
@@ -19,6 +21,7 @@ jobs:
     permissions:
       contents: write
       packages: write
+      pull-requests: write
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -61,3 +64,15 @@ jobs:
         run: gh release create "v${{ steps.version.outputs.release }}" --target "$GITHUB_SHA" --generate-notes
         env:
           GH_TOKEN: ${{ github.token }}
+    outputs:
+      release: ${{ steps.version.outputs.release }}
+
+  next-snapshot:
+    needs: release
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: piotr-janczukowicz/common-parent/.github/workflows/next-snapshot.yml@ae52ce7b5fb48235e78a3d096b6562edddd8d31f # v11
+    secrets: inherit
+    with:
+      tag: v${{ needs.release.outputs.release }}
