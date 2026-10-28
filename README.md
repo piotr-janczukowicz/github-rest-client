@@ -1,3 +1,5 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b1f7def0919f47b88374ae4bd4fdc531)](https://app.codacy.com/gh/piotr-janczukowicz/github-rest-client/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Coverage](https://app.codacy.com/project/badge/Coverage/b1f7def0919f47b88374ae4bd4fdc531)](https://app.codacy.com/gh/piotr-janczukowicz/github-rest-client/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 [![Build](https://github.com/piotr-janczukowicz/github-rest-client/actions/workflows/main.yml/badge.svg)](https://github.com/piotr-janczukowicz/github-rest-client/actions/workflows/main.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.piotr-janczukowicz/github-rest-client)](https://central.sonatype.com/artifact/io.github.piotr-janczukowicz/github-rest-client)
 [![Release](https://img.shields.io/github/v/release/piotr-janczukowicz/github-rest-client)](https://github.com/piotr-janczukowicz/github-rest-client/releases)
