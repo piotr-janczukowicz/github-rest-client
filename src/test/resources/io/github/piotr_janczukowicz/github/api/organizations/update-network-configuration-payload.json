@@ -1,0 +1,11 @@
+{
+  "name": "my-network-configuration",
+  "compute_service": "actions",
+  "network_settings_ids": [
+    "23456789ABDCEF1"
+  ],
+  "failover_network_settings_ids": [
+    "456789ABDCEF123"
+  ],
+  "failover_network_enabled": true
+}

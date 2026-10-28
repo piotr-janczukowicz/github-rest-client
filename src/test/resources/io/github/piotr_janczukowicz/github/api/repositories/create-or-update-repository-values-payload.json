@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "property_name": "environment",
+      "value": ["production"]
+    }
+  ]
+}

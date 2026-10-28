@@ -1,0 +1,7 @@
+{
+  "model_name": "sample-model_name",
+  "display_name": "sample-display_name",
+  "policy_state": "enabled",
+  "enterprise_policy_state": "enabled",
+  "editable": true
+}

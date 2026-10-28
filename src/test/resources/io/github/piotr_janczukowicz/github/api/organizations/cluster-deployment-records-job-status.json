@@ -1,0 +1,7 @@
+{
+  "job_id": 123,
+  "status": "completed",
+  "started_at": "2026-06-10T12:00:00Z",
+  "total_count": 5,
+  "errors": []
+}

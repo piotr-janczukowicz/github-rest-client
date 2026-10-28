@@ -1,0 +1,17 @@
+{
+  "hostname": "hostname",
+  "uuid": "uuid",
+  "status": "on",
+  "scheduled_time": "scheduled_time",
+  "connection_services": [
+    {
+      "name": "name",
+      "number": 1
+    }
+  ],
+  "can_unset_maintenance": true,
+  "ip_exception_list": [
+    "ip_exception_list"
+  ],
+  "maintenance_mode_message": "maintenance_mode_message"
+}

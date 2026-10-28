@@ -1,0 +1,6 @@
+{
+  "id": "automation-1",
+  "title": "Issue tools",
+  "description": "Reads issues and pull requests.",
+  "scope": "read"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "status",
+  "display_message": "display_message",
+  "ready_for_cutover": true,
+  "cutover_blockers": [
+    "cutover_blockers"
+  ],
+  "repositories": [
+    {
+      "repository_nwo": "repository_nwo",
+      "phase": "phase",
+      "display_status": "display_status"
+    }
+  ],
+  "terminal_failure": {
+    "code": "code",
+    "summary": "summary",
+    "occurred_at": "2026-01-01T00:00:00Z"
+  }
+}

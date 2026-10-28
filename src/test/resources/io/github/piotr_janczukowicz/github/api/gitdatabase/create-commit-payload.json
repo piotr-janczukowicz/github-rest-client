@@ -1,0 +1,18 @@
+{
+  "message": "my commit message",
+  "tree": "827efc6d56897b048c772eb4087f854f46256132",
+  "parents": [
+    "7d1b31e74ee336d15cbd21741bc88a537ed063a0"
+  ],
+  "author": {
+    "name": "Mona Octocat",
+    "email": "octocat@github.com",
+    "date": "2008-07-09T04:13:30Z"
+  },
+  "committer": {
+    "name": "Mona Octocat",
+    "email": "octocat@github.com",
+    "date": "2008-07-09T04:13:30Z"
+  },
+  "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAAB\n-----END PGP SIGNATURE-----"
+}

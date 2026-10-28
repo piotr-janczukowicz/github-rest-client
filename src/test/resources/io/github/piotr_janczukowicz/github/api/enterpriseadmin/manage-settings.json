@@ -1,0 +1,143 @@
+{
+  "private_mode": true,
+  "public_pages": true,
+  "subdomain_isolation": true,
+  "signup_enabled": true,
+  "github_hostname": "github_hostname",
+  "identicons_host": "identicons_host",
+  "http_proxy": "http_proxy",
+  "auth_mode": "auth_mode",
+  "expire_sessions": true,
+  "admin_password": "admin_password",
+  "configuration_id": 1,
+  "configuration_run_count": 1,
+  "avatar": {
+    "enabled": true,
+    "uri": "uri"
+  },
+  "customer": {
+    "name": "name",
+    "email": "email",
+    "uuid": "uuid",
+    "secret_key_data": "secret_key_data",
+    "public_key_data": "public_key_data"
+  },
+  "license": {
+    "seats": 1,
+    "evaluation": true,
+    "perpetual": true,
+    "unlimited_seating": true,
+    "support_key": "support_key",
+    "ssh_allowed": true,
+    "cluster_support": true,
+    "expire_at": "expire_at"
+  },
+  "github_ssl": {
+    "enabled": true,
+    "cert": "cert",
+    "key": "key"
+  },
+  "ldap": {
+    "host": "host",
+    "port": 1,
+    "base": [
+      "base"
+    ],
+    "uid": "uid",
+    "bind_dn": "bind_dn",
+    "password": "password",
+    "method": "method",
+    "search_strategy": "search_strategy",
+    "user_groups": [
+      "user_groups"
+    ],
+    "admin_group": "admin_group",
+    "virtual_attribute_enabled": true,
+    "recursive_group_search": true,
+    "posix_support": true,
+    "user_sync_emails": true,
+    "user_sync_keys": true,
+    "user_sync_interval": 1,
+    "team_sync_interval": 1,
+    "sync_enabled": true,
+    "reconciliation": {
+      "user": "user",
+      "org": "org"
+    },
+    "profile": {
+      "uid": "uid",
+      "name": "name",
+      "mail": "mail",
+      "key": "key"
+    }
+  },
+  "cas": {
+    "url": "url"
+  },
+  "saml": {
+    "sso_url": "sso_url",
+    "certificate": "certificate",
+    "certificate_path": "certificate_path",
+    "issuer": "issuer",
+    "idp_initiated_sso": true,
+    "disable_admin_demote": true
+  },
+  "github_oauth": {
+    "client_id": "client_id",
+    "client_secret": "client_secret",
+    "organization_name": "organization_name",
+    "organization_team": "organization_team"
+  },
+  "smtp": {
+    "enabled": true,
+    "address": "address",
+    "authentication": "authentication",
+    "port": "port",
+    "domain": "domain",
+    "username": "username",
+    "user_name": "user_name",
+    "enable_starttls_auto": true,
+    "password": "password",
+    "discard-to-noreply-address": true,
+    "support_address": "support_address",
+    "support_address_type": "support_address_type",
+    "noreply_address": "noreply_address"
+  },
+  "ntp": {
+    "primary_server": "primary_server",
+    "secondary_server": "secondary_server"
+  },
+  "timezone": "timezone",
+  "snmp": {
+    "enabled": true,
+    "community": "community"
+  },
+  "syslog": {
+    "enabled": true,
+    "server": "server",
+    "protocol_name": "protocol_name"
+  },
+  "assets": "assets",
+  "pages": {
+    "enabled": true
+  },
+  "collectd": {
+    "enabled": true,
+    "server": "server",
+    "port": 1,
+    "encryption": "encryption",
+    "username": "username",
+    "password": "password"
+  },
+  "mapping": {
+    "enabled": true,
+    "tileserver": "tileserver",
+    "basemap": "basemap",
+    "token": "token"
+  },
+  "load_balancer": "load_balancer",
+  "prometheus": {
+    "enabled": true,
+    "trusted_ips": "trusted_ips"
+  }
+}

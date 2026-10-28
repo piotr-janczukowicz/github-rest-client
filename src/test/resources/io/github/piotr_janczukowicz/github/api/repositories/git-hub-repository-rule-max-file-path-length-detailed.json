@@ -1,0 +1,9 @@
+{
+  "ruleset_source_type": "Repository",
+  "ruleset_source": "my-org/my-repo",
+  "ruleset_id": 42,
+  "type": "max_file_path_length",
+  "parameters": {
+    "max_file_path_length": 1
+  }
+}

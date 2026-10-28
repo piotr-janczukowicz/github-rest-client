@@ -1,0 +1,22 @@
+{
+  "url": "https://api.github.com/repos/github/hello-world/pages",
+  "status": "built",
+  "cname": "example.com",
+  "protected_domain_state": "pending",
+  "pending_domain_unverified_at": "2026-09-01T12:00:00Z",
+  "custom_404": false,
+  "html_url": "https://example.com",
+  "build_type": "legacy",
+  "source": {
+    "branch": "main",
+    "path": "/docs"
+  },
+  "public": true,
+  "https_certificate": {
+    "state": "approved",
+    "description": "Certificate is approved",
+    "domains": ["example.com", "www.example.com"],
+    "expires_at": "2026-12-31"
+  },
+  "https_enforced": true
+}

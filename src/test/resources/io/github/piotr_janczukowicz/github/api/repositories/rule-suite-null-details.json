@@ -1,0 +1,26 @@
+{
+  "id": 1,
+  "actor_id": 1,
+  "actor_name": "octocat",
+  "before_sha": "0000000000000000000000000000000000000000",
+  "after_sha": "1111111111111111111111111111111111111111",
+  "ref": "refs/heads/main",
+  "repository_id": 1296269,
+  "repository_name": "Hello-World",
+  "pushed_at": "2011-01-26T19:06:43Z",
+  "result": "pass",
+  "evaluation_result": "pass",
+  "rule_evaluations": [
+    {
+      "rule_source": {
+        "type": "Repository",
+        "id": 42,
+        "name": "super cool ruleset"
+      },
+      "enforcement": "active",
+      "result": "pass",
+      "rule_type": "creation",
+      "details": null
+    }
+  ]
+}

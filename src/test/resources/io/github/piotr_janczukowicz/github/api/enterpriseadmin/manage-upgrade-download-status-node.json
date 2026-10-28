@@ -1,0 +1,9 @@
+{
+  "hostname": "hostname",
+  "uuid": "uuid",
+  "download_id": "download_id",
+  "package_name": "package_name",
+  "status": "not_started",
+  "progress": "progress",
+  "error": "error"
+}

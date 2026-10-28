@@ -1,0 +1,7 @@
+{
+  "path": "file.rb",
+  "mode": "100644",
+  "type": "blob",
+  "sha": "44b4fc6d56897b048c772eb4087f854f46256132",
+  "content": "puts 'hello'"
+}

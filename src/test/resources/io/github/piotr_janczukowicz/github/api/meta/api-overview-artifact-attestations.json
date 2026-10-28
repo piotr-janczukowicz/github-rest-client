@@ -1,0 +1,6 @@
+{
+  "trust_domain": "example",
+  "services": [
+    "attestations.example.com"
+  ]
+}

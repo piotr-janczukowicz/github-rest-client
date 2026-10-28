@@ -1,0 +1,21 @@
+{
+  "costCenters": [
+    {
+      "id": "cc-1a2b3c",
+      "name": "Octo cost center",
+      "state": "active",
+      "azure_subscription": "00000000-0000-0000-0000-000000000000",
+      "ai_credit_pool_enabled": true,
+      "ai_credit_pool_state": {
+        "target_amount": 1000.0,
+        "current_amount": 250.5
+      },
+      "resources": [
+        {
+          "type": "User",
+          "name": "octocat"
+        }
+      ]
+    }
+  ]
+}

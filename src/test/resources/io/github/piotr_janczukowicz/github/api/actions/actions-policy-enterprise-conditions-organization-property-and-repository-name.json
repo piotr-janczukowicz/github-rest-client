@@ -1,0 +1,37 @@
+{
+  "organization_property": {
+    "include": [
+      {
+        "name": "tier",
+        "property_values": [
+          "gold"
+        ]
+      }
+    ],
+    "exclude": [
+      {
+        "name": "status",
+        "property_values": [
+          "archived"
+        ]
+      }
+    ]
+  },
+  "repository_name": {
+    "include": [
+      "Hello-World"
+    ],
+    "exclude": [
+      "secret-*"
+    ],
+    "protected": false
+  },
+  "workflow_path": {
+    "include": [
+      ".github/workflows/ci.yml"
+    ],
+    "exclude": [
+      ".github/workflows/legacy.yml"
+    ]
+  }
+}

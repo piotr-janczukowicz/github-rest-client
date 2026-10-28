@@ -1,0 +1,7 @@
+{
+  "hostname": "hostname",
+  "uuid": "uuid",
+  "download_id": "download_id",
+  "message": "message",
+  "error": "error"
+}

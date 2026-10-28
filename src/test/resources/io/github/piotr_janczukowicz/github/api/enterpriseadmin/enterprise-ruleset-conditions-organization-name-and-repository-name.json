@@ -1,0 +1,27 @@
+{
+  "organization_name": {
+    "include": [
+      "octo-org"
+    ],
+    "exclude": [
+      "octo-org-archive"
+    ]
+  },
+  "repository_name": {
+    "include": [
+      "Hello-World"
+    ],
+    "exclude": [
+      "secret-*"
+    ],
+    "protected": false
+  },
+  "ref_name": {
+    "include": [
+      "refs/heads/main"
+    ],
+    "exclude": [
+      "refs/heads/dev*"
+    ]
+  }
+}

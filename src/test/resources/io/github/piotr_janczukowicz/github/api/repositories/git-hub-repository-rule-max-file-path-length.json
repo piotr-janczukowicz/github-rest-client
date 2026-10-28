@@ -1,0 +1,6 @@
+{
+  "type": "max_file_path_length",
+  "parameters": {
+    "max_file_path_length": 255
+  }
+}

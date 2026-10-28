@@ -1,0 +1,9 @@
+{
+  "url": "https://api.github.com/orgs/github",
+  "id": 1,
+  "type": "Organization",
+  "node_id": "MDEyOk9yZ2FuaXphdGlvbjE=",
+  "login": "github",
+  "email": "billing@example.com",
+  "organization_billing_email": "billing@example.com"
+}

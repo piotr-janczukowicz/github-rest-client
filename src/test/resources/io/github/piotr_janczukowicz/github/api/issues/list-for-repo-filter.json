@@ -1,0 +1,13 @@
+{
+  "milestone": "1",
+  "state": "open",
+  "assignee": "octocat",
+  "type": "Bug",
+  "creator": "octocat",
+  "mentioned": "hubot",
+  "issue_field_values": "priority:high",
+  "labels": "bug",
+  "sort": "updated",
+  "direction": "asc",
+  "since": "2011-04-22T13:33:48Z"
+}

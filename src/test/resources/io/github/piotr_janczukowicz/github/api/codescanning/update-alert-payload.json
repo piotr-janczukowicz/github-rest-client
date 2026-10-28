@@ -1,0 +1,9 @@
+{
+  "state": "open",
+  "dismissed_reason": "false positive",
+  "dismissed_comment": "Dismissed as test code.",
+  "create_request": true,
+  "assignees": [
+    "octocat"
+  ]
+}

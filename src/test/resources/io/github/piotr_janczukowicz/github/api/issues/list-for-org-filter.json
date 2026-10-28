@@ -1,0 +1,9 @@
+{
+  "filter": "created",
+  "state": "closed",
+  "labels": "bug",
+  "type": "Bug",
+  "sort": "comments",
+  "direction": "asc",
+  "since": "2011-04-22T13:33:48Z"
+}

@@ -1,0 +1,11 @@
+{
+  "state" : "dismissed",
+  "dismissed_reason" : "tolerable_risk",
+  "dismissed_comment" : "This alert is accurate but we use a sanitizer.",
+  "assignees" : [ "octocat" ],
+  "agent_assignment" : {
+    "custom_instructions" : "Prefer minimal upgrades.",
+    "custom_agent" : "security-fixer",
+    "model" : "claude-sonnet"
+  }
+}

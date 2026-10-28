@@ -1,0 +1,34 @@
+{
+  "website": [
+    "*.example.com"
+  ],
+  "codespaces": [
+    "*.example.com"
+  ],
+  "copilot": [
+    "*.example.com"
+  ],
+  "packages": [
+    "*.example.com"
+  ],
+  "storage": [
+    "*.example.com"
+  ],
+  "actions": [
+    "*.example.com"
+  ],
+  "actions_inbound": {
+    "full_domains": [
+      "actions.example.com"
+    ],
+    "wildcard_domains": [
+      "*.actions.example.com"
+    ]
+  },
+  "artifact_attestations": {
+    "trust_domain": "example",
+    "services": [
+      "attestations.example.com"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "licenses": {
+    "allowed": [
+      {
+        "spdx_id": "MIT",
+        "added_at": "2026-01-01T00:00:00Z"
+      }
+    ]
+  },
+  "packages": [
+    {
+      "package_manager": "npm",
+      "name": "left-pad",
+      "action": "allowed",
+      "reason": "Approved by the security team.",
+      "extra_allowed_spdx_ids": [
+        "Apache-2.0"
+      ],
+      "added_at": "2026-01-02T00:00:00Z"
+    }
+  ]
+}

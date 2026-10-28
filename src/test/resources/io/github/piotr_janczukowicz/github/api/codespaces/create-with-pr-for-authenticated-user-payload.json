@@ -1,0 +1,12 @@
+{
+  "location": "WestUs2",
+  "geo": "UsWest",
+  "client_ip": "1.2.3.4",
+  "machine": "standardLinux32gb",
+  "devcontainer_path": ".devcontainer/devcontainer.json",
+  "multi_repo_permissions_opt_out": false,
+  "working_directory": "/workspaces/hello-world",
+  "idle_timeout_minutes": 30,
+  "display_name": "bookish space pancake",
+  "retention_period_minutes": 43200
+}

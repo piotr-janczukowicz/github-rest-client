@@ -1,0 +1,7 @@
+{
+  "type": "code_coverage",
+  "parameters": {
+    "max_coverage_drop": 5.0,
+    "minimum_coverage": 80.0
+  }
+}

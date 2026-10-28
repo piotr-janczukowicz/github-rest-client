@@ -1,0 +1,9 @@
+{
+  "state": "approved",
+  "description": "Certificate is approved",
+  "domains": [
+    "example.com",
+    "www.example.com"
+  ],
+  "expires_at": "2026-12-31"
+}

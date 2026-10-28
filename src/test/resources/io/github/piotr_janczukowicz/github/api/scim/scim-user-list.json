@@ -1,0 +1,61 @@
+{
+  "schemas": [
+    "urn:ietf:params:scim:schemas:core:2.0:ListResponse"
+  ],
+  "totalResults": 3,
+  "itemsPerPage": 1,
+  "startIndex": 1,
+  "Resources": [
+    {
+      "schemas": [
+        "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "id": "edefdfedf-050c-11e7-8d32",
+      "externalId": "a7d0f98382",
+      "userName": "mona.octocat@okta.example.com",
+      "profileUrl": "https://github.com/mona",
+      "displayName": "Monalisa Octocat",
+      "name": {
+        "givenName": "Monalisa",
+        "familyName": "Octocat",
+        "formatted": "Monalisa Octocat"
+      },
+      "emails": [
+        {
+          "value": "mona.octocat@okta.example.com",
+          "primary": true,
+          "type": "work"
+        }
+      ],
+      "active": true,
+      "meta": {
+        "resourceType": "User",
+        "created": "2017-03-09T21:11:13Z",
+        "lastModified": "2017-03-09T21:11:13Z",
+        "location": "https://api.github.com/scim/v2/organizations/octo-org/Users/edefdfedf-050c-11e7-8d32"
+      },
+      "organization_id": 1,
+      "operations": [
+        {
+          "op": "replace",
+          "path": "active",
+          "value": "false"
+        }
+      ],
+      "groups": [
+        {
+          "value": "engineering",
+          "display": "Engineering"
+        }
+      ],
+      "roles": [
+        {
+          "value": "admin",
+          "primary": false,
+          "type": "member",
+          "display": "Member"
+        }
+      ]
+    }
+  ]
+}

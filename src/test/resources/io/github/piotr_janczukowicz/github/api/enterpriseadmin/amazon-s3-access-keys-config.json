@@ -1,0 +1,8 @@
+{
+  "bucket": "octo-bucket",
+  "region": "us-east-1",
+  "key_id": "key-1",
+  "authentication_type": "access_keys",
+  "encrypted_secret_key": "encrypted-secret-key",
+  "encrypted_access_key_id": "encrypted-access-key-id"
+}

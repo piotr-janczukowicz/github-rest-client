@@ -1,0 +1,40 @@
+{
+  "id": 123,
+  "issue_field_id": 10042,
+  "node_id": "PVTF_lADOABcd",
+  "project_url": "https://api.github.com/orgs/octocat/projectsV2/1",
+  "name": "Team notes",
+  "data_type": "text",
+  "options": [
+    {
+      "id": "opt-1",
+      "name": {
+        "raw": "Todo",
+        "html": "<p>Todo</p>"
+      },
+      "description": {
+        "raw": "desc",
+        "html": "<p>desc</p>"
+      },
+      "color": "BLUE"
+    }
+  ],
+  "configuration": {
+    "start_day": 1,
+    "duration": 14,
+    "iterations": [
+      {
+        "id": "iter-1",
+        "start_date": "2022-04-28",
+        "duration": 14,
+        "title": {
+          "raw": "Sprint 1",
+          "html": "<p>Sprint 1</p>"
+        },
+        "completed": true
+      }
+    ]
+  },
+  "created_at": "2022-04-28T12:00:00Z",
+  "updated_at": "2022-04-28T12:00:00Z"
+}

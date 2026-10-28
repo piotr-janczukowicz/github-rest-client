@@ -1,0 +1,8 @@
+{
+  "invitee_id": 1,
+  "email": "octocat@github.com",
+  "role": "direct_member",
+  "team_ids": [
+    42
+  ]
+}

@@ -1,0 +1,1 @@
+{"type": "file_path_restriction", "parameters": {"restricted_file_paths": ["secrets/"]}}

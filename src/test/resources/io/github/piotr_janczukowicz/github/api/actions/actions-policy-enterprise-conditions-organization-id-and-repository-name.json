@@ -1,0 +1,24 @@
+{
+  "organization_id": {
+    "organization_ids": [
+      42
+    ]
+  },
+  "repository_name": {
+    "include": [
+      "Hello-World"
+    ],
+    "exclude": [
+      "secret-*"
+    ],
+    "protected": false
+  },
+  "workflow_path": {
+    "include": [
+      ".github/workflows/ci.yml"
+    ],
+    "exclude": [
+      ".github/workflows/legacy.yml"
+    ]
+  }
+}

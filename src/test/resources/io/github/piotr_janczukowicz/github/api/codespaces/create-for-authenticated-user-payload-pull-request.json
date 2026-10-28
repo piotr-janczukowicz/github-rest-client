@@ -1,0 +1,12 @@
+{
+  "pull_request": {
+    "pull_request_number": 42,
+    "repository_id": 1296269
+  },
+  "location": "WestUs2",
+  "geo": "UsWest",
+  "machine": "standardLinux32gb",
+  "devcontainer_path": ".devcontainer/devcontainer.json",
+  "working_directory": "/workspaces/hello-world",
+  "idle_timeout_minutes": 30
+}

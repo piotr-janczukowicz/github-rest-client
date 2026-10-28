@@ -1,0 +1,11 @@
+{
+  "type": "restrict_actions_actors",
+  "parameters": {
+    "allowed_actors": [
+      {
+        "id": 1234,
+        "type": "Team"
+      }
+    ]
+  }
+}

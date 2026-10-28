@@ -1,0 +1,44 @@
+{
+  "timeline": {
+    "href": "https://api.github.com/repos/octocat/Hello-World",
+    "type": "application/atom+xml"
+  },
+  "user": {
+    "href": "https://api.github.com/repos/octocat/Hello-World",
+    "type": "application/atom+xml"
+  },
+  "security_advisories": {
+    "href": "https://api.github.com/repos/octocat/Hello-World",
+    "type": "application/atom+xml"
+  },
+  "current_user": {
+    "href": "https://api.github.com/repos/octocat/Hello-World",
+    "type": "application/atom+xml"
+  },
+  "current_user_public": {
+    "href": "https://api.github.com/repos/octocat/Hello-World",
+    "type": "application/atom+xml"
+  },
+  "current_user_actor": {
+    "href": "https://api.github.com/repos/octocat/Hello-World",
+    "type": "application/atom+xml"
+  },
+  "current_user_organization": {
+    "href": "https://api.github.com/repos/octocat/Hello-World",
+    "type": "application/atom+xml"
+  },
+  "current_user_organizations": [
+    {
+      "href": "https://api.github.com/repos/octocat/Hello-World",
+      "type": "application/atom+xml"
+    }
+  ],
+  "repository_discussions": {
+    "href": "https://api.github.com/repos/octocat/Hello-World",
+    "type": "application/atom+xml"
+  },
+  "repository_discussions_category": {
+    "href": "https://api.github.com/repos/octocat/Hello-World",
+    "type": "application/atom+xml"
+  }
+}

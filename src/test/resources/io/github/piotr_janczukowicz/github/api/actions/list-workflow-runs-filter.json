@@ -1,0 +1,10 @@
+{
+  "actor": "actor-sample",
+  "branch": "branch-sample",
+  "event": "event-sample",
+  "status": "completed",
+  "created": "2024-01-02T03:04:05Z",
+  "exclude_pull_requests": true,
+  "check_suite_id": 1,
+  "head_sha": "0123456789abcdef0123456789abcdef01234567"
+}

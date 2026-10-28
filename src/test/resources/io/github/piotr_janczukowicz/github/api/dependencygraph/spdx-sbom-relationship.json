@@ -1,0 +1,5 @@
+{
+  "relationshipType": "DEPENDS_ON",
+  "spdxElementId": "SPDXRef-DOCUMENT",
+  "relatedSpdxElement": "SPDXRef-Package-1"
+}

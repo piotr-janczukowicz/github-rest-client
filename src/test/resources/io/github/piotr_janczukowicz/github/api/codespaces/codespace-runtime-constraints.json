@@ -1,0 +1,6 @@
+{
+  "allowed_port_privacy_settings": [
+    "private",
+    "public"
+  ]
+}

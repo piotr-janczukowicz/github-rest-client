@@ -1,0 +1,7 @@
+{
+  "query": "is:open label:bug",
+  "labels": [
+    "bug"
+  ],
+  "write_scope": "trigger"
+}

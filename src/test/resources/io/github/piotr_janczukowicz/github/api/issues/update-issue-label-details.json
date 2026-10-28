@@ -1,0 +1,9 @@
+{
+  "name": "bug",
+  "id": 1,
+  "description": "Bug label",
+  "color": "d73a4a",
+  "rationale": "because",
+  "suggest": true,
+  "confidence": "high"
+}

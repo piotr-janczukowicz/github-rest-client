@@ -1,0 +1,7 @@
+{
+  "id": 1,
+  "repository_id": 1,
+  "head_repository_id": 1,
+  "head_branch": "headBranch-sample",
+  "head_sha": "0123456789abcdef0123456789abcdef01234567"
+}

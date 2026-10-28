@@ -1,0 +1,8 @@
+{
+  "name": "name-sample",
+  "value": "value-sample",
+  "visibility": "all",
+  "selected_repository_ids": [
+    1
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "key_id": "key-1",
+  "encrypted_sas_url": "encrypted-sas-url",
+  "container": "audit-logs"
+}

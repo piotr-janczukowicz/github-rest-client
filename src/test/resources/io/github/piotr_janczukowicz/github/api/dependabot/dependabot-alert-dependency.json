@@ -1,0 +1,10 @@
+{
+  "package" : {
+    "ecosystem" : "pip",
+    "name" : "django"
+  },
+  "manifest_path" : "path/to/requirements.txt",
+  "version_requirement" : "2.31.0",
+  "scope" : "runtime",
+  "relationship" : "direct"
+}

@@ -1,0 +1,8 @@
+{
+  "os": "os-sample",
+  "architecture": "architecture-sample",
+  "download_url": "https://api.github.com/example",
+  "filename": "filename-sample",
+  "temp_download_token": "tempDownloadToken-sample",
+  "sha256_checksum": "sha256Checksum-sample"
+}

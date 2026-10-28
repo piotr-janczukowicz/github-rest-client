@@ -1,0 +1,7 @@
+{
+  "vcs_url": "n",
+  "vcs": "subversion",
+  "vcs_username": "user",
+  "vcs_password": "pass",
+  "tfvc_project": "proj"
+}

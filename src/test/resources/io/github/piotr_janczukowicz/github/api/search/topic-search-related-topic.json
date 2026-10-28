@@ -1,0 +1,8 @@
+{
+  "topic_relation": {
+    "topic_id": 2,
+    "name": "rails",
+    "id": 1,
+    "relation_type": "superset"
+  }
+}

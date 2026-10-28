@@ -1,0 +1,9 @@
+{
+  "purls": {
+    "pkg:npm/left-pad@1.3.0": {
+      "status": "allowed",
+      "license": "MIT",
+      "reason": "allowed_license"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "content": {
+    "name": "README.md",
+    "path": "README.md",
+    "sha": "95b966ae1c166bd92f8ae7d1c313e738c731dfc3",
+    "size": 5362,
+    "url": "https://api.github.com/repos/octocat/Hello-World/contents/README.md",
+    "html_url": "https://github.com/octocat/Hello-World/blob/master/README.md",
+    "git_url": "https://api.github.com/repos/octocat/Hello-World/git/blobs/95b966ae1c166bd92f8ae7d1c313e738c731dfc3",
+    "download_url": "https://raw.githubusercontent.com/octocat/Hello-World/master/README.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/octocat/Hello-World/contents/README.md",
+      "git": "https://api.github.com/repos/octocat/Hello-World/git/blobs/95b966ae1c166bd92f8ae7d1c313e738c731dfc3",
+      "html": "https://github.com/octocat/Hello-World/blob/master/README.md"
+    }
+  },
+  "commit": {
+    "sha": "6dcb09b5b57875f334f61aebed695e2e4193db5e",
+    "node_id": "MDY6Q29tbWl0NmRjYjA5YjViNTc4NzVmMzM0ZjYxYWViZWQ2OTVlMmU0MTkzZGI1ZQ==",
+    "url": "https://api.github.com/repos/octocat/Hello-World/commits/6dcb09b5b57875f334f61aebed695e2e4193db5e",
+    "html_url": "https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e",
+    "author": {
+      "date": "2011-04-14T16:00:49Z",
+      "name": "Monalisa Octocat",
+      "email": "octocat@github.com"
+    },
+    "committer": {
+      "date": "2011-04-14T16:00:49Z",
+      "name": "Monalisa Octocat",
+      "email": "octocat@github.com"
+    },
+    "message": "my commit message",
+    "tree": {
+      "url": "https://api.github.com/repos/octocat/Hello-World/git/trees/827efc6d56897b048c772eb4087f854f46256132",
+      "sha": "827efc6d56897b048c772eb4087f854f46256132"
+    },
+    "parents": [
+      {
+        "url": "https://api.github.com/repos/octocat/Hello-World/commits/7638417db6d59f3c431d3e1f261cc637155684cd",
+        "html_url": "https://github.com/octocat/Hello-World/commit/7638417db6d59f3c431d3e1f261cc637155684cd",
+        "sha": "7638417db6d59f3c431d3e1f261cc637155684cd"
+      }
+    ],
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "payload": "tree 827efc6d56897b048c772eb4087f854f46256132\nparent 6dcb09b5b57875f334f61aebed695e2e4193db5e\nauthor The Octocat <octocat@github.com> 1288184193 -0700\ncommitter The Octocat <octocat@github.com> 1288184193 -0700\n\nFix all the bugs",
+      "signature": "-----BEGIN PGP SIGNATURE-----\nVersion: GnuPG v1\n\niQEcBAABAgAGBQJQqZiHAAoJEAW5p2yx9jGYH2K+QAiY9G9ub3VzIG1vbnN0ZXIgPG9j\ntb2NhdEBnaXRodWIuY29tPoi5BBMRAgA5BQJQqZiHAwsNCg0ZAwIBAgQvH1tRAAoJEBbk\ndssfYxjqHREAmwRHCplPmvz71ZMKj2hzlY5oy5c0jW/gXTA7hAd35L9XLwqrNAY08b+/\n9tG2x8fkNQ+oKzyUH4SNe/+Sj6gC0V5gZ3IrQzhhWKWI03cMW9PuKFv5pBwZ8xbdV07a\n39UsUp9J63a6i6E8BKR1F0ndsrMf5WYLRB0u7+pp8/Ho98v45H/Ry5Bq87jxh8xGHmv6\nHAgmv6iM+vIFZdWwiw==\n-----END PGP SIGNATURE-----\n",
+      "verified_at": "2011-01-26T19:01:12Z"
+    }
+  }
+}

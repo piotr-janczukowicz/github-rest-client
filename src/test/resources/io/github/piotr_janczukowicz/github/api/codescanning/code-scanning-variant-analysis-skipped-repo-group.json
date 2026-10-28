@@ -1,0 +1,13 @@
+{
+  "repository_count": 1,
+  "repositories": [
+    {
+      "id": 1,
+      "name": "octo-repo",
+      "full_name": "octo-org/octo-repo",
+      "private": false,
+      "stargazers_count": 42,
+      "updated_at": "2025-01-02T10:15:30Z"
+    }
+  ]
+}

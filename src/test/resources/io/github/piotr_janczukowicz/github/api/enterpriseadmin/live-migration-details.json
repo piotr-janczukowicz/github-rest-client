@@ -1,0 +1,126 @@
+{
+  "migration": {
+    "migration_id": "migration_id",
+    "status": "status",
+    "source_organization_login": "source_organization_login",
+    "target_organization_login": "target_organization_login",
+    "source_repository_name": "source_repository_name",
+    "target_repository_name": "target_repository_name",
+    "target_visibility": "target_visibility",
+    "target_api_endpoint": "target_api_endpoint",
+    "target_migration_id": 1,
+    "created_at": "2026-01-01T00:00:00Z",
+    "started_at": "2026-01-01T00:00:00Z",
+    "completed_at": "2026-01-01T00:00:00Z",
+    "expires_at": "2026-01-01T00:00:00Z",
+    "repositories": [
+      {
+        "source_repository_url": "source_repository_url",
+        "target_repository_url": "target_repository_url",
+        "status": "status"
+      }
+    ]
+  },
+  "target_state": {
+    "status": "status",
+    "last_updated": "2026-01-01T00:00:00Z",
+    "target_unavailable": true,
+    "repository_summaries": [
+      {
+        "namespace": "namespace",
+        "repository": "repository",
+        "total": 1,
+        "total_backfill": 1,
+        "total_live_update": 1,
+        "total_processed": 1,
+        "total_failed": 1,
+        "total_pending": 1,
+        "total_eligible": 1,
+        "total_acknowledged": 1,
+        "initial_git_push_complete": true,
+        "backfill": {
+          "total": 1,
+          "total_pending": 1,
+          "total_processed": 1,
+          "total_failed": 1,
+          "total_eligible": 1,
+          "total_acknowledged": 1,
+          "breakdown": [
+            {
+              "state": "state",
+              "kind": "kind",
+              "type": "type",
+              "count": 1
+            }
+          ]
+        },
+        "live_update": {
+          "total": 1,
+          "total_pending": 1,
+          "total_processed": 1,
+          "total_failed": 1,
+          "total_eligible": 1,
+          "total_acknowledged": 1,
+          "breakdown": [
+            {
+              "state": "state",
+              "kind": "kind",
+              "type": "type",
+              "count": 1
+            }
+          ]
+        }
+      }
+    ],
+    "repository_progress": [
+      {
+        "repository_nwo": "repository_nwo",
+        "backfill_resources_added": 1,
+        "backfill_resources_processed": 1,
+        "backfill_resources_failed": 1,
+        "backfill_resources_eligible": 1,
+        "backfill_resources_acknowledged": 1,
+        "live_update_resources_added": 1,
+        "live_update_resources_processed": 1,
+        "live_update_resources_eligible": 1,
+        "live_update_resources_acknowledged": 1,
+        "live_update_resources_failed": 1,
+        "all_resources_sent": true,
+        "initial_git_push_complete": true,
+        "repository_locked": true
+      }
+    ],
+    "terminal_failure": {
+      "code": "code",
+      "summary": "summary",
+      "occurred_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  "combined_state": {
+    "status": "status",
+    "display_message": "display_message",
+    "ready_for_cutover": true,
+    "cutover_blockers": [
+      "cutover_blockers"
+    ],
+    "repositories": [
+      {
+        "repository_nwo": "repository_nwo",
+        "phase": "phase",
+        "display_status": "display_status"
+      }
+    ],
+    "terminal_failure": {
+      "code": "code",
+      "summary": "summary",
+      "occurred_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  "messages": [
+    {
+      "message_type": "message_type",
+      "message": "message",
+      "created_at": "2026-01-01T00:00:00Z"
+    }
+  ]
+}

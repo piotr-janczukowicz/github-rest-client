@@ -1,0 +1,7 @@
+{
+  "q": "repo:octocat/Spoon-Knife",
+  "sort": "comments",
+  "order": "desc",
+  "advanced_search": "true",
+  "search_type": "semantic"
+}

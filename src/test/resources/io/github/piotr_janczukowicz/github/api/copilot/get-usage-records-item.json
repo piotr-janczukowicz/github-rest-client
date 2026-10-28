@@ -1,0 +1,10 @@
+{
+  "type": "sample-type",
+  "user_id": 1,
+  "enterprise_id": 1,
+  "github_request_id": "sample-github_request_id",
+  "endpoint": "sample-endpoint",
+  "body": "sample-body",
+  "@timestamp": 1,
+  "event_id": "sample-event_id"
+}

@@ -1,0 +1,8 @@
+{
+  "hostname": "hostname",
+  "uuid": "uuid",
+  "replica": true,
+  "cluster_roles": [
+    "Blank"
+  ]
+}

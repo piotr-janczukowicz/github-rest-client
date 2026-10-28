@@ -1,0 +1,25 @@
+{
+  "title": "Mighty Readme report",
+  "summary": "There are 0 failures, 2 warnings, and 1 notice.",
+  "text": "You may have some misspelled words on lines 2 and 4.",
+  "annotations": [
+    {
+      "path": "README.md",
+      "start_line": 2,
+      "end_line": 2,
+      "start_column": 5,
+      "end_column": 10,
+      "annotation_level": "warning",
+      "message": "Check your spelling for 'banaas'.",
+      "title": "Spell Checker",
+      "raw_details": "Do you mean 'bananas' or 'banana'?"
+    }
+  ],
+  "images": [
+    {
+      "alt": "Octocat",
+      "image_url": "https://github.com/images/error/octocat_happy.gif",
+      "caption": "Octocat happy"
+    }
+  ]
+}

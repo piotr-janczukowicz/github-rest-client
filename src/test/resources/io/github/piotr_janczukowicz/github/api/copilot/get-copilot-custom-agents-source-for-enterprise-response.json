@@ -1,0 +1,11 @@
+{
+  "organization": {
+    "id": 1,
+    "login": "sample-login"
+  },
+  "repository": {
+    "id": 1,
+    "name": "sample-name",
+    "full_name": "sample-full_name"
+  }
+}

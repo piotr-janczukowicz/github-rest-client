@@ -1,0 +1,7 @@
+{
+  "name": "name",
+  "email": "email",
+  "uuid": "uuid",
+  "secret_key_data": "secret_key_data",
+  "public_key_data": "public_key_data"
+}

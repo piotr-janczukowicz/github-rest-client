@@ -1,0 +1,11 @@
+{
+  "state": "configured",
+  "runner_type": "standard",
+  "runner_label": "code-scanning",
+  "languages": [
+    "javascript-typescript",
+    "python",
+    "ruby"
+  ],
+  "ai_findings_option": "on_push"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Reviewer",
+  "description": "Reviews and pushes",
+  "base_role": "write",
+  "permissions": [
+    "push"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "repository_name": "octo-repo",
+  "reviewer": "octocat",
+  "requester": "hubot",
+  "time_period": "week",
+  "request_status": "open"
+}

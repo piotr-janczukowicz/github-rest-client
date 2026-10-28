@@ -1,0 +1,58 @@
+{
+  "timeline_url": "https://github.com/timeline",
+  "user_url": "https://github.com/{user}",
+  "current_user_public_url": "https://github.com/octocat",
+  "current_user_url": "https://github.com/octocat?token=abc",
+  "current_user_actor_url": "https://github.com/octocat/{actor}",
+  "current_user_organization_url": "https://github.com/orgs/{org}",
+  "current_user_organization_urls": [
+    "https://github.com/orgs/github"
+  ],
+  "security_advisories_url": "https://github.com/security-advisories",
+  "repository_discussions_url": "https://github.com/discussions",
+  "repository_discussions_category_url": "https://github.com/discussions/{category}",
+  "_links": {
+    "timeline": {
+      "href": "https://api.github.com/repos/octocat/Hello-World",
+      "type": "application/atom+xml"
+    },
+    "user": {
+      "href": "https://api.github.com/repos/octocat/Hello-World",
+      "type": "application/atom+xml"
+    },
+    "security_advisories": {
+      "href": "https://api.github.com/repos/octocat/Hello-World",
+      "type": "application/atom+xml"
+    },
+    "current_user": {
+      "href": "https://api.github.com/repos/octocat/Hello-World",
+      "type": "application/atom+xml"
+    },
+    "current_user_public": {
+      "href": "https://api.github.com/repos/octocat/Hello-World",
+      "type": "application/atom+xml"
+    },
+    "current_user_actor": {
+      "href": "https://api.github.com/repos/octocat/Hello-World",
+      "type": "application/atom+xml"
+    },
+    "current_user_organization": {
+      "href": "https://api.github.com/repos/octocat/Hello-World",
+      "type": "application/atom+xml"
+    },
+    "current_user_organizations": [
+      {
+        "href": "https://api.github.com/repos/octocat/Hello-World",
+        "type": "application/atom+xml"
+      }
+    ],
+    "repository_discussions": {
+      "href": "https://api.github.com/repos/octocat/Hello-World",
+      "type": "application/atom+xml"
+    },
+    "repository_discussions_category": {
+      "href": "https://api.github.com/repos/octocat/Hello-World",
+      "type": "application/atom+xml"
+    }
+  }
+}

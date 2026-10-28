@@ -1,0 +1,6 @@
+{
+  "id": "id-sample",
+  "cpu_cores": 1,
+  "memory_gb": 1,
+  "storage_gb": 1
+}

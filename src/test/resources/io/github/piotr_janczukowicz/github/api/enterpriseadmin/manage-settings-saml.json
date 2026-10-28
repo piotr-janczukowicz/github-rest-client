@@ -1,0 +1,8 @@
+{
+  "sso_url": "sso_url",
+  "certificate": "certificate",
+  "certificate_path": "certificate_path",
+  "issuer": "issuer",
+  "idp_initiated_sso": true,
+  "disable_admin_demote": true
+}

@@ -1,0 +1,10 @@
+{
+  "labels": [
+    {
+      "name": "bug",
+      "rationale": "because",
+      "suggest": true,
+      "confidence": "high"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "organization": {
+    "id": 1,
+    "login": "sample-login",
+    "avatar_url": "sample-avatar_url"
+  },
+  "repository": {
+    "id": 1,
+    "name": "sample-name",
+    "full_name": "sample-full_name"
+  },
+  "ruleset": {
+    "id": 1,
+    "name": "sample-name",
+    "enforcement": "sample-enforcement"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "summary": "Updated advisory summary",
+  "description": "Updated detailed description of the repository advisory.",
+  "cve_id": "CVE-2022-12345",
+  "vulnerabilities": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "a-package"
+      },
+      "vulnerable_version_range": "< 1.0.0",
+      "patched_versions": "1.0.0",
+      "vulnerable_functions": ["important_function"]
+    }
+  ],
+  "cwe_ids": ["CWE-79"],
+  "credits": [
+    {
+      "login": "octocat",
+      "type": "finder"
+    }
+  ],
+  "severity": "critical",
+  "cvss_vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+  "state": "published",
+  "collaborating_users": ["hubot"],
+  "collaborating_teams": ["justice-league"]
+}

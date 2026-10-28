@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "uuid": "uuid",
+  "when": "2026-01-01T00:00:00Z",
+  "ip_exception_list": [
+    "ip_exception_list"
+  ],
+  "maintenance_mode_message": "maintenance_mode_message"
+}

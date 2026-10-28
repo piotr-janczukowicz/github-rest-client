@@ -1,0 +1,8 @@
+{
+  "id": "java/useless-null-check",
+  "title": "Useless null check",
+  "description": "Checking whether an expression is null when that expression cannot possibly be null is useless.",
+  "help": "# Useless null check\nSometimes you can guarantee that a particular variable will never be null.",
+  "severity": "warning",
+  "category": "maintainability"
+}

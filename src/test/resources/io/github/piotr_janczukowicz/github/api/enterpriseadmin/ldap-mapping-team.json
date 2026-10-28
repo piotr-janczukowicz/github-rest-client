@@ -1,0 +1,18 @@
+{
+  "ldap_dn": "ldap_dn",
+  "id": 1,
+  "node_id": "node_id",
+  "url": "url",
+  "html_url": "html_url",
+  "name": "name",
+  "slug": "slug",
+  "description": "description",
+  "privacy": "privacy",
+  "notification_setting": "notification_setting",
+  "permission": "permission",
+  "members_url": "members_url",
+  "repositories_url": "repositories_url",
+  "type": "type",
+  "organization_id": 1,
+  "enterprise_id": 1
+}

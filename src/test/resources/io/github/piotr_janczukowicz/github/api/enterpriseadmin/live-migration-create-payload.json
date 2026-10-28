@@ -1,0 +1,9 @@
+{
+  "source_organization_login": "source_organization_login",
+  "source_repository_name": "source_repository_name",
+  "target_organization_login": "target_organization_login",
+  "target_repository_name": "target_repository_name",
+  "target_api_endpoint": "https://api.github.com/target_api_endpoint",
+  "pat_name": "pat_name",
+  "target_visibility": "private"
+}

@@ -1,0 +1,26 @@
+{
+  "url": "https://api.github.com/repos/octocat/Spoon-Knife/git/commits/bb4cc8d3b2e14b3af5df699876dd4ff3acd00b7f",
+  "author": {
+    "date": "2014-02-04T22:38:36Z",
+    "name": "The Octocat",
+    "email": "octocat@nowhere.com"
+  },
+  "committer": {
+    "date": "2014-02-12T23:18:55Z",
+    "name": "The Octocat",
+    "email": "octocat@nowhere.com"
+  },
+  "message": "Create styles.css and updated README",
+  "tree": {
+    "url": "https://api.github.com/repos/octocat/Spoon-Knife/git/trees/a639e96f9038797fba6e0469f94a4b0cc459fa68",
+    "sha": "a639e96f9038797fba6e0469f94a4b0cc459fa68"
+  },
+  "comment_count": 8,
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "payload": "tree a639e96f9038797fba6e0469f94a4b0cc459fa68\nparent a30c19e3f13765a3b48829788bc1cb8b4e95cee4\nauthor The Octocat <octocat@nowhere.com> 1391563786 -0800\ncommitter The Octocat <octocat@nowhere.com> 1392160735 -0800\n\nCreate styles.css and updated README",
+    "signature": "-----BEGIN PGP SIGNATURE-----\n\nwl4/Tl8KlXNjN5NAh0EWIhZnigw/9PG0u3DoJoTh5H3XI4PLIApywS3NXBTXrPT\n6A0SLdHZHwXG3smNpyGLkiE84qQ6pDUfpBIK0gu/s+pbBhrc0CA==\n-----END PGP SIGNATURE-----",
+    "verified_at": "2014-02-12T23:18:55Z"
+  }
+}

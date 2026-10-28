@@ -1,0 +1,5 @@
+{
+  "url": "https://api.github.com/organizations/1/team/1/memberships/octocat",
+  "role": "member",
+  "state": "active"
+}

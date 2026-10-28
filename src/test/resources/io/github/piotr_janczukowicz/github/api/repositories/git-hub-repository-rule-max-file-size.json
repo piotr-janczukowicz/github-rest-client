@@ -1,0 +1,6 @@
+{
+  "type": "max_file_size",
+  "parameters": {
+    "max_file_size": 100
+  }
+}

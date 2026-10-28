@@ -1,0 +1,16 @@
+{
+  "usageItems": [
+    {
+      "date": "2026-08-01",
+      "product": "actions",
+      "sku": "actions_linux",
+      "quantity": 100,
+      "unitType": "minutes",
+      "pricePerUnit": 0.04,
+      "grossAmount": 4.0,
+      "discountAmount": 0.0,
+      "netAmount": 4.0,
+      "repositoryName": "octo-org/octo-repo"
+    }
+  ]
+}

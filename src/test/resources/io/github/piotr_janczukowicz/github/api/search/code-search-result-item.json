@@ -1,0 +1,227 @@
+{
+  "name": "classes.js",
+  "path": "src/attributes/classes.js",
+  "sha": "45b0b1303b8678da3678a0741b2d7d7026ed58fc",
+  "url": "https://api.github.com/repositories/1300192/contents/src/attributes/classes.js?ref=master",
+  "git_url": "https://api.github.com/repositories/1300192/git/blobs/45b0b1303b8678da3678a0741b2d7d7026ed58fc",
+  "html_url": "https://github.com/jquery/jquery/blob/master/src/attributes/classes.js",
+  "repository": {
+    "id": 1300192,
+    "node_id": "MDEwOlJlcG9zaXRvcnkxMzAwMTky",
+    "name": "jquery",
+    "full_name": "jquery/jquery",
+    "owner": {
+      "login": "jquery",
+      "id": 70142,
+      "node_id": "MDQ6VXNlcjcwMTQy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/70142?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jquery",
+      "html_url": "https://github.com/jquery",
+      "followers_url": "https://api.github.com/users/jquery/followers",
+      "following_url": "https://api.github.com/users/jquery/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jquery/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jquery/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jquery/subscriptions",
+      "organizations_url": "https://api.github.com/users/jquery/orgs",
+      "repos_url": "https://api.github.com/users/jquery/repos",
+      "events_url": "https://api.github.com/users/jquery/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jquery/received_events",
+      "type": "Organization",
+      "site_admin": false,
+      "name": "jQuery",
+      "email": "open-source@jquery.com",
+      "starred_at": "2020-11-02T16:12:33Z",
+      "user_view_type": "public"
+    },
+    "private": false,
+    "html_url": "https://github.com/jquery/jquery",
+    "description": "jQuery JavaScript Library",
+    "fork": false,
+    "url": "https://api.github.com/repos/jquery/jquery",
+    "archive_url": "https://api.github.com/repos/jquery/jquery/{archive_format}{/ref}",
+    "assignees_url": "https://api.github.com/repos/jquery/jquery/assignees{/user}",
+    "blobs_url": "https://api.github.com/repos/jquery/jquery/git/blobs{/sha}",
+    "branches_url": "https://api.github.com/repos/jquery/jquery/branches{/branch}",
+    "collaborators_url": "https://api.github.com/repos/jquery/jquery/collaborators{/collaborator}",
+    "comments_url": "https://api.github.com/repos/jquery/jquery/comments{/number}",
+    "commits_url": "https://api.github.com/repos/jquery/jquery/commits{/sha}",
+    "compare_url": "https://api.github.com/repos/jquery/jquery/compare/{base}...{head}",
+    "contents_url": "https://api.github.com/repos/jquery/jquery/contents/{+path}",
+    "contributors_url": "https://api.github.com/repos/jquery/jquery/contributors",
+    "deployments_url": "https://api.github.com/repos/jquery/jquery/deployments",
+    "downloads_url": "https://api.github.com/repos/jquery/jquery/downloads",
+    "events_url": "https://api.github.com/repos/jquery/jquery/events",
+    "forks_url": "https://api.github.com/repos/jquery/jquery/forks",
+    "git_commits_url": "https://api.github.com/repos/jquery/jquery/git/commits{/sha}",
+    "git_refs_url": "https://api.github.com/repos/jquery/jquery/git/refs{/sha}",
+    "git_tags_url": "https://api.github.com/repos/jquery/jquery/git/tags{/sha}",
+    "hooks_url": "https://api.github.com/repos/jquery/jquery/hooks",
+    "issue_comment_url": "https://api.github.com/repos/jquery/jquery/issues/comments{/number}",
+    "issue_events_url": "https://api.github.com/repos/jquery/jquery/issues/events{/number}",
+    "issues_url": "https://api.github.com/repos/jquery/jquery/issues{/number}",
+    "keys_url": "https://api.github.com/repos/jquery/jquery/keys{/key_id}",
+    "labels_url": "https://api.github.com/repos/jquery/jquery/labels{/name}",
+    "languages_url": "https://api.github.com/repos/jquery/jquery/languages",
+    "merges_url": "https://api.github.com/repos/jquery/jquery/merges",
+    "milestones_url": "https://api.github.com/repos/jquery/jquery/milestones{/number}",
+    "notifications_url": "https://api.github.com/repos/jquery/jquery/notifications{?since,all,participating}",
+    "pulls_url": "https://api.github.com/repos/jquery/jquery/pulls{/number}",
+    "releases_url": "https://api.github.com/repos/jquery/jquery/releases{/id}",
+    "stargazers_url": "https://api.github.com/repos/jquery/jquery/stargazers",
+    "statuses_url": "https://api.github.com/repos/jquery/jquery/statuses/{sha}",
+    "subscribers_url": "https://api.github.com/repos/jquery/jquery/subscribers",
+    "subscription_url": "https://api.github.com/repos/jquery/jquery/subscription",
+    "tags_url": "https://api.github.com/repos/jquery/jquery/tags",
+    "teams_url": "https://api.github.com/repos/jquery/jquery/teams",
+    "trees_url": "https://api.github.com/repos/jquery/jquery/git/trees{/sha}",
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "url": "https://api.github.com/licenses/mit",
+      "spdx_id": "MIT",
+      "node_id": "MDc6TGljZW5zZW1pdA=="
+    },
+    "role_name": "admin",
+    "forks": 9,
+    "permissions": {
+      "admin": true,
+      "maintain": false,
+      "push": true,
+      "triage": false,
+      "pull": true
+    },
+    "git_url": "git:github.com/jquery/jquery.git",
+    "ssh_url": "git@github.com:jquery/jquery.git",
+    "clone_url": "https://github.com/jquery/jquery.git",
+    "mirror_url": "https://github.com/jquery/jquery-mirror.git",
+    "svn_url": "https://svn.github.com/jquery/jquery",
+    "homepage": "https://github.com",
+    "language": "C",
+    "forks_count": 9,
+    "stargazers_count": 80,
+    "watchers_count": 80,
+    "size": 108,
+    "default_branch": "master",
+    "open_issues_count": 0,
+    "is_template": false,
+    "visibility": "public",
+    "temp_clone_token": "abc123token",
+    "allow_forking": true,
+    "web_commit_signoff_required": false,
+    "subscribers_count": 80,
+    "network_count": 0,
+    "has_issues": true,
+    "has_projects": true,
+    "has_wiki": true,
+    "has_pages": false,
+    "archived": false,
+    "disabled": false,
+    "pushed_at": "2011-01-26T19:06:43Z",
+    "created_at": "2011-01-26T19:01:12Z",
+    "updated_at": "2011-01-26T19:14:43Z",
+    "topics": [
+      "octocat",
+      "atom",
+      "electron",
+      "api"
+    ],
+    "open_issues": 0,
+    "watchers": 80,
+    "has_discussions": false,
+    "has_pull_requests": true,
+    "pull_request_creation_policy": "collaborators_only",
+    "delete_branch_on_merge": false,
+    "code_of_conduct": {
+      "key": "contributor_covenant",
+      "name": "Contributor Covenant",
+      "url": "https://api.github.com/codes_of_conduct/contributor_covenant",
+      "body": "# Contributor Covenant Code of Conduct",
+      "html_url": "https://github.com/contact/code-of-conduct"
+    },
+    "security_and_analysis": {
+      "advanced_security": {
+        "status": "enabled"
+      },
+      "code_security": {
+        "status": "enabled"
+      },
+      "dependabot_security_updates": {
+        "status": "enabled"
+      },
+      "secret_scanning": {
+        "status": "disabled"
+      },
+      "secret_scanning_push_protection": {
+        "status": "enabled"
+      },
+      "secret_scanning_non_provider_patterns": {
+        "status": "disabled"
+      },
+      "secret_scanning_validity_checks": {
+        "status": "enabled"
+      },
+      "secret_scanning_ai_detection": {
+        "status": "disabled"
+      },
+      "secret_scanning_delegated_alert_dismissal": {
+        "status": "disabled"
+      },
+      "secret_scanning_delegated_bypass": {
+        "status": "disabled"
+      },
+      "secret_scanning_delegated_bypass_options": {
+        "reviewers": [
+          {
+            "reviewer_id": 1,
+            "reviewer_type": "TEAM",
+            "mode": "ALWAYS"
+          }
+        ]
+      }
+    },
+    "custom_properties": {
+      "team": "core"
+    }
+  },
+  "score": 1.0,
+  "file_size": 4430,
+  "language": "JavaScript",
+  "last_modified_at": "2011-04-22T20:33:13Z",
+  "line_numbers": [
+    "73..77",
+    "77..78"
+  ],
+  "text_matches": [
+    {
+      "object_url": "https://api.github.com/repositories/1300192/contents/src/attributes/classes.js?ref=master",
+      "object_type": "FileContent",
+      "property": "content",
+      "fragment": "jQuery.fn.extend({\n\taddClass: function( value ) {\n\t\tvar classes, elem, cur, clazz, j, finalValue,\n\t\t\ti = 0,\n\t\t\tlen = this.length,\n\t\t\tproceed = typeof value === \"string\" && value;",
+      "matches": [
+        {
+          "text": "addClass",
+          "indices": [
+            18,
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "object_url": "https://api.github.com/repositories/1300192/contents/src/attributes/classes.js?ref=master",
+      "object_type": "FileContent",
+      "property": "path",
+      "fragment": "src/attributes/classes.js",
+      "matches": [
+        {
+          "text": "classes.js",
+          "indices": [
+            15,
+            25
+          ]
+        }
+      ]
+    }
+  ]
+}

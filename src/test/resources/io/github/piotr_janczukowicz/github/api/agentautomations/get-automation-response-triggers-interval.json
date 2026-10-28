@@ -1,0 +1,9 @@
+{
+  "cadence": [
+    "hourly"
+  ],
+  "hour_utc": 9,
+  "day_of_week": 1,
+  "minute_utc": 15,
+  "write_scope": "trigger"
+}

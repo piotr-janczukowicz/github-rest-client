@@ -1,0 +1,13 @@
+{
+  "errors": [
+    {
+      "line": 7,
+      "column": 3,
+      "source": "* user",
+      "kind": "Invalid owner",
+      "suggestion": "* @octocat",
+      "message": "Invalid owner on line 7:\n\n  * user\n    ^",
+      "path": ".github/CODEOWNERS"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "name": "Justice League",
+  "slug": "justice-league",
+  "url": "https://api.github.com/enterprises/dc/teams/justice-league",
+  "html_url": "https://github.com/enterprises/dc/teams/justice-league",
+  "members_url": "https://api.github.com/enterprises/dc/teams/justice-league/members{/member}",
+  "created_at": "2019-01-26T19:01:12Z",
+  "updated_at": "2019-01-26T19:14:43Z"
+}

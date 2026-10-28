@@ -1,0 +1,13 @@
+{
+  "ref": "topic-branch",
+  "task": "deploy",
+  "auto_merge": true,
+  "required_contexts": [
+    "ci/travis"
+  ],
+  "payload": "{ \"deploy\": \"migrate\" }",
+  "environment": "production",
+  "description": "Deploy request from hubot",
+  "transient_environment": true,
+  "production_environment": true
+}

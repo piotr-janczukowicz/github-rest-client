@@ -1,0 +1,12 @@
+{
+  "user_states": [
+    {
+      "user": "octocat",
+      "consumed_amount": 42.5,
+      "target_amount": 100.0,
+      "override_budget_id": "2066deda-923f-43f9"
+    }
+  ],
+  "has_next_page": false,
+  "total_count": 1
+}

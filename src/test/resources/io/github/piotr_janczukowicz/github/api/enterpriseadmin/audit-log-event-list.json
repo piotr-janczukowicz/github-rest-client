@@ -1,0 +1,67 @@
+[
+  {
+    "@timestamp": 1761000000,
+    "action": "repo.create",
+    "active": true,
+    "active_was": false,
+    "actor": "octocat",
+    "actor_id": 583231,
+    "actor_location": {
+      "country_name": "United States"
+    },
+    "data": {
+      "ref": "refs/heads/main"
+    },
+    "org_id": 1000,
+    "user_id": 583231,
+    "business_id": 2000,
+    "blocked_user": "spammer",
+    "business": "octo-business",
+    "config": [
+      {
+        "name": "web"
+      }
+    ],
+    "config_was": [
+      {
+        "name": "ssh"
+      }
+    ],
+    "content_type": "json",
+    "operation_type": "create",
+    "created_at": 1761000000,
+    "deploy_key_fingerprint": "SHA256:abc",
+    "_document_id": "doc-1",
+    "emoji": ":octocat:",
+    "events": [
+      {
+        "name": "push"
+      }
+    ],
+    "events_were": [
+      {
+        "name": "pull"
+      }
+    ],
+    "explanation": "Repository created.",
+    "fingerprint": "fp",
+    "hook_id": 3000,
+    "limited_availability": false,
+    "message": "Created repository.",
+    "name": "octo-repo",
+    "old_user": "old-user",
+    "openssh_public_key": "ssh-ed25519 AAAA",
+    "org": "octo-org",
+    "previous_visibility": "private",
+    "read_only": false,
+    "repo": "octo-org/octo-repo",
+    "repository": "octo-repo",
+    "repository_public": true,
+    "target_login": "target",
+    "team": "team",
+    "transport_protocol": 1,
+    "transport_protocol_name": "http",
+    "user": "octocat",
+    "visibility": "public"
+  }
+]

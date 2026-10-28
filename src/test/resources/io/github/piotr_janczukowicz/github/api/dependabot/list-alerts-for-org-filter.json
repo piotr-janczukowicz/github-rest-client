@@ -1,0 +1,17 @@
+{
+  "classification" : "general,malware",
+  "state" : "open,fixed",
+  "severity" : "high,critical",
+  "ecosystem" : "npm,pip",
+  "package" : "django,lodash",
+  "epss_percentage" : ">0.5",
+  "artifact_registry_url" : "https://octo.jfrog.io/artifactory",
+  "artifact_registry" : "jfrog-artifactory",
+  "has" : [ "patch", "deployment" ],
+  "assignee" : "octocat",
+  "runtime_risk" : "internet-exposed,sensitive-data",
+  "scope" : "development",
+  "relationship" : "transitive",
+  "sort" : "updated",
+  "direction" : "desc"
+}

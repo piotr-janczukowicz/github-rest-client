@@ -1,0 +1,1 @@
+{"type": "commit_message_pattern", "parameters": {"operator": "contains", "pattern": "fix"}, "ruleset_source_type": "Repository", "ruleset_source": "org/repo", "ruleset_id": 1}

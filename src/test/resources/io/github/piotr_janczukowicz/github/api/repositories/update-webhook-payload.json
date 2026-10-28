@@ -1,0 +1,18 @@
+{
+  "config": {
+    "url": "https://example.com/webhook",
+    "content_type": "json",
+    "secret": "********",
+    "insecure_ssl": "0"
+  },
+  "events": [
+    "push"
+  ],
+  "add_events": [
+    "pull_request"
+  ],
+  "remove_events": [
+    "issues"
+  ],
+  "active": true
+}

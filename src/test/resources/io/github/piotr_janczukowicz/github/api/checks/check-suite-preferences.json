@@ -1,0 +1,12 @@
+{
+  "auto_trigger_checks": [
+    {
+      "app_id": 2,
+      "setting": true
+    },
+    {
+      "app_id": 4,
+      "setting": false
+    }
+  ]
+}

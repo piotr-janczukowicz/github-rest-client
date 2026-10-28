@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "stream_type": "Azure Blob Storage",
+  "vendor_specific": {
+    "key_id": "key-1",
+    "encrypted_sas_url": "encrypted-sas-url",
+    "container": "audit-logs"
+  }
+}

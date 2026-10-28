@@ -1,0 +1,10 @@
+{
+  "total_count": 1,
+  "devcontainers": [
+    {
+      "path": ".devcontainer/devcontainer.json",
+      "name": "Node.js",
+      "display_name": "Node.js 20"
+    }
+  ]
+}

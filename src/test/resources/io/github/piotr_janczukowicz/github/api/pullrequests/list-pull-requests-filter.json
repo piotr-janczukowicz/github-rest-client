@@ -1,0 +1,7 @@
+{
+  "state": "open",
+  "sort": "created",
+  "head": "octocat:new-feature",
+  "base": "master",
+  "direction": "desc"
+}

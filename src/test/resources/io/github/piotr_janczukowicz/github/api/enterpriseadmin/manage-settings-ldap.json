@@ -1,0 +1,34 @@
+{
+  "host": "host",
+  "port": 1,
+  "base": [
+    "base"
+  ],
+  "uid": "uid",
+  "bind_dn": "bind_dn",
+  "password": "password",
+  "method": "method",
+  "search_strategy": "search_strategy",
+  "user_groups": [
+    "user_groups"
+  ],
+  "admin_group": "admin_group",
+  "virtual_attribute_enabled": true,
+  "recursive_group_search": true,
+  "posix_support": true,
+  "user_sync_emails": true,
+  "user_sync_keys": true,
+  "user_sync_interval": 1,
+  "team_sync_interval": 1,
+  "sync_enabled": true,
+  "reconciliation": {
+    "user": "user",
+    "org": "org"
+  },
+  "profile": {
+    "uid": "uid",
+    "name": "name",
+    "mail": "mail",
+    "key": "key"
+  }
+}

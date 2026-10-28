@@ -1,0 +1,14 @@
+{
+  "id": "8f9d1c2b-3e4a-5b6c-7d8e-9f0a1b2c3d4e",
+  "name": "Hard-coded credentials",
+  "severity": "none",
+  "security_severity_level": "low",
+  "description": "Hard-coded credentials are a security risk.",
+  "full_description": "Hard-coded credentials are a security risk and should be avoided.",
+  "tags": [
+    "security",
+    "external/cwe/cwe-798"
+  ],
+  "help": "Remove hard-coded credentials.",
+  "help_uri": "https://codeql.github.com/codeql-query-help/javascript/js-hardcoded-credentials/"
+}

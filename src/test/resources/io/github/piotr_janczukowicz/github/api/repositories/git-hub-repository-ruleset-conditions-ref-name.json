@@ -1,0 +1,4 @@
+{
+  "include": ["refs/heads/main"],
+  "exclude": ["refs/heads/dev*"]
+}

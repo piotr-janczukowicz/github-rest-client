@@ -1,0 +1,19 @@
+{
+  "type": "type",
+  "id": 1,
+  "name": "name",
+  "active": true,
+  "events": [
+    "events"
+  ],
+  "config": {
+    "url": "url",
+    "content_type": "content_type",
+    "insecure_ssl": "insecure_ssl",
+    "secret": "secret"
+  },
+  "updated_at": "updated_at",
+  "created_at": "created_at",
+  "url": "url",
+  "ping_url": "ping_url"
+}

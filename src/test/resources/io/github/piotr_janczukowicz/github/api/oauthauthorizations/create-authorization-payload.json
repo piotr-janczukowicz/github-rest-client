@@ -1,0 +1,10 @@
+{
+  "scopes": [
+    "scopes"
+  ],
+  "note": "Update all gems",
+  "note_url": "note_url",
+  "client_id": "client_id",
+  "client_secret": "client_secret",
+  "fingerprint": "fingerprint"
+}

@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "stream_type": "Splunk",
+  "vendor_specific": {
+    "domain": "splunk.example.com",
+    "port": 8088,
+    "key_id": "key-1",
+    "encrypted_token": "encrypted-token",
+    "ssl_verify": true
+  }
+}

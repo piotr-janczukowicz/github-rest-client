@@ -1,0 +1,15 @@
+{
+  "url": "https://api.github.com/repos/octocat/Hello-World/branches/main/protection/required_status_checks",
+  "enforcement_level": "everyone",
+  "contexts": [
+    "continuous-integration/travis-ci"
+  ],
+  "checks": [
+    {
+      "context": "continuous-integration/travis-ci",
+      "app_id": 1
+    }
+  ],
+  "contexts_url": "https://api.github.com/repos/octocat/Hello-World/branches/main/protection/required_status_checks/contexts",
+  "strict": true
+}

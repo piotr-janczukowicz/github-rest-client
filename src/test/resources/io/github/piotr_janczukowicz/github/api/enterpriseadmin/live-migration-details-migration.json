@@ -1,0 +1,22 @@
+{
+  "migration_id": "migration_id",
+  "status": "status",
+  "source_organization_login": "source_organization_login",
+  "target_organization_login": "target_organization_login",
+  "source_repository_name": "source_repository_name",
+  "target_repository_name": "target_repository_name",
+  "target_visibility": "target_visibility",
+  "target_api_endpoint": "target_api_endpoint",
+  "target_migration_id": 1,
+  "created_at": "2026-01-01T00:00:00Z",
+  "started_at": "2026-01-01T00:00:00Z",
+  "completed_at": "2026-01-01T00:00:00Z",
+  "expires_at": "2026-01-01T00:00:00Z",
+  "repositories": [
+    {
+      "source_repository_url": "source_repository_url",
+      "target_repository_url": "target_repository_url",
+      "status": "status"
+    }
+  ]
+}

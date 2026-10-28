@@ -1,0 +1,4 @@
+{
+  "enabled_repositories": "selected",
+  "selected_repositories_url": "https://api.github.com/orgs/octo-org/copilot/coding-agent/permissions/repositories"
+}

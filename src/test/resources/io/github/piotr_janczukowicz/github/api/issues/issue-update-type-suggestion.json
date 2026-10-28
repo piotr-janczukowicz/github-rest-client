@@ -1,0 +1,8 @@
+{
+  "value": "Bug",
+  "rationale": "looks like a bug",
+  "suggest": true,
+  "confidence": "high",
+  "ignored": false,
+  "ignored_reason": "already_applied"
+}

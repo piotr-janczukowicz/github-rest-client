@@ -1,0 +1,11 @@
+{
+  "name": "sample-name",
+  "compute_service": "none",
+  "network_settings_ids": [
+    "sample-network_settings_ids"
+  ],
+  "failover_network_settings_ids": [
+    "sample-failover_network_settings_ids"
+  ],
+  "failover_network_enabled": true
+}

@@ -1,0 +1,13 @@
+{
+  "sha": "example",
+  "filename": "example",
+  "status": "added",
+  "additions": 1,
+  "deletions": 1,
+  "changes": 1,
+  "blob_url": "https://example.com",
+  "raw_url": "https://example.com",
+  "contents_url": "https://example.com",
+  "patch": "@@ -0,0 +1 @@\n+example\n",
+  "previous_filename": "example-old.txt"
+}

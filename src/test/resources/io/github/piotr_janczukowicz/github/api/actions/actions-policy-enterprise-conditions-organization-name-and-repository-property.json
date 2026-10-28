@@ -1,0 +1,38 @@
+{
+  "organization_name": {
+    "include": [
+      "octo-org"
+    ],
+    "exclude": [
+      "octo-org-archive"
+    ]
+  },
+  "repository_property": {
+    "include": [
+      {
+        "name": "team",
+        "property_values": [
+          "core"
+        ],
+        "source": "custom"
+      }
+    ],
+    "exclude": [
+      {
+        "name": "lifecycle",
+        "property_values": [
+          "deprecated"
+        ],
+        "source": "custom"
+      }
+    ]
+  },
+  "workflow_path": {
+    "include": [
+      ".github/workflows/ci.yml"
+    ],
+    "exclude": [
+      ".github/workflows/legacy.yml"
+    ]
+  }
+}

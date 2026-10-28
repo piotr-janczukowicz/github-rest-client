@@ -1,0 +1,21 @@
+{
+  "advanced_security": { "status": "enabled" },
+  "code_security": { "status": "enabled" },
+  "dependabot_security_updates": { "status": "enabled" },
+  "secret_scanning": { "status": "disabled" },
+  "secret_scanning_push_protection": { "status": "enabled" },
+  "secret_scanning_non_provider_patterns": { "status": "disabled" },
+  "secret_scanning_validity_checks": { "status": "enabled" },
+  "secret_scanning_ai_detection": { "status": "disabled" },
+  "secret_scanning_delegated_alert_dismissal": { "status": "disabled" },
+  "secret_scanning_delegated_bypass": { "status": "disabled" },
+  "secret_scanning_delegated_bypass_options": {
+    "reviewers": [
+      {
+        "reviewer_id": 1,
+        "reviewer_type": "TEAM",
+        "mode": "ALWAYS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "description": "Example Ruby script",
+  "files": {
+    "hello.rb": {
+      "content": "puts \"Hello, World!\""
+    }
+  },
+  "public": true
+}

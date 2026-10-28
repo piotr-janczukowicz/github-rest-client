@@ -1,0 +1,24 @@
+{
+  "total_count": 1,
+  "concurrency_groups": [
+    {
+      "group_name": "groupName-sample",
+      "group_url": "https://api.github.com/example",
+      "group_members": [
+        {
+          "run_id": 1,
+          "run_name": "runName-sample",
+          "run_url": "https://api.github.com/example",
+          "run_html_url": "https://github.com/example",
+          "position": 1,
+          "position_url": "https://api.github.com/example",
+          "job_id": 1,
+          "job_name": "jobName-sample",
+          "job_url": "https://api.github.com/example",
+          "job_html_url": "https://github.com/example",
+          "status": "in_progress"
+        }
+      ]
+    }
+  ]
+}

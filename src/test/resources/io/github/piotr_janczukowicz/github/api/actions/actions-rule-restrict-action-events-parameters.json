@@ -1,0 +1,6 @@
+{
+  "allowed_events": [
+    "push",
+    "pull_request"
+  ]
+}

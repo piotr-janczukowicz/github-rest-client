@@ -1,0 +1,20 @@
+{
+  "advancedSecurityEnabled": true,
+  "advancedSecuritySeats": 1,
+  "clusterSupport": true,
+  "company": "company",
+  "croquetSupport": true,
+  "customTerms": true,
+  "evaluation": true,
+  "expireAt": "2026-01-01T00:00:00Z",
+  "insightsEnabled": true,
+  "insightsExpireAt": "2026-01-01T00:00:00Z",
+  "learningLabEvaluationExpires": "2026-01-01T00:00:00Z",
+  "learningLabSeats": 1,
+  "perpetual": true,
+  "referenceNumber": "referenceNumber",
+  "seats": 1,
+  "sshAllowed": true,
+  "supportKey": "supportKey",
+  "unlimitedSeating": true
+}

@@ -1,0 +1,44 @@
+{
+  "name": "sample-ruleset",
+  "target": "branch",
+  "enforcement": "active",
+  "bypass_actors": [
+    {
+      "actor_id": 1,
+      "actor_type": "Integration",
+      "bypass_mode": "always"
+    }
+  ],
+  "conditions": {
+    "organization_name": {
+      "include": [
+        "octo-org"
+      ],
+      "exclude": [
+        "octo-org-archive"
+      ]
+    },
+    "repository_name": {
+      "include": [
+        "Hello-World"
+      ],
+      "exclude": [
+        "secret-*"
+      ],
+      "protected": false
+    },
+    "ref_name": {
+      "include": [
+        "refs/heads/main"
+      ],
+      "exclude": [
+        "refs/heads/dev*"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "creation"
+    }
+  ]
+}

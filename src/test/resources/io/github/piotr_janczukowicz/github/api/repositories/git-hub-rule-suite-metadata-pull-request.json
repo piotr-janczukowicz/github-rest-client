@@ -1,0 +1,36 @@
+{
+  "pull_request": {
+    "id": 1296,
+    "number": 7,
+    "user": {
+      "id": 1,
+      "login": "octocat",
+      "type": "User"
+    },
+    "reviews": [
+      {
+        "id": 80,
+        "user": {
+          "id": 2,
+          "login": "hubot",
+          "type": "Bot"
+        },
+        "state": "APPROVED"
+      }
+    ],
+    "proof_of_presence": {
+      "state": "verified",
+      "code": "verified",
+      "base_sha": "0000000000000000000000000000000000000000",
+      "head_sha": "1111111111111111111111111111111111111111",
+      "required_level": "approve",
+      "verified_level": "approve",
+      "verified_at": "2011-01-26T19:06:43Z",
+      "verifier": {
+        "id": 1,
+        "login": "octocat",
+        "type": "User"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "stream_type": "Google Cloud Storage",
+  "vendor_specific": {
+    "bucket": "octo-bucket",
+    "key_id": "key-1",
+    "encrypted_json_credentials": "encrypted-json-credentials"
+  }
+}

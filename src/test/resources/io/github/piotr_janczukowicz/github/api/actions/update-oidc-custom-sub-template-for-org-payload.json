@@ -1,0 +1,6 @@
+{
+  "include_claim_keys": [
+    "includeClaimKeys-sample"
+  ],
+  "use_immutable_subject": true
+}

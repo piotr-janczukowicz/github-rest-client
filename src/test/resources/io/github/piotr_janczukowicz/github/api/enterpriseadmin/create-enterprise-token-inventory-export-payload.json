@@ -1,0 +1,9 @@
+{
+  "token_types": [
+    "sample-token_types"
+  ],
+  "authorization_state": "currently_authorized",
+  "owner": "sample-owner",
+  "organization": "sample-organization",
+  "application": "sample-application"
+}

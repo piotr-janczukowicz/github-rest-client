@@ -1,0 +1,9 @@
+{
+  "field_id": 1,
+  "value": "High",
+  "rationale": "priority",
+  "suggest": true,
+  "confidence": "medium",
+  "ignored": false,
+  "ignored_reason": "already_applied"
+}

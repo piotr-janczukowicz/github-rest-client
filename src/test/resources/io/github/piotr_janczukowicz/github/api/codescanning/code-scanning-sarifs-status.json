@@ -1,0 +1,7 @@
+{
+  "processing_status": "pending",
+  "analyses_url": "https://api.github.com/repos/octo-org/octo-repo/code-scanning/analyses",
+  "errors": [
+    "Upload failed"
+  ]
+}

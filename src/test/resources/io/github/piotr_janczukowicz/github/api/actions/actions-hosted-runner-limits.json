@@ -1,0 +1,6 @@
+{
+  "public_ips": {
+    "maximum": 1,
+    "current_usage": 1
+  }
+}

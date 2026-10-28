@@ -1,0 +1,4 @@
+{
+  "ref_name": {"include": ["refs/heads/main"]},
+  "repository_name": {"include": ["repo"], "protected": true}
+}

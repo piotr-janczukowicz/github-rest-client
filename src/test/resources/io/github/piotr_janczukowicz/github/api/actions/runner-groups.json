@@ -1,0 +1,23 @@
+{
+  "total_count": 1,
+  "runner_groups": [
+    {
+      "id": 1.0,
+      "name": "name-sample",
+      "visibility": "visibility-sample",
+      "default": true,
+      "selected_repositories_url": "https://api.github.com/example",
+      "runners_url": "https://api.github.com/example",
+      "hosted_runners_url": "https://api.github.com/example",
+      "network_configuration_id": "networkConfigurationId-sample",
+      "inherited": true,
+      "inherited_allows_public_repositories": true,
+      "allows_public_repositories": true,
+      "workflow_restrictions_read_only": true,
+      "restricted_to_workflows": true,
+      "selected_workflows": [
+        "selectedWorkflows-sample"
+      ]
+    }
+  ]
+}

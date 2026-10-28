@@ -1,0 +1,35 @@
+{
+  "sha": "7638417db6d59f3c431d3e1f261cc637155684cd",
+  "node_id": "MDM6VGFnOTQwYmQzMzYyNDhlZmFlMGY5ZWU1YmM3YjJkNWM5ODU4ODdiMTZhYw==",
+  "url": "https://api.github.com/repos/octocat/Hello-World/git/commits/7638417db6d59f3c431d3e1f261cc637155684cd",
+  "author": {
+    "date": "2014-08-08T20:02:04Z",
+    "email": "monalisa.octocat@example.com",
+    "name": "Monalisa Octocat"
+  },
+  "committer": {
+    "date": "2014-08-08T20:02:04Z",
+    "email": "monalisa.octocat@example.com",
+    "name": "Monalisa Octocat"
+  },
+  "message": "Fix #42",
+  "tree": {
+    "sha": "7638417db6d59f3c431d3e1f261cc637155684cd",
+    "url": "https://api.github.com/repos/octocat/Hello-World/git/trees/7638417db6d59f3c431d3e1f261cc637155684cd"
+  },
+  "parents": [
+    {
+      "sha": "7d1b31e74ee336d15cbd21741bc88a537ed063a0",
+      "url": "https://api.github.com/repos/octocat/Hello-World/git/commits/7d1b31e74ee336d15cbd21741bc88a537ed063a0",
+      "html_url": "https://github.com/octocat/Hello-World/commit/7d1b31e74ee336d15cbd21741bc88a537ed063a0"
+    }
+  ],
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": "-----BEGIN PGP SIGNATURE-----\n\nwl4/Tl8K\n-----END PGP SIGNATURE-----",
+    "payload": "tree 827efc6d56897b048c772eb4087f854f46256132",
+    "verified_at": "2014-08-09T08:02:04Z"
+  },
+  "html_url": "https://github.com/octocat/Hello-World/commit/7638417db6d59f3c431d3e1f261cc637155684cd"
+}

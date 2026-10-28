@@ -1,0 +1,30 @@
+{
+  "schemas": [
+    "urn:ietf:params:scim:schemas:core:2.0:User"
+  ],
+  "externalId": "a7d0f98c-e026-40e8-9a1e-4cb1a3dd8e4d",
+  "active": true,
+  "userName": "monalisa@github.example",
+  "name": {
+    "formatted": "Mona Lisa Octocat",
+    "familyName": "Octocat",
+    "givenName": "Mona",
+    "middleName": "Lisa"
+  },
+  "displayName": "Mona Lisa",
+  "emails": [
+    {
+      "value": "monalisa@github.example",
+      "type": "work",
+      "primary": true
+    }
+  ],
+  "roles": [
+    {
+      "display": "User",
+      "type": "user",
+      "value": "user",
+      "primary": true
+    }
+  ]
+}

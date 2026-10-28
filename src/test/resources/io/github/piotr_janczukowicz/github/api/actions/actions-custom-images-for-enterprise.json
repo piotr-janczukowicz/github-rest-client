@@ -1,0 +1,15 @@
+{
+  "total_count": 1,
+  "images": [
+    {
+      "id": 1,
+      "platform": "platform-sample",
+      "total_versions_size": 1,
+      "name": "name-sample",
+      "source": "source-sample",
+      "versions_count": 1,
+      "latest_version": "latestVersion-sample",
+      "state": "state-sample"
+    }
+  ]
+}

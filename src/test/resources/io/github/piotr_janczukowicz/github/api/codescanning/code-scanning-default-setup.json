@@ -1,0 +1,12 @@
+{
+  "state": "configured",
+  "languages": [
+    "actions"
+  ],
+  "runner_type": "standard",
+  "runner_label": "ubuntu-latest",
+  "query_suite": "default",
+  "threat_model": "remote",
+  "updated_at": "2025-01-02T10:15:30Z",
+  "schedule": "weekly"
+}

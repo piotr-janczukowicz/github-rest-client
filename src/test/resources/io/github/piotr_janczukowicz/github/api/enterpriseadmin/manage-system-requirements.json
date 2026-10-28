@@ -1,0 +1,15 @@
+{
+  "status": "OK",
+  "nodes": [
+    {
+      "hostname": "hostname",
+      "status": "OK",
+      "roles_status": [
+        {
+          "status": "OK",
+          "role": "role"
+        }
+      ]
+    }
+  ]
+}

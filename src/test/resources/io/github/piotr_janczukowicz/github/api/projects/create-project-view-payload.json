@@ -1,0 +1,9 @@
+{
+  "name": "Sprint Board",
+  "layout": "board",
+  "filter": "is:open",
+  "visible_fields": [123],
+  "sort_by": [[123, "asc"]],
+  "group_by": [123],
+  "vertical_group_by": [456]
+}

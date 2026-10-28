@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "stream_type": "Amazon S3",
+  "vendor_specific": {
+    "bucket": "octo-bucket",
+    "region": "us-east-1",
+    "key_id": "key-1",
+    "authentication_type": "oidc",
+    "arn_role": "arn:aws:iam::123456789012:role/audit-logs"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "server_id": "sample-server_id",
+  "collection_date": "sample-collection_date",
+  "schema_version": "sample-schema_version",
+  "ghes_version": "sample-ghes_version",
+  "host_name": "sample-host_name",
+  "github_connect": {
+    "features_enabled": [
+      "sample-features_enabled"
+    ]
+  },
+  "ghe_stats": {
+    "comments": {
+      "total_commit_comments": 1,
+      "total_gist_comments": 1,
+      "total_issue_comments": 1,
+      "total_pull_request_comments": 1
+    },
+    "gists": {
+      "total_gists": 1,
+      "private_gists": 1,
+      "public_gists": 1
+    },
+    "hooks": {
+      "total_hooks": 1,
+      "active_hooks": 1,
+      "inactive_hooks": 1
+    },
+    "issues": {
+      "total_issues": 1,
+      "open_issues": 1,
+      "closed_issues": 1
+    },
+    "milestones": {
+      "total_milestones": 1,
+      "open_milestones": 1,
+      "closed_milestones": 1
+    },
+    "orgs": {
+      "total_orgs": 1,
+      "disabled_orgs": 1,
+      "total_teams": 1,
+      "total_team_members": 1
+    },
+    "pages": {
+      "total_pages": 1
+    },
+    "pulls": {
+      "total_pulls": 1,
+      "merged_pulls": 1,
+      "mergeable_pulls": 1,
+      "unmergeable_pulls": 1
+    },
+    "repos": {
+      "total_repos": 1,
+      "root_repos": 1,
+      "fork_repos": 1,
+      "org_repos": 1,
+      "total_pushes": 1,
+      "total_wikis": 1
+    },
+    "users": {
+      "total_users": 1,
+      "admin_users": 1,
+      "suspended_users": 1
+    }
+  },
+  "dormant_users": {
+    "total_dormant_users": 1,
+    "dormancy_threshold": "sample-dormancy_threshold"
+  },
+  "actions_stats": {
+    "number_of_repos_using_actions": 1,
+    "percentage_of_repos_using_actions": "sample-percentage_of_repos_using_actions"
+  },
+  "packages_stats": {
+    "registry_enabled": true,
+    "registry_v2_enabled": true,
+    "ecosystems": [
+      {
+        "name": "npm",
+        "enabled": "TRUE",
+        "published_packages_count": 1,
+        "private_packages_count": 1,
+        "public_packages_count": 1,
+        "internal_packages_count": 1,
+        "user_packages_count": 1,
+        "organization_packages_count": 1,
+        "daily_download_count": 1,
+        "daily_update_count": 1,
+        "daily_delete_count": 1,
+        "daily_create_count": 1
+      }
+    ]
+  }
+}

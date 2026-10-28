@@ -1,0 +1,4 @@
+{
+  "ecosystem" : "pip",
+  "name" : "django"
+}

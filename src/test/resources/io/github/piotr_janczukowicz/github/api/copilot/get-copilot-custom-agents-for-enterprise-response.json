@@ -1,0 +1,9 @@
+{
+  "custom_agents": [
+    {
+      "name": "sample-name",
+      "file_path": "sample-file_path",
+      "url": "sample-url"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "ruleset_source_type": "Repository",
+  "ruleset_source": "my-org/my-repo",
+  "ruleset_id": 42,
+  "type": "update",
+  "parameters": {
+    "update_allows_fetch_and_merge": false
+  }
+}

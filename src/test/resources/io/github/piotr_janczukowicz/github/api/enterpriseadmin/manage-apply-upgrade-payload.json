@@ -1,0 +1,8 @@
+{
+  "upgrade_package_file": "upgrade_package_file",
+  "version": "version",
+  "target_partition": "target_partition",
+  "phase": "pre-upgrade",
+  "skip_reboot": true,
+  "uuid": "uuid"
+}

@@ -1,0 +1,5 @@
+{
+  "required_deployment_environments": [
+    "example"
+  ]
+}

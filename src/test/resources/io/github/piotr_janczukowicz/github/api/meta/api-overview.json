@@ -1,0 +1,91 @@
+{
+  "verifiable_password_authentication": true,
+  "ssh_key_fingerprints": {
+    "SHA256_RSA": "uNiVztksCsDhcc0u9e8BujQXVUpKZIDTMczCvj3tD2s",
+    "SHA256_DSA": "br9IjFspm1vxR3iA35FWE+4VTyz1hYVLIE2t1/CeyWQ",
+    "SHA256_ECDSA": "p2QAMXNIC1TJYWeIOttrVc98/R1BUFWu3/LiyKgUfQM",
+    "SHA256_ED25519": "+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU"
+  },
+  "ssh_keys": [
+    "ssh-ed25519 ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    "ecdsa-sha2-nistp256 ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    "ssh-rsa ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  ],
+  "hooks": [
+    "192.0.2.1"
+  ],
+  "github_enterprise_importer": [
+    "192.0.2.1"
+  ],
+  "web": [
+    "192.0.2.1"
+  ],
+  "api": [
+    "192.0.2.1"
+  ],
+  "git": [
+    "192.0.2.1"
+  ],
+  "packages": [
+    "192.0.2.1"
+  ],
+  "pages": [
+    "192.0.2.1"
+  ],
+  "importer": [
+    "192.0.2.1"
+  ],
+  "actions": [
+    "192.0.2.1"
+  ],
+  "actions_macos": [
+    "192.0.2.1"
+  ],
+  "codespaces": [
+    "192.0.2.1"
+  ],
+  "dependabot": [
+    "192.0.2.1"
+  ],
+  "copilot": [
+    "192.0.2.1"
+  ],
+  "commit_signing_keys": [
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  ],
+  "domains": {
+    "website": [
+      "*.example.com"
+    ],
+    "codespaces": [
+      "*.example.com"
+    ],
+    "copilot": [
+      "*.example.com"
+    ],
+    "packages": [
+      "*.example.com"
+    ],
+    "storage": [
+      "*.example.com"
+    ],
+    "actions": [
+      "*.example.com"
+    ],
+    "actions_inbound": {
+      "full_domains": [
+        "actions.example.com"
+      ],
+      "wildcard_domains": [
+        "*.actions.example.com"
+      ]
+    },
+    "artifact_attestations": {
+      "trust_domain": "example",
+      "services": [
+        "attestations.example.com"
+      ]
+    }
+  },
+  "installed_version": "3.22.0"
+}

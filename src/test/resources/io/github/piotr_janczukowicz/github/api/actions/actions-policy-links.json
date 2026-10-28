@@ -1,0 +1,8 @@
+{
+  "self": {
+    "href": "https://api.github.com/enterprises/enterprise/actions/policies/1"
+  },
+  "html": {
+    "href": "https://github.com/enterprises/enterprise/settings/policies/actions/1"
+  }
+}

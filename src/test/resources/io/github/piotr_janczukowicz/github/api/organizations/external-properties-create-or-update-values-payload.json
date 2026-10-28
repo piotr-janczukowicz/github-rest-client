@@ -1,0 +1,14 @@
+{
+  "repository_names": [
+    "Hello-World",
+    "octo-repo"
+  ],
+  "properties": [
+    {
+      "property_name": "environment",
+      "value": [
+        "production"
+      ]
+    }
+  ]
+}

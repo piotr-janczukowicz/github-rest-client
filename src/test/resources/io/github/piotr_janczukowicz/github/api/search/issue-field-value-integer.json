@@ -1,0 +1,19 @@
+{
+  "issue_field_id": 1,
+  "issue_field_name": "Priority",
+  "node_id": "IFT_GDKND",
+  "data_type": "single_select",
+  "value": 1,
+  "single_select_option": {
+    "id": 1,
+    "name": "High",
+    "color": "red"
+  },
+  "multi_select_options": [
+    {
+      "id": 3,
+      "name": "Urgent",
+      "color": "orange"
+    }
+  ]
+}

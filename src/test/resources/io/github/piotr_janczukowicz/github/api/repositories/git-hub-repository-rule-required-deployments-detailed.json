@@ -1,0 +1,11 @@
+{
+  "ruleset_source_type": "Repository",
+  "ruleset_source": "my-org/my-repo",
+  "ruleset_id": 42,
+  "type": "required_deployments",
+  "parameters": {
+    "required_deployment_environments": [
+      "example"
+    ]
+  }
+}

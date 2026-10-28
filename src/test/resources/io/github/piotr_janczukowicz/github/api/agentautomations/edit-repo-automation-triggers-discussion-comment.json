@@ -1,0 +1,10 @@
+{
+  "comment_types": [
+    "comment"
+  ],
+  "categories": [
+    "General"
+  ],
+  "body_substring": "/triage",
+  "write_scope": "trigger"
+}

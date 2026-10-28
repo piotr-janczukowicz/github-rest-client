@@ -1,0 +1,1 @@
+{"type": "file_extension_restriction", "parameters": {"restricted_file_extensions": [".exe"]}, "ruleset_source_type": "Repository", "ruleset_source": "org/repo", "ruleset_id": 1}

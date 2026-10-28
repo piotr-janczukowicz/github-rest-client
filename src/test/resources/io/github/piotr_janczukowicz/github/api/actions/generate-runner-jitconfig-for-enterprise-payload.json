@@ -1,0 +1,8 @@
+{
+  "name": "name-sample",
+  "runner_group_id": 1,
+  "labels": [
+    "labels-sample"
+  ],
+  "work_folder": "workFolder-sample"
+}

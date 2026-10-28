@@ -1,0 +1,21 @@
+{
+  "total_repos": 1,
+  "nonarchived_repos": 1,
+  "secret_scanning_enabled_repos": 1,
+  "secret_scanning_push_protection_enabled_repos": 1,
+  "code_scanning_enabled_repos": 1,
+  "code_scanning_pr_reviews_enabled_repos": 1,
+  "code_scanning_default_setup_enabled_repos": 1,
+  "code_scanning_default_setup_eligible_repos": 1,
+  "dependabot_alerts_enabled_repos": 1,
+  "dependabot_security_updates_enabled_repos": 1,
+  "dependabot_version_updates_enabled_repos": 1,
+  "advanced_security_enabled_repos": 1,
+  "active_committers": 1,
+  "purchased_committers": 1,
+  "maximum_committers": 1,
+  "secret_protection_licenses": 1,
+  "secret_protection_active_committers": 1,
+  "code_security_licenses": 1,
+  "code_security_active_committers": 1
+}

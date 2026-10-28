@@ -1,0 +1,6 @@
+{
+  "name": "main-branch",
+  "negate": false,
+  "operator": "starts_with",
+  "pattern": "example"
+}

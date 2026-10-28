@@ -1,0 +1,8 @@
+{
+  "login": "octocat",
+  "rationale": "because",
+  "suggest": true,
+  "confidence": "low",
+  "ignored": false,
+  "ignored_reason": "issue_already_closed"
+}

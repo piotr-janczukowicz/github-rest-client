@@ -1,0 +1,9 @@
+{
+  "name": "standardLinux32gb",
+  "display_name": "4 cores, 16 GB RAM, 64 GB storage",
+  "operating_system": "linux",
+  "storage_in_bytes": 68719476736,
+  "memory_in_bytes": 17179869184,
+  "cpus": 4,
+  "prebuild_availability": "ready"
+}

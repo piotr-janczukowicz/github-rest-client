@@ -1,0 +1,4 @@
+{
+  "action": "deny",
+  "reason": "This request is denied because the access is too broad."
+}

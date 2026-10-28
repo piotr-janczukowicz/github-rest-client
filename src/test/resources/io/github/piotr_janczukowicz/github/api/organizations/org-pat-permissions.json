@@ -1,0 +1,11 @@
+{
+  "organization": {
+    "members": "read"
+  },
+  "repository": {
+    "metadata": "read"
+  },
+  "other": {
+    "organization_plan": "read"
+  }
+}

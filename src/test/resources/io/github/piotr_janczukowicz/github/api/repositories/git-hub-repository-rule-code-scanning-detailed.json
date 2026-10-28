@@ -1,0 +1,15 @@
+{
+  "ruleset_source_type": "Repository",
+  "ruleset_source": "my-org/my-repo",
+  "ruleset_id": 42,
+  "type": "code_scanning",
+  "parameters": {
+    "code_scanning_tools": [
+      {
+        "alerts_threshold": "none",
+        "security_alerts_threshold": "none",
+        "tool": "codeql"
+      }
+    ]
+  }
+}

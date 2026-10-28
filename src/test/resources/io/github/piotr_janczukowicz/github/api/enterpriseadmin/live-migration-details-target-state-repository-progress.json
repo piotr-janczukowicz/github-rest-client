@@ -1,0 +1,16 @@
+{
+  "repository_nwo": "repository_nwo",
+  "backfill_resources_added": 1,
+  "backfill_resources_processed": 1,
+  "backfill_resources_failed": 1,
+  "backfill_resources_eligible": 1,
+  "backfill_resources_acknowledged": 1,
+  "live_update_resources_added": 1,
+  "live_update_resources_processed": 1,
+  "live_update_resources_eligible": 1,
+  "live_update_resources_acknowledged": 1,
+  "live_update_resources_failed": 1,
+  "all_resources_sent": true,
+  "initial_git_push_complete": true,
+  "repository_locked": true
+}
