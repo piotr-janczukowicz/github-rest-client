@@ -1,11 +1,10 @@
 name: Release
 
-# Run by hand on main. Deploys the next version to GitHub Packages, tags it and creates the GitHub release. Publishing to
-# Maven Central is a separate workflow that takes the tag. The version follows the OpenAPI version of the pom (`2026.3.10.N-SNAPSHOT`): it is
-# `2026.3.10.` plus the newest `v2026.3.10.*` tag plus one, or the N of the pom when that is higher or there is no tag
-# yet. Nothing is pushed to main, so branch protection stays on: the next `-SNAPSHOT` version goes into a pull request that
-# is merged by hand. It is a separate job, so "Re-run failed jobs" retries it after a transient failure without
-# touching the tag.
+# Run by hand on the default branch. Deploys the next version to GitHub Packages, tags it and creates the GitHub
+# release, then opens the pull request for the next -SNAPSHOT version. The steps live in common-parent
+# (reusable-release-package.yml and reusable-next-snapshot.yml); the deploy waits for a green Main run of the same
+# commit. If the deploy fails after it uploaded some files, GitHub Packages may refuse the same version again: delete
+# that package version, then run the workflow again.
 on:
   workflow_dispatch:
 
@@ -19,60 +18,19 @@ concurrency:
 jobs:
   release:
     permissions:
+      actions: read
       contents: write
       packages: write
-      pull-requests: write
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    env:
-      GITHUB_ACTOR: ${{ github.actor }}
-      GITHUB_TOKEN: ${{ github.token }}
-      PACKAGES_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
-        with:
-          distribution: temurin
-          java-version: "21"
-          cache: maven
-          server-id: github
-      - name: Resolve release version
-        id: version
-        run: |
-          current=$(mvn -B -ntp -s .github/maven-settings.xml -q help:evaluate -Dexpression=project.version -DforceStdout)
-          if [[ ! "$current" =~ ^([0-9]+\.[0-9]+\.[0-9]+)\.([0-9]+)-SNAPSHOT$ ]]; then
-            echo "::error::Expected version X.Y.Z.N-SNAPSHOT with integer N, found '$current'"
-            exit 1
-          fi
-          base=${BASH_REMATCH[1]}
-          floor=${BASH_REMATCH[2]}
-          last=$(git ls-remote --tags --refs origin "refs/tags/v${base}.*" | sed -E "s#.*refs/tags/v${base}\.##" | grep -E '^[0-9]+$' | sort -n | tail -1 || true)
-          if [ -z "$last" ]; then revision=$floor; else revision=$(( floor > last ? floor : last + 1 )); fi
-          echo "release=${base}.${revision}" >> "$GITHUB_OUTPUT"
-      - name: Fail if tag exists
-        run: |
-          if git ls-remote --exit-code --tags origin "refs/tags/v${{ steps.version.outputs.release }}"; then
-            echo "::error::Tag v${{ steps.version.outputs.release }} already exists"
-            exit 1
-          fi
-      - name: Set release version
-        run: mvn -B -ntp -s .github/maven-settings.xml versions:set -DnewVersion=${{ steps.version.outputs.release }} -DgenerateBackupPoms=false
-      - name: Deploy to GitHub Packages
-        run: mvn -B -ntp -s .github/maven-settings.xml deploy -DdeployAtEnd=false -Prelease -Dproject.build.outputTimestamp="$(git log -1 --format=%cI)"
-      - name: Tag and create GitHub release
-        run: gh release create "v${{ steps.version.outputs.release }}" --target "$GITHUB_SHA" --generate-notes
-        env:
-          GH_TOKEN: ${{ github.token }}
-    outputs:
-      release: ${{ steps.version.outputs.release }}
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    uses: piotr-janczukowicz/common-parent/.github/workflows/reusable-release-package.yml@fe405361177409155ca46773fdb6b9090ffad722 # v13
+    secrets: inherit
 
   next-snapshot:
     needs: release
     permissions:
       contents: write
       pull-requests: write
-    uses: piotr-janczukowicz/common-parent/.github/workflows/next-snapshot.yml@61adf0e1e2fe23c89d195f45b41d9aa2a2521ec2 # v12
+    uses: piotr-janczukowicz/common-parent/.github/workflows/reusable-next-snapshot.yml@fe405361177409155ca46773fdb6b9090ffad722 # v13
     secrets: inherit
     with:
       tag: v${{ needs.release.outputs.release }}
