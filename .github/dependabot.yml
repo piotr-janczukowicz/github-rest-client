@@ -36,6 +36,8 @@ updates:
       - github-common-test-support
     schedule:
       interval: weekly
+    commit-message:
+      prefix: build(deps)
     groups:
       maven:
         patterns: ["*"]
@@ -43,6 +45,8 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    commit-message:
+      prefix: ci(deps)
     groups:
       actions:
         patterns: ["*"]
