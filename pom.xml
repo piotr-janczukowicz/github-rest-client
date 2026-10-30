@@ -20,7 +20,7 @@
   <properties>
     <common-util.version>9</common-util.version>
     <common-json.version>8</common-json.version>
-    <common-http.version>5</common-http.version>
+    <common-http.version>6</common-http.version>
     <common-test-support.version>5</common-test-support.version>
     <test.module.args>--add-modules jdk.httpserver --add-reads io.github.piotr_janczukowicz.githubrestclient=jdk.httpserver --add-opens io.github.piotr_janczukowicz.githubrestclient/io.github.piotr_janczukowicz.test.support=common.util --add-opens io.github.piotr_janczukowicz.githubrestclient/io.github.piotr_janczukowicz.test=ALL-UNNAMED</test.module.args>
   </properties>
