@@ -40,14 +40,14 @@ class GitHubOrgMembershipRoleTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubOrgMembershipRole decoded = GitHubOrgMembershipRole.fromWire(wire);
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubOrgMembershipRole.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubOrgMembershipRole.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

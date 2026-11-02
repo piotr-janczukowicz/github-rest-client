@@ -39,7 +39,7 @@ class GitHubListAutomationsItemTriggersAutomationCompletedTest {
         final GitHubListAutomationsItemTriggersAutomationCompletedBuilder builder =
                 GitHubListAutomationsItemTriggersAutomationCompletedBuilder.builder(
                                 AgentAutomationsCatalogFixtures.listAutomationsItemTriggersAutomationCompleted())
-                        .automationIds(List.of("a", "a", "a", "a"));
+                        .automationIds(List.of("automation_ids", "automation_ids", "automation_ids", "automation_ids"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
@@ -51,7 +51,7 @@ class GitHubListAutomationsItemTriggersAutomationCompletedTest {
         final GitHubListAutomationsItemTriggersAutomationCompletedBuilder builder =
                 GitHubListAutomationsItemTriggersAutomationCompletedBuilder.builder(
                                 AgentAutomationsCatalogFixtures.listAutomationsItemTriggersAutomationCompleted())
-                        .automationIds(List.of("a", "a"));
+                        .automationIds(List.of("automation_ids", "automation_ids"));
 
         final Throwable thrown = catchThrowable(builder::build);
 

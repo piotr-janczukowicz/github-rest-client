@@ -1,0 +1,12 @@
+{
+  "path": "path",
+  "start_line": 1,
+  "end_line": 1,
+  "start_column": 1,
+  "end_column": 1,
+  "blob_sha": "blob_sha",
+  "commit_sha": "commit_sha",
+  "html_url": "https://api.github.com/html_url",
+  "content_number": 1,
+  "content_id": 1
+}

@@ -18,7 +18,7 @@ public enum GitHubMetaResourceType {
     /** Group. */
     GROUP("Group"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubMetaResourceType> WIRE_INDEX =
             EnumUtils.index(GitHubMetaResourceType.class, GitHubMetaResourceType::wireValue);
@@ -50,6 +50,6 @@ public enum GitHubMetaResourceType {
     public static GitHubMetaResourceType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

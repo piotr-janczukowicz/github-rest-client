@@ -3,7 +3,9 @@ package io.github.piotr_janczukowicz.github.api.users;
 import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonNull;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
+import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubPublicMonitoringAlertSecretAuthor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import org.jspecify.annotations.Nullable;
 
@@ -33,6 +35,8 @@ import org.jspecify.annotations.Nullable;
  * @param starredAt Starred at
  * @param userViewType User view type
  */
+// The implemented sealed interface carries the deduction; this type itself decodes as a plain record.
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @CatalogSchema("components/schemas/simple-user")
 @RecordBuilder
@@ -58,7 +62,8 @@ public record GitHubSimpleUser(
         String type,
         boolean siteAdmin,
         @Nullable String starredAt,
-        @Nullable GitHubUserViewType userViewType) {
+        @Nullable GitHubUserViewType userViewType)
+        implements GitHubPublicMonitoringAlertSecretAuthor {
 
     public GitHubSimpleUser {
         requireNonNull(login, "login");

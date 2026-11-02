@@ -22,7 +22,7 @@ class GitHubListTasksTaskTest {
         final GitHubListTasksTask task =
                 GitHubJsonCodecs.defaults().decode(json.getBytes(StandardCharsets.UTF_8), GitHubListTasksTask.class);
 
-        assertThat(task.state()).isEqualTo(GitHubListTasksTaskState.UNKNOWN);
+        assertThat(task.state()).isEqualTo(GitHubListTasksTaskState.UNRECOGNIZED);
     }
 
     @Test

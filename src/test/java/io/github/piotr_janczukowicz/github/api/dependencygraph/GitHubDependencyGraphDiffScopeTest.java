@@ -31,11 +31,14 @@ class GitHubDependencyGraphDiffScopeTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubDependencyGraphDiffScope decoded = GitHubDependencyGraphDiffScope.fromWire(wire);
 
-        assertThat(decoded).isEqualTo(GitHubDependencyGraphDiffScope.UNKNOWN);
+        assertSoftly(softly -> {
+            softly.assertThat(decoded).isEqualTo(GitHubDependencyGraphDiffScope.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
+        });
     }
 }

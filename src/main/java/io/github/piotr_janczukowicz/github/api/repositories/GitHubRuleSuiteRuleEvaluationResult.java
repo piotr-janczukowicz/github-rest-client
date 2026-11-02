@@ -13,7 +13,7 @@ public enum GitHubRuleSuiteRuleEvaluationResult {
     PASS("pass"),
     FAIL("fail"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubRuleSuiteRuleEvaluationResult> WIRE_INDEX =
             EnumUtils.index(GitHubRuleSuiteRuleEvaluationResult.class, GitHubRuleSuiteRuleEvaluationResult::wireValue);
@@ -45,6 +45,6 @@ public enum GitHubRuleSuiteRuleEvaluationResult {
     public static GitHubRuleSuiteRuleEvaluationResult fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

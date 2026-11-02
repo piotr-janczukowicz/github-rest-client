@@ -13,7 +13,7 @@ public enum GitHubCodeScanningDefaultSetupQuerySuite {
     DEFAULT("default"),
     EXTENDED("extended"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningDefaultSetupQuerySuite> WIRE_INDEX = EnumUtils.index(
             GitHubCodeScanningDefaultSetupQuerySuite.class, GitHubCodeScanningDefaultSetupQuerySuite::wireValue);
@@ -45,6 +45,6 @@ public enum GitHubCodeScanningDefaultSetupQuerySuite {
     public static GitHubCodeScanningDefaultSetupQuerySuite fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

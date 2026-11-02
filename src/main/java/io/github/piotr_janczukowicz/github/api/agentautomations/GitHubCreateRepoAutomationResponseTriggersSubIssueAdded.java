@@ -10,12 +10,16 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Configuration of the sub issue added trigger.
+ * Sub issue added.
  *
  * @param query A GitHub issue or pull request search query.
  * @param writeScope Override the Automation {@code write_scope} for runs started by this trigger. If omitted, the
  *     automation's {@code write_scope} is used. Organization or repository policy may restrict the effective scope to
- *     {@code trigger}.
+ *     {@code trigger}. Explicitly setting {@code repository} on create or edit returns 422 when policy validation is
+ *     enabled and that policy applies.
+ * @param allowCopilotTriggers When true, events Copilot creates, including from other automations and Copilot sessions,
+ *     can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it
+ *     on: creating a trigger with true, or changing it from false to true, returns 422.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
@@ -23,7 +27,8 @@ import org.jspecify.annotations.Nullable;
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public record GitHubCreateRepoAutomationResponseTriggersSubIssueAdded(
         @Nullable String query,
-        @Nullable GitHubCreateRepoAutomationResponseTriggersSubIssueAddedWriteScope writeScope) {
+        @Nullable GitHubAutomationWriteScope writeScope,
+        @Nullable Boolean allowCopilotTriggers) {
     public GitHubCreateRepoAutomationResponseTriggersSubIssueAdded {
         requireMinLengthIfPresent(query, 1, "query");
     }

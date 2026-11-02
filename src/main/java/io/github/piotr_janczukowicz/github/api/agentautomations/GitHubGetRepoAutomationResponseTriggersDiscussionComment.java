@@ -13,14 +13,18 @@ import java.util.List;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Configuration of the discussion comment trigger.
+ * Discussion comment.
  *
  * @param commentTypes Top-level discussion comments and replies to match. Omit to match both.
  * @param categories Discussion category names matched case-insensitively.
  * @param bodySubstring A case-insensitive substring matched against the event body.
  * @param writeScope Override the Automation {@code write_scope} for runs started by this trigger. If omitted, the
  *     automation's {@code write_scope} is used. Organization or repository policy may restrict the effective scope to
- *     {@code trigger}.
+ *     {@code trigger}. Explicitly setting {@code repository} on create or edit returns 422 when policy validation is
+ *     enabled and that policy applies.
+ * @param allowCopilotTriggers When true, events Copilot creates, including from other automations and Copilot sessions,
+ *     can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it
+ *     on: creating a trigger with true, or changing it from false to true, returns 422.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
@@ -30,10 +34,11 @@ public record GitHubGetRepoAutomationResponseTriggersDiscussionComment(
         @Nullable List<GitHubGetRepoAutomationResponseTriggersDiscussionCommentCommentType> commentTypes,
         @Nullable List<String> categories,
         @Nullable String bodySubstring,
-        @Nullable GitHubGetRepoAutomationResponseTriggersDiscussionCommentWriteScope writeScope) {
+        @Nullable GitHubAutomationWriteScope writeScope,
+        @Nullable Boolean allowCopilotTriggers) {
     public GitHubGetRepoAutomationResponseTriggersDiscussionComment {
         if (commentTypes != null) {
-            requireUniqueItems(requireSizeBetween(commentTypes, 1, 2, "commentTypes"), "commentTypes");
+            requireSizeBetween(commentTypes, 1, 2, "commentTypes");
         }
         if (categories != null) {
             requireUniqueItems(requireNonEmpty(categories, "categories"), "categories");

@@ -13,7 +13,7 @@ public enum GitHubRunnerLabelType {
     READ_ONLY("read-only"),
     CUSTOM("custom"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubRunnerLabelType> WIRE_INDEX =
             EnumUtils.index(GitHubRunnerLabelType.class, GitHubRunnerLabelType::wireValue);
@@ -45,6 +45,6 @@ public enum GitHubRunnerLabelType {
     public static GitHubRunnerLabelType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

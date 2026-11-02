@@ -7,155 +7,12 @@ final class AgentAutomationsCatalogFixtures {
 
     private AgentAutomationsCatalogFixtures() {}
 
-    static GitHubListAutomationsItem listAutomationsItem() {
-        return new GitHubListAutomationsItem(
-                "automation-1",
-                listAutomationsItemRepository(),
-                "Nightly triage",
-                true,
-                listAutomationsItemOwnerType(),
-                listAutomationsItemWriteScope(),
-                true,
-                "gpt-5",
-                "medium",
-                listAutomationsItemTriggers(),
-                Instant.parse("2026-01-10T12:00:00Z"),
-                Instant.parse("2026-01-10T12:00:00Z"),
-                listAutomationsItemCreatedBy());
-    }
-
-    static GitHubListAutomationsItemRepository listAutomationsItemRepository() {
-        return new GitHubListAutomationsItemRepository(1L, "octocat", "Nightly triage");
-    }
-
-    static GitHubListAutomationsItemOwnerType listAutomationsItemOwnerType() {
-        return GitHubListAutomationsItemOwnerType.USER;
-    }
-
-    static GitHubListAutomationsItemWriteScope listAutomationsItemWriteScope() {
-        return GitHubListAutomationsItemWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggers listAutomationsItemTriggers() {
-        return new GitHubListAutomationsItemTriggers(
-                listAutomationsItemTriggersInterval(),
-                listAutomationsItemTriggersIssueOpened(),
-                listAutomationsItemTriggersIssueLabeled(),
-                listAutomationsItemTriggersWorkflowRun(),
-                listAutomationsItemTriggersPullRequestOpened(),
-                listAutomationsItemTriggersPullRequestSynchronize(),
-                listAutomationsItemTriggersPullRequestMerged(),
-                listAutomationsItemTriggersIssueComment(),
-                listAutomationsItemTriggersPullRequestComment(),
-                listAutomationsItemTriggersDiscussionOpened(),
-                listAutomationsItemTriggersDiscussionUpdated(),
-                listAutomationsItemTriggersDiscussionComment(),
-                listAutomationsItemTriggersIssueAssigned(),
-                listAutomationsItemTriggersPullRequestAssigned(),
-                listAutomationsItemTriggersSubIssueAdded(),
-                listAutomationsItemTriggersPullRequestReadyForReview(),
-                listAutomationsItemTriggersPullRequestLabeled(),
-                listAutomationsItemTriggersPullRequestMergeConflict(),
-                listAutomationsItemTriggersPullRequestReviewSubmitted(),
-                listAutomationsItemTriggersPullRequestReviewRequested(),
-                listAutomationsItemTriggersAutomationCompleted());
-    }
-
-    static GitHubListAutomationsItemTriggersInterval listAutomationsItemTriggersInterval() {
-        return new GitHubListAutomationsItemTriggersInterval(
-                List.of(listAutomationsItemTriggersIntervalCadence()),
-                9,
-                1,
-                GitHubAutomationMinuteUtc.FIFTEEN,
-                listAutomationsItemTriggersIntervalWriteScope());
-    }
-
     static GitHubListAutomationsItemTriggersIntervalCadence listAutomationsItemTriggersIntervalCadence() {
         return GitHubListAutomationsItemTriggersIntervalCadence.HOURLY;
     }
 
-    static GitHubListAutomationsItemTriggersIntervalWriteScope listAutomationsItemTriggersIntervalWriteScope() {
-        return GitHubListAutomationsItemTriggersIntervalWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersIssueOpened listAutomationsItemTriggersIssueOpened() {
-        return new GitHubListAutomationsItemTriggersIssueOpened(
-                "is:open label:bug", listAutomationsItemTriggersIssueOpenedWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersIssueOpenedWriteScope listAutomationsItemTriggersIssueOpenedWriteScope() {
-        return GitHubListAutomationsItemTriggersIssueOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersIssueLabeled listAutomationsItemTriggersIssueLabeled() {
-        return new GitHubListAutomationsItemTriggersIssueLabeled(
-                "is:open label:bug", List.of("bug"), listAutomationsItemTriggersIssueLabeledWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersIssueLabeledWriteScope listAutomationsItemTriggersIssueLabeledWriteScope() {
-        return GitHubListAutomationsItemTriggersIssueLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersWorkflowRun listAutomationsItemTriggersWorkflowRun() {
-        return new GitHubListAutomationsItemTriggersWorkflowRun(
-                List.of("CI"),
-                List.of(listAutomationsItemTriggersWorkflowRunConclusion()),
-                "is:open label:bug",
-                listAutomationsItemTriggersWorkflowRunWriteScope());
-    }
-
     static GitHubListAutomationsItemTriggersWorkflowRunConclusion listAutomationsItemTriggersWorkflowRunConclusion() {
         return GitHubListAutomationsItemTriggersWorkflowRunConclusion.FAILURE;
-    }
-
-    static GitHubListAutomationsItemTriggersWorkflowRunWriteScope listAutomationsItemTriggersWorkflowRunWriteScope() {
-        return GitHubListAutomationsItemTriggersWorkflowRunWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestOpened listAutomationsItemTriggersPullRequestOpened() {
-        return new GitHubListAutomationsItemTriggersPullRequestOpened(
-                "is:open label:bug", List.of("src/**"), listAutomationsItemTriggersPullRequestOpenedWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestOpenedWriteScope
-            listAutomationsItemTriggersPullRequestOpenedWriteScope() {
-        return GitHubListAutomationsItemTriggersPullRequestOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestSynchronize listAutomationsItemTriggersPullRequestSynchronize() {
-        return new GitHubListAutomationsItemTriggersPullRequestSynchronize(
-                "is:open label:bug", List.of("src/**"), listAutomationsItemTriggersPullRequestSynchronizeWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestSynchronizeWriteScope
-            listAutomationsItemTriggersPullRequestSynchronizeWriteScope() {
-        return GitHubListAutomationsItemTriggersPullRequestSynchronizeWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestMerged listAutomationsItemTriggersPullRequestMerged() {
-        return new GitHubListAutomationsItemTriggersPullRequestMerged(
-                "is:open label:bug", List.of("src/**"), listAutomationsItemTriggersPullRequestMergedWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestMergedWriteScope
-            listAutomationsItemTriggersPullRequestMergedWriteScope() {
-        return GitHubListAutomationsItemTriggersPullRequestMergedWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersIssueComment listAutomationsItemTriggersIssueComment() {
-        return new GitHubListAutomationsItemTriggersIssueComment(
-                "/triage", listAutomationsItemTriggersIssueCommentWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersIssueCommentWriteScope listAutomationsItemTriggersIssueCommentWriteScope() {
-        return GitHubListAutomationsItemTriggersIssueCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestComment listAutomationsItemTriggersPullRequestComment() {
-        return new GitHubListAutomationsItemTriggersPullRequestComment(
-                List.of(listAutomationsItemTriggersPullRequestCommentCommentType()),
-                "/triage",
-                listAutomationsItemTriggersPullRequestCommentWriteScope());
     }
 
     static GitHubListAutomationsItemTriggersPullRequestCommentCommentType
@@ -163,128 +20,9 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubListAutomationsItemTriggersPullRequestCommentCommentType.TIMELINE_COMMENT;
     }
 
-    static GitHubListAutomationsItemTriggersPullRequestCommentWriteScope
-            listAutomationsItemTriggersPullRequestCommentWriteScope() {
-        return GitHubListAutomationsItemTriggersPullRequestCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersDiscussionOpened listAutomationsItemTriggersDiscussionOpened() {
-        return new GitHubListAutomationsItemTriggersDiscussionOpened(
-                List.of("General"), "/triage", listAutomationsItemTriggersDiscussionOpenedWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersDiscussionOpenedWriteScope
-            listAutomationsItemTriggersDiscussionOpenedWriteScope() {
-        return GitHubListAutomationsItemTriggersDiscussionOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersDiscussionUpdated listAutomationsItemTriggersDiscussionUpdated() {
-        return new GitHubListAutomationsItemTriggersDiscussionUpdated(
-                List.of("General"), "/triage", listAutomationsItemTriggersDiscussionUpdatedWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersDiscussionUpdatedWriteScope
-            listAutomationsItemTriggersDiscussionUpdatedWriteScope() {
-        return GitHubListAutomationsItemTriggersDiscussionUpdatedWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersDiscussionComment listAutomationsItemTriggersDiscussionComment() {
-        return new GitHubListAutomationsItemTriggersDiscussionComment(
-                List.of(listAutomationsItemTriggersDiscussionCommentCommentType()),
-                List.of("General"),
-                "/triage",
-                listAutomationsItemTriggersDiscussionCommentWriteScope());
-    }
-
     static GitHubListAutomationsItemTriggersDiscussionCommentCommentType
             listAutomationsItemTriggersDiscussionCommentCommentType() {
         return GitHubListAutomationsItemTriggersDiscussionCommentCommentType.COMMENT;
-    }
-
-    static GitHubListAutomationsItemTriggersDiscussionCommentWriteScope
-            listAutomationsItemTriggersDiscussionCommentWriteScope() {
-        return GitHubListAutomationsItemTriggersDiscussionCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersIssueAssigned listAutomationsItemTriggersIssueAssigned() {
-        return new GitHubListAutomationsItemTriggersIssueAssigned(
-                "is:open label:bug", List.of("octocat"), listAutomationsItemTriggersIssueAssignedWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersIssueAssignedWriteScope
-            listAutomationsItemTriggersIssueAssignedWriteScope() {
-        return GitHubListAutomationsItemTriggersIssueAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestAssigned listAutomationsItemTriggersPullRequestAssigned() {
-        return new GitHubListAutomationsItemTriggersPullRequestAssigned(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("octocat"),
-                listAutomationsItemTriggersPullRequestAssignedWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestAssignedWriteScope
-            listAutomationsItemTriggersPullRequestAssignedWriteScope() {
-        return GitHubListAutomationsItemTriggersPullRequestAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersSubIssueAdded listAutomationsItemTriggersSubIssueAdded() {
-        return new GitHubListAutomationsItemTriggersSubIssueAdded(
-                "is:open label:bug", listAutomationsItemTriggersSubIssueAddedWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersSubIssueAddedWriteScope
-            listAutomationsItemTriggersSubIssueAddedWriteScope() {
-        return GitHubListAutomationsItemTriggersSubIssueAddedWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestReadyForReview
-            listAutomationsItemTriggersPullRequestReadyForReview() {
-        return new GitHubListAutomationsItemTriggersPullRequestReadyForReview(
-                "is:open label:bug",
-                List.of("src/**"),
-                listAutomationsItemTriggersPullRequestReadyForReviewWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestReadyForReviewWriteScope
-            listAutomationsItemTriggersPullRequestReadyForReviewWriteScope() {
-        return GitHubListAutomationsItemTriggersPullRequestReadyForReviewWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestLabeled listAutomationsItemTriggersPullRequestLabeled() {
-        return new GitHubListAutomationsItemTriggersPullRequestLabeled(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("bug"),
-                listAutomationsItemTriggersPullRequestLabeledWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestLabeledWriteScope
-            listAutomationsItemTriggersPullRequestLabeledWriteScope() {
-        return GitHubListAutomationsItemTriggersPullRequestLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestMergeConflict
-            listAutomationsItemTriggersPullRequestMergeConflict() {
-        return new GitHubListAutomationsItemTriggersPullRequestMergeConflict(
-                "is:open label:bug",
-                List.of("src/**"),
-                listAutomationsItemTriggersPullRequestMergeConflictWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestMergeConflictWriteScope
-            listAutomationsItemTriggersPullRequestMergeConflictWriteScope() {
-        return GitHubListAutomationsItemTriggersPullRequestMergeConflictWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersPullRequestReviewSubmitted
-            listAutomationsItemTriggersPullRequestReviewSubmitted() {
-        return new GitHubListAutomationsItemTriggersPullRequestReviewSubmitted(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of(listAutomationsItemTriggersPullRequestReviewSubmittedState()),
-                listAutomationsItemTriggersPullRequestReviewSubmittedWriteScope());
     }
 
     static GitHubListAutomationsItemTriggersPullRequestReviewSubmittedState
@@ -292,584 +30,56 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubListAutomationsItemTriggersPullRequestReviewSubmittedState.APPROVED;
     }
 
-    static GitHubListAutomationsItemTriggersPullRequestReviewSubmittedWriteScope
-            listAutomationsItemTriggersPullRequestReviewSubmittedWriteScope() {
-        return GitHubListAutomationsItemTriggersPullRequestReviewSubmittedWriteScope.TRIGGER;
+    static GitHubListAvailableRepoAutomationTriggersItemFieldSchemaString
+            listAvailableRepoAutomationTriggersItemFieldSchemaString() {
+        return new GitHubListAvailableRepoAutomationTriggersItemFieldSchemaString(
+                listAvailableRepoAutomationTriggersItemFieldSchemaStringType(), List.of("low", "high"), 1);
     }
 
-    static GitHubListAutomationsItemTriggersPullRequestReviewRequested
-            listAutomationsItemTriggersPullRequestReviewRequested() {
-        return new GitHubListAutomationsItemTriggersPullRequestReviewRequested(
-                "is:open label:bug",
-                List.of("src/**"),
-                listAutomationsItemTriggersPullRequestReviewRequestedWriteScope());
+    static GitHubListAvailableRepoAutomationTriggersItemFieldSchemaStringType
+            listAvailableRepoAutomationTriggersItemFieldSchemaStringType() {
+        return GitHubListAvailableRepoAutomationTriggersItemFieldSchemaStringType.STRING;
     }
 
-    static GitHubListAutomationsItemTriggersPullRequestReviewRequestedWriteScope
-            listAutomationsItemTriggersPullRequestReviewRequestedWriteScope() {
-        return GitHubListAutomationsItemTriggersPullRequestReviewRequestedWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemTriggersAutomationCompleted listAutomationsItemTriggersAutomationCompleted() {
-        return new GitHubListAutomationsItemTriggersAutomationCompleted(
-                List.of("automation-2"), listAutomationsItemTriggersAutomationCompletedWriteScope());
-    }
-
-    static GitHubListAutomationsItemTriggersAutomationCompletedWriteScope
-            listAutomationsItemTriggersAutomationCompletedWriteScope() {
-        return GitHubListAutomationsItemTriggersAutomationCompletedWriteScope.TRIGGER;
-    }
-
-    static GitHubListAutomationsItemCreatedBy listAutomationsItemCreatedBy() {
-        return new GitHubListAutomationsItemCreatedBy(1L);
-    }
-
-    static GitHubListAvailableAutomationToolsItem listAvailableAutomationToolsItem() {
-        return new GitHubListAvailableAutomationToolsItem(
-                "automation-1", "Issue tools", List.of(listAvailableAutomationToolsItemTool()));
-    }
-
-    static GitHubListAvailableAutomationToolsItemTool listAvailableAutomationToolsItemTool() {
-        return new GitHubListAvailableAutomationToolsItemTool(
-                "automation-1",
-                "Issue tools",
-                "Reads issues and pull requests.",
-                listAvailableAutomationToolsItemToolScope());
-    }
-
-    static GitHubListAvailableAutomationToolsItemToolScope listAvailableAutomationToolsItemToolScope() {
-        return GitHubListAvailableAutomationToolsItemToolScope.READ;
-    }
-
-    static GitHubListAvailableAutomationTriggersItem listAvailableAutomationTriggersItem() {
-        return new GitHubListAvailableAutomationTriggersItem(
-                "automation-1",
-                "Issue tools",
-                "Reads issues and pull requests.",
-                List.of(listAvailableAutomationTriggersItemField()),
-                true);
-    }
-
-    static GitHubListAvailableAutomationTriggersItemField listAvailableAutomationTriggersItemField() {
-        return new GitHubListAvailableAutomationTriggersItemField(
-                "automation-1",
-                "Branch",
-                true,
-                "Reads issues and pull requests.",
-                listAvailableAutomationTriggersItemFieldSchemaString());
-    }
-
-    static GitHubListAvailableAutomationTriggersItemFieldSchemaString
-            listAvailableAutomationTriggersItemFieldSchemaString() {
-        return new GitHubListAvailableAutomationTriggersItemFieldSchemaString(
-                listAvailableAutomationTriggersItemFieldSchemaStringType(), List.of("low", "high"), 1);
-    }
-
-    static GitHubListAvailableAutomationTriggersItemFieldSchemaStringType
-            listAvailableAutomationTriggersItemFieldSchemaStringType() {
-        return GitHubListAvailableAutomationTriggersItemFieldSchemaStringType.STRING;
-    }
-
-    static GitHubListAvailableAutomationTriggersItemFieldSchemaArray
-            listAvailableAutomationTriggersItemFieldSchemaArray() {
-        return new GitHubListAvailableAutomationTriggersItemFieldSchemaArray(
-                listAvailableAutomationTriggersItemFieldSchemaArrayType(),
-                listAvailableAutomationTriggersItemFieldSchemaArrayItems(),
+    static GitHubListAvailableRepoAutomationTriggersItemFieldSchemaArray
+            listAvailableRepoAutomationTriggersItemFieldSchemaArray() {
+        return new GitHubListAvailableRepoAutomationTriggersItemFieldSchemaArray(
+                listAvailableRepoAutomationTriggersItemFieldSchemaArrayType(),
+                listAvailableRepoAutomationTriggersItemFieldSchemaArrayItems(),
                 1,
                 1,
                 true);
     }
 
-    static GitHubListAvailableAutomationTriggersItemFieldSchemaArrayType
-            listAvailableAutomationTriggersItemFieldSchemaArrayType() {
-        return GitHubListAvailableAutomationTriggersItemFieldSchemaArrayType.ARRAY;
+    static GitHubListAvailableRepoAutomationTriggersItemFieldSchemaArrayType
+            listAvailableRepoAutomationTriggersItemFieldSchemaArrayType() {
+        return GitHubListAvailableRepoAutomationTriggersItemFieldSchemaArrayType.ARRAY;
     }
 
-    static GitHubListAvailableAutomationTriggersItemFieldSchemaArrayItems
-            listAvailableAutomationTriggersItemFieldSchemaArrayItems() {
-        return new GitHubListAvailableAutomationTriggersItemFieldSchemaArrayItems(
-                listAvailableAutomationTriggersItemFieldSchemaArrayItemsType(), List.of("low", "high"), 1);
+    static GitHubListAvailableRepoAutomationTriggersItemFieldSchemaArrayItems
+            listAvailableRepoAutomationTriggersItemFieldSchemaArrayItems() {
+        return new GitHubListAvailableRepoAutomationTriggersItemFieldSchemaArrayItems(
+                listAvailableRepoAutomationTriggersItemFieldSchemaArrayItemsType(), List.of("low", "high"), 1);
     }
 
-    static GitHubListAvailableAutomationTriggersItemFieldSchemaArrayItemsType
-            listAvailableAutomationTriggersItemFieldSchemaArrayItemsType() {
-        return GitHubListAvailableAutomationTriggersItemFieldSchemaArrayItemsType.STRING;
+    static GitHubListAvailableRepoAutomationTriggersItemFieldSchemaArrayItemsType
+            listAvailableRepoAutomationTriggersItemFieldSchemaArrayItemsType() {
+        return GitHubListAvailableRepoAutomationTriggersItemFieldSchemaArrayItemsType.STRING;
     }
 
-    static GitHubListAvailableAutomationTriggersItemFieldSchemaInteger
-            listAvailableAutomationTriggersItemFieldSchemaInteger() {
-        return new GitHubListAvailableAutomationTriggersItemFieldSchemaInteger(
-                listAvailableAutomationTriggersItemFieldSchemaIntegerType(), List.of(1, 2), 0, 10);
+    static GitHubListAvailableRepoAutomationTriggersItemFieldSchemaInteger
+            listAvailableRepoAutomationTriggersItemFieldSchemaInteger() {
+        return new GitHubListAvailableRepoAutomationTriggersItemFieldSchemaInteger(
+                listAvailableRepoAutomationTriggersItemFieldSchemaIntegerType(), List.of(1, 2), 0, 10);
     }
 
-    static GitHubListAvailableAutomationTriggersItemFieldSchemaIntegerType
-            listAvailableAutomationTriggersItemFieldSchemaIntegerType() {
-        return GitHubListAvailableAutomationTriggersItemFieldSchemaIntegerType.INTEGER;
-    }
-
-    static GitHubGetAutomationResponse getAutomationResponse() {
-        return new GitHubGetAutomationResponse(
-                "automation-1",
-                getAutomationResponseRepository(),
-                "Nightly triage",
-                true,
-                getAutomationResponseOwnerType(),
-                getAutomationResponseWriteScope(),
-                true,
-                getAutomationResponseTriggers(),
-                "Triage new issues and label them.",
-                List.of("issues_read"),
-                List.of("triage-agent"),
-                "gpt-5",
-                "medium",
-                Instant.parse("2026-01-10T12:00:00Z"),
-                Instant.parse("2026-01-10T12:00:00Z"),
-                getAutomationResponseCreatedBy());
-    }
-
-    static GitHubGetAutomationResponseRepository getAutomationResponseRepository() {
-        return new GitHubGetAutomationResponseRepository(1L, "octocat", "Nightly triage");
-    }
-
-    static GitHubGetAutomationResponseOwnerType getAutomationResponseOwnerType() {
-        return GitHubGetAutomationResponseOwnerType.USER;
-    }
-
-    static GitHubGetAutomationResponseWriteScope getAutomationResponseWriteScope() {
-        return GitHubGetAutomationResponseWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggers getAutomationResponseTriggers() {
-        return new GitHubGetAutomationResponseTriggers(
-                getAutomationResponseTriggersInterval(),
-                getAutomationResponseTriggersIssueOpened(),
-                getAutomationResponseTriggersIssueLabeled(),
-                getAutomationResponseTriggersWorkflowRun(),
-                getAutomationResponseTriggersPullRequestOpened(),
-                getAutomationResponseTriggersPullRequestSynchronize(),
-                getAutomationResponseTriggersPullRequestMerged(),
-                getAutomationResponseTriggersIssueComment(),
-                getAutomationResponseTriggersPullRequestComment(),
-                getAutomationResponseTriggersDiscussionOpened(),
-                getAutomationResponseTriggersDiscussionUpdated(),
-                getAutomationResponseTriggersDiscussionComment(),
-                getAutomationResponseTriggersIssueAssigned(),
-                getAutomationResponseTriggersPullRequestAssigned(),
-                getAutomationResponseTriggersSubIssueAdded(),
-                getAutomationResponseTriggersPullRequestReadyForReview(),
-                getAutomationResponseTriggersPullRequestLabeled(),
-                getAutomationResponseTriggersPullRequestMergeConflict(),
-                getAutomationResponseTriggersPullRequestReviewSubmitted(),
-                getAutomationResponseTriggersPullRequestReviewRequested(),
-                getAutomationResponseTriggersAutomationCompleted());
-    }
-
-    static GitHubGetAutomationResponseTriggersInterval getAutomationResponseTriggersInterval() {
-        return new GitHubGetAutomationResponseTriggersInterval(
-                List.of(getAutomationResponseTriggersIntervalCadence()),
-                9,
-                1,
-                GitHubAutomationMinuteUtc.FIFTEEN,
-                getAutomationResponseTriggersIntervalWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersIntervalCadence getAutomationResponseTriggersIntervalCadence() {
-        return GitHubGetAutomationResponseTriggersIntervalCadence.HOURLY;
-    }
-
-    static GitHubGetAutomationResponseTriggersIntervalWriteScope getAutomationResponseTriggersIntervalWriteScope() {
-        return GitHubGetAutomationResponseTriggersIntervalWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersIssueOpened getAutomationResponseTriggersIssueOpened() {
-        return new GitHubGetAutomationResponseTriggersIssueOpened(
-                "is:open label:bug", getAutomationResponseTriggersIssueOpenedWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersIssueOpenedWriteScope
-            getAutomationResponseTriggersIssueOpenedWriteScope() {
-        return GitHubGetAutomationResponseTriggersIssueOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersIssueLabeled getAutomationResponseTriggersIssueLabeled() {
-        return new GitHubGetAutomationResponseTriggersIssueLabeled(
-                "is:open label:bug", List.of("bug"), getAutomationResponseTriggersIssueLabeledWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersIssueLabeledWriteScope
-            getAutomationResponseTriggersIssueLabeledWriteScope() {
-        return GitHubGetAutomationResponseTriggersIssueLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersWorkflowRun getAutomationResponseTriggersWorkflowRun() {
-        return new GitHubGetAutomationResponseTriggersWorkflowRun(
-                List.of("CI"),
-                List.of(getAutomationResponseTriggersWorkflowRunConclusion()),
-                "is:open label:bug",
-                getAutomationResponseTriggersWorkflowRunWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersWorkflowRunConclusion
-            getAutomationResponseTriggersWorkflowRunConclusion() {
-        return GitHubGetAutomationResponseTriggersWorkflowRunConclusion.FAILURE;
-    }
-
-    static GitHubGetAutomationResponseTriggersWorkflowRunWriteScope
-            getAutomationResponseTriggersWorkflowRunWriteScope() {
-        return GitHubGetAutomationResponseTriggersWorkflowRunWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestOpened getAutomationResponseTriggersPullRequestOpened() {
-        return new GitHubGetAutomationResponseTriggersPullRequestOpened(
-                "is:open label:bug", List.of("src/**"), getAutomationResponseTriggersPullRequestOpenedWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestOpenedWriteScope
-            getAutomationResponseTriggersPullRequestOpenedWriteScope() {
-        return GitHubGetAutomationResponseTriggersPullRequestOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestSynchronize
-            getAutomationResponseTriggersPullRequestSynchronize() {
-        return new GitHubGetAutomationResponseTriggersPullRequestSynchronize(
-                "is:open label:bug",
-                List.of("src/**"),
-                getAutomationResponseTriggersPullRequestSynchronizeWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestSynchronizeWriteScope
-            getAutomationResponseTriggersPullRequestSynchronizeWriteScope() {
-        return GitHubGetAutomationResponseTriggersPullRequestSynchronizeWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestMerged getAutomationResponseTriggersPullRequestMerged() {
-        return new GitHubGetAutomationResponseTriggersPullRequestMerged(
-                "is:open label:bug", List.of("src/**"), getAutomationResponseTriggersPullRequestMergedWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestMergedWriteScope
-            getAutomationResponseTriggersPullRequestMergedWriteScope() {
-        return GitHubGetAutomationResponseTriggersPullRequestMergedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersIssueComment getAutomationResponseTriggersIssueComment() {
-        return new GitHubGetAutomationResponseTriggersIssueComment(
-                "/triage", getAutomationResponseTriggersIssueCommentWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersIssueCommentWriteScope
-            getAutomationResponseTriggersIssueCommentWriteScope() {
-        return GitHubGetAutomationResponseTriggersIssueCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestComment getAutomationResponseTriggersPullRequestComment() {
-        return new GitHubGetAutomationResponseTriggersPullRequestComment(
-                List.of(getAutomationResponseTriggersPullRequestCommentCommentType()),
-                "/triage",
-                getAutomationResponseTriggersPullRequestCommentWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestCommentCommentType
-            getAutomationResponseTriggersPullRequestCommentCommentType() {
-        return GitHubGetAutomationResponseTriggersPullRequestCommentCommentType.TIMELINE_COMMENT;
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestCommentWriteScope
-            getAutomationResponseTriggersPullRequestCommentWriteScope() {
-        return GitHubGetAutomationResponseTriggersPullRequestCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersDiscussionOpened getAutomationResponseTriggersDiscussionOpened() {
-        return new GitHubGetAutomationResponseTriggersDiscussionOpened(
-                List.of("General"), "/triage", getAutomationResponseTriggersDiscussionOpenedWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersDiscussionOpenedWriteScope
-            getAutomationResponseTriggersDiscussionOpenedWriteScope() {
-        return GitHubGetAutomationResponseTriggersDiscussionOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersDiscussionUpdated getAutomationResponseTriggersDiscussionUpdated() {
-        return new GitHubGetAutomationResponseTriggersDiscussionUpdated(
-                List.of("General"), "/triage", getAutomationResponseTriggersDiscussionUpdatedWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersDiscussionUpdatedWriteScope
-            getAutomationResponseTriggersDiscussionUpdatedWriteScope() {
-        return GitHubGetAutomationResponseTriggersDiscussionUpdatedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersDiscussionComment getAutomationResponseTriggersDiscussionComment() {
-        return new GitHubGetAutomationResponseTriggersDiscussionComment(
-                List.of(getAutomationResponseTriggersDiscussionCommentCommentType()),
-                List.of("General"),
-                "/triage",
-                getAutomationResponseTriggersDiscussionCommentWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersDiscussionCommentCommentType
-            getAutomationResponseTriggersDiscussionCommentCommentType() {
-        return GitHubGetAutomationResponseTriggersDiscussionCommentCommentType.COMMENT;
-    }
-
-    static GitHubGetAutomationResponseTriggersDiscussionCommentWriteScope
-            getAutomationResponseTriggersDiscussionCommentWriteScope() {
-        return GitHubGetAutomationResponseTriggersDiscussionCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersIssueAssigned getAutomationResponseTriggersIssueAssigned() {
-        return new GitHubGetAutomationResponseTriggersIssueAssigned(
-                "is:open label:bug", List.of("octocat"), getAutomationResponseTriggersIssueAssignedWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersIssueAssignedWriteScope
-            getAutomationResponseTriggersIssueAssignedWriteScope() {
-        return GitHubGetAutomationResponseTriggersIssueAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestAssigned getAutomationResponseTriggersPullRequestAssigned() {
-        return new GitHubGetAutomationResponseTriggersPullRequestAssigned(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("octocat"),
-                getAutomationResponseTriggersPullRequestAssignedWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestAssignedWriteScope
-            getAutomationResponseTriggersPullRequestAssignedWriteScope() {
-        return GitHubGetAutomationResponseTriggersPullRequestAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersSubIssueAdded getAutomationResponseTriggersSubIssueAdded() {
-        return new GitHubGetAutomationResponseTriggersSubIssueAdded(
-                "is:open label:bug", getAutomationResponseTriggersSubIssueAddedWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersSubIssueAddedWriteScope
-            getAutomationResponseTriggersSubIssueAddedWriteScope() {
-        return GitHubGetAutomationResponseTriggersSubIssueAddedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestReadyForReview
-            getAutomationResponseTriggersPullRequestReadyForReview() {
-        return new GitHubGetAutomationResponseTriggersPullRequestReadyForReview(
-                "is:open label:bug",
-                List.of("src/**"),
-                getAutomationResponseTriggersPullRequestReadyForReviewWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestReadyForReviewWriteScope
-            getAutomationResponseTriggersPullRequestReadyForReviewWriteScope() {
-        return GitHubGetAutomationResponseTriggersPullRequestReadyForReviewWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestLabeled getAutomationResponseTriggersPullRequestLabeled() {
-        return new GitHubGetAutomationResponseTriggersPullRequestLabeled(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("bug"),
-                getAutomationResponseTriggersPullRequestLabeledWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestLabeledWriteScope
-            getAutomationResponseTriggersPullRequestLabeledWriteScope() {
-        return GitHubGetAutomationResponseTriggersPullRequestLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestMergeConflict
-            getAutomationResponseTriggersPullRequestMergeConflict() {
-        return new GitHubGetAutomationResponseTriggersPullRequestMergeConflict(
-                "is:open label:bug",
-                List.of("src/**"),
-                getAutomationResponseTriggersPullRequestMergeConflictWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestMergeConflictWriteScope
-            getAutomationResponseTriggersPullRequestMergeConflictWriteScope() {
-        return GitHubGetAutomationResponseTriggersPullRequestMergeConflictWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestReviewSubmitted
-            getAutomationResponseTriggersPullRequestReviewSubmitted() {
-        return new GitHubGetAutomationResponseTriggersPullRequestReviewSubmitted(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of(getAutomationResponseTriggersPullRequestReviewSubmittedState()),
-                getAutomationResponseTriggersPullRequestReviewSubmittedWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestReviewSubmittedState
-            getAutomationResponseTriggersPullRequestReviewSubmittedState() {
-        return GitHubGetAutomationResponseTriggersPullRequestReviewSubmittedState.APPROVED;
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestReviewSubmittedWriteScope
-            getAutomationResponseTriggersPullRequestReviewSubmittedWriteScope() {
-        return GitHubGetAutomationResponseTriggersPullRequestReviewSubmittedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestReviewRequested
-            getAutomationResponseTriggersPullRequestReviewRequested() {
-        return new GitHubGetAutomationResponseTriggersPullRequestReviewRequested(
-                "is:open label:bug",
-                List.of("src/**"),
-                getAutomationResponseTriggersPullRequestReviewRequestedWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersPullRequestReviewRequestedWriteScope
-            getAutomationResponseTriggersPullRequestReviewRequestedWriteScope() {
-        return GitHubGetAutomationResponseTriggersPullRequestReviewRequestedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseTriggersAutomationCompleted getAutomationResponseTriggersAutomationCompleted() {
-        return new GitHubGetAutomationResponseTriggersAutomationCompleted(
-                List.of("automation-2"), getAutomationResponseTriggersAutomationCompletedWriteScope());
-    }
-
-    static GitHubGetAutomationResponseTriggersAutomationCompletedWriteScope
-            getAutomationResponseTriggersAutomationCompletedWriteScope() {
-        return GitHubGetAutomationResponseTriggersAutomationCompletedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetAutomationResponseCreatedBy getAutomationResponseCreatedBy() {
-        return new GitHubGetAutomationResponseCreatedBy(1L);
-    }
-
-    static GitHubListAutomationTasksResponse listAutomationTasksResponse() {
-        return new GitHubListAutomationTasksResponse(List.of(listAutomationTasksTask()));
-    }
-
-    static GitHubListAutomationTasksTask listAutomationTasksTask() {
-        return new GitHubListAutomationTasksTask(
-                "automation-1",
-                "https://api.github.com/agents/tasks/1",
-                "https://github.com/octocat/Hello-World/tasks/1",
-                "Nightly triage",
-                listAutomationTasksTaskCreator(),
-                listAutomationTasksTaskCreatorType(),
-                List.of(listAutomationTasksTaskUserCollaborator()),
-                listAutomationTasksTaskOwner(),
-                listAutomationTasksTaskRepository(),
-                listAutomationTasksTaskState(),
-                1,
-                List.of(listAutomationTasksTaskArtifact()),
-                Instant.parse("2026-01-10T12:00:00Z"),
-                Instant.parse("2026-01-10T12:00:00Z"),
-                Instant.parse("2026-01-10T12:00:00Z"),
-                listAutomationTasksTaskCustomAgent());
-    }
-
-    static GitHubListAutomationTasksTaskCreator listAutomationTasksTaskCreator() {
-        return new GitHubListAutomationTasksTaskCreator(1L);
-    }
-
-    static GitHubListAutomationTasksTaskCreatorType listAutomationTasksTaskCreatorType() {
-        return GitHubListAutomationTasksTaskCreatorType.USER;
-    }
-
-    static GitHubListAutomationTasksTaskUserCollaborator listAutomationTasksTaskUserCollaborator() {
-        return new GitHubListAutomationTasksTaskUserCollaborator(1L);
-    }
-
-    static GitHubListAutomationTasksTaskOwner listAutomationTasksTaskOwner() {
-        return new GitHubListAutomationTasksTaskOwner(1L);
-    }
-
-    static GitHubListAutomationTasksTaskRepository listAutomationTasksTaskRepository() {
-        return new GitHubListAutomationTasksTaskRepository(1L);
-    }
-
-    static GitHubListAutomationTasksTaskState listAutomationTasksTaskState() {
-        return GitHubListAutomationTasksTaskState.QUEUED;
-    }
-
-    static GitHubListAutomationTasksTaskArtifact listAutomationTasksTaskArtifact() {
-        return new GitHubListAutomationTasksTaskArtifact(
-                listAutomationTasksTaskArtifactProvider(),
-                listAutomationTasksTaskArtifactType(),
-                listAutomationTasksTaskArtifactDataById());
-    }
-
-    static GitHubListAutomationTasksTaskArtifactProvider listAutomationTasksTaskArtifactProvider() {
-        return GitHubListAutomationTasksTaskArtifactProvider.GITHUB;
-    }
-
-    static GitHubListAutomationTasksTaskArtifactType listAutomationTasksTaskArtifactType() {
-        return GitHubListAutomationTasksTaskArtifactType.PULL;
-    }
-
-    static GitHubListAutomationTasksTaskArtifactDataById listAutomationTasksTaskArtifactDataById() {
-        return new GitHubListAutomationTasksTaskArtifactDataById(1L, "MDExOlB1bGxSZXF1ZXN0MQ==");
-    }
-
-    static GitHubListAutomationTasksTaskArtifactDataByRef listAutomationTasksTaskArtifactDataByRef() {
-        return new GitHubListAutomationTasksTaskArtifactDataByRef("feature/fix", "main");
-    }
-
-    static GitHubListAutomationTasksTaskCustomAgent listAutomationTasksTaskCustomAgent() {
-        return new GitHubListAutomationTasksTaskCustomAgent("automation-1");
+    static GitHubListAvailableRepoAutomationTriggersItemFieldSchemaIntegerType
+            listAvailableRepoAutomationTriggersItemFieldSchemaIntegerType() {
+        return GitHubListAvailableRepoAutomationTriggersItemFieldSchemaIntegerType.INTEGER;
     }
 
     static GitHubListRepoAutomationsResponse listRepoAutomationsResponse() {
         return new GitHubListRepoAutomationsResponse(List.of(listRepoAutomationsAutomation()), 1);
-    }
-
-    static GitHubListRepoAutomationsAutomation listRepoAutomationsAutomation() {
-        return new GitHubListRepoAutomationsAutomation(
-                "automation-1",
-                "Nightly triage",
-                true,
-                listRepoAutomationsAutomationOwnerType(),
-                listRepoAutomationsAutomationWriteScope(),
-                true,
-                "gpt-5",
-                "medium",
-                listRepoAutomationsAutomationTriggers(),
-                Instant.parse("2026-01-10T12:00:00Z"),
-                Instant.parse("2026-01-10T12:00:00Z"),
-                listRepoAutomationsAutomationCreatedBy());
-    }
-
-    static GitHubListRepoAutomationsAutomationOwnerType listRepoAutomationsAutomationOwnerType() {
-        return GitHubListRepoAutomationsAutomationOwnerType.USER;
-    }
-
-    static GitHubListRepoAutomationsAutomationWriteScope listRepoAutomationsAutomationWriteScope() {
-        return GitHubListRepoAutomationsAutomationWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggers listRepoAutomationsAutomationTriggers() {
-        return new GitHubListRepoAutomationsAutomationTriggers(
-                listRepoAutomationsAutomationTriggersInterval(),
-                listRepoAutomationsAutomationTriggersIssueOpened(),
-                listRepoAutomationsAutomationTriggersIssueLabeled(),
-                listRepoAutomationsAutomationTriggersWorkflowRun(),
-                listRepoAutomationsAutomationTriggersPullRequestOpened(),
-                listRepoAutomationsAutomationTriggersPullRequestSynchronize(),
-                listRepoAutomationsAutomationTriggersPullRequestMerged(),
-                listRepoAutomationsAutomationTriggersIssueComment(),
-                listRepoAutomationsAutomationTriggersPullRequestComment(),
-                listRepoAutomationsAutomationTriggersDiscussionOpened(),
-                listRepoAutomationsAutomationTriggersDiscussionUpdated(),
-                listRepoAutomationsAutomationTriggersDiscussionComment(),
-                listRepoAutomationsAutomationTriggersIssueAssigned(),
-                listRepoAutomationsAutomationTriggersPullRequestAssigned(),
-                listRepoAutomationsAutomationTriggersSubIssueAdded(),
-                listRepoAutomationsAutomationTriggersPullRequestReadyForReview(),
-                listRepoAutomationsAutomationTriggersPullRequestLabeled(),
-                listRepoAutomationsAutomationTriggersPullRequestMergeConflict(),
-                listRepoAutomationsAutomationTriggersPullRequestReviewSubmitted(),
-                listRepoAutomationsAutomationTriggersPullRequestReviewRequested(),
-                listRepoAutomationsAutomationTriggersAutomationCompleted());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersInterval listRepoAutomationsAutomationTriggersInterval() {
-        return new GitHubListRepoAutomationsAutomationTriggersInterval(
-                List.of(listRepoAutomationsAutomationTriggersIntervalCadence()),
-                9,
-                1,
-                GitHubAutomationMinuteUtc.FIFTEEN,
-                listRepoAutomationsAutomationTriggersIntervalWriteScope());
     }
 
     static GitHubListRepoAutomationsAutomationTriggersIntervalCadence
@@ -877,104 +87,9 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubListRepoAutomationsAutomationTriggersIntervalCadence.HOURLY;
     }
 
-    static GitHubListRepoAutomationsAutomationTriggersIntervalWriteScope
-            listRepoAutomationsAutomationTriggersIntervalWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersIntervalWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersIssueOpened listRepoAutomationsAutomationTriggersIssueOpened() {
-        return new GitHubListRepoAutomationsAutomationTriggersIssueOpened(
-                "is:open label:bug", listRepoAutomationsAutomationTriggersIssueOpenedWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersIssueOpenedWriteScope
-            listRepoAutomationsAutomationTriggersIssueOpenedWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersIssueOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersIssueLabeled listRepoAutomationsAutomationTriggersIssueLabeled() {
-        return new GitHubListRepoAutomationsAutomationTriggersIssueLabeled(
-                "is:open label:bug", List.of("bug"), listRepoAutomationsAutomationTriggersIssueLabeledWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersIssueLabeledWriteScope
-            listRepoAutomationsAutomationTriggersIssueLabeledWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersIssueLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersWorkflowRun listRepoAutomationsAutomationTriggersWorkflowRun() {
-        return new GitHubListRepoAutomationsAutomationTriggersWorkflowRun(
-                List.of("CI"),
-                List.of(listRepoAutomationsAutomationTriggersWorkflowRunConclusion()),
-                "is:open label:bug",
-                listRepoAutomationsAutomationTriggersWorkflowRunWriteScope());
-    }
-
     static GitHubListRepoAutomationsAutomationTriggersWorkflowRunConclusion
             listRepoAutomationsAutomationTriggersWorkflowRunConclusion() {
         return GitHubListRepoAutomationsAutomationTriggersWorkflowRunConclusion.FAILURE;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersWorkflowRunWriteScope
-            listRepoAutomationsAutomationTriggersWorkflowRunWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersWorkflowRunWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestOpened
-            listRepoAutomationsAutomationTriggersPullRequestOpened() {
-        return new GitHubListRepoAutomationsAutomationTriggersPullRequestOpened(
-                "is:open label:bug",
-                List.of("src/**"),
-                listRepoAutomationsAutomationTriggersPullRequestOpenedWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestOpenedWriteScope
-            listRepoAutomationsAutomationTriggersPullRequestOpenedWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersPullRequestOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestSynchronize
-            listRepoAutomationsAutomationTriggersPullRequestSynchronize() {
-        return new GitHubListRepoAutomationsAutomationTriggersPullRequestSynchronize(
-                "is:open label:bug",
-                List.of("src/**"),
-                listRepoAutomationsAutomationTriggersPullRequestSynchronizeWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestSynchronizeWriteScope
-            listRepoAutomationsAutomationTriggersPullRequestSynchronizeWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersPullRequestSynchronizeWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestMerged
-            listRepoAutomationsAutomationTriggersPullRequestMerged() {
-        return new GitHubListRepoAutomationsAutomationTriggersPullRequestMerged(
-                "is:open label:bug",
-                List.of("src/**"),
-                listRepoAutomationsAutomationTriggersPullRequestMergedWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestMergedWriteScope
-            listRepoAutomationsAutomationTriggersPullRequestMergedWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersPullRequestMergedWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersIssueComment listRepoAutomationsAutomationTriggersIssueComment() {
-        return new GitHubListRepoAutomationsAutomationTriggersIssueComment(
-                "/triage", listRepoAutomationsAutomationTriggersIssueCommentWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersIssueCommentWriteScope
-            listRepoAutomationsAutomationTriggersIssueCommentWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersIssueCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestComment
-            listRepoAutomationsAutomationTriggersPullRequestComment() {
-        return new GitHubListRepoAutomationsAutomationTriggersPullRequestComment(
-                List.of(listRepoAutomationsAutomationTriggersPullRequestCommentCommentType()),
-                "/triage",
-                listRepoAutomationsAutomationTriggersPullRequestCommentWriteScope());
     }
 
     static GitHubListRepoAutomationsAutomationTriggersPullRequestCommentCommentType
@@ -982,137 +97,9 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubListRepoAutomationsAutomationTriggersPullRequestCommentCommentType.TIMELINE_COMMENT;
     }
 
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestCommentWriteScope
-            listRepoAutomationsAutomationTriggersPullRequestCommentWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersPullRequestCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersDiscussionOpened
-            listRepoAutomationsAutomationTriggersDiscussionOpened() {
-        return new GitHubListRepoAutomationsAutomationTriggersDiscussionOpened(
-                List.of("General"), "/triage", listRepoAutomationsAutomationTriggersDiscussionOpenedWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersDiscussionOpenedWriteScope
-            listRepoAutomationsAutomationTriggersDiscussionOpenedWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersDiscussionOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersDiscussionUpdated
-            listRepoAutomationsAutomationTriggersDiscussionUpdated() {
-        return new GitHubListRepoAutomationsAutomationTriggersDiscussionUpdated(
-                List.of("General"), "/triage", listRepoAutomationsAutomationTriggersDiscussionUpdatedWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersDiscussionUpdatedWriteScope
-            listRepoAutomationsAutomationTriggersDiscussionUpdatedWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersDiscussionUpdatedWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersDiscussionComment
-            listRepoAutomationsAutomationTriggersDiscussionComment() {
-        return new GitHubListRepoAutomationsAutomationTriggersDiscussionComment(
-                List.of(listRepoAutomationsAutomationTriggersDiscussionCommentCommentType()),
-                List.of("General"),
-                "/triage",
-                listRepoAutomationsAutomationTriggersDiscussionCommentWriteScope());
-    }
-
     static GitHubListRepoAutomationsAutomationTriggersDiscussionCommentCommentType
             listRepoAutomationsAutomationTriggersDiscussionCommentCommentType() {
         return GitHubListRepoAutomationsAutomationTriggersDiscussionCommentCommentType.COMMENT;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersDiscussionCommentWriteScope
-            listRepoAutomationsAutomationTriggersDiscussionCommentWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersDiscussionCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersIssueAssigned
-            listRepoAutomationsAutomationTriggersIssueAssigned() {
-        return new GitHubListRepoAutomationsAutomationTriggersIssueAssigned(
-                "is:open label:bug",
-                List.of("octocat"),
-                listRepoAutomationsAutomationTriggersIssueAssignedWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersIssueAssignedWriteScope
-            listRepoAutomationsAutomationTriggersIssueAssignedWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersIssueAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestAssigned
-            listRepoAutomationsAutomationTriggersPullRequestAssigned() {
-        return new GitHubListRepoAutomationsAutomationTriggersPullRequestAssigned(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("octocat"),
-                listRepoAutomationsAutomationTriggersPullRequestAssignedWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestAssignedWriteScope
-            listRepoAutomationsAutomationTriggersPullRequestAssignedWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersPullRequestAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersSubIssueAdded
-            listRepoAutomationsAutomationTriggersSubIssueAdded() {
-        return new GitHubListRepoAutomationsAutomationTriggersSubIssueAdded(
-                "is:open label:bug", listRepoAutomationsAutomationTriggersSubIssueAddedWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersSubIssueAddedWriteScope
-            listRepoAutomationsAutomationTriggersSubIssueAddedWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersSubIssueAddedWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestReadyForReview
-            listRepoAutomationsAutomationTriggersPullRequestReadyForReview() {
-        return new GitHubListRepoAutomationsAutomationTriggersPullRequestReadyForReview(
-                "is:open label:bug",
-                List.of("src/**"),
-                listRepoAutomationsAutomationTriggersPullRequestReadyForReviewWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestReadyForReviewWriteScope
-            listRepoAutomationsAutomationTriggersPullRequestReadyForReviewWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersPullRequestReadyForReviewWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestLabeled
-            listRepoAutomationsAutomationTriggersPullRequestLabeled() {
-        return new GitHubListRepoAutomationsAutomationTriggersPullRequestLabeled(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("bug"),
-                listRepoAutomationsAutomationTriggersPullRequestLabeledWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestLabeledWriteScope
-            listRepoAutomationsAutomationTriggersPullRequestLabeledWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersPullRequestLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestMergeConflict
-            listRepoAutomationsAutomationTriggersPullRequestMergeConflict() {
-        return new GitHubListRepoAutomationsAutomationTriggersPullRequestMergeConflict(
-                "is:open label:bug",
-                List.of("src/**"),
-                listRepoAutomationsAutomationTriggersPullRequestMergeConflictWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestMergeConflictWriteScope
-            listRepoAutomationsAutomationTriggersPullRequestMergeConflictWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersPullRequestMergeConflictWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmitted
-            listRepoAutomationsAutomationTriggersPullRequestReviewSubmitted() {
-        return new GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmitted(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of(listRepoAutomationsAutomationTriggersPullRequestReviewSubmittedState()),
-                listRepoAutomationsAutomationTriggersPullRequestReviewSubmittedWriteScope());
     }
 
     static GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmittedState
@@ -1120,177 +107,12 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmittedState.APPROVED;
     }
 
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmittedWriteScope
-            listRepoAutomationsAutomationTriggersPullRequestReviewSubmittedWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmittedWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestReviewRequested
-            listRepoAutomationsAutomationTriggersPullRequestReviewRequested() {
-        return new GitHubListRepoAutomationsAutomationTriggersPullRequestReviewRequested(
-                "is:open label:bug",
-                List.of("src/**"),
-                listRepoAutomationsAutomationTriggersPullRequestReviewRequestedWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersPullRequestReviewRequestedWriteScope
-            listRepoAutomationsAutomationTriggersPullRequestReviewRequestedWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersPullRequestReviewRequestedWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersAutomationCompleted
-            listRepoAutomationsAutomationTriggersAutomationCompleted() {
-        return new GitHubListRepoAutomationsAutomationTriggersAutomationCompleted(
-                List.of("automation-2"), listRepoAutomationsAutomationTriggersAutomationCompletedWriteScope());
-    }
-
-    static GitHubListRepoAutomationsAutomationTriggersAutomationCompletedWriteScope
-            listRepoAutomationsAutomationTriggersAutomationCompletedWriteScope() {
-        return GitHubListRepoAutomationsAutomationTriggersAutomationCompletedWriteScope.TRIGGER;
-    }
-
-    static GitHubListRepoAutomationsAutomationCreatedBy listRepoAutomationsAutomationCreatedBy() {
-        return new GitHubListRepoAutomationsAutomationCreatedBy(1L);
-    }
-
-    static GitHubCreateRepoAutomationPayload createRepoAutomationPayload() {
-        return new GitHubCreateRepoAutomationPayload(
-                "Nightly triage",
-                createRepoAutomationTriggers(),
-                "Triage new issues and label them.",
-                "gpt-5",
-                GitHubCreateRepoAutomationReasoningEffort.MEDIUM,
-                List.of("issues_read"),
-                List.of("triage-agent"),
-                true,
-                createRepoAutomationOwnerType(),
-                createRepoAutomationWriteScope(),
-                true);
-    }
-
-    static GitHubCreateRepoAutomationTriggers createRepoAutomationTriggers() {
-        return new GitHubCreateRepoAutomationTriggers(
-                createRepoAutomationTriggersInterval(),
-                createRepoAutomationTriggersIssueOpened(),
-                createRepoAutomationTriggersIssueLabeled(),
-                createRepoAutomationTriggersWorkflowRun(),
-                createRepoAutomationTriggersPullRequestOpened(),
-                createRepoAutomationTriggersPullRequestSynchronize(),
-                createRepoAutomationTriggersPullRequestMerged(),
-                createRepoAutomationTriggersIssueComment(),
-                createRepoAutomationTriggersPullRequestComment(),
-                createRepoAutomationTriggersDiscussionOpened(),
-                createRepoAutomationTriggersDiscussionUpdated(),
-                createRepoAutomationTriggersDiscussionComment(),
-                createRepoAutomationTriggersIssueAssigned(),
-                createRepoAutomationTriggersPullRequestAssigned(),
-                createRepoAutomationTriggersSubIssueAdded(),
-                createRepoAutomationTriggersPullRequestReadyForReview(),
-                createRepoAutomationTriggersPullRequestLabeled(),
-                createRepoAutomationTriggersPullRequestMergeConflict(),
-                createRepoAutomationTriggersPullRequestReviewSubmitted(),
-                createRepoAutomationTriggersPullRequestReviewRequested(),
-                createRepoAutomationTriggersAutomationCompleted());
-    }
-
-    static GitHubCreateRepoAutomationTriggersInterval createRepoAutomationTriggersInterval() {
-        return new GitHubCreateRepoAutomationTriggersInterval(
-                List.of(createRepoAutomationTriggersIntervalCadence()),
-                9,
-                1,
-                GitHubAutomationMinuteUtc.FIFTEEN,
-                createRepoAutomationTriggersIntervalWriteScope());
-    }
-
     static GitHubCreateRepoAutomationTriggersIntervalCadence createRepoAutomationTriggersIntervalCadence() {
         return GitHubCreateRepoAutomationTriggersIntervalCadence.HOURLY;
     }
 
-    static GitHubCreateRepoAutomationTriggersIntervalWriteScope createRepoAutomationTriggersIntervalWriteScope() {
-        return GitHubCreateRepoAutomationTriggersIntervalWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersIssueOpened createRepoAutomationTriggersIssueOpened() {
-        return new GitHubCreateRepoAutomationTriggersIssueOpened(
-                "is:open label:bug", createRepoAutomationTriggersIssueOpenedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersIssueOpenedWriteScope createRepoAutomationTriggersIssueOpenedWriteScope() {
-        return GitHubCreateRepoAutomationTriggersIssueOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersIssueLabeled createRepoAutomationTriggersIssueLabeled() {
-        return new GitHubCreateRepoAutomationTriggersIssueLabeled(
-                "is:open label:bug", List.of("bug"), createRepoAutomationTriggersIssueLabeledWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersIssueLabeledWriteScope
-            createRepoAutomationTriggersIssueLabeledWriteScope() {
-        return GitHubCreateRepoAutomationTriggersIssueLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersWorkflowRun createRepoAutomationTriggersWorkflowRun() {
-        return new GitHubCreateRepoAutomationTriggersWorkflowRun(
-                List.of("CI"),
-                List.of(createRepoAutomationTriggersWorkflowRunConclusion()),
-                "is:open label:bug",
-                createRepoAutomationTriggersWorkflowRunWriteScope());
-    }
-
     static GitHubCreateRepoAutomationTriggersWorkflowRunConclusion createRepoAutomationTriggersWorkflowRunConclusion() {
         return GitHubCreateRepoAutomationTriggersWorkflowRunConclusion.FAILURE;
-    }
-
-    static GitHubCreateRepoAutomationTriggersWorkflowRunWriteScope createRepoAutomationTriggersWorkflowRunWriteScope() {
-        return GitHubCreateRepoAutomationTriggersWorkflowRunWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestOpened createRepoAutomationTriggersPullRequestOpened() {
-        return new GitHubCreateRepoAutomationTriggersPullRequestOpened(
-                "is:open label:bug", List.of("src/**"), createRepoAutomationTriggersPullRequestOpenedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestOpenedWriteScope
-            createRepoAutomationTriggersPullRequestOpenedWriteScope() {
-        return GitHubCreateRepoAutomationTriggersPullRequestOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestSynchronize
-            createRepoAutomationTriggersPullRequestSynchronize() {
-        return new GitHubCreateRepoAutomationTriggersPullRequestSynchronize(
-                "is:open label:bug", List.of("src/**"), createRepoAutomationTriggersPullRequestSynchronizeWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestSynchronizeWriteScope
-            createRepoAutomationTriggersPullRequestSynchronizeWriteScope() {
-        return GitHubCreateRepoAutomationTriggersPullRequestSynchronizeWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestMerged createRepoAutomationTriggersPullRequestMerged() {
-        return new GitHubCreateRepoAutomationTriggersPullRequestMerged(
-                "is:open label:bug", List.of("src/**"), createRepoAutomationTriggersPullRequestMergedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestMergedWriteScope
-            createRepoAutomationTriggersPullRequestMergedWriteScope() {
-        return GitHubCreateRepoAutomationTriggersPullRequestMergedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersIssueComment createRepoAutomationTriggersIssueComment() {
-        return new GitHubCreateRepoAutomationTriggersIssueComment(
-                "/triage", createRepoAutomationTriggersIssueCommentWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersIssueCommentWriteScope
-            createRepoAutomationTriggersIssueCommentWriteScope() {
-        return GitHubCreateRepoAutomationTriggersIssueCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestComment createRepoAutomationTriggersPullRequestComment() {
-        return new GitHubCreateRepoAutomationTriggersPullRequestComment(
-                List.of(createRepoAutomationTriggersPullRequestCommentCommentType()),
-                "/triage",
-                createRepoAutomationTriggersPullRequestCommentWriteScope());
     }
 
     static GitHubCreateRepoAutomationTriggersPullRequestCommentCommentType
@@ -1298,128 +120,9 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubCreateRepoAutomationTriggersPullRequestCommentCommentType.TIMELINE_COMMENT;
     }
 
-    static GitHubCreateRepoAutomationTriggersPullRequestCommentWriteScope
-            createRepoAutomationTriggersPullRequestCommentWriteScope() {
-        return GitHubCreateRepoAutomationTriggersPullRequestCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersDiscussionOpened createRepoAutomationTriggersDiscussionOpened() {
-        return new GitHubCreateRepoAutomationTriggersDiscussionOpened(
-                List.of("General"), "/triage", createRepoAutomationTriggersDiscussionOpenedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersDiscussionOpenedWriteScope
-            createRepoAutomationTriggersDiscussionOpenedWriteScope() {
-        return GitHubCreateRepoAutomationTriggersDiscussionOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersDiscussionUpdated createRepoAutomationTriggersDiscussionUpdated() {
-        return new GitHubCreateRepoAutomationTriggersDiscussionUpdated(
-                List.of("General"), "/triage", createRepoAutomationTriggersDiscussionUpdatedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersDiscussionUpdatedWriteScope
-            createRepoAutomationTriggersDiscussionUpdatedWriteScope() {
-        return GitHubCreateRepoAutomationTriggersDiscussionUpdatedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersDiscussionComment createRepoAutomationTriggersDiscussionComment() {
-        return new GitHubCreateRepoAutomationTriggersDiscussionComment(
-                List.of(createRepoAutomationTriggersDiscussionCommentCommentType()),
-                List.of("General"),
-                "/triage",
-                createRepoAutomationTriggersDiscussionCommentWriteScope());
-    }
-
     static GitHubCreateRepoAutomationTriggersDiscussionCommentCommentType
             createRepoAutomationTriggersDiscussionCommentCommentType() {
         return GitHubCreateRepoAutomationTriggersDiscussionCommentCommentType.COMMENT;
-    }
-
-    static GitHubCreateRepoAutomationTriggersDiscussionCommentWriteScope
-            createRepoAutomationTriggersDiscussionCommentWriteScope() {
-        return GitHubCreateRepoAutomationTriggersDiscussionCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersIssueAssigned createRepoAutomationTriggersIssueAssigned() {
-        return new GitHubCreateRepoAutomationTriggersIssueAssigned(
-                "is:open label:bug", List.of("octocat"), createRepoAutomationTriggersIssueAssignedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersIssueAssignedWriteScope
-            createRepoAutomationTriggersIssueAssignedWriteScope() {
-        return GitHubCreateRepoAutomationTriggersIssueAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestAssigned createRepoAutomationTriggersPullRequestAssigned() {
-        return new GitHubCreateRepoAutomationTriggersPullRequestAssigned(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("octocat"),
-                createRepoAutomationTriggersPullRequestAssignedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestAssignedWriteScope
-            createRepoAutomationTriggersPullRequestAssignedWriteScope() {
-        return GitHubCreateRepoAutomationTriggersPullRequestAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersSubIssueAdded createRepoAutomationTriggersSubIssueAdded() {
-        return new GitHubCreateRepoAutomationTriggersSubIssueAdded(
-                "is:open label:bug", createRepoAutomationTriggersSubIssueAddedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersSubIssueAddedWriteScope
-            createRepoAutomationTriggersSubIssueAddedWriteScope() {
-        return GitHubCreateRepoAutomationTriggersSubIssueAddedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestReadyForReview
-            createRepoAutomationTriggersPullRequestReadyForReview() {
-        return new GitHubCreateRepoAutomationTriggersPullRequestReadyForReview(
-                "is:open label:bug",
-                List.of("src/**"),
-                createRepoAutomationTriggersPullRequestReadyForReviewWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestReadyForReviewWriteScope
-            createRepoAutomationTriggersPullRequestReadyForReviewWriteScope() {
-        return GitHubCreateRepoAutomationTriggersPullRequestReadyForReviewWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestLabeled createRepoAutomationTriggersPullRequestLabeled() {
-        return new GitHubCreateRepoAutomationTriggersPullRequestLabeled(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("bug"),
-                createRepoAutomationTriggersPullRequestLabeledWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestLabeledWriteScope
-            createRepoAutomationTriggersPullRequestLabeledWriteScope() {
-        return GitHubCreateRepoAutomationTriggersPullRequestLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestMergeConflict
-            createRepoAutomationTriggersPullRequestMergeConflict() {
-        return new GitHubCreateRepoAutomationTriggersPullRequestMergeConflict(
-                "is:open label:bug",
-                List.of("src/**"),
-                createRepoAutomationTriggersPullRequestMergeConflictWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestMergeConflictWriteScope
-            createRepoAutomationTriggersPullRequestMergeConflictWriteScope() {
-        return GitHubCreateRepoAutomationTriggersPullRequestMergeConflictWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestReviewSubmitted
-            createRepoAutomationTriggersPullRequestReviewSubmitted() {
-        return new GitHubCreateRepoAutomationTriggersPullRequestReviewSubmitted(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of(createRepoAutomationTriggersPullRequestReviewSubmittedState()),
-                createRepoAutomationTriggersPullRequestReviewSubmittedWriteScope());
     }
 
     static GitHubCreateRepoAutomationTriggersPullRequestReviewSubmittedState
@@ -1427,139 +130,9 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubCreateRepoAutomationTriggersPullRequestReviewSubmittedState.APPROVED;
     }
 
-    static GitHubCreateRepoAutomationTriggersPullRequestReviewSubmittedWriteScope
-            createRepoAutomationTriggersPullRequestReviewSubmittedWriteScope() {
-        return GitHubCreateRepoAutomationTriggersPullRequestReviewSubmittedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestReviewRequested
-            createRepoAutomationTriggersPullRequestReviewRequested() {
-        return new GitHubCreateRepoAutomationTriggersPullRequestReviewRequested(
-                "is:open label:bug",
-                List.of("src/**"),
-                createRepoAutomationTriggersPullRequestReviewRequestedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersPullRequestReviewRequestedWriteScope
-            createRepoAutomationTriggersPullRequestReviewRequestedWriteScope() {
-        return GitHubCreateRepoAutomationTriggersPullRequestReviewRequestedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationTriggersAutomationCompleted createRepoAutomationTriggersAutomationCompleted() {
-        return new GitHubCreateRepoAutomationTriggersAutomationCompleted(
-                List.of("automation-2"), createRepoAutomationTriggersAutomationCompletedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationTriggersAutomationCompletedWriteScope
-            createRepoAutomationTriggersAutomationCompletedWriteScope() {
-        return GitHubCreateRepoAutomationTriggersAutomationCompletedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationOwnerType createRepoAutomationOwnerType() {
-        return GitHubCreateRepoAutomationOwnerType.USER;
-    }
-
-    static GitHubCreateRepoAutomationWriteScope createRepoAutomationWriteScope() {
-        return GitHubCreateRepoAutomationWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponse createRepoAutomationResponse() {
-        return new GitHubCreateRepoAutomationResponse(
-                "automation-1",
-                "Nightly triage",
-                true,
-                createRepoAutomationResponseOwnerType(),
-                createRepoAutomationResponseWriteScope(),
-                true,
-                createRepoAutomationResponseTriggers(),
-                "Triage new issues and label them.",
-                List.of("issues_read"),
-                List.of("triage-agent"),
-                "gpt-5",
-                "medium",
-                Instant.parse("2026-01-10T12:00:00Z"),
-                Instant.parse("2026-01-10T12:00:00Z"),
-                createRepoAutomationResponseCreatedBy());
-    }
-
-    static GitHubCreateRepoAutomationResponseOwnerType createRepoAutomationResponseOwnerType() {
-        return GitHubCreateRepoAutomationResponseOwnerType.USER;
-    }
-
-    static GitHubCreateRepoAutomationResponseWriteScope createRepoAutomationResponseWriteScope() {
-        return GitHubCreateRepoAutomationResponseWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggers createRepoAutomationResponseTriggers() {
-        return new GitHubCreateRepoAutomationResponseTriggers(
-                createRepoAutomationResponseTriggersInterval(),
-                createRepoAutomationResponseTriggersIssueOpened(),
-                createRepoAutomationResponseTriggersIssueLabeled(),
-                createRepoAutomationResponseTriggersWorkflowRun(),
-                createRepoAutomationResponseTriggersPullRequestOpened(),
-                createRepoAutomationResponseTriggersPullRequestSynchronize(),
-                createRepoAutomationResponseTriggersPullRequestMerged(),
-                createRepoAutomationResponseTriggersIssueComment(),
-                createRepoAutomationResponseTriggersPullRequestComment(),
-                createRepoAutomationResponseTriggersDiscussionOpened(),
-                createRepoAutomationResponseTriggersDiscussionUpdated(),
-                createRepoAutomationResponseTriggersDiscussionComment(),
-                createRepoAutomationResponseTriggersIssueAssigned(),
-                createRepoAutomationResponseTriggersPullRequestAssigned(),
-                createRepoAutomationResponseTriggersSubIssueAdded(),
-                createRepoAutomationResponseTriggersPullRequestReadyForReview(),
-                createRepoAutomationResponseTriggersPullRequestLabeled(),
-                createRepoAutomationResponseTriggersPullRequestMergeConflict(),
-                createRepoAutomationResponseTriggersPullRequestReviewSubmitted(),
-                createRepoAutomationResponseTriggersPullRequestReviewRequested(),
-                createRepoAutomationResponseTriggersAutomationCompleted());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersInterval createRepoAutomationResponseTriggersInterval() {
-        return new GitHubCreateRepoAutomationResponseTriggersInterval(
-                List.of(createRepoAutomationResponseTriggersIntervalCadence()),
-                9,
-                1,
-                GitHubAutomationMinuteUtc.FIFTEEN,
-                createRepoAutomationResponseTriggersIntervalWriteScope());
-    }
-
     static GitHubCreateRepoAutomationResponseTriggersIntervalCadence
             createRepoAutomationResponseTriggersIntervalCadence() {
         return GitHubCreateRepoAutomationResponseTriggersIntervalCadence.HOURLY;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersIntervalWriteScope
-            createRepoAutomationResponseTriggersIntervalWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersIntervalWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersIssueOpened createRepoAutomationResponseTriggersIssueOpened() {
-        return new GitHubCreateRepoAutomationResponseTriggersIssueOpened(
-                "is:open label:bug", createRepoAutomationResponseTriggersIssueOpenedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersIssueOpenedWriteScope
-            createRepoAutomationResponseTriggersIssueOpenedWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersIssueOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersIssueLabeled createRepoAutomationResponseTriggersIssueLabeled() {
-        return new GitHubCreateRepoAutomationResponseTriggersIssueLabeled(
-                "is:open label:bug", List.of("bug"), createRepoAutomationResponseTriggersIssueLabeledWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersIssueLabeledWriteScope
-            createRepoAutomationResponseTriggersIssueLabeledWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersIssueLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersWorkflowRun createRepoAutomationResponseTriggersWorkflowRun() {
-        return new GitHubCreateRepoAutomationResponseTriggersWorkflowRun(
-                List.of("CI"),
-                List.of(createRepoAutomationResponseTriggersWorkflowRunConclusion()),
-                "is:open label:bug",
-                createRepoAutomationResponseTriggersWorkflowRunWriteScope());
     }
 
     static GitHubCreateRepoAutomationResponseTriggersWorkflowRunConclusion
@@ -1567,107 +140,9 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubCreateRepoAutomationResponseTriggersWorkflowRunConclusion.FAILURE;
     }
 
-    static GitHubCreateRepoAutomationResponseTriggersWorkflowRunWriteScope
-            createRepoAutomationResponseTriggersWorkflowRunWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersWorkflowRunWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestOpened
-            createRepoAutomationResponseTriggersPullRequestOpened() {
-        return new GitHubCreateRepoAutomationResponseTriggersPullRequestOpened(
-                "is:open label:bug",
-                List.of("src/**"),
-                createRepoAutomationResponseTriggersPullRequestOpenedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestOpenedWriteScope
-            createRepoAutomationResponseTriggersPullRequestOpenedWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersPullRequestOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronize
-            createRepoAutomationResponseTriggersPullRequestSynchronize() {
-        return new GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronize(
-                "is:open label:bug",
-                List.of("src/**"),
-                createRepoAutomationResponseTriggersPullRequestSynchronizeWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronizeWriteScope
-            createRepoAutomationResponseTriggersPullRequestSynchronizeWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronizeWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestMerged
-            createRepoAutomationResponseTriggersPullRequestMerged() {
-        return new GitHubCreateRepoAutomationResponseTriggersPullRequestMerged(
-                "is:open label:bug",
-                List.of("src/**"),
-                createRepoAutomationResponseTriggersPullRequestMergedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestMergedWriteScope
-            createRepoAutomationResponseTriggersPullRequestMergedWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersPullRequestMergedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersIssueComment createRepoAutomationResponseTriggersIssueComment() {
-        return new GitHubCreateRepoAutomationResponseTriggersIssueComment(
-                "/triage", createRepoAutomationResponseTriggersIssueCommentWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersIssueCommentWriteScope
-            createRepoAutomationResponseTriggersIssueCommentWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersIssueCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestComment
-            createRepoAutomationResponseTriggersPullRequestComment() {
-        return new GitHubCreateRepoAutomationResponseTriggersPullRequestComment(
-                List.of(createRepoAutomationResponseTriggersPullRequestCommentCommentType()),
-                "/triage",
-                createRepoAutomationResponseTriggersPullRequestCommentWriteScope());
-    }
-
     static GitHubCreateRepoAutomationResponseTriggersPullRequestCommentCommentType
             createRepoAutomationResponseTriggersPullRequestCommentCommentType() {
         return GitHubCreateRepoAutomationResponseTriggersPullRequestCommentCommentType.TIMELINE_COMMENT;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestCommentWriteScope
-            createRepoAutomationResponseTriggersPullRequestCommentWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersPullRequestCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersDiscussionOpened
-            createRepoAutomationResponseTriggersDiscussionOpened() {
-        return new GitHubCreateRepoAutomationResponseTriggersDiscussionOpened(
-                List.of("General"), "/triage", createRepoAutomationResponseTriggersDiscussionOpenedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersDiscussionOpenedWriteScope
-            createRepoAutomationResponseTriggersDiscussionOpenedWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersDiscussionOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersDiscussionUpdated
-            createRepoAutomationResponseTriggersDiscussionUpdated() {
-        return new GitHubCreateRepoAutomationResponseTriggersDiscussionUpdated(
-                List.of("General"), "/triage", createRepoAutomationResponseTriggersDiscussionUpdatedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersDiscussionUpdatedWriteScope
-            createRepoAutomationResponseTriggersDiscussionUpdatedWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersDiscussionUpdatedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersDiscussionComment
-            createRepoAutomationResponseTriggersDiscussionComment() {
-        return new GitHubCreateRepoAutomationResponseTriggersDiscussionComment(
-                List.of(createRepoAutomationResponseTriggersDiscussionCommentCommentType()),
-                List.of("General"),
-                "/triage",
-                createRepoAutomationResponseTriggersDiscussionCommentWriteScope());
     }
 
     static GitHubCreateRepoAutomationResponseTriggersDiscussionCommentCommentType
@@ -1675,228 +150,13 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubCreateRepoAutomationResponseTriggersDiscussionCommentCommentType.COMMENT;
     }
 
-    static GitHubCreateRepoAutomationResponseTriggersDiscussionCommentWriteScope
-            createRepoAutomationResponseTriggersDiscussionCommentWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersDiscussionCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersIssueAssigned createRepoAutomationResponseTriggersIssueAssigned() {
-        return new GitHubCreateRepoAutomationResponseTriggersIssueAssigned(
-                "is:open label:bug", List.of("octocat"), createRepoAutomationResponseTriggersIssueAssignedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersIssueAssignedWriteScope
-            createRepoAutomationResponseTriggersIssueAssignedWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersIssueAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestAssigned
-            createRepoAutomationResponseTriggersPullRequestAssigned() {
-        return new GitHubCreateRepoAutomationResponseTriggersPullRequestAssigned(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("octocat"),
-                createRepoAutomationResponseTriggersPullRequestAssignedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestAssignedWriteScope
-            createRepoAutomationResponseTriggersPullRequestAssignedWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersPullRequestAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersSubIssueAdded createRepoAutomationResponseTriggersSubIssueAdded() {
-        return new GitHubCreateRepoAutomationResponseTriggersSubIssueAdded(
-                "is:open label:bug", createRepoAutomationResponseTriggersSubIssueAddedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersSubIssueAddedWriteScope
-            createRepoAutomationResponseTriggersSubIssueAddedWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersSubIssueAddedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestReadyForReview
-            createRepoAutomationResponseTriggersPullRequestReadyForReview() {
-        return new GitHubCreateRepoAutomationResponseTriggersPullRequestReadyForReview(
-                "is:open label:bug",
-                List.of("src/**"),
-                createRepoAutomationResponseTriggersPullRequestReadyForReviewWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestReadyForReviewWriteScope
-            createRepoAutomationResponseTriggersPullRequestReadyForReviewWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersPullRequestReadyForReviewWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestLabeled
-            createRepoAutomationResponseTriggersPullRequestLabeled() {
-        return new GitHubCreateRepoAutomationResponseTriggersPullRequestLabeled(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("bug"),
-                createRepoAutomationResponseTriggersPullRequestLabeledWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledWriteScope
-            createRepoAutomationResponseTriggersPullRequestLabeledWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestMergeConflict
-            createRepoAutomationResponseTriggersPullRequestMergeConflict() {
-        return new GitHubCreateRepoAutomationResponseTriggersPullRequestMergeConflict(
-                "is:open label:bug",
-                List.of("src/**"),
-                createRepoAutomationResponseTriggersPullRequestMergeConflictWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestMergeConflictWriteScope
-            createRepoAutomationResponseTriggersPullRequestMergeConflictWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersPullRequestMergeConflictWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestReviewSubmitted
-            createRepoAutomationResponseTriggersPullRequestReviewSubmitted() {
-        return new GitHubCreateRepoAutomationResponseTriggersPullRequestReviewSubmitted(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of(createRepoAutomationResponseTriggersPullRequestReviewSubmittedState()),
-                createRepoAutomationResponseTriggersPullRequestReviewSubmittedWriteScope());
-    }
-
     static GitHubCreateRepoAutomationResponseTriggersPullRequestReviewSubmittedState
             createRepoAutomationResponseTriggersPullRequestReviewSubmittedState() {
         return GitHubCreateRepoAutomationResponseTriggersPullRequestReviewSubmittedState.APPROVED;
     }
 
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestReviewSubmittedWriteScope
-            createRepoAutomationResponseTriggersPullRequestReviewSubmittedWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersPullRequestReviewSubmittedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestReviewRequested
-            createRepoAutomationResponseTriggersPullRequestReviewRequested() {
-        return new GitHubCreateRepoAutomationResponseTriggersPullRequestReviewRequested(
-                "is:open label:bug",
-                List.of("src/**"),
-                createRepoAutomationResponseTriggersPullRequestReviewRequestedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersPullRequestReviewRequestedWriteScope
-            createRepoAutomationResponseTriggersPullRequestReviewRequestedWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersPullRequestReviewRequestedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersAutomationCompleted
-            createRepoAutomationResponseTriggersAutomationCompleted() {
-        return new GitHubCreateRepoAutomationResponseTriggersAutomationCompleted(
-                List.of("automation-2"), createRepoAutomationResponseTriggersAutomationCompletedWriteScope());
-    }
-
-    static GitHubCreateRepoAutomationResponseTriggersAutomationCompletedWriteScope
-            createRepoAutomationResponseTriggersAutomationCompletedWriteScope() {
-        return GitHubCreateRepoAutomationResponseTriggersAutomationCompletedWriteScope.TRIGGER;
-    }
-
-    static GitHubCreateRepoAutomationResponseCreatedBy createRepoAutomationResponseCreatedBy() {
-        return new GitHubCreateRepoAutomationResponseCreatedBy(1L);
-    }
-
-    static GitHubGetRepoAutomationResponse getRepoAutomationResponse() {
-        return new GitHubGetRepoAutomationResponse(
-                "automation-1",
-                "Nightly triage",
-                true,
-                getRepoAutomationResponseOwnerType(),
-                getRepoAutomationResponseWriteScope(),
-                true,
-                getRepoAutomationResponseTriggers(),
-                "Triage new issues and label them.",
-                List.of("issues_read"),
-                List.of("triage-agent"),
-                "gpt-5",
-                "medium",
-                Instant.parse("2026-01-10T12:00:00Z"),
-                Instant.parse("2026-01-10T12:00:00Z"),
-                getRepoAutomationResponseCreatedBy());
-    }
-
-    static GitHubGetRepoAutomationResponseOwnerType getRepoAutomationResponseOwnerType() {
-        return GitHubGetRepoAutomationResponseOwnerType.USER;
-    }
-
-    static GitHubGetRepoAutomationResponseWriteScope getRepoAutomationResponseWriteScope() {
-        return GitHubGetRepoAutomationResponseWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggers getRepoAutomationResponseTriggers() {
-        return new GitHubGetRepoAutomationResponseTriggers(
-                getRepoAutomationResponseTriggersInterval(),
-                getRepoAutomationResponseTriggersIssueOpened(),
-                getRepoAutomationResponseTriggersIssueLabeled(),
-                getRepoAutomationResponseTriggersWorkflowRun(),
-                getRepoAutomationResponseTriggersPullRequestOpened(),
-                getRepoAutomationResponseTriggersPullRequestSynchronize(),
-                getRepoAutomationResponseTriggersPullRequestMerged(),
-                getRepoAutomationResponseTriggersIssueComment(),
-                getRepoAutomationResponseTriggersPullRequestComment(),
-                getRepoAutomationResponseTriggersDiscussionOpened(),
-                getRepoAutomationResponseTriggersDiscussionUpdated(),
-                getRepoAutomationResponseTriggersDiscussionComment(),
-                getRepoAutomationResponseTriggersIssueAssigned(),
-                getRepoAutomationResponseTriggersPullRequestAssigned(),
-                getRepoAutomationResponseTriggersSubIssueAdded(),
-                getRepoAutomationResponseTriggersPullRequestReadyForReview(),
-                getRepoAutomationResponseTriggersPullRequestLabeled(),
-                getRepoAutomationResponseTriggersPullRequestMergeConflict(),
-                getRepoAutomationResponseTriggersPullRequestReviewSubmitted(),
-                getRepoAutomationResponseTriggersPullRequestReviewRequested(),
-                getRepoAutomationResponseTriggersAutomationCompleted());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersInterval getRepoAutomationResponseTriggersInterval() {
-        return new GitHubGetRepoAutomationResponseTriggersInterval(
-                List.of(getRepoAutomationResponseTriggersIntervalCadence()),
-                9,
-                1,
-                GitHubAutomationMinuteUtc.FIFTEEN,
-                getRepoAutomationResponseTriggersIntervalWriteScope());
-    }
-
     static GitHubGetRepoAutomationResponseTriggersIntervalCadence getRepoAutomationResponseTriggersIntervalCadence() {
         return GitHubGetRepoAutomationResponseTriggersIntervalCadence.HOURLY;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersIntervalWriteScope
-            getRepoAutomationResponseTriggersIntervalWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersIntervalWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersIssueOpened getRepoAutomationResponseTriggersIssueOpened() {
-        return new GitHubGetRepoAutomationResponseTriggersIssueOpened(
-                "is:open label:bug", getRepoAutomationResponseTriggersIssueOpenedWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersIssueOpenedWriteScope
-            getRepoAutomationResponseTriggersIssueOpenedWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersIssueOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersIssueLabeled getRepoAutomationResponseTriggersIssueLabeled() {
-        return new GitHubGetRepoAutomationResponseTriggersIssueLabeled(
-                "is:open label:bug", List.of("bug"), getRepoAutomationResponseTriggersIssueLabeledWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersIssueLabeledWriteScope
-            getRepoAutomationResponseTriggersIssueLabeledWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersIssueLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersWorkflowRun getRepoAutomationResponseTriggersWorkflowRun() {
-        return new GitHubGetRepoAutomationResponseTriggersWorkflowRun(
-                List.of("CI"),
-                List.of(getRepoAutomationResponseTriggersWorkflowRunConclusion()),
-                "is:open label:bug",
-                getRepoAutomationResponseTriggersWorkflowRunWriteScope());
     }
 
     static GitHubGetRepoAutomationResponseTriggersWorkflowRunConclusion
@@ -1904,102 +164,9 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubGetRepoAutomationResponseTriggersWorkflowRunConclusion.FAILURE;
     }
 
-    static GitHubGetRepoAutomationResponseTriggersWorkflowRunWriteScope
-            getRepoAutomationResponseTriggersWorkflowRunWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersWorkflowRunWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestOpened
-            getRepoAutomationResponseTriggersPullRequestOpened() {
-        return new GitHubGetRepoAutomationResponseTriggersPullRequestOpened(
-                "is:open label:bug", List.of("src/**"), getRepoAutomationResponseTriggersPullRequestOpenedWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestOpenedWriteScope
-            getRepoAutomationResponseTriggersPullRequestOpenedWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersPullRequestOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestSynchronize
-            getRepoAutomationResponseTriggersPullRequestSynchronize() {
-        return new GitHubGetRepoAutomationResponseTriggersPullRequestSynchronize(
-                "is:open label:bug",
-                List.of("src/**"),
-                getRepoAutomationResponseTriggersPullRequestSynchronizeWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestSynchronizeWriteScope
-            getRepoAutomationResponseTriggersPullRequestSynchronizeWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersPullRequestSynchronizeWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestMerged
-            getRepoAutomationResponseTriggersPullRequestMerged() {
-        return new GitHubGetRepoAutomationResponseTriggersPullRequestMerged(
-                "is:open label:bug", List.of("src/**"), getRepoAutomationResponseTriggersPullRequestMergedWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestMergedWriteScope
-            getRepoAutomationResponseTriggersPullRequestMergedWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersPullRequestMergedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersIssueComment getRepoAutomationResponseTriggersIssueComment() {
-        return new GitHubGetRepoAutomationResponseTriggersIssueComment(
-                "/triage", getRepoAutomationResponseTriggersIssueCommentWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersIssueCommentWriteScope
-            getRepoAutomationResponseTriggersIssueCommentWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersIssueCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestComment
-            getRepoAutomationResponseTriggersPullRequestComment() {
-        return new GitHubGetRepoAutomationResponseTriggersPullRequestComment(
-                List.of(getRepoAutomationResponseTriggersPullRequestCommentCommentType()),
-                "/triage",
-                getRepoAutomationResponseTriggersPullRequestCommentWriteScope());
-    }
-
     static GitHubGetRepoAutomationResponseTriggersPullRequestCommentCommentType
             getRepoAutomationResponseTriggersPullRequestCommentCommentType() {
         return GitHubGetRepoAutomationResponseTriggersPullRequestCommentCommentType.TIMELINE_COMMENT;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestCommentWriteScope
-            getRepoAutomationResponseTriggersPullRequestCommentWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersPullRequestCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersDiscussionOpened getRepoAutomationResponseTriggersDiscussionOpened() {
-        return new GitHubGetRepoAutomationResponseTriggersDiscussionOpened(
-                List.of("General"), "/triage", getRepoAutomationResponseTriggersDiscussionOpenedWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersDiscussionOpenedWriteScope
-            getRepoAutomationResponseTriggersDiscussionOpenedWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersDiscussionOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersDiscussionUpdated
-            getRepoAutomationResponseTriggersDiscussionUpdated() {
-        return new GitHubGetRepoAutomationResponseTriggersDiscussionUpdated(
-                List.of("General"), "/triage", getRepoAutomationResponseTriggersDiscussionUpdatedWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersDiscussionUpdatedWriteScope
-            getRepoAutomationResponseTriggersDiscussionUpdatedWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersDiscussionUpdatedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersDiscussionComment
-            getRepoAutomationResponseTriggersDiscussionComment() {
-        return new GitHubGetRepoAutomationResponseTriggersDiscussionComment(
-                List.of(getRepoAutomationResponseTriggersDiscussionCommentCommentType()),
-                List.of("General"),
-                "/triage",
-                getRepoAutomationResponseTriggersDiscussionCommentWriteScope());
     }
 
     static GitHubGetRepoAutomationResponseTriggersDiscussionCommentCommentType
@@ -2007,270 +174,17 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubGetRepoAutomationResponseTriggersDiscussionCommentCommentType.COMMENT;
     }
 
-    static GitHubGetRepoAutomationResponseTriggersDiscussionCommentWriteScope
-            getRepoAutomationResponseTriggersDiscussionCommentWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersDiscussionCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersIssueAssigned getRepoAutomationResponseTriggersIssueAssigned() {
-        return new GitHubGetRepoAutomationResponseTriggersIssueAssigned(
-                "is:open label:bug", List.of("octocat"), getRepoAutomationResponseTriggersIssueAssignedWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersIssueAssignedWriteScope
-            getRepoAutomationResponseTriggersIssueAssignedWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersIssueAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestAssigned
-            getRepoAutomationResponseTriggersPullRequestAssigned() {
-        return new GitHubGetRepoAutomationResponseTriggersPullRequestAssigned(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("octocat"),
-                getRepoAutomationResponseTriggersPullRequestAssignedWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestAssignedWriteScope
-            getRepoAutomationResponseTriggersPullRequestAssignedWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersPullRequestAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersSubIssueAdded getRepoAutomationResponseTriggersSubIssueAdded() {
-        return new GitHubGetRepoAutomationResponseTriggersSubIssueAdded(
-                "is:open label:bug", getRepoAutomationResponseTriggersSubIssueAddedWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersSubIssueAddedWriteScope
-            getRepoAutomationResponseTriggersSubIssueAddedWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersSubIssueAddedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestReadyForReview
-            getRepoAutomationResponseTriggersPullRequestReadyForReview() {
-        return new GitHubGetRepoAutomationResponseTriggersPullRequestReadyForReview(
-                "is:open label:bug",
-                List.of("src/**"),
-                getRepoAutomationResponseTriggersPullRequestReadyForReviewWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestReadyForReviewWriteScope
-            getRepoAutomationResponseTriggersPullRequestReadyForReviewWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersPullRequestReadyForReviewWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestLabeled
-            getRepoAutomationResponseTriggersPullRequestLabeled() {
-        return new GitHubGetRepoAutomationResponseTriggersPullRequestLabeled(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("bug"),
-                getRepoAutomationResponseTriggersPullRequestLabeledWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestLabeledWriteScope
-            getRepoAutomationResponseTriggersPullRequestLabeledWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersPullRequestLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestMergeConflict
-            getRepoAutomationResponseTriggersPullRequestMergeConflict() {
-        return new GitHubGetRepoAutomationResponseTriggersPullRequestMergeConflict(
-                "is:open label:bug",
-                List.of("src/**"),
-                getRepoAutomationResponseTriggersPullRequestMergeConflictWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestMergeConflictWriteScope
-            getRepoAutomationResponseTriggersPullRequestMergeConflictWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersPullRequestMergeConflictWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestReviewSubmitted
-            getRepoAutomationResponseTriggersPullRequestReviewSubmitted() {
-        return new GitHubGetRepoAutomationResponseTriggersPullRequestReviewSubmitted(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of(getRepoAutomationResponseTriggersPullRequestReviewSubmittedState()),
-                getRepoAutomationResponseTriggersPullRequestReviewSubmittedWriteScope());
-    }
-
     static GitHubGetRepoAutomationResponseTriggersPullRequestReviewSubmittedState
             getRepoAutomationResponseTriggersPullRequestReviewSubmittedState() {
         return GitHubGetRepoAutomationResponseTriggersPullRequestReviewSubmittedState.APPROVED;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestReviewSubmittedWriteScope
-            getRepoAutomationResponseTriggersPullRequestReviewSubmittedWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersPullRequestReviewSubmittedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestReviewRequested
-            getRepoAutomationResponseTriggersPullRequestReviewRequested() {
-        return new GitHubGetRepoAutomationResponseTriggersPullRequestReviewRequested(
-                "is:open label:bug",
-                List.of("src/**"),
-                getRepoAutomationResponseTriggersPullRequestReviewRequestedWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersPullRequestReviewRequestedWriteScope
-            getRepoAutomationResponseTriggersPullRequestReviewRequestedWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersPullRequestReviewRequestedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersAutomationCompleted
-            getRepoAutomationResponseTriggersAutomationCompleted() {
-        return new GitHubGetRepoAutomationResponseTriggersAutomationCompleted(
-                List.of("automation-2"), getRepoAutomationResponseTriggersAutomationCompletedWriteScope());
-    }
-
-    static GitHubGetRepoAutomationResponseTriggersAutomationCompletedWriteScope
-            getRepoAutomationResponseTriggersAutomationCompletedWriteScope() {
-        return GitHubGetRepoAutomationResponseTriggersAutomationCompletedWriteScope.TRIGGER;
-    }
-
-    static GitHubGetRepoAutomationResponseCreatedBy getRepoAutomationResponseCreatedBy() {
-        return new GitHubGetRepoAutomationResponseCreatedBy(1L);
-    }
-
-    static GitHubEditRepoAutomationPayload editRepoAutomationPayload() {
-        return new GitHubEditRepoAutomationPayload(
-                "Nightly triage",
-                true,
-                editRepoAutomationWriteScope(),
-                true,
-                "gpt-5",
-                GitHubEditRepoAutomationReasoningEffort.MEDIUM,
-                editRepoAutomationTriggers(),
-                "Triage new issues and label them.",
-                List.of("issues_read"),
-                List.of("triage-agent"));
-    }
-
-    static GitHubEditRepoAutomationWriteScope editRepoAutomationWriteScope() {
-        return GitHubEditRepoAutomationWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggers editRepoAutomationTriggers() {
-        return new GitHubEditRepoAutomationTriggers(
-                editRepoAutomationTriggersInterval(),
-                editRepoAutomationTriggersIssueOpened(),
-                editRepoAutomationTriggersIssueLabeled(),
-                editRepoAutomationTriggersWorkflowRun(),
-                editRepoAutomationTriggersPullRequestOpened(),
-                editRepoAutomationTriggersPullRequestSynchronize(),
-                editRepoAutomationTriggersPullRequestMerged(),
-                editRepoAutomationTriggersIssueComment(),
-                editRepoAutomationTriggersPullRequestComment(),
-                editRepoAutomationTriggersDiscussionOpened(),
-                editRepoAutomationTriggersDiscussionUpdated(),
-                editRepoAutomationTriggersDiscussionComment(),
-                editRepoAutomationTriggersIssueAssigned(),
-                editRepoAutomationTriggersPullRequestAssigned(),
-                editRepoAutomationTriggersSubIssueAdded(),
-                editRepoAutomationTriggersPullRequestReadyForReview(),
-                editRepoAutomationTriggersPullRequestLabeled(),
-                editRepoAutomationTriggersPullRequestMergeConflict(),
-                editRepoAutomationTriggersPullRequestReviewSubmitted(),
-                editRepoAutomationTriggersPullRequestReviewRequested(),
-                editRepoAutomationTriggersAutomationCompleted());
-    }
-
-    static GitHubEditRepoAutomationTriggersInterval editRepoAutomationTriggersInterval() {
-        return new GitHubEditRepoAutomationTriggersInterval(
-                List.of(editRepoAutomationTriggersIntervalCadence()),
-                9,
-                1,
-                GitHubAutomationMinuteUtc.FIFTEEN,
-                editRepoAutomationTriggersIntervalWriteScope());
     }
 
     static GitHubEditRepoAutomationTriggersIntervalCadence editRepoAutomationTriggersIntervalCadence() {
         return GitHubEditRepoAutomationTriggersIntervalCadence.HOURLY;
     }
 
-    static GitHubEditRepoAutomationTriggersIntervalWriteScope editRepoAutomationTriggersIntervalWriteScope() {
-        return GitHubEditRepoAutomationTriggersIntervalWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersIssueOpened editRepoAutomationTriggersIssueOpened() {
-        return new GitHubEditRepoAutomationTriggersIssueOpened(
-                "is:open label:bug", editRepoAutomationTriggersIssueOpenedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersIssueOpenedWriteScope editRepoAutomationTriggersIssueOpenedWriteScope() {
-        return GitHubEditRepoAutomationTriggersIssueOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersIssueLabeled editRepoAutomationTriggersIssueLabeled() {
-        return new GitHubEditRepoAutomationTriggersIssueLabeled(
-                "is:open label:bug", List.of("bug"), editRepoAutomationTriggersIssueLabeledWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersIssueLabeledWriteScope editRepoAutomationTriggersIssueLabeledWriteScope() {
-        return GitHubEditRepoAutomationTriggersIssueLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersWorkflowRun editRepoAutomationTriggersWorkflowRun() {
-        return new GitHubEditRepoAutomationTriggersWorkflowRun(
-                List.of("CI"),
-                List.of(editRepoAutomationTriggersWorkflowRunConclusion()),
-                "is:open label:bug",
-                editRepoAutomationTriggersWorkflowRunWriteScope());
-    }
-
     static GitHubEditRepoAutomationTriggersWorkflowRunConclusion editRepoAutomationTriggersWorkflowRunConclusion() {
         return GitHubEditRepoAutomationTriggersWorkflowRunConclusion.FAILURE;
-    }
-
-    static GitHubEditRepoAutomationTriggersWorkflowRunWriteScope editRepoAutomationTriggersWorkflowRunWriteScope() {
-        return GitHubEditRepoAutomationTriggersWorkflowRunWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestOpened editRepoAutomationTriggersPullRequestOpened() {
-        return new GitHubEditRepoAutomationTriggersPullRequestOpened(
-                "is:open label:bug", List.of("src/**"), editRepoAutomationTriggersPullRequestOpenedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestOpenedWriteScope
-            editRepoAutomationTriggersPullRequestOpenedWriteScope() {
-        return GitHubEditRepoAutomationTriggersPullRequestOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestSynchronize editRepoAutomationTriggersPullRequestSynchronize() {
-        return new GitHubEditRepoAutomationTriggersPullRequestSynchronize(
-                "is:open label:bug", List.of("src/**"), editRepoAutomationTriggersPullRequestSynchronizeWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestSynchronizeWriteScope
-            editRepoAutomationTriggersPullRequestSynchronizeWriteScope() {
-        return GitHubEditRepoAutomationTriggersPullRequestSynchronizeWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestMerged editRepoAutomationTriggersPullRequestMerged() {
-        return new GitHubEditRepoAutomationTriggersPullRequestMerged(
-                "is:open label:bug", List.of("src/**"), editRepoAutomationTriggersPullRequestMergedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestMergedWriteScope
-            editRepoAutomationTriggersPullRequestMergedWriteScope() {
-        return GitHubEditRepoAutomationTriggersPullRequestMergedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersIssueComment editRepoAutomationTriggersIssueComment() {
-        return new GitHubEditRepoAutomationTriggersIssueComment(
-                "/triage", editRepoAutomationTriggersIssueCommentWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersIssueCommentWriteScope editRepoAutomationTriggersIssueCommentWriteScope() {
-        return GitHubEditRepoAutomationTriggersIssueCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestComment editRepoAutomationTriggersPullRequestComment() {
-        return new GitHubEditRepoAutomationTriggersPullRequestComment(
-                List.of(editRepoAutomationTriggersPullRequestCommentCommentType()),
-                "/triage",
-                editRepoAutomationTriggersPullRequestCommentWriteScope());
     }
 
     static GitHubEditRepoAutomationTriggersPullRequestCommentCommentType
@@ -2278,124 +192,9 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubEditRepoAutomationTriggersPullRequestCommentCommentType.TIMELINE_COMMENT;
     }
 
-    static GitHubEditRepoAutomationTriggersPullRequestCommentWriteScope
-            editRepoAutomationTriggersPullRequestCommentWriteScope() {
-        return GitHubEditRepoAutomationTriggersPullRequestCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersDiscussionOpened editRepoAutomationTriggersDiscussionOpened() {
-        return new GitHubEditRepoAutomationTriggersDiscussionOpened(
-                List.of("General"), "/triage", editRepoAutomationTriggersDiscussionOpenedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersDiscussionOpenedWriteScope
-            editRepoAutomationTriggersDiscussionOpenedWriteScope() {
-        return GitHubEditRepoAutomationTriggersDiscussionOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersDiscussionUpdated editRepoAutomationTriggersDiscussionUpdated() {
-        return new GitHubEditRepoAutomationTriggersDiscussionUpdated(
-                List.of("General"), "/triage", editRepoAutomationTriggersDiscussionUpdatedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersDiscussionUpdatedWriteScope
-            editRepoAutomationTriggersDiscussionUpdatedWriteScope() {
-        return GitHubEditRepoAutomationTriggersDiscussionUpdatedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersDiscussionComment editRepoAutomationTriggersDiscussionComment() {
-        return new GitHubEditRepoAutomationTriggersDiscussionComment(
-                List.of(editRepoAutomationTriggersDiscussionCommentCommentType()),
-                List.of("General"),
-                "/triage",
-                editRepoAutomationTriggersDiscussionCommentWriteScope());
-    }
-
     static GitHubEditRepoAutomationTriggersDiscussionCommentCommentType
             editRepoAutomationTriggersDiscussionCommentCommentType() {
         return GitHubEditRepoAutomationTriggersDiscussionCommentCommentType.COMMENT;
-    }
-
-    static GitHubEditRepoAutomationTriggersDiscussionCommentWriteScope
-            editRepoAutomationTriggersDiscussionCommentWriteScope() {
-        return GitHubEditRepoAutomationTriggersDiscussionCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersIssueAssigned editRepoAutomationTriggersIssueAssigned() {
-        return new GitHubEditRepoAutomationTriggersIssueAssigned(
-                "is:open label:bug", List.of("octocat"), editRepoAutomationTriggersIssueAssignedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersIssueAssignedWriteScope editRepoAutomationTriggersIssueAssignedWriteScope() {
-        return GitHubEditRepoAutomationTriggersIssueAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestAssigned editRepoAutomationTriggersPullRequestAssigned() {
-        return new GitHubEditRepoAutomationTriggersPullRequestAssigned(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("octocat"),
-                editRepoAutomationTriggersPullRequestAssignedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestAssignedWriteScope
-            editRepoAutomationTriggersPullRequestAssignedWriteScope() {
-        return GitHubEditRepoAutomationTriggersPullRequestAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersSubIssueAdded editRepoAutomationTriggersSubIssueAdded() {
-        return new GitHubEditRepoAutomationTriggersSubIssueAdded(
-                "is:open label:bug", editRepoAutomationTriggersSubIssueAddedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersSubIssueAddedWriteScope editRepoAutomationTriggersSubIssueAddedWriteScope() {
-        return GitHubEditRepoAutomationTriggersSubIssueAddedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestReadyForReview
-            editRepoAutomationTriggersPullRequestReadyForReview() {
-        return new GitHubEditRepoAutomationTriggersPullRequestReadyForReview(
-                "is:open label:bug",
-                List.of("src/**"),
-                editRepoAutomationTriggersPullRequestReadyForReviewWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestReadyForReviewWriteScope
-            editRepoAutomationTriggersPullRequestReadyForReviewWriteScope() {
-        return GitHubEditRepoAutomationTriggersPullRequestReadyForReviewWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestLabeled editRepoAutomationTriggersPullRequestLabeled() {
-        return new GitHubEditRepoAutomationTriggersPullRequestLabeled(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("bug"),
-                editRepoAutomationTriggersPullRequestLabeledWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestLabeledWriteScope
-            editRepoAutomationTriggersPullRequestLabeledWriteScope() {
-        return GitHubEditRepoAutomationTriggersPullRequestLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestMergeConflict
-            editRepoAutomationTriggersPullRequestMergeConflict() {
-        return new GitHubEditRepoAutomationTriggersPullRequestMergeConflict(
-                "is:open label:bug", List.of("src/**"), editRepoAutomationTriggersPullRequestMergeConflictWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestMergeConflictWriteScope
-            editRepoAutomationTriggersPullRequestMergeConflictWriteScope() {
-        return GitHubEditRepoAutomationTriggersPullRequestMergeConflictWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestReviewSubmitted
-            editRepoAutomationTriggersPullRequestReviewSubmitted() {
-        return new GitHubEditRepoAutomationTriggersPullRequestReviewSubmitted(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of(editRepoAutomationTriggersPullRequestReviewSubmittedState()),
-                editRepoAutomationTriggersPullRequestReviewSubmittedWriteScope());
     }
 
     static GitHubEditRepoAutomationTriggersPullRequestReviewSubmittedState
@@ -2403,130 +202,8 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubEditRepoAutomationTriggersPullRequestReviewSubmittedState.APPROVED;
     }
 
-    static GitHubEditRepoAutomationTriggersPullRequestReviewSubmittedWriteScope
-            editRepoAutomationTriggersPullRequestReviewSubmittedWriteScope() {
-        return GitHubEditRepoAutomationTriggersPullRequestReviewSubmittedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestReviewRequested
-            editRepoAutomationTriggersPullRequestReviewRequested() {
-        return new GitHubEditRepoAutomationTriggersPullRequestReviewRequested(
-                "is:open label:bug",
-                List.of("src/**"),
-                editRepoAutomationTriggersPullRequestReviewRequestedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersPullRequestReviewRequestedWriteScope
-            editRepoAutomationTriggersPullRequestReviewRequestedWriteScope() {
-        return GitHubEditRepoAutomationTriggersPullRequestReviewRequestedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationTriggersAutomationCompleted editRepoAutomationTriggersAutomationCompleted() {
-        return new GitHubEditRepoAutomationTriggersAutomationCompleted(
-                List.of("automation-2"), editRepoAutomationTriggersAutomationCompletedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationTriggersAutomationCompletedWriteScope
-            editRepoAutomationTriggersAutomationCompletedWriteScope() {
-        return GitHubEditRepoAutomationTriggersAutomationCompletedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponse editRepoAutomationResponse() {
-        return new GitHubEditRepoAutomationResponse(
-                "automation-1",
-                "Nightly triage",
-                true,
-                editRepoAutomationResponseOwnerType(),
-                editRepoAutomationResponseWriteScope(),
-                true,
-                editRepoAutomationResponseTriggers(),
-                "Triage new issues and label them.",
-                List.of("issues_read"),
-                List.of("triage-agent"),
-                "gpt-5",
-                "medium",
-                Instant.parse("2026-01-10T12:00:00Z"),
-                Instant.parse("2026-01-10T12:00:00Z"),
-                editRepoAutomationResponseCreatedBy());
-    }
-
-    static GitHubEditRepoAutomationResponseOwnerType editRepoAutomationResponseOwnerType() {
-        return GitHubEditRepoAutomationResponseOwnerType.USER;
-    }
-
-    static GitHubEditRepoAutomationResponseWriteScope editRepoAutomationResponseWriteScope() {
-        return GitHubEditRepoAutomationResponseWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggers editRepoAutomationResponseTriggers() {
-        return new GitHubEditRepoAutomationResponseTriggers(
-                editRepoAutomationResponseTriggersInterval(),
-                editRepoAutomationResponseTriggersIssueOpened(),
-                editRepoAutomationResponseTriggersIssueLabeled(),
-                editRepoAutomationResponseTriggersWorkflowRun(),
-                editRepoAutomationResponseTriggersPullRequestOpened(),
-                editRepoAutomationResponseTriggersPullRequestSynchronize(),
-                editRepoAutomationResponseTriggersPullRequestMerged(),
-                editRepoAutomationResponseTriggersIssueComment(),
-                editRepoAutomationResponseTriggersPullRequestComment(),
-                editRepoAutomationResponseTriggersDiscussionOpened(),
-                editRepoAutomationResponseTriggersDiscussionUpdated(),
-                editRepoAutomationResponseTriggersDiscussionComment(),
-                editRepoAutomationResponseTriggersIssueAssigned(),
-                editRepoAutomationResponseTriggersPullRequestAssigned(),
-                editRepoAutomationResponseTriggersSubIssueAdded(),
-                editRepoAutomationResponseTriggersPullRequestReadyForReview(),
-                editRepoAutomationResponseTriggersPullRequestLabeled(),
-                editRepoAutomationResponseTriggersPullRequestMergeConflict(),
-                editRepoAutomationResponseTriggersPullRequestReviewSubmitted(),
-                editRepoAutomationResponseTriggersPullRequestReviewRequested(),
-                editRepoAutomationResponseTriggersAutomationCompleted());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersInterval editRepoAutomationResponseTriggersInterval() {
-        return new GitHubEditRepoAutomationResponseTriggersInterval(
-                List.of(editRepoAutomationResponseTriggersIntervalCadence()),
-                9,
-                1,
-                GitHubAutomationMinuteUtc.FIFTEEN,
-                editRepoAutomationResponseTriggersIntervalWriteScope());
-    }
-
     static GitHubEditRepoAutomationResponseTriggersIntervalCadence editRepoAutomationResponseTriggersIntervalCadence() {
         return GitHubEditRepoAutomationResponseTriggersIntervalCadence.HOURLY;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersIntervalWriteScope
-            editRepoAutomationResponseTriggersIntervalWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersIntervalWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersIssueOpened editRepoAutomationResponseTriggersIssueOpened() {
-        return new GitHubEditRepoAutomationResponseTriggersIssueOpened(
-                "is:open label:bug", editRepoAutomationResponseTriggersIssueOpenedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersIssueOpenedWriteScope
-            editRepoAutomationResponseTriggersIssueOpenedWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersIssueOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersIssueLabeled editRepoAutomationResponseTriggersIssueLabeled() {
-        return new GitHubEditRepoAutomationResponseTriggersIssueLabeled(
-                "is:open label:bug", List.of("bug"), editRepoAutomationResponseTriggersIssueLabeledWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersIssueLabeledWriteScope
-            editRepoAutomationResponseTriggersIssueLabeledWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersIssueLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersWorkflowRun editRepoAutomationResponseTriggersWorkflowRun() {
-        return new GitHubEditRepoAutomationResponseTriggersWorkflowRun(
-                List.of("CI"),
-                List.of(editRepoAutomationResponseTriggersWorkflowRunConclusion()),
-                "is:open label:bug",
-                editRepoAutomationResponseTriggersWorkflowRunWriteScope());
     }
 
     static GitHubEditRepoAutomationResponseTriggersWorkflowRunConclusion
@@ -2534,107 +211,9 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubEditRepoAutomationResponseTriggersWorkflowRunConclusion.FAILURE;
     }
 
-    static GitHubEditRepoAutomationResponseTriggersWorkflowRunWriteScope
-            editRepoAutomationResponseTriggersWorkflowRunWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersWorkflowRunWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestOpened
-            editRepoAutomationResponseTriggersPullRequestOpened() {
-        return new GitHubEditRepoAutomationResponseTriggersPullRequestOpened(
-                "is:open label:bug",
-                List.of("src/**"),
-                editRepoAutomationResponseTriggersPullRequestOpenedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestOpenedWriteScope
-            editRepoAutomationResponseTriggersPullRequestOpenedWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersPullRequestOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestSynchronize
-            editRepoAutomationResponseTriggersPullRequestSynchronize() {
-        return new GitHubEditRepoAutomationResponseTriggersPullRequestSynchronize(
-                "is:open label:bug",
-                List.of("src/**"),
-                editRepoAutomationResponseTriggersPullRequestSynchronizeWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestSynchronizeWriteScope
-            editRepoAutomationResponseTriggersPullRequestSynchronizeWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersPullRequestSynchronizeWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestMerged
-            editRepoAutomationResponseTriggersPullRequestMerged() {
-        return new GitHubEditRepoAutomationResponseTriggersPullRequestMerged(
-                "is:open label:bug",
-                List.of("src/**"),
-                editRepoAutomationResponseTriggersPullRequestMergedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestMergedWriteScope
-            editRepoAutomationResponseTriggersPullRequestMergedWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersPullRequestMergedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersIssueComment editRepoAutomationResponseTriggersIssueComment() {
-        return new GitHubEditRepoAutomationResponseTriggersIssueComment(
-                "/triage", editRepoAutomationResponseTriggersIssueCommentWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersIssueCommentWriteScope
-            editRepoAutomationResponseTriggersIssueCommentWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersIssueCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestComment
-            editRepoAutomationResponseTriggersPullRequestComment() {
-        return new GitHubEditRepoAutomationResponseTriggersPullRequestComment(
-                List.of(editRepoAutomationResponseTriggersPullRequestCommentCommentType()),
-                "/triage",
-                editRepoAutomationResponseTriggersPullRequestCommentWriteScope());
-    }
-
     static GitHubEditRepoAutomationResponseTriggersPullRequestCommentCommentType
             editRepoAutomationResponseTriggersPullRequestCommentCommentType() {
         return GitHubEditRepoAutomationResponseTriggersPullRequestCommentCommentType.TIMELINE_COMMENT;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestCommentWriteScope
-            editRepoAutomationResponseTriggersPullRequestCommentWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersPullRequestCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersDiscussionOpened
-            editRepoAutomationResponseTriggersDiscussionOpened() {
-        return new GitHubEditRepoAutomationResponseTriggersDiscussionOpened(
-                List.of("General"), "/triage", editRepoAutomationResponseTriggersDiscussionOpenedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersDiscussionOpenedWriteScope
-            editRepoAutomationResponseTriggersDiscussionOpenedWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersDiscussionOpenedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersDiscussionUpdated
-            editRepoAutomationResponseTriggersDiscussionUpdated() {
-        return new GitHubEditRepoAutomationResponseTriggersDiscussionUpdated(
-                List.of("General"), "/triage", editRepoAutomationResponseTriggersDiscussionUpdatedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersDiscussionUpdatedWriteScope
-            editRepoAutomationResponseTriggersDiscussionUpdatedWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersDiscussionUpdatedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersDiscussionComment
-            editRepoAutomationResponseTriggersDiscussionComment() {
-        return new GitHubEditRepoAutomationResponseTriggersDiscussionComment(
-                List.of(editRepoAutomationResponseTriggersDiscussionCommentCommentType()),
-                List.of("General"),
-                "/triage",
-                editRepoAutomationResponseTriggersDiscussionCommentWriteScope());
     }
 
     static GitHubEditRepoAutomationResponseTriggersDiscussionCommentCommentType
@@ -2642,158 +221,2802 @@ final class AgentAutomationsCatalogFixtures {
         return GitHubEditRepoAutomationResponseTriggersDiscussionCommentCommentType.COMMENT;
     }
 
-    static GitHubEditRepoAutomationResponseTriggersDiscussionCommentWriteScope
-            editRepoAutomationResponseTriggersDiscussionCommentWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersDiscussionCommentWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersIssueAssigned editRepoAutomationResponseTriggersIssueAssigned() {
-        return new GitHubEditRepoAutomationResponseTriggersIssueAssigned(
-                "is:open label:bug", List.of("octocat"), editRepoAutomationResponseTriggersIssueAssignedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersIssueAssignedWriteScope
-            editRepoAutomationResponseTriggersIssueAssignedWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersIssueAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestAssigned
-            editRepoAutomationResponseTriggersPullRequestAssigned() {
-        return new GitHubEditRepoAutomationResponseTriggersPullRequestAssigned(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("octocat"),
-                editRepoAutomationResponseTriggersPullRequestAssignedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestAssignedWriteScope
-            editRepoAutomationResponseTriggersPullRequestAssignedWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersPullRequestAssignedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersSubIssueAdded editRepoAutomationResponseTriggersSubIssueAdded() {
-        return new GitHubEditRepoAutomationResponseTriggersSubIssueAdded(
-                "is:open label:bug", editRepoAutomationResponseTriggersSubIssueAddedWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersSubIssueAddedWriteScope
-            editRepoAutomationResponseTriggersSubIssueAddedWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersSubIssueAddedWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestReadyForReview
-            editRepoAutomationResponseTriggersPullRequestReadyForReview() {
-        return new GitHubEditRepoAutomationResponseTriggersPullRequestReadyForReview(
-                "is:open label:bug",
-                List.of("src/**"),
-                editRepoAutomationResponseTriggersPullRequestReadyForReviewWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestReadyForReviewWriteScope
-            editRepoAutomationResponseTriggersPullRequestReadyForReviewWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersPullRequestReadyForReviewWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestLabeled
-            editRepoAutomationResponseTriggersPullRequestLabeled() {
-        return new GitHubEditRepoAutomationResponseTriggersPullRequestLabeled(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of("bug"),
-                editRepoAutomationResponseTriggersPullRequestLabeledWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestLabeledWriteScope
-            editRepoAutomationResponseTriggersPullRequestLabeledWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersPullRequestLabeledWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestMergeConflict
-            editRepoAutomationResponseTriggersPullRequestMergeConflict() {
-        return new GitHubEditRepoAutomationResponseTriggersPullRequestMergeConflict(
-                "is:open label:bug",
-                List.of("src/**"),
-                editRepoAutomationResponseTriggersPullRequestMergeConflictWriteScope());
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestMergeConflictWriteScope
-            editRepoAutomationResponseTriggersPullRequestMergeConflictWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersPullRequestMergeConflictWriteScope.TRIGGER;
-    }
-
-    static GitHubEditRepoAutomationResponseTriggersPullRequestReviewSubmitted
-            editRepoAutomationResponseTriggersPullRequestReviewSubmitted() {
-        return new GitHubEditRepoAutomationResponseTriggersPullRequestReviewSubmitted(
-                "is:open label:bug",
-                List.of("src/**"),
-                List.of(editRepoAutomationResponseTriggersPullRequestReviewSubmittedState()),
-                editRepoAutomationResponseTriggersPullRequestReviewSubmittedWriteScope());
-    }
-
     static GitHubEditRepoAutomationResponseTriggersPullRequestReviewSubmittedState
             editRepoAutomationResponseTriggersPullRequestReviewSubmittedState() {
         return GitHubEditRepoAutomationResponseTriggersPullRequestReviewSubmittedState.APPROVED;
     }
 
-    static GitHubEditRepoAutomationResponseTriggersPullRequestReviewSubmittedWriteScope
-            editRepoAutomationResponseTriggersPullRequestReviewSubmittedWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersPullRequestReviewSubmittedWriteScope.TRIGGER;
+    static GitHubListAutomationsType listAutomationsType() {
+        return GitHubListAutomationsType.PERSONAL;
+    }
+
+    static GitHubListAutomationsFilter listAutomationsFilter() {
+        return new GitHubListAutomationsFilter(listAutomationsType());
+    }
+
+    static GitHubListRepoAutomationsType listRepoAutomationsType() {
+        return GitHubListRepoAutomationsType.PERSONAL;
+    }
+
+    static GitHubListRepoAutomationsFilter listRepoAutomationsFilter() {
+        return new GitHubListRepoAutomationsFilter(listRepoAutomationsType());
+    }
+
+    static GitHubListAvailableRepoAutomationTriggersItem listAvailableRepoAutomationTriggersItem() {
+        return new GitHubListAvailableRepoAutomationTriggersItem(
+                "automation-1",
+                "Issue tools",
+                "Reads issues and pull requests.",
+                List.of(listAvailableRepoAutomationTriggersItemField()));
+    }
+
+    static GitHubListAvailableRepoAutomationTriggersItemField listAvailableRepoAutomationTriggersItemField() {
+        return new GitHubListAvailableRepoAutomationTriggersItemField(
+                "automation-1",
+                "Branch",
+                true,
+                "Reads issues and pull requests.",
+                listAvailableRepoAutomationTriggersItemFieldSchemaString());
+    }
+
+    static GitHubListRepoAutomationTasksResponse listRepoAutomationTasksResponse() {
+        return new GitHubListRepoAutomationTasksResponse(List.of(listRepoAutomationTasksTask()));
+    }
+
+    static GitHubListRepoAutomationTasksTask listRepoAutomationTasksTask() {
+        return new GitHubListRepoAutomationTasksTask(
+                "automation-1",
+                "https://api.github.com/agents/tasks/1",
+                "https://github.com/octocat/Hello-World/tasks/1",
+                "Nightly triage",
+                List.of(listRepoAutomationTasksTaskClient()),
+                listRepoAutomationTasksTaskCreator(),
+                listRepoAutomationTasksTaskCreatorType(),
+                List.of(listRepoAutomationTasksTaskUserCollaborator()),
+                listRepoAutomationTasksTaskOwner(),
+                listRepoAutomationTasksTaskRepository(),
+                listRepoAutomationTasksTaskState(),
+                1,
+                List.of(listRepoAutomationTasksTaskArtifact()),
+                Instant.parse("2026-01-10T12:00:00Z"),
+                Instant.parse("2026-01-10T12:00:00Z"),
+                Instant.parse("2026-01-10T12:00:00Z"),
+                listRepoAutomationTasksTaskCustomAgent());
+    }
+
+    static GitHubListRepoAutomationTasksTaskCreator listRepoAutomationTasksTaskCreator() {
+        return new GitHubListRepoAutomationTasksTaskCreator(1L);
+    }
+
+    static GitHubListRepoAutomationTasksTaskCreatorType listRepoAutomationTasksTaskCreatorType() {
+        return GitHubListRepoAutomationTasksTaskCreatorType.USER;
+    }
+
+    static GitHubListRepoAutomationTasksTaskUserCollaborator listRepoAutomationTasksTaskUserCollaborator() {
+        return new GitHubListRepoAutomationTasksTaskUserCollaborator(1L);
+    }
+
+    static GitHubListRepoAutomationTasksTaskOwner listRepoAutomationTasksTaskOwner() {
+        return new GitHubListRepoAutomationTasksTaskOwner(1L);
+    }
+
+    static GitHubListRepoAutomationTasksTaskRepository listRepoAutomationTasksTaskRepository() {
+        return new GitHubListRepoAutomationTasksTaskRepository(1L);
+    }
+
+    static GitHubListRepoAutomationTasksTaskState listRepoAutomationTasksTaskState() {
+        return GitHubListRepoAutomationTasksTaskState.QUEUED;
+    }
+
+    static GitHubListRepoAutomationTasksTaskArtifact listRepoAutomationTasksTaskArtifact() {
+        return new GitHubListRepoAutomationTasksTaskArtifact(
+                listRepoAutomationTasksTaskArtifactProvider(),
+                listRepoAutomationTasksTaskArtifactType(),
+                listRepoAutomationTasksTaskArtifactDataById());
+    }
+
+    static GitHubListRepoAutomationTasksTaskArtifactProvider listRepoAutomationTasksTaskArtifactProvider() {
+        return GitHubListRepoAutomationTasksTaskArtifactProvider.GITHUB;
+    }
+
+    static GitHubListRepoAutomationTasksTaskArtifactType listRepoAutomationTasksTaskArtifactType() {
+        return GitHubListRepoAutomationTasksTaskArtifactType.PULL;
+    }
+
+    static GitHubListRepoAutomationTasksTaskArtifactDataById listRepoAutomationTasksTaskArtifactDataById() {
+        return new GitHubListRepoAutomationTasksTaskArtifactDataById(1L, "MDExOlB1bGxSZXF1ZXN0MQ==");
+    }
+
+    static GitHubListRepoAutomationTasksTaskArtifactDataByRef listRepoAutomationTasksTaskArtifactDataByRef() {
+        return new GitHubListRepoAutomationTasksTaskArtifactDataByRef("feature/fix", "main");
+    }
+
+    static GitHubListRepoAutomationTasksTaskCustomAgent listRepoAutomationTasksTaskCustomAgent() {
+        return new GitHubListRepoAutomationTasksTaskCustomAgent("automation-1");
+    }
+
+    static GitHubListRepoAutomationTasksSort listRepoAutomationTasksSort() {
+        return GitHubListRepoAutomationTasksSort.UPDATED_AT;
+    }
+
+    static GitHubListRepoAutomationTasksDirection listRepoAutomationTasksDirection() {
+        return GitHubListRepoAutomationTasksDirection.ASC;
+    }
+
+    static GitHubListRepoAutomationTasksFilter listRepoAutomationTasksFilter() {
+        return new GitHubListRepoAutomationTasksFilter(
+                listRepoAutomationTasksSort(), listRepoAutomationTasksDirection(), "completed", false);
+    }
+
+    static GitHubListRepoAutomationTasksTaskClient listRepoAutomationTasksTaskClient() {
+        return GitHubListRepoAutomationTasksTaskClientBuilder.builder()
+                .integrationId("github-mobile-ios")
+                .slug("copilot-mobile-ios")
+                .creator(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersInterval createRepoAutomationTriggersInterval() {
+        return GitHubCreateRepoAutomationTriggersIntervalBuilder.builder()
+                .cadence(List.of(GitHubCreateRepoAutomationTriggersIntervalCadence.HOURLY))
+                .hourUtc(1)
+                .dayOfWeek(1)
+                .minuteUtc(GitHubAutomationMinuteUtc.ZERO)
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersIssueOpened createRepoAutomationTriggersIssueOpened() {
+        return GitHubCreateRepoAutomationTriggersIssueOpenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersIssueLabeled createRepoAutomationTriggersIssueLabeled() {
+        return GitHubCreateRepoAutomationTriggersIssueLabeledBuilder.builder()
+                .query("query")
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersWorkflowRun createRepoAutomationTriggersWorkflowRun() {
+        return GitHubCreateRepoAutomationTriggersWorkflowRunBuilder.builder()
+                .workflows(List.of("workflows"))
+                .conclusions(List.of(GitHubCreateRepoAutomationTriggersWorkflowRunConclusion.FAILURE))
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestOpened createRepoAutomationTriggersPullRequestOpened() {
+        return GitHubCreateRepoAutomationTriggersPullRequestOpenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestSynchronize
+            createRepoAutomationTriggersPullRequestSynchronize() {
+        return GitHubCreateRepoAutomationTriggersPullRequestSynchronizeBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestMerged createRepoAutomationTriggersPullRequestMerged() {
+        return GitHubCreateRepoAutomationTriggersPullRequestMergedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersIssueComment createRepoAutomationTriggersIssueComment() {
+        return GitHubCreateRepoAutomationTriggersIssueCommentBuilder.builder()
+                .query("query")
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestComment createRepoAutomationTriggersPullRequestComment() {
+        return GitHubCreateRepoAutomationTriggersPullRequestCommentBuilder.builder()
+                .commentTypes(List.of(GitHubCreateRepoAutomationTriggersPullRequestCommentCommentType.TIMELINE_COMMENT))
+                .query("query")
+                .paths(List.of("paths"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersDiscussionOpened createRepoAutomationTriggersDiscussionOpened() {
+        return GitHubCreateRepoAutomationTriggersDiscussionOpenedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersDiscussionUpdated createRepoAutomationTriggersDiscussionUpdated() {
+        return GitHubCreateRepoAutomationTriggersDiscussionUpdatedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersDiscussionComment createRepoAutomationTriggersDiscussionComment() {
+        return GitHubCreateRepoAutomationTriggersDiscussionCommentBuilder.builder()
+                .commentTypes(List.of(GitHubCreateRepoAutomationTriggersDiscussionCommentCommentType.COMMENT))
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersIssueAssigned createRepoAutomationTriggersIssueAssigned() {
+        return GitHubCreateRepoAutomationTriggersIssueAssignedBuilder.builder()
+                .query("query")
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestAssigned createRepoAutomationTriggersPullRequestAssigned() {
+        return GitHubCreateRepoAutomationTriggersPullRequestAssignedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersSubIssueAdded createRepoAutomationTriggersSubIssueAdded() {
+        return GitHubCreateRepoAutomationTriggersSubIssueAddedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestReadyForReview
+            createRepoAutomationTriggersPullRequestReadyForReview() {
+        return GitHubCreateRepoAutomationTriggersPullRequestReadyForReviewBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestLabeled createRepoAutomationTriggersPullRequestLabeled() {
+        return GitHubCreateRepoAutomationTriggersPullRequestLabeledBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestMergeConflict
+            createRepoAutomationTriggersPullRequestMergeConflict() {
+        return GitHubCreateRepoAutomationTriggersPullRequestMergeConflictBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestReviewSubmitted
+            createRepoAutomationTriggersPullRequestReviewSubmitted() {
+        return GitHubCreateRepoAutomationTriggersPullRequestReviewSubmittedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .states(List.of(GitHubCreateRepoAutomationTriggersPullRequestReviewSubmittedState.APPROVED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestReviewRequested
+            createRepoAutomationTriggersPullRequestReviewRequested() {
+        return GitHubCreateRepoAutomationTriggersPullRequestReviewRequestedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersIssueClosed createRepoAutomationTriggersIssueClosed() {
+        return GitHubCreateRepoAutomationTriggersIssueClosedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersIssueReopened createRepoAutomationTriggersIssueReopened() {
+        return GitHubCreateRepoAutomationTriggersIssueReopenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestClosed createRepoAutomationTriggersPullRequestClosed() {
+        return GitHubCreateRepoAutomationTriggersPullRequestClosedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestReopened createRepoAutomationTriggersPullRequestReopened() {
+        return GitHubCreateRepoAutomationTriggersPullRequestReopenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestConvertedToDraft
+            createRepoAutomationTriggersPullRequestConvertedToDraft() {
+        return GitHubCreateRepoAutomationTriggersPullRequestConvertedToDraftBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestReviewDismissed
+            createRepoAutomationTriggersPullRequestReviewDismissed() {
+        return GitHubCreateRepoAutomationTriggersPullRequestReviewDismissedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestReviewThreadResolved
+            createRepoAutomationTriggersPullRequestReviewThreadResolved() {
+        return GitHubCreateRepoAutomationTriggersPullRequestReviewThreadResolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersPullRequestReviewThreadUnresolved
+            createRepoAutomationTriggersPullRequestReviewThreadUnresolved() {
+        return GitHubCreateRepoAutomationTriggersPullRequestReviewThreadUnresolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersAutomationCompleted createRepoAutomationTriggersAutomationCompleted() {
+        return GitHubCreateRepoAutomationTriggersAutomationCompletedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersAutomationFailed createRepoAutomationTriggersAutomationFailed() {
+        return GitHubCreateRepoAutomationTriggersAutomationFailedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .reasons(List.of(GitHubCreateRepoAutomationTriggersAutomationFailedReason.REPORTED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersCodeScanningAlert createRepoAutomationTriggersCodeScanningAlert() {
+        return GitHubCreateRepoAutomationTriggersCodeScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersSecretScanningAlert createRepoAutomationTriggersSecretScanningAlert() {
+        return GitHubCreateRepoAutomationTriggersSecretScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggersDependabotAlert createRepoAutomationTriggersDependabotAlert() {
+        return GitHubCreateRepoAutomationTriggersDependabotAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTriggers createRepoAutomationTriggers() {
+        return GitHubCreateRepoAutomationTriggersBuilder.builder()
+                .interval(createRepoAutomationTriggersInterval())
+                .issueOpened(createRepoAutomationTriggersIssueOpened())
+                .issueLabeled(createRepoAutomationTriggersIssueLabeled())
+                .workflowRun(createRepoAutomationTriggersWorkflowRun())
+                .pullRequestOpened(createRepoAutomationTriggersPullRequestOpened())
+                .pullRequestSynchronize(createRepoAutomationTriggersPullRequestSynchronize())
+                .pullRequestMerged(createRepoAutomationTriggersPullRequestMerged())
+                .issueComment(createRepoAutomationTriggersIssueComment())
+                .pullRequestComment(createRepoAutomationTriggersPullRequestComment())
+                .discussionOpened(createRepoAutomationTriggersDiscussionOpened())
+                .discussionUpdated(createRepoAutomationTriggersDiscussionUpdated())
+                .discussionComment(createRepoAutomationTriggersDiscussionComment())
+                .issueAssigned(createRepoAutomationTriggersIssueAssigned())
+                .pullRequestAssigned(createRepoAutomationTriggersPullRequestAssigned())
+                .subIssueAdded(createRepoAutomationTriggersSubIssueAdded())
+                .pullRequestReadyForReview(createRepoAutomationTriggersPullRequestReadyForReview())
+                .pullRequestLabeled(createRepoAutomationTriggersPullRequestLabeled())
+                .pullRequestMergeConflict(createRepoAutomationTriggersPullRequestMergeConflict())
+                .pullRequestReviewSubmitted(createRepoAutomationTriggersPullRequestReviewSubmitted())
+                .pullRequestReviewRequested(createRepoAutomationTriggersPullRequestReviewRequested())
+                .issueClosed(createRepoAutomationTriggersIssueClosed())
+                .issueReopened(createRepoAutomationTriggersIssueReopened())
+                .pullRequestClosed(createRepoAutomationTriggersPullRequestClosed())
+                .pullRequestReopened(createRepoAutomationTriggersPullRequestReopened())
+                .pullRequestConvertedToDraft(createRepoAutomationTriggersPullRequestConvertedToDraft())
+                .pullRequestReviewDismissed(createRepoAutomationTriggersPullRequestReviewDismissed())
+                .pullRequestReviewThreadResolved(createRepoAutomationTriggersPullRequestReviewThreadResolved())
+                .pullRequestReviewThreadUnresolved(createRepoAutomationTriggersPullRequestReviewThreadUnresolved())
+                .automationCompleted(createRepoAutomationTriggersAutomationCompleted())
+                .automationFailed(createRepoAutomationTriggersAutomationFailed())
+                .codeScanningAlert(createRepoAutomationTriggersCodeScanningAlert())
+                .secretScanningAlert(createRepoAutomationTriggersSecretScanningAlert())
+                .dependabotAlert(createRepoAutomationTriggersDependabotAlert())
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationPayload createRepoAutomationPayload() {
+        return GitHubCreateRepoAutomationPayloadBuilder.builder()
+                .name("name")
+                .triggers(createRepoAutomationTriggers())
+                .prompt("prompt")
+                .model("model")
+                .reasoningEffort(GitHubCreateRepoAutomationReasoningEffort.NONE)
+                .tools(List.of("tools"))
+                .enabled(true)
+                .type(GitHubCreateRepoAutomationType.PERSONAL)
+                .requireActorWritePermission(true)
+                .continuousHistory(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersInterval createRepoAutomationResponseTriggersInterval() {
+        return GitHubCreateRepoAutomationResponseTriggersIntervalBuilder.builder()
+                .cadence(List.of(GitHubCreateRepoAutomationResponseTriggersIntervalCadence.HOURLY))
+                .hourUtc(1)
+                .dayOfWeek(1)
+                .minuteUtc(GitHubAutomationMinuteUtc.ZERO)
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersIssueOpened createRepoAutomationResponseTriggersIssueOpened() {
+        return GitHubCreateRepoAutomationResponseTriggersIssueOpenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersIssueLabeled createRepoAutomationResponseTriggersIssueLabeled() {
+        return GitHubCreateRepoAutomationResponseTriggersIssueLabeledBuilder.builder()
+                .query("query")
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersWorkflowRun createRepoAutomationResponseTriggersWorkflowRun() {
+        return GitHubCreateRepoAutomationResponseTriggersWorkflowRunBuilder.builder()
+                .workflows(List.of("workflows"))
+                .conclusions(List.of(GitHubCreateRepoAutomationResponseTriggersWorkflowRunConclusion.FAILURE))
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestOpened
+            createRepoAutomationResponseTriggersPullRequestOpened() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestOpenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronize
+            createRepoAutomationResponseTriggersPullRequestSynchronize() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronizeBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestMerged
+            createRepoAutomationResponseTriggersPullRequestMerged() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestMergedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersIssueComment createRepoAutomationResponseTriggersIssueComment() {
+        return GitHubCreateRepoAutomationResponseTriggersIssueCommentBuilder.builder()
+                .query("query")
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestComment
+            createRepoAutomationResponseTriggersPullRequestComment() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestCommentBuilder.builder()
+                .commentTypes(List.of(
+                        GitHubCreateRepoAutomationResponseTriggersPullRequestCommentCommentType.TIMELINE_COMMENT))
+                .query("query")
+                .paths(List.of("paths"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersDiscussionOpened
+            createRepoAutomationResponseTriggersDiscussionOpened() {
+        return GitHubCreateRepoAutomationResponseTriggersDiscussionOpenedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersDiscussionUpdated
+            createRepoAutomationResponseTriggersDiscussionUpdated() {
+        return GitHubCreateRepoAutomationResponseTriggersDiscussionUpdatedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersDiscussionComment
+            createRepoAutomationResponseTriggersDiscussionComment() {
+        return GitHubCreateRepoAutomationResponseTriggersDiscussionCommentBuilder.builder()
+                .commentTypes(List.of(GitHubCreateRepoAutomationResponseTriggersDiscussionCommentCommentType.COMMENT))
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersIssueAssigned createRepoAutomationResponseTriggersIssueAssigned() {
+        return GitHubCreateRepoAutomationResponseTriggersIssueAssignedBuilder.builder()
+                .query("query")
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestAssigned
+            createRepoAutomationResponseTriggersPullRequestAssigned() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestAssignedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersSubIssueAdded createRepoAutomationResponseTriggersSubIssueAdded() {
+        return GitHubCreateRepoAutomationResponseTriggersSubIssueAddedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestReadyForReview
+            createRepoAutomationResponseTriggersPullRequestReadyForReview() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestReadyForReviewBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestLabeled
+            createRepoAutomationResponseTriggersPullRequestLabeled() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestMergeConflict
+            createRepoAutomationResponseTriggersPullRequestMergeConflict() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestMergeConflictBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestReviewSubmitted
+            createRepoAutomationResponseTriggersPullRequestReviewSubmitted() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestReviewSubmittedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .states(List.of(GitHubCreateRepoAutomationResponseTriggersPullRequestReviewSubmittedState.APPROVED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestReviewRequested
+            createRepoAutomationResponseTriggersPullRequestReviewRequested() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestReviewRequestedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersIssueClosed createRepoAutomationResponseTriggersIssueClosed() {
+        return GitHubCreateRepoAutomationResponseTriggersIssueClosedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersIssueReopened createRepoAutomationResponseTriggersIssueReopened() {
+        return GitHubCreateRepoAutomationResponseTriggersIssueReopenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestClosed
+            createRepoAutomationResponseTriggersPullRequestClosed() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestClosedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestReopened
+            createRepoAutomationResponseTriggersPullRequestReopened() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestReopenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestConvertedToDraft
+            createRepoAutomationResponseTriggersPullRequestConvertedToDraft() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestConvertedToDraftBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestReviewDismissed
+            createRepoAutomationResponseTriggersPullRequestReviewDismissed() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestReviewDismissedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestReviewThreadResolved
+            createRepoAutomationResponseTriggersPullRequestReviewThreadResolved() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestReviewThreadResolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersPullRequestReviewThreadUnresolved
+            createRepoAutomationResponseTriggersPullRequestReviewThreadUnresolved() {
+        return GitHubCreateRepoAutomationResponseTriggersPullRequestReviewThreadUnresolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersAutomationCompleted
+            createRepoAutomationResponseTriggersAutomationCompleted() {
+        return GitHubCreateRepoAutomationResponseTriggersAutomationCompletedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersAutomationFailed
+            createRepoAutomationResponseTriggersAutomationFailed() {
+        return GitHubCreateRepoAutomationResponseTriggersAutomationFailedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .reasons(List.of(GitHubCreateRepoAutomationResponseTriggersAutomationFailedReason.REPORTED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersCodeScanningAlert
+            createRepoAutomationResponseTriggersCodeScanningAlert() {
+        return GitHubCreateRepoAutomationResponseTriggersCodeScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersSecretScanningAlert
+            createRepoAutomationResponseTriggersSecretScanningAlert() {
+        return GitHubCreateRepoAutomationResponseTriggersSecretScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggersDependabotAlert
+            createRepoAutomationResponseTriggersDependabotAlert() {
+        return GitHubCreateRepoAutomationResponseTriggersDependabotAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseTriggers createRepoAutomationResponseTriggers() {
+        return GitHubCreateRepoAutomationResponseTriggersBuilder.builder()
+                .interval(createRepoAutomationResponseTriggersInterval())
+                .issueOpened(createRepoAutomationResponseTriggersIssueOpened())
+                .issueLabeled(createRepoAutomationResponseTriggersIssueLabeled())
+                .workflowRun(createRepoAutomationResponseTriggersWorkflowRun())
+                .pullRequestOpened(createRepoAutomationResponseTriggersPullRequestOpened())
+                .pullRequestSynchronize(createRepoAutomationResponseTriggersPullRequestSynchronize())
+                .pullRequestMerged(createRepoAutomationResponseTriggersPullRequestMerged())
+                .issueComment(createRepoAutomationResponseTriggersIssueComment())
+                .pullRequestComment(createRepoAutomationResponseTriggersPullRequestComment())
+                .discussionOpened(createRepoAutomationResponseTriggersDiscussionOpened())
+                .discussionUpdated(createRepoAutomationResponseTriggersDiscussionUpdated())
+                .discussionComment(createRepoAutomationResponseTriggersDiscussionComment())
+                .issueAssigned(createRepoAutomationResponseTriggersIssueAssigned())
+                .pullRequestAssigned(createRepoAutomationResponseTriggersPullRequestAssigned())
+                .subIssueAdded(createRepoAutomationResponseTriggersSubIssueAdded())
+                .pullRequestReadyForReview(createRepoAutomationResponseTriggersPullRequestReadyForReview())
+                .pullRequestLabeled(createRepoAutomationResponseTriggersPullRequestLabeled())
+                .pullRequestMergeConflict(createRepoAutomationResponseTriggersPullRequestMergeConflict())
+                .pullRequestReviewSubmitted(createRepoAutomationResponseTriggersPullRequestReviewSubmitted())
+                .pullRequestReviewRequested(createRepoAutomationResponseTriggersPullRequestReviewRequested())
+                .issueClosed(createRepoAutomationResponseTriggersIssueClosed())
+                .issueReopened(createRepoAutomationResponseTriggersIssueReopened())
+                .pullRequestClosed(createRepoAutomationResponseTriggersPullRequestClosed())
+                .pullRequestReopened(createRepoAutomationResponseTriggersPullRequestReopened())
+                .pullRequestConvertedToDraft(createRepoAutomationResponseTriggersPullRequestConvertedToDraft())
+                .pullRequestReviewDismissed(createRepoAutomationResponseTriggersPullRequestReviewDismissed())
+                .pullRequestReviewThreadResolved(createRepoAutomationResponseTriggersPullRequestReviewThreadResolved())
+                .pullRequestReviewThreadUnresolved(
+                        createRepoAutomationResponseTriggersPullRequestReviewThreadUnresolved())
+                .automationCompleted(createRepoAutomationResponseTriggersAutomationCompleted())
+                .automationFailed(createRepoAutomationResponseTriggersAutomationFailed())
+                .codeScanningAlert(createRepoAutomationResponseTriggersCodeScanningAlert())
+                .secretScanningAlert(createRepoAutomationResponseTriggersSecretScanningAlert())
+                .dependabotAlert(createRepoAutomationResponseTriggersDependabotAlert())
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponseCreatedBy createRepoAutomationResponseCreatedBy() {
+        return GitHubCreateRepoAutomationResponseCreatedByBuilder.builder()
+                .id(1L)
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationResponse createRepoAutomationResponse() {
+        return GitHubCreateRepoAutomationResponseBuilder.builder()
+                .id("id")
+                .name("name")
+                .enabled(true)
+                .type(GitHubCreateRepoAutomationResponseType.PERSONAL)
+                .requireActorWritePermission(true)
+                .continuousHistory(true)
+                .triggers(createRepoAutomationResponseTriggers())
+                .prompt("prompt")
+                .tools(List.of("tools"))
+                .model("model")
+                .reasoningEffort("reasoning_effort")
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .createdBy(createRepoAutomationResponseCreatedBy())
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersInterval editRepoAutomationTriggersInterval() {
+        return GitHubEditRepoAutomationTriggersIntervalBuilder.builder()
+                .cadence(List.of(GitHubEditRepoAutomationTriggersIntervalCadence.HOURLY))
+                .hourUtc(1)
+                .dayOfWeek(1)
+                .minuteUtc(GitHubAutomationMinuteUtc.ZERO)
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersIssueOpened editRepoAutomationTriggersIssueOpened() {
+        return GitHubEditRepoAutomationTriggersIssueOpenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersIssueLabeled editRepoAutomationTriggersIssueLabeled() {
+        return GitHubEditRepoAutomationTriggersIssueLabeledBuilder.builder()
+                .query("query")
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersWorkflowRun editRepoAutomationTriggersWorkflowRun() {
+        return GitHubEditRepoAutomationTriggersWorkflowRunBuilder.builder()
+                .workflows(List.of("workflows"))
+                .conclusions(List.of(GitHubEditRepoAutomationTriggersWorkflowRunConclusion.FAILURE))
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestOpened editRepoAutomationTriggersPullRequestOpened() {
+        return GitHubEditRepoAutomationTriggersPullRequestOpenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestSynchronize editRepoAutomationTriggersPullRequestSynchronize() {
+        return GitHubEditRepoAutomationTriggersPullRequestSynchronizeBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestMerged editRepoAutomationTriggersPullRequestMerged() {
+        return GitHubEditRepoAutomationTriggersPullRequestMergedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersIssueComment editRepoAutomationTriggersIssueComment() {
+        return GitHubEditRepoAutomationTriggersIssueCommentBuilder.builder()
+                .query("query")
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestComment editRepoAutomationTriggersPullRequestComment() {
+        return GitHubEditRepoAutomationTriggersPullRequestCommentBuilder.builder()
+                .commentTypes(List.of(GitHubEditRepoAutomationTriggersPullRequestCommentCommentType.TIMELINE_COMMENT))
+                .query("query")
+                .paths(List.of("paths"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersDiscussionOpened editRepoAutomationTriggersDiscussionOpened() {
+        return GitHubEditRepoAutomationTriggersDiscussionOpenedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersDiscussionUpdated editRepoAutomationTriggersDiscussionUpdated() {
+        return GitHubEditRepoAutomationTriggersDiscussionUpdatedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersDiscussionComment editRepoAutomationTriggersDiscussionComment() {
+        return GitHubEditRepoAutomationTriggersDiscussionCommentBuilder.builder()
+                .commentTypes(List.of(GitHubEditRepoAutomationTriggersDiscussionCommentCommentType.COMMENT))
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersIssueAssigned editRepoAutomationTriggersIssueAssigned() {
+        return GitHubEditRepoAutomationTriggersIssueAssignedBuilder.builder()
+                .query("query")
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestAssigned editRepoAutomationTriggersPullRequestAssigned() {
+        return GitHubEditRepoAutomationTriggersPullRequestAssignedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersSubIssueAdded editRepoAutomationTriggersSubIssueAdded() {
+        return GitHubEditRepoAutomationTriggersSubIssueAddedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestReadyForReview
+            editRepoAutomationTriggersPullRequestReadyForReview() {
+        return GitHubEditRepoAutomationTriggersPullRequestReadyForReviewBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestLabeled editRepoAutomationTriggersPullRequestLabeled() {
+        return GitHubEditRepoAutomationTriggersPullRequestLabeledBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestMergeConflict
+            editRepoAutomationTriggersPullRequestMergeConflict() {
+        return GitHubEditRepoAutomationTriggersPullRequestMergeConflictBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestReviewSubmitted
+            editRepoAutomationTriggersPullRequestReviewSubmitted() {
+        return GitHubEditRepoAutomationTriggersPullRequestReviewSubmittedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .states(List.of(GitHubEditRepoAutomationTriggersPullRequestReviewSubmittedState.APPROVED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestReviewRequested
+            editRepoAutomationTriggersPullRequestReviewRequested() {
+        return GitHubEditRepoAutomationTriggersPullRequestReviewRequestedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersIssueClosed editRepoAutomationTriggersIssueClosed() {
+        return GitHubEditRepoAutomationTriggersIssueClosedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersIssueReopened editRepoAutomationTriggersIssueReopened() {
+        return GitHubEditRepoAutomationTriggersIssueReopenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestClosed editRepoAutomationTriggersPullRequestClosed() {
+        return GitHubEditRepoAutomationTriggersPullRequestClosedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestReopened editRepoAutomationTriggersPullRequestReopened() {
+        return GitHubEditRepoAutomationTriggersPullRequestReopenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestConvertedToDraft
+            editRepoAutomationTriggersPullRequestConvertedToDraft() {
+        return GitHubEditRepoAutomationTriggersPullRequestConvertedToDraftBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestReviewDismissed
+            editRepoAutomationTriggersPullRequestReviewDismissed() {
+        return GitHubEditRepoAutomationTriggersPullRequestReviewDismissedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestReviewThreadResolved
+            editRepoAutomationTriggersPullRequestReviewThreadResolved() {
+        return GitHubEditRepoAutomationTriggersPullRequestReviewThreadResolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersPullRequestReviewThreadUnresolved
+            editRepoAutomationTriggersPullRequestReviewThreadUnresolved() {
+        return GitHubEditRepoAutomationTriggersPullRequestReviewThreadUnresolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersAutomationCompleted editRepoAutomationTriggersAutomationCompleted() {
+        return GitHubEditRepoAutomationTriggersAutomationCompletedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersAutomationFailed editRepoAutomationTriggersAutomationFailed() {
+        return GitHubEditRepoAutomationTriggersAutomationFailedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .reasons(List.of(GitHubEditRepoAutomationTriggersAutomationFailedReason.REPORTED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersCodeScanningAlert editRepoAutomationTriggersCodeScanningAlert() {
+        return GitHubEditRepoAutomationTriggersCodeScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersSecretScanningAlert editRepoAutomationTriggersSecretScanningAlert() {
+        return GitHubEditRepoAutomationTriggersSecretScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggersDependabotAlert editRepoAutomationTriggersDependabotAlert() {
+        return GitHubEditRepoAutomationTriggersDependabotAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationTriggers editRepoAutomationTriggers() {
+        return GitHubEditRepoAutomationTriggersBuilder.builder()
+                .interval(editRepoAutomationTriggersInterval())
+                .issueOpened(editRepoAutomationTriggersIssueOpened())
+                .issueLabeled(editRepoAutomationTriggersIssueLabeled())
+                .workflowRun(editRepoAutomationTriggersWorkflowRun())
+                .pullRequestOpened(editRepoAutomationTriggersPullRequestOpened())
+                .pullRequestSynchronize(editRepoAutomationTriggersPullRequestSynchronize())
+                .pullRequestMerged(editRepoAutomationTriggersPullRequestMerged())
+                .issueComment(editRepoAutomationTriggersIssueComment())
+                .pullRequestComment(editRepoAutomationTriggersPullRequestComment())
+                .discussionOpened(editRepoAutomationTriggersDiscussionOpened())
+                .discussionUpdated(editRepoAutomationTriggersDiscussionUpdated())
+                .discussionComment(editRepoAutomationTriggersDiscussionComment())
+                .issueAssigned(editRepoAutomationTriggersIssueAssigned())
+                .pullRequestAssigned(editRepoAutomationTriggersPullRequestAssigned())
+                .subIssueAdded(editRepoAutomationTriggersSubIssueAdded())
+                .pullRequestReadyForReview(editRepoAutomationTriggersPullRequestReadyForReview())
+                .pullRequestLabeled(editRepoAutomationTriggersPullRequestLabeled())
+                .pullRequestMergeConflict(editRepoAutomationTriggersPullRequestMergeConflict())
+                .pullRequestReviewSubmitted(editRepoAutomationTriggersPullRequestReviewSubmitted())
+                .pullRequestReviewRequested(editRepoAutomationTriggersPullRequestReviewRequested())
+                .issueClosed(editRepoAutomationTriggersIssueClosed())
+                .issueReopened(editRepoAutomationTriggersIssueReopened())
+                .pullRequestClosed(editRepoAutomationTriggersPullRequestClosed())
+                .pullRequestReopened(editRepoAutomationTriggersPullRequestReopened())
+                .pullRequestConvertedToDraft(editRepoAutomationTriggersPullRequestConvertedToDraft())
+                .pullRequestReviewDismissed(editRepoAutomationTriggersPullRequestReviewDismissed())
+                .pullRequestReviewThreadResolved(editRepoAutomationTriggersPullRequestReviewThreadResolved())
+                .pullRequestReviewThreadUnresolved(editRepoAutomationTriggersPullRequestReviewThreadUnresolved())
+                .automationCompleted(editRepoAutomationTriggersAutomationCompleted())
+                .automationFailed(editRepoAutomationTriggersAutomationFailed())
+                .codeScanningAlert(editRepoAutomationTriggersCodeScanningAlert())
+                .secretScanningAlert(editRepoAutomationTriggersSecretScanningAlert())
+                .dependabotAlert(editRepoAutomationTriggersDependabotAlert())
+                .build();
+    }
+
+    static GitHubEditRepoAutomationPayload editRepoAutomationPayload() {
+        return GitHubEditRepoAutomationPayloadBuilder.builder()
+                .name("name")
+                .enabled(true)
+                .requireActorWritePermission(true)
+                .continuousHistory(true)
+                .model("model")
+                .reasoningEffort(GitHubEditRepoAutomationReasoningEffort.NONE)
+                .triggers(editRepoAutomationTriggers())
+                .prompt("prompt")
+                .tools(List.of("tools"))
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersInterval editRepoAutomationResponseTriggersInterval() {
+        return GitHubEditRepoAutomationResponseTriggersIntervalBuilder.builder()
+                .cadence(List.of(GitHubEditRepoAutomationResponseTriggersIntervalCadence.HOURLY))
+                .hourUtc(1)
+                .dayOfWeek(1)
+                .minuteUtc(GitHubAutomationMinuteUtc.ZERO)
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersIssueOpened editRepoAutomationResponseTriggersIssueOpened() {
+        return GitHubEditRepoAutomationResponseTriggersIssueOpenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersIssueLabeled editRepoAutomationResponseTriggersIssueLabeled() {
+        return GitHubEditRepoAutomationResponseTriggersIssueLabeledBuilder.builder()
+                .query("query")
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersWorkflowRun editRepoAutomationResponseTriggersWorkflowRun() {
+        return GitHubEditRepoAutomationResponseTriggersWorkflowRunBuilder.builder()
+                .workflows(List.of("workflows"))
+                .conclusions(List.of(GitHubEditRepoAutomationResponseTriggersWorkflowRunConclusion.FAILURE))
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestOpened
+            editRepoAutomationResponseTriggersPullRequestOpened() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestOpenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestSynchronize
+            editRepoAutomationResponseTriggersPullRequestSynchronize() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestSynchronizeBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestMerged
+            editRepoAutomationResponseTriggersPullRequestMerged() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestMergedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersIssueComment editRepoAutomationResponseTriggersIssueComment() {
+        return GitHubEditRepoAutomationResponseTriggersIssueCommentBuilder.builder()
+                .query("query")
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestComment
+            editRepoAutomationResponseTriggersPullRequestComment() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestCommentBuilder.builder()
+                .commentTypes(
+                        List.of(GitHubEditRepoAutomationResponseTriggersPullRequestCommentCommentType.TIMELINE_COMMENT))
+                .query("query")
+                .paths(List.of("paths"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersDiscussionOpened
+            editRepoAutomationResponseTriggersDiscussionOpened() {
+        return GitHubEditRepoAutomationResponseTriggersDiscussionOpenedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersDiscussionUpdated
+            editRepoAutomationResponseTriggersDiscussionUpdated() {
+        return GitHubEditRepoAutomationResponseTriggersDiscussionUpdatedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersDiscussionComment
+            editRepoAutomationResponseTriggersDiscussionComment() {
+        return GitHubEditRepoAutomationResponseTriggersDiscussionCommentBuilder.builder()
+                .commentTypes(List.of(GitHubEditRepoAutomationResponseTriggersDiscussionCommentCommentType.COMMENT))
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersIssueAssigned editRepoAutomationResponseTriggersIssueAssigned() {
+        return GitHubEditRepoAutomationResponseTriggersIssueAssignedBuilder.builder()
+                .query("query")
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestAssigned
+            editRepoAutomationResponseTriggersPullRequestAssigned() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestAssignedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersSubIssueAdded editRepoAutomationResponseTriggersSubIssueAdded() {
+        return GitHubEditRepoAutomationResponseTriggersSubIssueAddedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestReadyForReview
+            editRepoAutomationResponseTriggersPullRequestReadyForReview() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestReadyForReviewBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestLabeled
+            editRepoAutomationResponseTriggersPullRequestLabeled() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestLabeledBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestMergeConflict
+            editRepoAutomationResponseTriggersPullRequestMergeConflict() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestMergeConflictBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestReviewSubmitted
+            editRepoAutomationResponseTriggersPullRequestReviewSubmitted() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestReviewSubmittedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .states(List.of(GitHubEditRepoAutomationResponseTriggersPullRequestReviewSubmittedState.APPROVED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
     }
 
     static GitHubEditRepoAutomationResponseTriggersPullRequestReviewRequested
             editRepoAutomationResponseTriggersPullRequestReviewRequested() {
-        return new GitHubEditRepoAutomationResponseTriggersPullRequestReviewRequested(
-                "is:open label:bug",
-                List.of("src/**"),
-                editRepoAutomationResponseTriggersPullRequestReviewRequestedWriteScope());
+        return GitHubEditRepoAutomationResponseTriggersPullRequestReviewRequestedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
     }
 
-    static GitHubEditRepoAutomationResponseTriggersPullRequestReviewRequestedWriteScope
-            editRepoAutomationResponseTriggersPullRequestReviewRequestedWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersPullRequestReviewRequestedWriteScope.TRIGGER;
+    static GitHubEditRepoAutomationResponseTriggersIssueClosed editRepoAutomationResponseTriggersIssueClosed() {
+        return GitHubEditRepoAutomationResponseTriggersIssueClosedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersIssueReopened editRepoAutomationResponseTriggersIssueReopened() {
+        return GitHubEditRepoAutomationResponseTriggersIssueReopenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestClosed
+            editRepoAutomationResponseTriggersPullRequestClosed() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestClosedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestReopened
+            editRepoAutomationResponseTriggersPullRequestReopened() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestReopenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestConvertedToDraft
+            editRepoAutomationResponseTriggersPullRequestConvertedToDraft() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestConvertedToDraftBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestReviewDismissed
+            editRepoAutomationResponseTriggersPullRequestReviewDismissed() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestReviewDismissedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestReviewThreadResolved
+            editRepoAutomationResponseTriggersPullRequestReviewThreadResolved() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestReviewThreadResolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersPullRequestReviewThreadUnresolved
+            editRepoAutomationResponseTriggersPullRequestReviewThreadUnresolved() {
+        return GitHubEditRepoAutomationResponseTriggersPullRequestReviewThreadUnresolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
     }
 
     static GitHubEditRepoAutomationResponseTriggersAutomationCompleted
             editRepoAutomationResponseTriggersAutomationCompleted() {
-        return new GitHubEditRepoAutomationResponseTriggersAutomationCompleted(
-                List.of("automation-2"), editRepoAutomationResponseTriggersAutomationCompletedWriteScope());
+        return GitHubEditRepoAutomationResponseTriggersAutomationCompletedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
     }
 
-    static GitHubEditRepoAutomationResponseTriggersAutomationCompletedWriteScope
-            editRepoAutomationResponseTriggersAutomationCompletedWriteScope() {
-        return GitHubEditRepoAutomationResponseTriggersAutomationCompletedWriteScope.TRIGGER;
+    static GitHubEditRepoAutomationResponseTriggersAutomationFailed
+            editRepoAutomationResponseTriggersAutomationFailed() {
+        return GitHubEditRepoAutomationResponseTriggersAutomationFailedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .reasons(List.of(GitHubEditRepoAutomationResponseTriggersAutomationFailedReason.REPORTED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersCodeScanningAlert
+            editRepoAutomationResponseTriggersCodeScanningAlert() {
+        return GitHubEditRepoAutomationResponseTriggersCodeScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersSecretScanningAlert
+            editRepoAutomationResponseTriggersSecretScanningAlert() {
+        return GitHubEditRepoAutomationResponseTriggersSecretScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggersDependabotAlert editRepoAutomationResponseTriggersDependabotAlert() {
+        return GitHubEditRepoAutomationResponseTriggersDependabotAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubEditRepoAutomationResponseTriggers editRepoAutomationResponseTriggers() {
+        return GitHubEditRepoAutomationResponseTriggersBuilder.builder()
+                .interval(editRepoAutomationResponseTriggersInterval())
+                .issueOpened(editRepoAutomationResponseTriggersIssueOpened())
+                .issueLabeled(editRepoAutomationResponseTriggersIssueLabeled())
+                .workflowRun(editRepoAutomationResponseTriggersWorkflowRun())
+                .pullRequestOpened(editRepoAutomationResponseTriggersPullRequestOpened())
+                .pullRequestSynchronize(editRepoAutomationResponseTriggersPullRequestSynchronize())
+                .pullRequestMerged(editRepoAutomationResponseTriggersPullRequestMerged())
+                .issueComment(editRepoAutomationResponseTriggersIssueComment())
+                .pullRequestComment(editRepoAutomationResponseTriggersPullRequestComment())
+                .discussionOpened(editRepoAutomationResponseTriggersDiscussionOpened())
+                .discussionUpdated(editRepoAutomationResponseTriggersDiscussionUpdated())
+                .discussionComment(editRepoAutomationResponseTriggersDiscussionComment())
+                .issueAssigned(editRepoAutomationResponseTriggersIssueAssigned())
+                .pullRequestAssigned(editRepoAutomationResponseTriggersPullRequestAssigned())
+                .subIssueAdded(editRepoAutomationResponseTriggersSubIssueAdded())
+                .pullRequestReadyForReview(editRepoAutomationResponseTriggersPullRequestReadyForReview())
+                .pullRequestLabeled(editRepoAutomationResponseTriggersPullRequestLabeled())
+                .pullRequestMergeConflict(editRepoAutomationResponseTriggersPullRequestMergeConflict())
+                .pullRequestReviewSubmitted(editRepoAutomationResponseTriggersPullRequestReviewSubmitted())
+                .pullRequestReviewRequested(editRepoAutomationResponseTriggersPullRequestReviewRequested())
+                .issueClosed(editRepoAutomationResponseTriggersIssueClosed())
+                .issueReopened(editRepoAutomationResponseTriggersIssueReopened())
+                .pullRequestClosed(editRepoAutomationResponseTriggersPullRequestClosed())
+                .pullRequestReopened(editRepoAutomationResponseTriggersPullRequestReopened())
+                .pullRequestConvertedToDraft(editRepoAutomationResponseTriggersPullRequestConvertedToDraft())
+                .pullRequestReviewDismissed(editRepoAutomationResponseTriggersPullRequestReviewDismissed())
+                .pullRequestReviewThreadResolved(editRepoAutomationResponseTriggersPullRequestReviewThreadResolved())
+                .pullRequestReviewThreadUnresolved(
+                        editRepoAutomationResponseTriggersPullRequestReviewThreadUnresolved())
+                .automationCompleted(editRepoAutomationResponseTriggersAutomationCompleted())
+                .automationFailed(editRepoAutomationResponseTriggersAutomationFailed())
+                .codeScanningAlert(editRepoAutomationResponseTriggersCodeScanningAlert())
+                .secretScanningAlert(editRepoAutomationResponseTriggersSecretScanningAlert())
+                .dependabotAlert(editRepoAutomationResponseTriggersDependabotAlert())
+                .build();
     }
 
     static GitHubEditRepoAutomationResponseCreatedBy editRepoAutomationResponseCreatedBy() {
-        return new GitHubEditRepoAutomationResponseCreatedBy(1L);
+        return GitHubEditRepoAutomationResponseCreatedByBuilder.builder().id(1L).build();
     }
 
-    static GitHubListAutomationsOwnerType listAutomationsOwnerType() {
-        return GitHubListAutomationsOwnerType.USER;
+    static GitHubEditRepoAutomationResponse editRepoAutomationResponse() {
+        return GitHubEditRepoAutomationResponseBuilder.builder()
+                .id("id")
+                .name("name")
+                .enabled(true)
+                .type(GitHubEditRepoAutomationResponseType.PERSONAL)
+                .requireActorWritePermission(true)
+                .continuousHistory(true)
+                .triggers(editRepoAutomationResponseTriggers())
+                .prompt("prompt")
+                .tools(List.of("tools"))
+                .model("model")
+                .reasoningEffort("reasoning_effort")
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .createdBy(editRepoAutomationResponseCreatedBy())
+                .build();
     }
 
-    static GitHubListAutomationsFilter listAutomationsFilter() {
-        return new GitHubListAutomationsFilter(listAutomationsOwnerType());
+    static GitHubGetRepoAutomationResponseTriggersInterval getRepoAutomationResponseTriggersInterval() {
+        return GitHubGetRepoAutomationResponseTriggersIntervalBuilder.builder()
+                .cadence(List.of(GitHubGetRepoAutomationResponseTriggersIntervalCadence.HOURLY))
+                .hourUtc(1)
+                .dayOfWeek(1)
+                .minuteUtc(GitHubAutomationMinuteUtc.ZERO)
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
     }
 
-    static GitHubListAutomationTasksSort listAutomationTasksSort() {
-        return GitHubListAutomationTasksSort.UPDATED_AT;
+    static GitHubGetRepoAutomationResponseTriggersIssueOpened getRepoAutomationResponseTriggersIssueOpened() {
+        return GitHubGetRepoAutomationResponseTriggersIssueOpenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
     }
 
-    static GitHubListAutomationTasksDirection listAutomationTasksDirection() {
-        return GitHubListAutomationTasksDirection.ASC;
+    static GitHubGetRepoAutomationResponseTriggersIssueLabeled getRepoAutomationResponseTriggersIssueLabeled() {
+        return GitHubGetRepoAutomationResponseTriggersIssueLabeledBuilder.builder()
+                .query("query")
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
     }
 
-    static GitHubListAutomationTasksFilter listAutomationTasksFilter() {
-        return new GitHubListAutomationTasksFilter(
-                listAutomationTasksSort(), listAutomationTasksDirection(), "completed", false);
+    static GitHubGetRepoAutomationResponseTriggersWorkflowRun getRepoAutomationResponseTriggersWorkflowRun() {
+        return GitHubGetRepoAutomationResponseTriggersWorkflowRunBuilder.builder()
+                .workflows(List.of("workflows"))
+                .conclusions(List.of(GitHubGetRepoAutomationResponseTriggersWorkflowRunConclusion.FAILURE))
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
     }
 
-    static GitHubListRepoAutomationsOwnerType listRepoAutomationsOwnerType() {
-        return GitHubListRepoAutomationsOwnerType.USER;
+    static GitHubGetRepoAutomationResponseTriggersPullRequestOpened
+            getRepoAutomationResponseTriggersPullRequestOpened() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestOpenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
     }
 
-    static GitHubListRepoAutomationsFilter listRepoAutomationsFilter() {
-        return new GitHubListRepoAutomationsFilter(listRepoAutomationsOwnerType());
+    static GitHubGetRepoAutomationResponseTriggersPullRequestSynchronize
+            getRepoAutomationResponseTriggersPullRequestSynchronize() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestSynchronizeBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestMerged
+            getRepoAutomationResponseTriggersPullRequestMerged() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestMergedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersIssueComment getRepoAutomationResponseTriggersIssueComment() {
+        return GitHubGetRepoAutomationResponseTriggersIssueCommentBuilder.builder()
+                .query("query")
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestComment
+            getRepoAutomationResponseTriggersPullRequestComment() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestCommentBuilder.builder()
+                .commentTypes(
+                        List.of(GitHubGetRepoAutomationResponseTriggersPullRequestCommentCommentType.TIMELINE_COMMENT))
+                .query("query")
+                .paths(List.of("paths"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersDiscussionOpened getRepoAutomationResponseTriggersDiscussionOpened() {
+        return GitHubGetRepoAutomationResponseTriggersDiscussionOpenedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersDiscussionUpdated
+            getRepoAutomationResponseTriggersDiscussionUpdated() {
+        return GitHubGetRepoAutomationResponseTriggersDiscussionUpdatedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersDiscussionComment
+            getRepoAutomationResponseTriggersDiscussionComment() {
+        return GitHubGetRepoAutomationResponseTriggersDiscussionCommentBuilder.builder()
+                .commentTypes(List.of(GitHubGetRepoAutomationResponseTriggersDiscussionCommentCommentType.COMMENT))
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersIssueAssigned getRepoAutomationResponseTriggersIssueAssigned() {
+        return GitHubGetRepoAutomationResponseTriggersIssueAssignedBuilder.builder()
+                .query("query")
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestAssigned
+            getRepoAutomationResponseTriggersPullRequestAssigned() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestAssignedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersSubIssueAdded getRepoAutomationResponseTriggersSubIssueAdded() {
+        return GitHubGetRepoAutomationResponseTriggersSubIssueAddedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestReadyForReview
+            getRepoAutomationResponseTriggersPullRequestReadyForReview() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestReadyForReviewBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestLabeled
+            getRepoAutomationResponseTriggersPullRequestLabeled() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestLabeledBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestMergeConflict
+            getRepoAutomationResponseTriggersPullRequestMergeConflict() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestMergeConflictBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestReviewSubmitted
+            getRepoAutomationResponseTriggersPullRequestReviewSubmitted() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestReviewSubmittedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .states(List.of(GitHubGetRepoAutomationResponseTriggersPullRequestReviewSubmittedState.APPROVED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestReviewRequested
+            getRepoAutomationResponseTriggersPullRequestReviewRequested() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestReviewRequestedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersIssueClosed getRepoAutomationResponseTriggersIssueClosed() {
+        return GitHubGetRepoAutomationResponseTriggersIssueClosedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersIssueReopened getRepoAutomationResponseTriggersIssueReopened() {
+        return GitHubGetRepoAutomationResponseTriggersIssueReopenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestClosed
+            getRepoAutomationResponseTriggersPullRequestClosed() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestClosedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestReopened
+            getRepoAutomationResponseTriggersPullRequestReopened() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestReopenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestConvertedToDraft
+            getRepoAutomationResponseTriggersPullRequestConvertedToDraft() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestConvertedToDraftBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestReviewDismissed
+            getRepoAutomationResponseTriggersPullRequestReviewDismissed() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestReviewDismissedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestReviewThreadResolved
+            getRepoAutomationResponseTriggersPullRequestReviewThreadResolved() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestReviewThreadResolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersPullRequestReviewThreadUnresolved
+            getRepoAutomationResponseTriggersPullRequestReviewThreadUnresolved() {
+        return GitHubGetRepoAutomationResponseTriggersPullRequestReviewThreadUnresolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersAutomationCompleted
+            getRepoAutomationResponseTriggersAutomationCompleted() {
+        return GitHubGetRepoAutomationResponseTriggersAutomationCompletedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersAutomationFailed getRepoAutomationResponseTriggersAutomationFailed() {
+        return GitHubGetRepoAutomationResponseTriggersAutomationFailedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .reasons(List.of(GitHubGetRepoAutomationResponseTriggersAutomationFailedReason.REPORTED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersCodeScanningAlert
+            getRepoAutomationResponseTriggersCodeScanningAlert() {
+        return GitHubGetRepoAutomationResponseTriggersCodeScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersSecretScanningAlert
+            getRepoAutomationResponseTriggersSecretScanningAlert() {
+        return GitHubGetRepoAutomationResponseTriggersSecretScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggersDependabotAlert getRepoAutomationResponseTriggersDependabotAlert() {
+        return GitHubGetRepoAutomationResponseTriggersDependabotAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseTriggers getRepoAutomationResponseTriggers() {
+        return GitHubGetRepoAutomationResponseTriggersBuilder.builder()
+                .interval(getRepoAutomationResponseTriggersInterval())
+                .issueOpened(getRepoAutomationResponseTriggersIssueOpened())
+                .issueLabeled(getRepoAutomationResponseTriggersIssueLabeled())
+                .workflowRun(getRepoAutomationResponseTriggersWorkflowRun())
+                .pullRequestOpened(getRepoAutomationResponseTriggersPullRequestOpened())
+                .pullRequestSynchronize(getRepoAutomationResponseTriggersPullRequestSynchronize())
+                .pullRequestMerged(getRepoAutomationResponseTriggersPullRequestMerged())
+                .issueComment(getRepoAutomationResponseTriggersIssueComment())
+                .pullRequestComment(getRepoAutomationResponseTriggersPullRequestComment())
+                .discussionOpened(getRepoAutomationResponseTriggersDiscussionOpened())
+                .discussionUpdated(getRepoAutomationResponseTriggersDiscussionUpdated())
+                .discussionComment(getRepoAutomationResponseTriggersDiscussionComment())
+                .issueAssigned(getRepoAutomationResponseTriggersIssueAssigned())
+                .pullRequestAssigned(getRepoAutomationResponseTriggersPullRequestAssigned())
+                .subIssueAdded(getRepoAutomationResponseTriggersSubIssueAdded())
+                .pullRequestReadyForReview(getRepoAutomationResponseTriggersPullRequestReadyForReview())
+                .pullRequestLabeled(getRepoAutomationResponseTriggersPullRequestLabeled())
+                .pullRequestMergeConflict(getRepoAutomationResponseTriggersPullRequestMergeConflict())
+                .pullRequestReviewSubmitted(getRepoAutomationResponseTriggersPullRequestReviewSubmitted())
+                .pullRequestReviewRequested(getRepoAutomationResponseTriggersPullRequestReviewRequested())
+                .issueClosed(getRepoAutomationResponseTriggersIssueClosed())
+                .issueReopened(getRepoAutomationResponseTriggersIssueReopened())
+                .pullRequestClosed(getRepoAutomationResponseTriggersPullRequestClosed())
+                .pullRequestReopened(getRepoAutomationResponseTriggersPullRequestReopened())
+                .pullRequestConvertedToDraft(getRepoAutomationResponseTriggersPullRequestConvertedToDraft())
+                .pullRequestReviewDismissed(getRepoAutomationResponseTriggersPullRequestReviewDismissed())
+                .pullRequestReviewThreadResolved(getRepoAutomationResponseTriggersPullRequestReviewThreadResolved())
+                .pullRequestReviewThreadUnresolved(getRepoAutomationResponseTriggersPullRequestReviewThreadUnresolved())
+                .automationCompleted(getRepoAutomationResponseTriggersAutomationCompleted())
+                .automationFailed(getRepoAutomationResponseTriggersAutomationFailed())
+                .codeScanningAlert(getRepoAutomationResponseTriggersCodeScanningAlert())
+                .secretScanningAlert(getRepoAutomationResponseTriggersSecretScanningAlert())
+                .dependabotAlert(getRepoAutomationResponseTriggersDependabotAlert())
+                .build();
+    }
+
+    static GitHubGetRepoAutomationResponseCreatedBy getRepoAutomationResponseCreatedBy() {
+        return GitHubGetRepoAutomationResponseCreatedByBuilder.builder().id(1L).build();
+    }
+
+    static GitHubGetRepoAutomationResponse getRepoAutomationResponse() {
+        return GitHubGetRepoAutomationResponseBuilder.builder()
+                .id("id")
+                .name("name")
+                .enabled(true)
+                .type(GitHubGetRepoAutomationResponseType.PERSONAL)
+                .requireActorWritePermission(true)
+                .continuousHistory(true)
+                .triggers(getRepoAutomationResponseTriggers())
+                .prompt("prompt")
+                .tools(List.of("tools"))
+                .model("model")
+                .reasoningEffort("reasoning_effort")
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .createdBy(getRepoAutomationResponseCreatedBy())
+                .build();
+    }
+
+    static GitHubListAutomationsItemRepository listAutomationsItemRepository() {
+        return GitHubListAutomationsItemRepositoryBuilder.builder()
+                .id(1L)
+                .owner("owner")
+                .name("name")
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersInterval listAutomationsItemTriggersInterval() {
+        return GitHubListAutomationsItemTriggersIntervalBuilder.builder()
+                .cadence(List.of(GitHubListAutomationsItemTriggersIntervalCadence.HOURLY))
+                .hourUtc(1)
+                .dayOfWeek(1)
+                .minuteUtc(GitHubAutomationMinuteUtc.ZERO)
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersIssueOpened listAutomationsItemTriggersIssueOpened() {
+        return GitHubListAutomationsItemTriggersIssueOpenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersIssueLabeled listAutomationsItemTriggersIssueLabeled() {
+        return GitHubListAutomationsItemTriggersIssueLabeledBuilder.builder()
+                .query("query")
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersWorkflowRun listAutomationsItemTriggersWorkflowRun() {
+        return GitHubListAutomationsItemTriggersWorkflowRunBuilder.builder()
+                .workflows(List.of("workflows"))
+                .conclusions(List.of(GitHubListAutomationsItemTriggersWorkflowRunConclusion.FAILURE))
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestOpened listAutomationsItemTriggersPullRequestOpened() {
+        return GitHubListAutomationsItemTriggersPullRequestOpenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestSynchronize listAutomationsItemTriggersPullRequestSynchronize() {
+        return GitHubListAutomationsItemTriggersPullRequestSynchronizeBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestMerged listAutomationsItemTriggersPullRequestMerged() {
+        return GitHubListAutomationsItemTriggersPullRequestMergedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersIssueComment listAutomationsItemTriggersIssueComment() {
+        return GitHubListAutomationsItemTriggersIssueCommentBuilder.builder()
+                .query("query")
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestComment listAutomationsItemTriggersPullRequestComment() {
+        return GitHubListAutomationsItemTriggersPullRequestCommentBuilder.builder()
+                .commentTypes(List.of(GitHubListAutomationsItemTriggersPullRequestCommentCommentType.TIMELINE_COMMENT))
+                .query("query")
+                .paths(List.of("paths"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersDiscussionOpened listAutomationsItemTriggersDiscussionOpened() {
+        return GitHubListAutomationsItemTriggersDiscussionOpenedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersDiscussionUpdated listAutomationsItemTriggersDiscussionUpdated() {
+        return GitHubListAutomationsItemTriggersDiscussionUpdatedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersDiscussionComment listAutomationsItemTriggersDiscussionComment() {
+        return GitHubListAutomationsItemTriggersDiscussionCommentBuilder.builder()
+                .commentTypes(List.of(GitHubListAutomationsItemTriggersDiscussionCommentCommentType.COMMENT))
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersIssueAssigned listAutomationsItemTriggersIssueAssigned() {
+        return GitHubListAutomationsItemTriggersIssueAssignedBuilder.builder()
+                .query("query")
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestAssigned listAutomationsItemTriggersPullRequestAssigned() {
+        return GitHubListAutomationsItemTriggersPullRequestAssignedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersSubIssueAdded listAutomationsItemTriggersSubIssueAdded() {
+        return GitHubListAutomationsItemTriggersSubIssueAddedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestReadyForReview
+            listAutomationsItemTriggersPullRequestReadyForReview() {
+        return GitHubListAutomationsItemTriggersPullRequestReadyForReviewBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestLabeled listAutomationsItemTriggersPullRequestLabeled() {
+        return GitHubListAutomationsItemTriggersPullRequestLabeledBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestMergeConflict
+            listAutomationsItemTriggersPullRequestMergeConflict() {
+        return GitHubListAutomationsItemTriggersPullRequestMergeConflictBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestReviewSubmitted
+            listAutomationsItemTriggersPullRequestReviewSubmitted() {
+        return GitHubListAutomationsItemTriggersPullRequestReviewSubmittedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .states(List.of(GitHubListAutomationsItemTriggersPullRequestReviewSubmittedState.APPROVED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestReviewRequested
+            listAutomationsItemTriggersPullRequestReviewRequested() {
+        return GitHubListAutomationsItemTriggersPullRequestReviewRequestedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersIssueClosed listAutomationsItemTriggersIssueClosed() {
+        return GitHubListAutomationsItemTriggersIssueClosedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersIssueReopened listAutomationsItemTriggersIssueReopened() {
+        return GitHubListAutomationsItemTriggersIssueReopenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestClosed listAutomationsItemTriggersPullRequestClosed() {
+        return GitHubListAutomationsItemTriggersPullRequestClosedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestReopened listAutomationsItemTriggersPullRequestReopened() {
+        return GitHubListAutomationsItemTriggersPullRequestReopenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestConvertedToDraft
+            listAutomationsItemTriggersPullRequestConvertedToDraft() {
+        return GitHubListAutomationsItemTriggersPullRequestConvertedToDraftBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestReviewDismissed
+            listAutomationsItemTriggersPullRequestReviewDismissed() {
+        return GitHubListAutomationsItemTriggersPullRequestReviewDismissedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestReviewThreadResolved
+            listAutomationsItemTriggersPullRequestReviewThreadResolved() {
+        return GitHubListAutomationsItemTriggersPullRequestReviewThreadResolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersPullRequestReviewThreadUnresolved
+            listAutomationsItemTriggersPullRequestReviewThreadUnresolved() {
+        return GitHubListAutomationsItemTriggersPullRequestReviewThreadUnresolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersAutomationCompleted listAutomationsItemTriggersAutomationCompleted() {
+        return GitHubListAutomationsItemTriggersAutomationCompletedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersAutomationFailed listAutomationsItemTriggersAutomationFailed() {
+        return GitHubListAutomationsItemTriggersAutomationFailedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .reasons(List.of(GitHubListAutomationsItemTriggersAutomationFailedReason.REPORTED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersCodeScanningAlert listAutomationsItemTriggersCodeScanningAlert() {
+        return GitHubListAutomationsItemTriggersCodeScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersSecretScanningAlert listAutomationsItemTriggersSecretScanningAlert() {
+        return GitHubListAutomationsItemTriggersSecretScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggersDependabotAlert listAutomationsItemTriggersDependabotAlert() {
+        return GitHubListAutomationsItemTriggersDependabotAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListAutomationsItemTriggers listAutomationsItemTriggers() {
+        return GitHubListAutomationsItemTriggersBuilder.builder()
+                .interval(listAutomationsItemTriggersInterval())
+                .issueOpened(listAutomationsItemTriggersIssueOpened())
+                .issueLabeled(listAutomationsItemTriggersIssueLabeled())
+                .workflowRun(listAutomationsItemTriggersWorkflowRun())
+                .pullRequestOpened(listAutomationsItemTriggersPullRequestOpened())
+                .pullRequestSynchronize(listAutomationsItemTriggersPullRequestSynchronize())
+                .pullRequestMerged(listAutomationsItemTriggersPullRequestMerged())
+                .issueComment(listAutomationsItemTriggersIssueComment())
+                .pullRequestComment(listAutomationsItemTriggersPullRequestComment())
+                .discussionOpened(listAutomationsItemTriggersDiscussionOpened())
+                .discussionUpdated(listAutomationsItemTriggersDiscussionUpdated())
+                .discussionComment(listAutomationsItemTriggersDiscussionComment())
+                .issueAssigned(listAutomationsItemTriggersIssueAssigned())
+                .pullRequestAssigned(listAutomationsItemTriggersPullRequestAssigned())
+                .subIssueAdded(listAutomationsItemTriggersSubIssueAdded())
+                .pullRequestReadyForReview(listAutomationsItemTriggersPullRequestReadyForReview())
+                .pullRequestLabeled(listAutomationsItemTriggersPullRequestLabeled())
+                .pullRequestMergeConflict(listAutomationsItemTriggersPullRequestMergeConflict())
+                .pullRequestReviewSubmitted(listAutomationsItemTriggersPullRequestReviewSubmitted())
+                .pullRequestReviewRequested(listAutomationsItemTriggersPullRequestReviewRequested())
+                .issueClosed(listAutomationsItemTriggersIssueClosed())
+                .issueReopened(listAutomationsItemTriggersIssueReopened())
+                .pullRequestClosed(listAutomationsItemTriggersPullRequestClosed())
+                .pullRequestReopened(listAutomationsItemTriggersPullRequestReopened())
+                .pullRequestConvertedToDraft(listAutomationsItemTriggersPullRequestConvertedToDraft())
+                .pullRequestReviewDismissed(listAutomationsItemTriggersPullRequestReviewDismissed())
+                .pullRequestReviewThreadResolved(listAutomationsItemTriggersPullRequestReviewThreadResolved())
+                .pullRequestReviewThreadUnresolved(listAutomationsItemTriggersPullRequestReviewThreadUnresolved())
+                .automationCompleted(listAutomationsItemTriggersAutomationCompleted())
+                .automationFailed(listAutomationsItemTriggersAutomationFailed())
+                .codeScanningAlert(listAutomationsItemTriggersCodeScanningAlert())
+                .secretScanningAlert(listAutomationsItemTriggersSecretScanningAlert())
+                .dependabotAlert(listAutomationsItemTriggersDependabotAlert())
+                .build();
+    }
+
+    static GitHubListAutomationsItemCreatedBy listAutomationsItemCreatedBy() {
+        return GitHubListAutomationsItemCreatedByBuilder.builder().id(1L).build();
+    }
+
+    static GitHubListAutomationsItem listAutomationsItem() {
+        return GitHubListAutomationsItemBuilder.builder()
+                .id("id")
+                .repository(listAutomationsItemRepository())
+                .name("name")
+                .enabled(true)
+                .type(GitHubListAutomationsItemType.PERSONAL)
+                .requireActorWritePermission(true)
+                .model("model")
+                .reasoningEffort("reasoning_effort")
+                .triggers(listAutomationsItemTriggers())
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .createdBy(listAutomationsItemCreatedBy())
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersInterval listRepoAutomationsAutomationTriggersInterval() {
+        return GitHubListRepoAutomationsAutomationTriggersIntervalBuilder.builder()
+                .cadence(List.of(GitHubListRepoAutomationsAutomationTriggersIntervalCadence.HOURLY))
+                .hourUtc(1)
+                .dayOfWeek(1)
+                .minuteUtc(GitHubAutomationMinuteUtc.ZERO)
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersIssueOpened listRepoAutomationsAutomationTriggersIssueOpened() {
+        return GitHubListRepoAutomationsAutomationTriggersIssueOpenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersIssueLabeled listRepoAutomationsAutomationTriggersIssueLabeled() {
+        return GitHubListRepoAutomationsAutomationTriggersIssueLabeledBuilder.builder()
+                .query("query")
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersWorkflowRun listRepoAutomationsAutomationTriggersWorkflowRun() {
+        return GitHubListRepoAutomationsAutomationTriggersWorkflowRunBuilder.builder()
+                .workflows(List.of("workflows"))
+                .conclusions(List.of(GitHubListRepoAutomationsAutomationTriggersWorkflowRunConclusion.FAILURE))
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestOpened
+            listRepoAutomationsAutomationTriggersPullRequestOpened() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestOpenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestSynchronize
+            listRepoAutomationsAutomationTriggersPullRequestSynchronize() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestSynchronizeBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestMerged
+            listRepoAutomationsAutomationTriggersPullRequestMerged() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestMergedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersIssueComment listRepoAutomationsAutomationTriggersIssueComment() {
+        return GitHubListRepoAutomationsAutomationTriggersIssueCommentBuilder.builder()
+                .query("query")
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestComment
+            listRepoAutomationsAutomationTriggersPullRequestComment() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestCommentBuilder.builder()
+                .commentTypes(List.of(
+                        GitHubListRepoAutomationsAutomationTriggersPullRequestCommentCommentType.TIMELINE_COMMENT))
+                .query("query")
+                .paths(List.of("paths"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersDiscussionOpened
+            listRepoAutomationsAutomationTriggersDiscussionOpened() {
+        return GitHubListRepoAutomationsAutomationTriggersDiscussionOpenedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersDiscussionUpdated
+            listRepoAutomationsAutomationTriggersDiscussionUpdated() {
+        return GitHubListRepoAutomationsAutomationTriggersDiscussionUpdatedBuilder.builder()
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersDiscussionComment
+            listRepoAutomationsAutomationTriggersDiscussionComment() {
+        return GitHubListRepoAutomationsAutomationTriggersDiscussionCommentBuilder.builder()
+                .commentTypes(List.of(GitHubListRepoAutomationsAutomationTriggersDiscussionCommentCommentType.COMMENT))
+                .categories(List.of("categories"))
+                .bodySubstring("body_substring")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersIssueAssigned
+            listRepoAutomationsAutomationTriggersIssueAssigned() {
+        return GitHubListRepoAutomationsAutomationTriggersIssueAssignedBuilder.builder()
+                .query("query")
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestAssigned
+            listRepoAutomationsAutomationTriggersPullRequestAssigned() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestAssignedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .assignees(List.of("assignees"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersSubIssueAdded
+            listRepoAutomationsAutomationTriggersSubIssueAdded() {
+        return GitHubListRepoAutomationsAutomationTriggersSubIssueAddedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestReadyForReview
+            listRepoAutomationsAutomationTriggersPullRequestReadyForReview() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestReadyForReviewBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestLabeled
+            listRepoAutomationsAutomationTriggersPullRequestLabeled() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestLabeledBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .labels(List.of("labels"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestMergeConflict
+            listRepoAutomationsAutomationTriggersPullRequestMergeConflict() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestMergeConflictBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmitted
+            listRepoAutomationsAutomationTriggersPullRequestReviewSubmitted() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmittedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .states(List.of(GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmittedState.APPROVED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestReviewRequested
+            listRepoAutomationsAutomationTriggersPullRequestReviewRequested() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestReviewRequestedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersIssueClosed listRepoAutomationsAutomationTriggersIssueClosed() {
+        return GitHubListRepoAutomationsAutomationTriggersIssueClosedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersIssueReopened
+            listRepoAutomationsAutomationTriggersIssueReopened() {
+        return GitHubListRepoAutomationsAutomationTriggersIssueReopenedBuilder.builder()
+                .query("query")
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestClosed
+            listRepoAutomationsAutomationTriggersPullRequestClosed() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestClosedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestReopened
+            listRepoAutomationsAutomationTriggersPullRequestReopened() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestReopenedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestConvertedToDraft
+            listRepoAutomationsAutomationTriggersPullRequestConvertedToDraft() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestConvertedToDraftBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestReviewDismissed
+            listRepoAutomationsAutomationTriggersPullRequestReviewDismissed() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestReviewDismissedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestReviewThreadResolved
+            listRepoAutomationsAutomationTriggersPullRequestReviewThreadResolved() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestReviewThreadResolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersPullRequestReviewThreadUnresolved
+            listRepoAutomationsAutomationTriggersPullRequestReviewThreadUnresolved() {
+        return GitHubListRepoAutomationsAutomationTriggersPullRequestReviewThreadUnresolvedBuilder.builder()
+                .query("query")
+                .paths(List.of("paths"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersAutomationCompleted
+            listRepoAutomationsAutomationTriggersAutomationCompleted() {
+        return GitHubListRepoAutomationsAutomationTriggersAutomationCompletedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersAutomationFailed
+            listRepoAutomationsAutomationTriggersAutomationFailed() {
+        return GitHubListRepoAutomationsAutomationTriggersAutomationFailedBuilder.builder()
+                .automationIds(List.of("automation_ids"))
+                .reasons(List.of(GitHubListRepoAutomationsAutomationTriggersAutomationFailedReason.REPORTED))
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersCodeScanningAlert
+            listRepoAutomationsAutomationTriggersCodeScanningAlert() {
+        return GitHubListRepoAutomationsAutomationTriggersCodeScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersSecretScanningAlert
+            listRepoAutomationsAutomationTriggersSecretScanningAlert() {
+        return GitHubListRepoAutomationsAutomationTriggersSecretScanningAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggersDependabotAlert
+            listRepoAutomationsAutomationTriggersDependabotAlert() {
+        return GitHubListRepoAutomationsAutomationTriggersDependabotAlertBuilder.builder()
+                .writeScope(GitHubAutomationWriteScope.TRIGGER)
+                .allowCopilotTriggers(true)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationTriggers listRepoAutomationsAutomationTriggers() {
+        return GitHubListRepoAutomationsAutomationTriggersBuilder.builder()
+                .interval(listRepoAutomationsAutomationTriggersInterval())
+                .issueOpened(listRepoAutomationsAutomationTriggersIssueOpened())
+                .issueLabeled(listRepoAutomationsAutomationTriggersIssueLabeled())
+                .workflowRun(listRepoAutomationsAutomationTriggersWorkflowRun())
+                .pullRequestOpened(listRepoAutomationsAutomationTriggersPullRequestOpened())
+                .pullRequestSynchronize(listRepoAutomationsAutomationTriggersPullRequestSynchronize())
+                .pullRequestMerged(listRepoAutomationsAutomationTriggersPullRequestMerged())
+                .issueComment(listRepoAutomationsAutomationTriggersIssueComment())
+                .pullRequestComment(listRepoAutomationsAutomationTriggersPullRequestComment())
+                .discussionOpened(listRepoAutomationsAutomationTriggersDiscussionOpened())
+                .discussionUpdated(listRepoAutomationsAutomationTriggersDiscussionUpdated())
+                .discussionComment(listRepoAutomationsAutomationTriggersDiscussionComment())
+                .issueAssigned(listRepoAutomationsAutomationTriggersIssueAssigned())
+                .pullRequestAssigned(listRepoAutomationsAutomationTriggersPullRequestAssigned())
+                .subIssueAdded(listRepoAutomationsAutomationTriggersSubIssueAdded())
+                .pullRequestReadyForReview(listRepoAutomationsAutomationTriggersPullRequestReadyForReview())
+                .pullRequestLabeled(listRepoAutomationsAutomationTriggersPullRequestLabeled())
+                .pullRequestMergeConflict(listRepoAutomationsAutomationTriggersPullRequestMergeConflict())
+                .pullRequestReviewSubmitted(listRepoAutomationsAutomationTriggersPullRequestReviewSubmitted())
+                .pullRequestReviewRequested(listRepoAutomationsAutomationTriggersPullRequestReviewRequested())
+                .issueClosed(listRepoAutomationsAutomationTriggersIssueClosed())
+                .issueReopened(listRepoAutomationsAutomationTriggersIssueReopened())
+                .pullRequestClosed(listRepoAutomationsAutomationTriggersPullRequestClosed())
+                .pullRequestReopened(listRepoAutomationsAutomationTriggersPullRequestReopened())
+                .pullRequestConvertedToDraft(listRepoAutomationsAutomationTriggersPullRequestConvertedToDraft())
+                .pullRequestReviewDismissed(listRepoAutomationsAutomationTriggersPullRequestReviewDismissed())
+                .pullRequestReviewThreadResolved(listRepoAutomationsAutomationTriggersPullRequestReviewThreadResolved())
+                .pullRequestReviewThreadUnresolved(
+                        listRepoAutomationsAutomationTriggersPullRequestReviewThreadUnresolved())
+                .automationCompleted(listRepoAutomationsAutomationTriggersAutomationCompleted())
+                .automationFailed(listRepoAutomationsAutomationTriggersAutomationFailed())
+                .codeScanningAlert(listRepoAutomationsAutomationTriggersCodeScanningAlert())
+                .secretScanningAlert(listRepoAutomationsAutomationTriggersSecretScanningAlert())
+                .dependabotAlert(listRepoAutomationsAutomationTriggersDependabotAlert())
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomationCreatedBy listRepoAutomationsAutomationCreatedBy() {
+        return GitHubListRepoAutomationsAutomationCreatedByBuilder.builder()
+                .id(1L)
+                .build();
+    }
+
+    static GitHubListRepoAutomationsAutomation listRepoAutomationsAutomation() {
+        return GitHubListRepoAutomationsAutomationBuilder.builder()
+                .id("id")
+                .name("name")
+                .enabled(true)
+                .type(GitHubListRepoAutomationsAutomationType.PERSONAL)
+                .requireActorWritePermission(true)
+                .model("model")
+                .reasoningEffort("reasoning_effort")
+                .triggers(listRepoAutomationsAutomationTriggers())
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .createdBy(listRepoAutomationsAutomationCreatedBy())
+                .build();
+    }
+
+    static GitHubListAvailableRepoAutomationToolsResponseToolGroupTool
+            listAvailableRepoAutomationToolsResponseToolGroupTool() {
+        return GitHubListAvailableRepoAutomationToolsResponseToolGroupToolBuilder.builder()
+                .id("id")
+                .title("title")
+                .description("description")
+                .scope(GitHubListAvailableRepoAutomationToolsResponseToolGroupToolScope.READ)
+                .build();
+    }
+
+    static GitHubListAvailableRepoAutomationToolsResponseToolGroup listAvailableRepoAutomationToolsResponseToolGroup() {
+        return GitHubListAvailableRepoAutomationToolsResponseToolGroupBuilder.builder()
+                .id("id")
+                .title("title")
+                .tools(List.of(listAvailableRepoAutomationToolsResponseToolGroupTool()))
+                .build();
+    }
+
+    static GitHubListAvailableRepoAutomationToolsResponseMcpServerTool
+            listAvailableRepoAutomationToolsResponseMcpServerTool() {
+        return GitHubListAvailableRepoAutomationToolsResponseMcpServerToolBuilder.builder()
+                .id("id")
+                .build();
+    }
+
+    static GitHubListAvailableRepoAutomationToolsResponseMcpServer listAvailableRepoAutomationToolsResponseMcpServer() {
+        return GitHubListAvailableRepoAutomationToolsResponseMcpServerBuilder.builder()
+                .name("name")
+                .tools(List.of(listAvailableRepoAutomationToolsResponseMcpServerTool()))
+                .supportsWildcard(true)
+                .build();
+    }
+
+    static GitHubListAvailableRepoAutomationToolsResponse listAvailableRepoAutomationToolsResponse() {
+        return GitHubListAvailableRepoAutomationToolsResponseBuilder.builder()
+                .toolGroups(List.of(listAvailableRepoAutomationToolsResponseToolGroup()))
+                .mcpServers(List.of(listAvailableRepoAutomationToolsResponseMcpServer()))
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTaskPayload createRepoAutomationTaskPayload() {
+        return GitHubCreateRepoAutomationTaskPayloadBuilder.builder()
+                .event(GitHubCreateRepoAutomationTaskEvent.MANUAL)
+                .context("context")
+                .build();
+    }
+
+    static GitHubCreateRepoAutomationTaskResponse createRepoAutomationTaskResponse() {
+        return GitHubCreateRepoAutomationTaskResponseBuilder.builder()
+                .taskId("task_id")
+                .automationId("automation_id")
+                .event(GitHubCreateRepoAutomationTaskResponseEvent.MANUAL)
+                .build();
     }
 }

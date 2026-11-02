@@ -20,6 +20,7 @@ class GitHubEnterpriseAdminAiControlsApiIntegrationTest {
     private static final String ENTERPRISE = "octo-enterprise";
     private static final Class<?> RESOURCES = GitHubEnterpriseAdminAiControlsApiIntegrationTest.class;
     private static final String APPS_PATH = "/enterprises/octo-enterprise/copilot/apps/model-policies";
+    private static final String FEATURE_PATH = "/enterprises/octo-enterprise/copilot/feature-policies";
     private static final String MODEL_PATH = "/enterprises/octo-enterprise/copilot/model-policies";
     private static final String TEAM_PATH = "/enterprises/octo-enterprise/teams/1/copilot/model-policies";
 
@@ -116,5 +117,36 @@ class GitHubEnterpriseAdminAiControlsApiIntegrationTest {
 
         assertThat(policies).isEqualTo(EnterpriseAdminCatalogFixtures.updateEnterpriseTeamModelPoliciesResponse());
         HTTP.verifyRequested(PATCH, TEAM_PATH);
+    }
+
+    @Test
+    void getEnterpriseFeaturePolicies_shouldReturnPolicies_whenResponseIsOk() throws Exception {
+        HTTP.stub(GET, FEATURE_PATH, okJson(jsonBytes(RESOURCES, "get-enterprise-feature-policies-response.json")));
+
+        final GitHubGetEnterpriseFeaturePoliciesResponse policies;
+        try (final GitHubApiWireMockSupport.EnterpriseAdminAiControlsApiClient api =
+                enterpriseAdminAiControlsApi(HTTP)) {
+            policies = api.api().getEnterpriseFeaturePolicies(ENTERPRISE);
+        }
+
+        assertThat(policies).isEqualTo(EnterpriseAdminCatalogFixtures.getEnterpriseFeaturePoliciesResponse());
+        HTTP.verifyRequested(GET, FEATURE_PATH);
+    }
+
+    @Test
+    void updateEnterpriseFeaturePolicies_shouldReturnPolicies_whenResponseIsOk() throws Exception {
+        HTTP.stub(
+                PATCH, FEATURE_PATH, okJson(jsonBytes(RESOURCES, "update-enterprise-feature-policies-response.json")));
+
+        final GitHubUpdateEnterpriseFeaturePoliciesResponse policies;
+        try (final GitHubApiWireMockSupport.EnterpriseAdminAiControlsApiClient api =
+                enterpriseAdminAiControlsApi(HTTP)) {
+            policies = api.api()
+                    .updateEnterpriseFeaturePolicies(
+                            ENTERPRISE, EnterpriseAdminCatalogFixtures.updateEnterpriseFeaturePoliciesPayload());
+        }
+
+        assertThat(policies).isEqualTo(EnterpriseAdminCatalogFixtures.updateEnterpriseFeaturePoliciesResponse());
+        HTTP.verifyRequested(PATCH, FEATURE_PATH);
     }
 }

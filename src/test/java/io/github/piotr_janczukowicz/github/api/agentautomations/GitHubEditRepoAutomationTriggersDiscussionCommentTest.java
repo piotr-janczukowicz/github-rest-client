@@ -4,23 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 @UnitTest
 class GitHubEditRepoAutomationTriggersDiscussionCommentTest {
-
-    @Test
-    void constructor_shouldLeaveCommentTypesNull_whenNull() {
-        final GitHubEditRepoAutomationTriggersDiscussionCommentBuilder builder =
-                GitHubEditRepoAutomationTriggersDiscussionCommentBuilder.builder(
-                                AgentAutomationsCatalogFixtures.editRepoAutomationTriggersDiscussionComment())
-                        .commentTypes(null);
-
-        final GitHubEditRepoAutomationTriggersDiscussionComment sut = builder.build();
-
-        assertThat(sut.commentTypes()).isNull();
-    }
 
     @Test
     void constructor_shouldThrow_whenCommentTypesTooSmall() {
@@ -64,18 +53,6 @@ class GitHubEditRepoAutomationTriggersDiscussionCommentTest {
     }
 
     @Test
-    void constructor_shouldLeaveCategoriesNull_whenNull() {
-        final GitHubEditRepoAutomationTriggersDiscussionCommentBuilder builder =
-                GitHubEditRepoAutomationTriggersDiscussionCommentBuilder.builder(
-                                AgentAutomationsCatalogFixtures.editRepoAutomationTriggersDiscussionComment())
-                        .categories(null);
-
-        final GitHubEditRepoAutomationTriggersDiscussionComment sut = builder.build();
-
-        assertThat(sut.categories()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenCategoriesTooSmall() {
         final GitHubEditRepoAutomationTriggersDiscussionCommentBuilder builder =
                 GitHubEditRepoAutomationTriggersDiscussionCommentBuilder.builder(
@@ -92,10 +69,61 @@ class GitHubEditRepoAutomationTriggersDiscussionCommentTest {
         final GitHubEditRepoAutomationTriggersDiscussionCommentBuilder builder =
                 GitHubEditRepoAutomationTriggersDiscussionCommentBuilder.builder(
                                 AgentAutomationsCatalogFixtures.editRepoAutomationTriggersDiscussionComment())
-                        .categories(List.of("a", "a"));
+                        .categories(List.of("categories", "categories"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("categories");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenCommentTypesNull() {
+        final GitHubEditRepoAutomationTriggersDiscussionComment value =
+                GitHubEditRepoAutomationTriggersDiscussionCommentBuilder.builder(
+                                AgentAutomationsCatalogFixtures.editRepoAutomationTriggersDiscussionComment())
+                        .commentTypes(null)
+                        .build();
+
+        assertThat(value.commentTypes()).isNull();
+    }
+
+    @Test
+    void constructor_shouldCopy_whenCommentTypesGiven() {
+        final List<GitHubEditRepoAutomationTriggersDiscussionCommentCommentType> source =
+                new ArrayList<>(List.of(GitHubEditRepoAutomationTriggersDiscussionCommentCommentType.COMMENT));
+        final GitHubEditRepoAutomationTriggersDiscussionComment value =
+                GitHubEditRepoAutomationTriggersDiscussionCommentBuilder.builder(
+                                AgentAutomationsCatalogFixtures.editRepoAutomationTriggersDiscussionComment())
+                        .commentTypes(source)
+                        .build();
+
+        source.add(GitHubEditRepoAutomationTriggersDiscussionCommentCommentType.COMMENT);
+
+        assertThat(value.commentTypes()).hasSize(source.size() - 1);
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenCategoriesNull() {
+        final GitHubEditRepoAutomationTriggersDiscussionComment value =
+                GitHubEditRepoAutomationTriggersDiscussionCommentBuilder.builder(
+                                AgentAutomationsCatalogFixtures.editRepoAutomationTriggersDiscussionComment())
+                        .categories(null)
+                        .build();
+
+        assertThat(value.categories()).isNull();
+    }
+
+    @Test
+    void constructor_shouldCopy_whenCategoriesGiven() {
+        final List<String> source = new ArrayList<>(List.of("categories"));
+        final GitHubEditRepoAutomationTriggersDiscussionComment value =
+                GitHubEditRepoAutomationTriggersDiscussionCommentBuilder.builder(
+                                AgentAutomationsCatalogFixtures.editRepoAutomationTriggersDiscussionComment())
+                        .categories(source)
+                        .build();
+
+        source.add("categories");
+
+        assertThat(value.categories()).hasSize(source.size() - 1);
     }
 }

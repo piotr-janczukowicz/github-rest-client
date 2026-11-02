@@ -17,7 +17,7 @@ public enum GitHubTeamOwnershipType {
     ENTERPRISE("enterprise"),
     ORGANIZATION("organization"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubTeamOwnershipType> WIRE_INDEX =
             EnumUtils.index(GitHubTeamOwnershipType.class, GitHubTeamOwnershipType::wireValue);
@@ -49,6 +49,6 @@ public enum GitHubTeamOwnershipType {
     public static GitHubTeamOwnershipType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

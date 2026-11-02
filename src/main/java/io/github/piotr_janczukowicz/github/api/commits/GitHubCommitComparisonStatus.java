@@ -15,7 +15,7 @@ public enum GitHubCommitComparisonStatus {
     BEHIND("behind"),
     IDENTICAL("identical"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCommitComparisonStatus> WIRE_INDEX =
             EnumUtils.index(GitHubCommitComparisonStatus.class, GitHubCommitComparisonStatus::wireValue);
@@ -47,6 +47,6 @@ public enum GitHubCommitComparisonStatus {
     public static GitHubCommitComparisonStatus fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

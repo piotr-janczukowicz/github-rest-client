@@ -40,14 +40,14 @@ class GitHubListTasksTaskStateTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubListTasksTaskState decoded = GitHubListTasksTaskState.fromWire(wire);
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubListTasksTaskState.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubListTasksTaskState.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

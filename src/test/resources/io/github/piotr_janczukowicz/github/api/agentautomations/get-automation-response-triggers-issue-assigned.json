@@ -1,7 +1,0 @@
-{
-  "query": "is:open label:bug",
-  "assignees": [
-    "octocat"
-  ],
-  "write_scope": "trigger"
-}

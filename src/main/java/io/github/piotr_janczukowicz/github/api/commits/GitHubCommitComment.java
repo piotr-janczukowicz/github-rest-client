@@ -3,6 +3,7 @@ package io.github.piotr_janczukowicz.github.api.commits;
 import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonNull;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.issues.GitHubTimelineComment;
 import io.github.piotr_janczukowicz.github.api.search.GitHubAuthorAssociation;
@@ -30,8 +31,10 @@ import org.jspecify.annotations.Nullable;
  * @param authorAssociation Author association
  * @param reactions Reactions
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @CatalogSchema("components/schemas/commit-comment")
+// The implemented sealed interface carries the deduction; this type itself decodes as a plain record.
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
 public record GitHubCommitComment(
         String htmlUrl,

@@ -31,14 +31,14 @@ class GitHubUpdateCostCenterStateTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubUpdateCostCenterState decoded = GitHubUpdateCostCenterState.fromWire(wire);
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubUpdateCostCenterState.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubUpdateCostCenterState.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

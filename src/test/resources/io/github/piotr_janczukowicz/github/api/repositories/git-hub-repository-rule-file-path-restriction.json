@@ -3,6 +3,9 @@
   "parameters": {
     "restricted_file_paths": [
       "docs/"
+    ],
+    "ignored_file_paths": [
+      "docs/keep.md"
     ]
   }
 }

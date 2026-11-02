@@ -16,7 +16,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 public enum GitHubSecretScanningAlertValidity {
     ACTIVE("active"),
     INACTIVE("inactive"),
-    UNKNOWN("unknown");
+    UNKNOWN("unknown"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubSecretScanningAlertValidity> WIRE_INDEX =
             EnumUtils.index(GitHubSecretScanningAlertValidity.class, GitHubSecretScanningAlertValidity::wireValue);
@@ -43,15 +45,11 @@ public enum GitHubSecretScanningAlertValidity {
      * @param value JSON value
      * @return matching GitHubSecretScanningAlertValidity
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known secret scanning alert validity
      */
     @JsonCreator
     public static GitHubSecretScanningAlertValidity fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(
-                        () -> new IllegalArgumentException("Unknown GitHub secret scanning alert validity: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -1,0 +1,79 @@
+package io.github.piotr_janczukowicz.github.api.agentautomations;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
+
+import io.github.piotr_janczukowicz.testsupport.UnitTest;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.Test;
+
+@UnitTest
+class GitHubCreateRepoAutomationTriggersPullRequestReviewDismissedTest {
+
+    @Test
+    void constructor_shouldThrow_whenQueryTooShort() {
+        final GitHubCreateRepoAutomationTriggersPullRequestReviewDismissedBuilder builder =
+                GitHubCreateRepoAutomationTriggersPullRequestReviewDismissedBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationTriggersPullRequestReviewDismissed())
+                        .query("");
+
+        final Throwable thrown = catchThrowable(builder::build);
+
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("query");
+    }
+
+    @Test
+    void constructor_shouldThrow_whenPathsTooSmall() {
+        final GitHubCreateRepoAutomationTriggersPullRequestReviewDismissedBuilder builder =
+                GitHubCreateRepoAutomationTriggersPullRequestReviewDismissedBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationTriggersPullRequestReviewDismissed())
+                        .paths(List.of());
+
+        final Throwable thrown = catchThrowable(builder::build);
+
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("paths");
+    }
+
+    @Test
+    void constructor_shouldThrow_whenPathsItemTooShort() {
+        final GitHubCreateRepoAutomationTriggersPullRequestReviewDismissedBuilder builder =
+                GitHubCreateRepoAutomationTriggersPullRequestReviewDismissedBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationTriggersPullRequestReviewDismissed())
+                        .paths(List.of(""));
+
+        final Throwable thrown = catchThrowable(builder::build);
+
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("paths");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenPathsNull() {
+        final GitHubCreateRepoAutomationTriggersPullRequestReviewDismissed value =
+                GitHubCreateRepoAutomationTriggersPullRequestReviewDismissedBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationTriggersPullRequestReviewDismissed())
+                        .paths(null)
+                        .build();
+
+        assertThat(value.paths()).isNull();
+    }
+
+    @Test
+    void constructor_shouldCopy_whenPathsGiven() {
+        final List<String> source = new ArrayList<>(List.of("paths"));
+        final GitHubCreateRepoAutomationTriggersPullRequestReviewDismissed value =
+                GitHubCreateRepoAutomationTriggersPullRequestReviewDismissedBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationTriggersPullRequestReviewDismissed())
+                        .paths(source)
+                        .build();
+
+        source.add("paths");
+
+        assertThat(value.paths()).hasSize(source.size() - 1);
+    }
+}

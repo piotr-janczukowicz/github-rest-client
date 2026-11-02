@@ -50,7 +50,7 @@ final class RulesCoverageFixtures {
     }
 
     static GitHubRepositoryRulePullRequestParameters coveragePullRequestParameters() {
-        return new GitHubRepositoryRulePullRequestParameters(null, false, null, false, false, 1, false, null);
+        return new GitHubRepositoryRulePullRequestParameters(null, false, null, false, false, 1, false, null, null);
     }
 
     static GitHubRepositoryRulePullRequest coveragePullRequest() {
@@ -64,6 +64,7 @@ final class RulesCoverageFixtures {
                         false,
                         1,
                         false,
+                        null,
                         null));
     }
 
@@ -169,7 +170,7 @@ final class RulesCoverageFixtures {
     }
 
     static GitHubRepositoryRuleFilePathRestrictionParameters coverageFilePathRestrictionParameters() {
-        return new GitHubRepositoryRuleFilePathRestrictionParameters(List.of("secrets/"));
+        return new GitHubRepositoryRuleFilePathRestrictionParameters(List.of("secrets/"), null);
     }
 
     static GitHubRepositoryRuleFilePathRestriction coverageFilePathRestriction() {
@@ -179,7 +180,7 @@ final class RulesCoverageFixtures {
     }
 
     static GitHubRepositoryRuleMaxFileSizeParameters coverageMaxFileSizeParameters() {
-        return new GitHubRepositoryRuleMaxFileSizeParameters(10);
+        return new GitHubRepositoryRuleMaxFileSizeParameters(10, null);
     }
 
     static GitHubRepositoryRuleMaxFileSize coverageMaxFileSize() {

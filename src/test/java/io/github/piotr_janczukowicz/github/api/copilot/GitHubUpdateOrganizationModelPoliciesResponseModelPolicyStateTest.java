@@ -33,8 +33,8 @@ class GitHubUpdateOrganizationModelPoliciesResponseModelPolicyStateTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         assertThat(GitHubUpdateOrganizationModelPoliciesResponseModelPolicyState.fromWire("not-a-known-value"))
-                .isEqualTo(GitHubUpdateOrganizationModelPoliciesResponseModelPolicyState.UNKNOWN);
+                .isEqualTo(GitHubUpdateOrganizationModelPoliciesResponseModelPolicyState.UNRECOGNIZED);
     }
 }

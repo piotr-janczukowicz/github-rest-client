@@ -44,12 +44,12 @@ class GitHubPagesHttpsCertificateStateTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final GitHubPagesHttpsCertificateState decoded = GitHubPagesHttpsCertificateState.fromWire("brand_new_value");
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubPagesHttpsCertificateState.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubPagesHttpsCertificateState.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

@@ -1,175 +1,280 @@
 {
-  "id": "automation-1",
+  "id": "id",
   "repository": {
     "id": 1,
-    "owner": "octocat",
-    "name": "Nightly triage"
+    "owner": "owner",
+    "name": "name"
   },
-  "name": "Nightly triage",
+  "name": "name",
   "enabled": true,
-  "owner_type": "user",
-  "write_scope": "trigger",
+  "type": "personal",
   "require_actor_write_permission": true,
-  "model": "gpt-5",
-  "reasoning_effort": "medium",
+  "model": "model",
+  "reasoning_effort": "reasoning_effort",
   "triggers": {
     "interval": {
       "cadence": [
         "hourly"
       ],
-      "hour_utc": 9,
+      "hour_utc": 1,
       "day_of_week": 1,
-      "minute_utc": 15,
-      "write_scope": "trigger"
+      "minute_utc": 0,
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "issue_opened": {
-      "query": "is:open label:bug",
-      "write_scope": "trigger"
+      "query": "query",
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "issue_labeled": {
-      "query": "is:open label:bug",
+      "query": "query",
       "labels": [
-        "bug"
+        "labels"
       ],
-      "write_scope": "trigger"
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "workflow_run": {
       "workflows": [
-        "CI"
+        "workflows"
       ],
       "conclusions": [
         "failure"
       ],
-      "query": "is:open label:bug",
-      "write_scope": "trigger"
+      "query": "query",
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "pull_request_opened": {
-      "query": "is:open label:bug",
+      "query": "query",
       "paths": [
-        "src/**"
+        "paths"
       ],
-      "write_scope": "trigger"
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "pull_request_synchronize": {
-      "query": "is:open label:bug",
+      "query": "query",
       "paths": [
-        "src/**"
+        "paths"
       ],
-      "write_scope": "trigger"
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "pull_request_merged": {
-      "query": "is:open label:bug",
+      "query": "query",
       "paths": [
-        "src/**"
+        "paths"
       ],
-      "write_scope": "trigger"
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "issue_comment": {
-      "body_substring": "/triage",
-      "write_scope": "trigger"
+      "query": "query",
+      "body_substring": "body_substring",
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "pull_request_comment": {
       "comment_types": [
         "timeline_comment"
       ],
-      "body_substring": "/triage",
-      "write_scope": "trigger"
+      "query": "query",
+      "paths": [
+        "paths"
+      ],
+      "body_substring": "body_substring",
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "discussion_opened": {
       "categories": [
-        "General"
+        "categories"
       ],
-      "body_substring": "/triage",
-      "write_scope": "trigger"
+      "body_substring": "body_substring",
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "discussion_updated": {
       "categories": [
-        "General"
+        "categories"
       ],
-      "body_substring": "/triage",
-      "write_scope": "trigger"
+      "body_substring": "body_substring",
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "discussion_comment": {
       "comment_types": [
         "comment"
       ],
       "categories": [
-        "General"
+        "categories"
       ],
-      "body_substring": "/triage",
-      "write_scope": "trigger"
+      "body_substring": "body_substring",
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "issue_assigned": {
-      "query": "is:open label:bug",
+      "query": "query",
       "assignees": [
-        "octocat"
+        "assignees"
       ],
-      "write_scope": "trigger"
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "pull_request_assigned": {
-      "query": "is:open label:bug",
+      "query": "query",
       "paths": [
-        "src/**"
+        "paths"
       ],
       "assignees": [
-        "octocat"
+        "assignees"
       ],
-      "write_scope": "trigger"
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "sub_issue_added": {
-      "query": "is:open label:bug",
-      "write_scope": "trigger"
+      "query": "query",
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "pull_request_ready_for_review": {
-      "query": "is:open label:bug",
+      "query": "query",
       "paths": [
-        "src/**"
+        "paths"
       ],
-      "write_scope": "trigger"
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "pull_request_labeled": {
-      "query": "is:open label:bug",
+      "query": "query",
       "paths": [
-        "src/**"
+        "paths"
       ],
       "labels": [
-        "bug"
+        "labels"
       ],
-      "write_scope": "trigger"
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "pull_request_merge_conflict": {
-      "query": "is:open label:bug",
+      "query": "query",
       "paths": [
-        "src/**"
+        "paths"
       ],
-      "write_scope": "trigger"
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "pull_request_review_submitted": {
-      "query": "is:open label:bug",
+      "query": "query",
       "paths": [
-        "src/**"
+        "paths"
       ],
       "states": [
         "approved"
       ],
-      "write_scope": "trigger"
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "pull_request_review_requested": {
-      "query": "is:open label:bug",
+      "query": "query",
       "paths": [
-        "src/**"
+        "paths"
       ],
-      "write_scope": "trigger"
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
+    },
+    "issue_closed": {
+      "query": "query",
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
+    },
+    "issue_reopened": {
+      "query": "query",
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
+    },
+    "pull_request_closed": {
+      "query": "query",
+      "paths": [
+        "paths"
+      ],
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
+    },
+    "pull_request_reopened": {
+      "query": "query",
+      "paths": [
+        "paths"
+      ],
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
+    },
+    "pull_request_converted_to_draft": {
+      "query": "query",
+      "paths": [
+        "paths"
+      ],
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
+    },
+    "pull_request_review_dismissed": {
+      "query": "query",
+      "paths": [
+        "paths"
+      ],
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
+    },
+    "pull_request_review_thread_resolved": {
+      "query": "query",
+      "paths": [
+        "paths"
+      ],
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
+    },
+    "pull_request_review_thread_unresolved": {
+      "query": "query",
+      "paths": [
+        "paths"
+      ],
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     },
     "automation_completed": {
       "automation_ids": [
-        "automation-2"
+        "automation_ids"
       ],
-      "write_scope": "trigger"
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
+    },
+    "automation_failed": {
+      "automation_ids": [
+        "automation_ids"
+      ],
+      "reasons": [
+        "reported"
+      ],
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
+    },
+    "code_scanning_alert": {
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
+    },
+    "secret_scanning_alert": {
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
+    },
+    "dependabot_alert": {
+      "write_scope": "trigger",
+      "allow_copilot_triggers": true
     }
   },
-  "created_at": "2026-01-10T12:00:00Z",
-  "updated_at": "2026-01-10T12:00:00Z",
+  "created_at": "2026-01-01T00:00:00Z",
+  "updated_at": "2026-01-01T00:00:00Z",
   "created_by": {
     "id": 1
   }

@@ -72,7 +72,7 @@ class GitHubSecurityAdvisoriesGlobalAdvisoriesApiTest {
         final GitHubListGlobalAdvisoriesFilter filter = GitHubListGlobalAdvisoriesFilterBuilder.builder()
                 .type(GitHubGlobalAdvisoryType.REVIEWED)
                 .ecosystem(GitHubSecurityAdvisoryEcosystem.NPM)
-                .severity(GitHubSecurityAdvisorySeverity.HIGH)
+                .severity(GitHubListGlobalAdvisoriesSeverity.HIGH)
                 .direction(GitHubDirection.DESC)
                 .sort(GitHubGlobalAdvisoriesSort.UPDATED)
                 .build();

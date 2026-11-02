@@ -15,8 +15,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 public enum GitHubCopilotOrganizationPlanType {
     BUSINESS("business"),
     ENTERPRISE("enterprise"),
+    ACCESS("access"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCopilotOrganizationPlanType> WIRE_INDEX =
             EnumUtils.index(GitHubCopilotOrganizationPlanType.class, GitHubCopilotOrganizationPlanType::wireValue);
@@ -48,6 +49,6 @@ public enum GitHubCopilotOrganizationPlanType {
     public static GitHubCopilotOrganizationPlanType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

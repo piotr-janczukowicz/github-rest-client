@@ -119,6 +119,7 @@ final class DependabotCatalogFixtures {
                 .autoDismissedAt(Instant.parse("2022-08-23T14:29:47Z"))
                 .dismissalRequest(dependabotAlertDismissalRequest())
                 .assignees(List.of(UsersCatalogFixtures.octocat()))
+                .reachability(dependabotAlertReachability())
                 .build();
     }
 
@@ -142,6 +143,7 @@ final class DependabotCatalogFixtures {
                 .dismissalRequest(dependabotAlertDismissalRequest())
                 .assignees(List.of(UsersCatalogFixtures.octocat()))
                 .repository(RepositoriesCatalogFixtures.helloWorldSimpleRepository())
+                .reachability(dependabotAlertWithRepositoryReachability())
                 .build();
     }
 
@@ -342,5 +344,19 @@ final class DependabotCatalogFixtures {
 
     public static GitHubReviewDismissalRequestResult reviewDismissalRequestResult() {
         return new GitHubReviewDismissalRequestResult(1L);
+    }
+
+    static GitHubDependabotAlertReachability dependabotAlertReachability() {
+        return GitHubDependabotAlertReachabilityBuilder.builder()
+                .verdict(GitHubDependabotAlertReachabilityVerdict.REACHABLE)
+                .reason(GitHubDependabotAlertReachabilityReason.UNKNOWN)
+                .build();
+    }
+
+    static GitHubDependabotAlertWithRepositoryReachability dependabotAlertWithRepositoryReachability() {
+        return GitHubDependabotAlertWithRepositoryReachabilityBuilder.builder()
+                .verdict(GitHubDependabotAlertWithRepositoryReachabilityVerdict.REACHABLE)
+                .reason(GitHubDependabotAlertWithRepositoryReachabilityReason.UNKNOWN)
+                .build();
     }
 }

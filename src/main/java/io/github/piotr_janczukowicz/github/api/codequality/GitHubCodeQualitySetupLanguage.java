@@ -21,7 +21,7 @@ public enum GitHubCodeQualitySetupLanguage {
     RUBY("ruby"),
     RUST("rust"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeQualitySetupLanguage> WIRE_INDEX =
             EnumUtils.index(GitHubCodeQualitySetupLanguage.class, GitHubCodeQualitySetupLanguage::wireValue);
@@ -53,6 +53,6 @@ public enum GitHubCodeQualitySetupLanguage {
     public static GitHubCodeQualitySetupLanguage fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

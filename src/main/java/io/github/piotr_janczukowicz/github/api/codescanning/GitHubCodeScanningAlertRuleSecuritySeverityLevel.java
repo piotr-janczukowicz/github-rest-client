@@ -15,7 +15,7 @@ public enum GitHubCodeScanningAlertRuleSecuritySeverityLevel {
     HIGH("high"),
     CRITICAL("critical"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningAlertRuleSecuritySeverityLevel> WIRE_INDEX =
             EnumUtils.index(
@@ -49,6 +49,6 @@ public enum GitHubCodeScanningAlertRuleSecuritySeverityLevel {
     public static GitHubCodeScanningAlertRuleSecuritySeverityLevel fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

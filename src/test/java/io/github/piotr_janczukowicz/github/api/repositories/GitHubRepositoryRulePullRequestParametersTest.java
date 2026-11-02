@@ -15,12 +15,23 @@ class GitHubRepositoryRulePullRequestParametersTest {
     @Test
     void constructor_shouldLeaveAllowedMergeMethodsAndRequiredReviewersNull_whenBothNull() {
         final GitHubRepositoryRulePullRequestParameters parameters =
-                new GitHubRepositoryRulePullRequestParameters(null, false, null, false, false, 0, false, null);
+                new GitHubRepositoryRulePullRequestParameters(null, false, null, false, false, 0, false, null, null);
 
         assertSoftly(softly -> {
             softly.assertThat(parameters.allowedMergeMethods()).isNull();
             softly.assertThat(parameters.requiredReviewers()).isNull();
         });
+    }
+
+    @Test
+    void constructor_shouldLeaveRequireExtraApprovalNull_whenNull() {
+        final GitHubRepositoryRulePullRequestParameters parameters =
+                GitHubRepositoryRulePullRequestParametersBuilder.builder(
+                                RepositoriesCatalogFixtures.pullRequestRuleParameters())
+                        .requireExtraApprovalForUnattributedChanges(null)
+                        .build();
+
+        assertThat(parameters.requireExtraApprovalForUnattributedChanges()).isNull();
     }
 
     @Test
@@ -34,8 +45,8 @@ class GitHubRepositoryRulePullRequestParametersTest {
                         new GitHubRepositoryRuleParamsRequiredReviewerConfigurationReviewer(
                                 1L, GitHubRepositoryRuleParamsRequiredReviewerConfigurationReviewerType.TEAM))));
 
-        final GitHubRepositoryRulePullRequestParameters parameters =
-                new GitHubRepositoryRulePullRequestParameters(methods, false, null, false, false, 0, false, reviewers);
+        final GitHubRepositoryRulePullRequestParameters parameters = new GitHubRepositoryRulePullRequestParameters(
+                methods, false, null, false, false, 0, false, reviewers, null);
         methods.clear();
         reviewers.clear();
 
@@ -48,18 +59,12 @@ class GitHubRepositoryRulePullRequestParametersTest {
 
     @Test
     void constructor_shouldThrow_whenRequiredApprovingReviewCountBelowMinimum() {
-        final GitHubRepositoryRulePullRequestParameters fixture =
-                RepositoriesCatalogFixtures.pullRequestRuleParameters();
+        final GitHubRepositoryRulePullRequestParametersBuilder builder =
+                GitHubRepositoryRulePullRequestParametersBuilder.builder(
+                                RepositoriesCatalogFixtures.pullRequestRuleParameters())
+                        .requiredApprovingReviewCount(-1);
 
-        final Throwable thrown = catchThrowable(() -> new GitHubRepositoryRulePullRequestParameters(
-                fixture.allowedMergeMethods(),
-                fixture.dismissStaleReviewsOnPush(),
-                fixture.dismissalRestriction(),
-                fixture.requireCodeOwnerReview(),
-                fixture.requireLastPushApproval(),
-                -1,
-                fixture.requiredReviewThreadResolution(),
-                fixture.requiredReviewers()));
+        final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException.class)
@@ -68,18 +73,12 @@ class GitHubRepositoryRulePullRequestParametersTest {
 
     @Test
     void constructor_shouldThrow_whenRequiredApprovingReviewCountAboveMaximum() {
-        final GitHubRepositoryRulePullRequestParameters fixture =
-                RepositoriesCatalogFixtures.pullRequestRuleParameters();
+        final GitHubRepositoryRulePullRequestParametersBuilder builder =
+                GitHubRepositoryRulePullRequestParametersBuilder.builder(
+                                RepositoriesCatalogFixtures.pullRequestRuleParameters())
+                        .requiredApprovingReviewCount(11);
 
-        final Throwable thrown = catchThrowable(() -> new GitHubRepositoryRulePullRequestParameters(
-                fixture.allowedMergeMethods(),
-                fixture.dismissStaleReviewsOnPush(),
-                fixture.dismissalRestriction(),
-                fixture.requireCodeOwnerReview(),
-                fixture.requireLastPushApproval(),
-                11,
-                fixture.requiredReviewThreadResolution(),
-                fixture.requiredReviewers()));
+        final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException.class)
@@ -88,29 +87,18 @@ class GitHubRepositoryRulePullRequestParametersTest {
 
     @Test
     void constructor_shouldAcceptRequiredApprovingReviewCount_whenAtDumpBounds() {
-        final GitHubRepositoryRulePullRequestParameters fixture =
-                RepositoriesCatalogFixtures.pullRequestRuleParameters();
+        final GitHubRepositoryRulePullRequestParametersBuilder builder =
+                GitHubRepositoryRulePullRequestParametersBuilder.builder(
+                        RepositoriesCatalogFixtures.pullRequestRuleParameters());
 
-        final GitHubRepositoryRulePullRequestParameters minimum = new GitHubRepositoryRulePullRequestParameters(
-                fixture.allowedMergeMethods(),
-                fixture.dismissStaleReviewsOnPush(),
-                fixture.dismissalRestriction(),
-                fixture.requireCodeOwnerReview(),
-                fixture.requireLastPushApproval(),
-                0,
-                fixture.requiredReviewThreadResolution(),
-                fixture.requiredReviewers());
-        final GitHubRepositoryRulePullRequestParameters maximum = new GitHubRepositoryRulePullRequestParameters(
-                fixture.allowedMergeMethods(),
-                fixture.dismissStaleReviewsOnPush(),
-                fixture.dismissalRestriction(),
-                fixture.requireCodeOwnerReview(),
-                fixture.requireLastPushApproval(),
-                10,
-                fixture.requiredReviewThreadResolution(),
-                fixture.requiredReviewers());
+        final GitHubRepositoryRulePullRequestParameters minimum =
+                builder.requiredApprovingReviewCount(0).build();
+        final GitHubRepositoryRulePullRequestParameters maximum =
+                builder.requiredApprovingReviewCount(10).build();
 
-        assertThat(minimum.requiredApprovingReviewCount()).isZero();
-        assertThat(maximum.requiredApprovingReviewCount()).isEqualTo(10);
+        assertSoftly(softly -> {
+            softly.assertThat(minimum.requiredApprovingReviewCount()).isZero();
+            softly.assertThat(maximum.requiredApprovingReviewCount()).isEqualTo(10);
+        });
     }
 }

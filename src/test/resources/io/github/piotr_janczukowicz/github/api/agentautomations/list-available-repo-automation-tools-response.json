@@ -1,0 +1,27 @@
+{
+  "tool_groups": [
+    {
+      "id": "id",
+      "title": "title",
+      "tools": [
+        {
+          "id": "id",
+          "title": "title",
+          "description": "description",
+          "scope": "read"
+        }
+      ]
+    }
+  ],
+  "mcp_servers": [
+    {
+      "name": "name",
+      "tools": [
+        {
+          "id": "id"
+        }
+      ],
+      "supports_wildcard": true
+    }
+  ]
+}

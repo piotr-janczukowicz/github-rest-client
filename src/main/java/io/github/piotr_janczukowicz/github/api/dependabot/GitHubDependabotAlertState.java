@@ -18,7 +18,7 @@ public enum GitHubDependabotAlertState {
     FIXED("fixed"),
     OPEN("open"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubDependabotAlertState> WIRE_INDEX =
             EnumUtils.index(GitHubDependabotAlertState.class, GitHubDependabotAlertState::wireValue);
@@ -50,6 +50,6 @@ public enum GitHubDependabotAlertState {
     public static GitHubDependabotAlertState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

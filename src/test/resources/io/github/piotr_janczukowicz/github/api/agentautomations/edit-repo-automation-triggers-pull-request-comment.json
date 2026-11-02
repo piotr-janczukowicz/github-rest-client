@@ -2,6 +2,11 @@
   "comment_types": [
     "timeline_comment"
   ],
-  "body_substring": "/triage",
-  "write_scope": "trigger"
+  "query": "query",
+  "paths": [
+    "paths"
+  ],
+  "body_substring": "body_substring",
+  "write_scope": "trigger",
+  "allow_copilot_triggers": true
 }

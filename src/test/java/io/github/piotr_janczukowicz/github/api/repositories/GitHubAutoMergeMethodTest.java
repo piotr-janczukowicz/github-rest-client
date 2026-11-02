@@ -40,14 +40,14 @@ class GitHubAutoMergeMethodTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubAutoMergeMethod decoded = GitHubAutoMergeMethod.fromWire(wire);
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubAutoMergeMethod.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubAutoMergeMethod.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

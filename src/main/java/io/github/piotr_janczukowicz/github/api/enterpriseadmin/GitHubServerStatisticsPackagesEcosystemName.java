@@ -26,7 +26,7 @@ public enum GitHubServerStatisticsPackagesEcosystemName {
     /** Containers. */
     CONTAINERS("containers"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubServerStatisticsPackagesEcosystemName> WIRE_INDEX = EnumUtils.index(
             GitHubServerStatisticsPackagesEcosystemName.class, GitHubServerStatisticsPackagesEcosystemName::wireValue);
@@ -58,6 +58,6 @@ public enum GitHubServerStatisticsPackagesEcosystemName {
     public static GitHubServerStatisticsPackagesEcosystemName fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

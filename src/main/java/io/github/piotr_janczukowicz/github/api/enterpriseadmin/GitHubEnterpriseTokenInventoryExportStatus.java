@@ -24,7 +24,7 @@ public enum GitHubEnterpriseTokenInventoryExportStatus {
     /** Error. */
     ERROR("error"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubEnterpriseTokenInventoryExportStatus> WIRE_INDEX = EnumUtils.index(
             GitHubEnterpriseTokenInventoryExportStatus.class, GitHubEnterpriseTokenInventoryExportStatus::wireValue);
@@ -56,6 +56,6 @@ public enum GitHubEnterpriseTokenInventoryExportStatus {
     public static GitHubEnterpriseTokenInventoryExportStatus fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

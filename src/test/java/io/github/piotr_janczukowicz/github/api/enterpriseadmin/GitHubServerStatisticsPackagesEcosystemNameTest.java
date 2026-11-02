@@ -45,8 +45,8 @@ class GitHubServerStatisticsPackagesEcosystemNameTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         assertThat(GitHubServerStatisticsPackagesEcosystemName.fromWire("not-a-known-value"))
-                .isEqualTo(GitHubServerStatisticsPackagesEcosystemName.UNKNOWN);
+                .isEqualTo(GitHubServerStatisticsPackagesEcosystemName.UNRECOGNIZED);
     }
 }

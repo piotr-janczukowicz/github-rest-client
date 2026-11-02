@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -20,18 +21,6 @@ class GitHubEditRepoAutomationTriggersPullRequestOpenedTest {
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("query");
-    }
-
-    @Test
-    void constructor_shouldLeavePathsNull_whenNull() {
-        final GitHubEditRepoAutomationTriggersPullRequestOpenedBuilder builder =
-                GitHubEditRepoAutomationTriggersPullRequestOpenedBuilder.builder(
-                                AgentAutomationsCatalogFixtures.editRepoAutomationTriggersPullRequestOpened())
-                        .paths(null);
-
-        final GitHubEditRepoAutomationTriggersPullRequestOpened sut = builder.build();
-
-        assertThat(sut.paths()).isNull();
     }
 
     @Test
@@ -56,5 +45,30 @@ class GitHubEditRepoAutomationTriggersPullRequestOpenedTest {
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("paths");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenPathsNull() {
+        final GitHubEditRepoAutomationTriggersPullRequestOpened value =
+                GitHubEditRepoAutomationTriggersPullRequestOpenedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.editRepoAutomationTriggersPullRequestOpened())
+                        .paths(null)
+                        .build();
+
+        assertThat(value.paths()).isNull();
+    }
+
+    @Test
+    void constructor_shouldCopy_whenPathsGiven() {
+        final List<String> source = new ArrayList<>(List.of("paths"));
+        final GitHubEditRepoAutomationTriggersPullRequestOpened value =
+                GitHubEditRepoAutomationTriggersPullRequestOpenedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.editRepoAutomationTriggersPullRequestOpened())
+                        .paths(source)
+                        .build();
+
+        source.add("paths");
+
+        assertThat(value.paths()).hasSize(source.size() - 1);
     }
 }

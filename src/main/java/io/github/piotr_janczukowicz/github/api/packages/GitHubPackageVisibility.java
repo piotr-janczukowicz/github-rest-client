@@ -11,7 +11,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 @CatalogSchema("components/schemas/package/properties/visibility")
 public enum GitHubPackageVisibility {
     PRIVATE("private"),
-    PUBLIC("public");
+    PUBLIC("public"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubPackageVisibility> WIRE_INDEX =
             EnumUtils.index(GitHubPackageVisibility.class, GitHubPackageVisibility::wireValue);
@@ -38,14 +40,11 @@ public enum GitHubPackageVisibility {
      * @param value JSON value
      * @return matching visibility
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known visibility
      */
     @JsonCreator
     public static GitHubPackageVisibility fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException("Unknown GitHub package visibility: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

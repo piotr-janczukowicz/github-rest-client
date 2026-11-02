@@ -10,7 +10,8 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 /** Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`. */
 @CatalogSchema({
     "components/schemas/secret-scanning-alert-state",
-    "components/parameters/secret-scanning-alert-state/schema"
+    "components/parameters/secret-scanning-alert-state/schema",
+    "operations/secret-scanning/update-public-monitoring-alert-for-enterprise/requestBody/properties/state"
 })
 public enum GitHubSecretScanningAlertState {
     OPEN("open"),

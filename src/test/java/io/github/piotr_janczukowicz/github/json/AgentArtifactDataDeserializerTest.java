@@ -2,10 +2,10 @@ package io.github.piotr_janczukowicz.github.json;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListAutomationTasksTaskArtifactData;
-import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListAutomationTasksTaskArtifactDataById;
-import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListAutomationTasksTaskArtifactDataByRef;
-import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListAutomationTasksTaskArtifactDataUnknown;
+import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListRepoAutomationTasksTaskArtifactData;
+import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListRepoAutomationTasksTaskArtifactDataById;
+import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListRepoAutomationTasksTaskArtifactDataByRef;
+import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListRepoAutomationTasksTaskArtifactDataUnknown;
 import io.github.piotr_janczukowicz.github.api.agenttasks.GitHubCreateTaskInRepoResponseArtifactData;
 import io.github.piotr_janczukowicz.github.api.agenttasks.GitHubCreateTaskInRepoResponseArtifactDataById;
 import io.github.piotr_janczukowicz.github.api.agenttasks.GitHubCreateTaskInRepoResponseArtifactDataByRef;
@@ -74,10 +74,10 @@ class AgentArtifactDataDeserializerTest {
                         GitHubListTasksTaskArtifactDataByRef.class,
                         GitHubListTasksTaskArtifactDataUnknown.class),
                 Arguments.of(
-                        GitHubListAutomationTasksTaskArtifactData.class,
-                        GitHubListAutomationTasksTaskArtifactDataById.class,
-                        GitHubListAutomationTasksTaskArtifactDataByRef.class,
-                        GitHubListAutomationTasksTaskArtifactDataUnknown.class));
+                        GitHubListRepoAutomationTasksTaskArtifactData.class,
+                        GitHubListRepoAutomationTasksTaskArtifactDataById.class,
+                        GitHubListRepoAutomationTasksTaskArtifactDataByRef.class,
+                        GitHubListRepoAutomationTasksTaskArtifactDataUnknown.class));
     }
 
     @ParameterizedTest

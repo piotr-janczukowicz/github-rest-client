@@ -27,7 +27,7 @@ public enum GitHubSecretScanningLocationType {
     PULL_REQUEST_REVIEW("pull_request_review"),
     PULL_REQUEST_REVIEW_COMMENT("pull_request_review_comment"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubSecretScanningLocationType> WIRE_INDEX =
             EnumUtils.index(GitHubSecretScanningLocationType.class, GitHubSecretScanningLocationType::wireValue);
@@ -52,13 +52,14 @@ public enum GitHubSecretScanningLocationType {
      * Resolves secret scanning location type from its wire value.
      *
      * @param value JSON value
-     * @return matching GitHubSecretScanningLocationType, or {@link #UNKNOWN} for a value this library does not know
+     * @return matching GitHubSecretScanningLocationType, or {@link #UNRECOGNIZED} for a value this library does not
+     *     know
      * @throws NullPointerException if {@code value} is {@code null}
      */
     @JsonCreator
     public static GitHubSecretScanningLocationType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -21,7 +21,7 @@ public enum GitHubUpdateEnterpriseTeamModelPoliciesResponsePolicyState {
     /** Optional. */
     OPTIONAL("optional"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubUpdateEnterpriseTeamModelPoliciesResponsePolicyState> WIRE_INDEX =
             EnumUtils.index(
@@ -55,6 +55,6 @@ public enum GitHubUpdateEnterpriseTeamModelPoliciesResponsePolicyState {
     public static GitHubUpdateEnterpriseTeamModelPoliciesResponsePolicyState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

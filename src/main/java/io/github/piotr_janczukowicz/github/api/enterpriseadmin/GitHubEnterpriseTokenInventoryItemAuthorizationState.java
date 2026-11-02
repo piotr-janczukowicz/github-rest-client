@@ -18,7 +18,7 @@ public enum GitHubEnterpriseTokenInventoryItemAuthorizationState {
     /** Member owned only. */
     MEMBER_OWNED_ONLY("member_owned_only"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubEnterpriseTokenInventoryItemAuthorizationState> WIRE_INDEX =
             EnumUtils.index(
@@ -52,6 +52,6 @@ public enum GitHubEnterpriseTokenInventoryItemAuthorizationState {
     public static GitHubEnterpriseTokenInventoryItemAuthorizationState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

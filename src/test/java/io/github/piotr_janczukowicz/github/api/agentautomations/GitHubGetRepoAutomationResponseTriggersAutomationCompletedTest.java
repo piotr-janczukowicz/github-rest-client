@@ -39,7 +39,7 @@ class GitHubGetRepoAutomationResponseTriggersAutomationCompletedTest {
         final GitHubGetRepoAutomationResponseTriggersAutomationCompletedBuilder builder =
                 GitHubGetRepoAutomationResponseTriggersAutomationCompletedBuilder.builder(
                                 AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersAutomationCompleted())
-                        .automationIds(List.of("a", "a", "a", "a"));
+                        .automationIds(List.of("automation_ids", "automation_ids", "automation_ids", "automation_ids"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
@@ -51,7 +51,7 @@ class GitHubGetRepoAutomationResponseTriggersAutomationCompletedTest {
         final GitHubGetRepoAutomationResponseTriggersAutomationCompletedBuilder builder =
                 GitHubGetRepoAutomationResponseTriggersAutomationCompletedBuilder.builder(
                                 AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersAutomationCompleted())
-                        .automationIds(List.of("a", "a"));
+                        .automationIds(List.of("automation_ids", "automation_ids"));
 
         final Throwable thrown = catchThrowable(builder::build);
 

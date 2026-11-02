@@ -18,7 +18,7 @@ public enum GitHubPullRequestMergeAsyncMethod {
     SQUASH("squash"),
     REBASE("rebase"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubPullRequestMergeAsyncMethod> WIRE_INDEX =
             EnumUtils.index(GitHubPullRequestMergeAsyncMethod.class, GitHubPullRequestMergeAsyncMethod::wireValue);
@@ -50,6 +50,6 @@ public enum GitHubPullRequestMergeAsyncMethod {
     public static GitHubPullRequestMergeAsyncMethod fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

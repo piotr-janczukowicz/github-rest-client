@@ -23,6 +23,18 @@ class GitHubGetRepoAutomationResponseTriggersWorkflowRunTest {
     }
 
     @Test
+    void constructor_shouldThrow_whenConclusionsNull() {
+        final GitHubGetRepoAutomationResponseTriggersWorkflowRunBuilder builder =
+                GitHubGetRepoAutomationResponseTriggersWorkflowRunBuilder.builder(
+                                AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersWorkflowRun())
+                        .conclusions(null);
+
+        final Throwable thrown = catchThrowable(builder::build);
+
+        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("conclusions");
+    }
+
+    @Test
     void constructor_shouldThrow_whenWorkflowsTooSmall() {
         final GitHubGetRepoAutomationResponseTriggersWorkflowRunBuilder builder =
                 GitHubGetRepoAutomationResponseTriggersWorkflowRunBuilder.builder(
@@ -44,18 +56,6 @@ class GitHubGetRepoAutomationResponseTriggersWorkflowRunTest {
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("workflows");
-    }
-
-    @Test
-    void constructor_shouldThrow_whenConclusionsNull() {
-        final GitHubGetRepoAutomationResponseTriggersWorkflowRunBuilder builder =
-                GitHubGetRepoAutomationResponseTriggersWorkflowRunBuilder.builder(
-                                AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersWorkflowRun())
-                        .conclusions(null);
-
-        final Throwable thrown = catchThrowable(builder::build);
-
-        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("conclusions");
     }
 
     @Test

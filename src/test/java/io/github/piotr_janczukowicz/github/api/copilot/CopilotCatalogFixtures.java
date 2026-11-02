@@ -573,4 +573,45 @@ public final class CopilotCatalogFixtures {
                 "https://example.com/copilot-usage-report-1.ndjson",
                 "https://example.com/copilot-usage-report-2.ndjson");
     }
+
+    static GitHubGetOrganizationFeaturePoliciesResponseDefaultAvailability
+            getOrganizationFeaturePoliciesResponseDefaultAvailability() {
+        return GitHubGetOrganizationFeaturePoliciesResponseDefaultAvailabilityBuilder.builder()
+                .policyState(GitHubGetOrganizationFeaturePoliciesResponseDefaultAvailabilityPolicyState.ENABLED)
+                .editable(true)
+                .build();
+    }
+
+    static GitHubGetOrganizationFeaturePoliciesResponse getOrganizationFeaturePoliciesResponse() {
+        return GitHubGetOrganizationFeaturePoliciesResponseBuilder.builder()
+                .defaultAvailability(getOrganizationFeaturePoliciesResponseDefaultAvailability())
+                .build();
+    }
+
+    static GitHubUpdateOrganizationFeaturePoliciesDefaultAvailability
+            updateOrganizationFeaturePoliciesDefaultAvailability() {
+        return GitHubUpdateOrganizationFeaturePoliciesDefaultAvailabilityBuilder.builder()
+                .policyState(GitHubUpdateOrganizationFeaturePoliciesDefaultAvailabilityPolicyState.ENABLED)
+                .build();
+    }
+
+    static GitHubUpdateOrganizationFeaturePoliciesPayload updateOrganizationFeaturePoliciesPayload() {
+        return GitHubUpdateOrganizationFeaturePoliciesPayloadBuilder.builder()
+                .defaultAvailability(updateOrganizationFeaturePoliciesDefaultAvailability())
+                .build();
+    }
+
+    static GitHubUpdateOrganizationFeaturePoliciesResponseDefaultAvailability
+            updateOrganizationFeaturePoliciesResponseDefaultAvailability() {
+        return GitHubUpdateOrganizationFeaturePoliciesResponseDefaultAvailabilityBuilder.builder()
+                .policyState(GitHubUpdateOrganizationFeaturePoliciesResponseDefaultAvailabilityPolicyState.ENABLED)
+                .editable(true)
+                .build();
+    }
+
+    static GitHubUpdateOrganizationFeaturePoliciesResponse updateOrganizationFeaturePoliciesResponse() {
+        return GitHubUpdateOrganizationFeaturePoliciesResponseBuilder.builder()
+                .defaultAvailability(updateOrganizationFeaturePoliciesResponseDefaultAvailability())
+                .build();
+    }
 }

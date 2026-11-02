@@ -17,7 +17,7 @@ public enum GitHubTeamAccessSource {
     ORGANIZATION("organization"),
     ENTERPRISE("enterprise"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubTeamAccessSource> WIRE_INDEX =
             EnumUtils.index(GitHubTeamAccessSource.class, GitHubTeamAccessSource::wireValue);
@@ -49,6 +49,6 @@ public enum GitHubTeamAccessSource {
     public static GitHubTeamAccessSource fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

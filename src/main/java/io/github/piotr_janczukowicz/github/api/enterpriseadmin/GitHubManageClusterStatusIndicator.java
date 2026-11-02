@@ -16,7 +16,9 @@ public enum GitHubManageClusterStatusIndicator {
     UNKNOWN("UNKNOWN"),
     OK("OK"),
     WARNING("WARNING"),
-    CRITICAL("CRITICAL");
+    CRITICAL("CRITICAL"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubManageClusterStatusIndicator> WIRE_INDEX =
             EnumUtils.index(GitHubManageClusterStatusIndicator.class, GitHubManageClusterStatusIndicator::wireValue);
@@ -41,16 +43,13 @@ public enum GitHubManageClusterStatusIndicator {
      * ManageClusterStatusIndicator from a wire value.
      *
      * @param value JSON value
-     * @return matching constant
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not known
      */
     @JsonCreator
     public static GitHubManageClusterStatusIndicator fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException("Unknown ManageClusterStatusIndicator: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

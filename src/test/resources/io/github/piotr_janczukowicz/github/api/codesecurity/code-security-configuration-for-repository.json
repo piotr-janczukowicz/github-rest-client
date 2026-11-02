@@ -39,6 +39,8 @@
     "secret_scanning_validity_checks": "enabled",
     "secret_scanning_non_provider_patterns": "enabled",
     "secret_scanning_generic_secrets": "enabled",
+    "secret_scanning_generic_secrets_push_protection": "enabled",
+    "dependabot_reachability": "enabled",
     "secret_scanning_delegated_alert_dismissal": "enabled",
     "secret_scanning_extended_metadata": "enabled",
     "private_vulnerability_reporting": "enabled",

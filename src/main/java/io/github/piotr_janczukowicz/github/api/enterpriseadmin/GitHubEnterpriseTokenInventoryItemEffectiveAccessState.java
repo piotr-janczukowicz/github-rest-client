@@ -18,7 +18,9 @@ public enum GitHubEnterpriseTokenInventoryItemEffectiveAccessState {
     /** Not effective. */
     NOT_EFFECTIVE("not_effective"),
     /** Unknown. */
-    UNKNOWN("unknown");
+    UNKNOWN("unknown"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubEnterpriseTokenInventoryItemEffectiveAccessState> WIRE_INDEX =
             EnumUtils.index(
@@ -52,6 +54,6 @@ public enum GitHubEnterpriseTokenInventoryItemEffectiveAccessState {
     public static GitHubEnterpriseTokenInventoryItemEffectiveAccessState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

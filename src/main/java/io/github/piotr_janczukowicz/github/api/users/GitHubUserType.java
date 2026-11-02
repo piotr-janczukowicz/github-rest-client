@@ -18,7 +18,7 @@ public enum GitHubUserType {
     ORGANIZATION("Organization"),
     BOT("Bot"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubUserType> WIRE_INDEX =
             EnumUtils.index(GitHubUserType.class, GitHubUserType::wireValue);
@@ -50,6 +50,6 @@ public enum GitHubUserType {
     public static GitHubUserType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -5,18 +5,16 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
-import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
 
 @UnitTest
 class GitHubEditRepoAutomationTriggersPullRequestCommentCommentTypeTest {
 
     @ParameterizedTest
     @CsvSource({"timeline_comment,TIMELINE_COMMENT", "review_comment,REVIEW_COMMENT"})
-    void fromWire_shouldReturnValue_whenKnownValue(
+    void fromWire_shouldReturnConstant_whenKnownValue(
             final String wire, final GitHubEditRepoAutomationTriggersPullRequestCommentCommentType value) {
         final GitHubEditRepoAutomationTriggersPullRequestCommentCommentType decoded =
                 GitHubEditRepoAutomationTriggersPullRequestCommentCommentType.fromWire(wire);
@@ -27,19 +25,19 @@ class GitHubEditRepoAutomationTriggersPullRequestCommentCommentTypeTest {
         });
     }
 
-    @ParameterizedTest
-    @MethodSource("invalidWire")
-    void fromWire_shouldThrow_whenInvalid(
-            final String wire, final Class<? extends Throwable> type, final String message) {
+    @Test
+    void fromWire_shouldThrow_whenValueUnknown() {
         final Throwable thrown =
-                catchThrowable(() -> GitHubEditRepoAutomationTriggersPullRequestCommentCommentType.fromWire(wire));
+                catchThrowable(() -> GitHubEditRepoAutomationTriggersPullRequestCommentCommentType.fromWire("other"));
 
-        assertThat(thrown).isInstanceOf(type).hasMessageContaining(message);
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("other");
     }
 
-    private static Stream<Arguments> invalidWire() {
-        return Stream.of(
-                Arguments.of("unknown", IllegalArgumentException.class, "unknown"),
-                Arguments.of(null, NullPointerException.class, "value"));
+    @Test
+    void fromWire_shouldThrow_whenValueNull() {
+        final Throwable thrown =
+                catchThrowable(() -> GitHubEditRepoAutomationTriggersPullRequestCommentCommentType.fromWire(null));
+
+        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("value");
     }
 }

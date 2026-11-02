@@ -49,11 +49,14 @@ class GitHubCodespaceStateTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubCodespaceState decoded = GitHubCodespaceState.fromWire(wire);
 
-        assertThat(decoded).isEqualTo(GitHubCodespaceState.UNKNOWN);
+        assertSoftly(softly -> {
+            softly.assertThat(decoded).isEqualTo(GitHubCodespaceState.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
+        });
     }
 }

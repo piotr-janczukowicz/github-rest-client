@@ -14,7 +14,7 @@ public enum GitHubIssueSearchType {
     SEMANTIC("semantic"),
     HYBRID("hybrid"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubIssueSearchType> WIRE_INDEX =
             EnumUtils.index(GitHubIssueSearchType.class, GitHubIssueSearchType::wireValue);
@@ -34,6 +34,6 @@ public enum GitHubIssueSearchType {
     public static GitHubIssueSearchType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

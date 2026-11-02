@@ -1,0 +1,8 @@
+{
+  "query": "query",
+  "paths": [
+    "paths"
+  ],
+  "write_scope": "trigger",
+  "allow_copilot_triggers": true
+}

@@ -19,7 +19,9 @@ import org.jspecify.annotations.Nullable;
 @RecordBuilder
 public record GitHubSecretScanningLocationPullRequestReviewComment(
         String pullRequestReviewCommentUrl, @Nullable String htmlUrl)
-        implements GitHubSecretScanningLocationDetails, GitHubSecretScanningFirstDetectedLocation {
+        implements GitHubSecretScanningLocationDetails,
+                GitHubSecretScanningFirstDetectedLocation,
+                GitHubPublicMonitoringAlertAttributionPullRequestReviewComment {
 
     public GitHubSecretScanningLocationPullRequestReviewComment {
         requireNonNull(pullRequestReviewCommentUrl, "pullRequestReviewCommentUrl");

@@ -56,7 +56,7 @@ class GitHubCreateRepoAutomationResponseTriggersPullRequestCommentTest {
     }
 
     @Test
-    void constructor_shouldThrow_whenCommentTypesDuplicated() {
+    void constructor_shouldAccept_whenCommentTypesRepeat() {
         final GitHubCreateRepoAutomationResponseTriggersPullRequestCommentBuilder builder =
                 GitHubCreateRepoAutomationResponseTriggersPullRequestCommentBuilder.builder(
                                 AgentAutomationsCatalogFixtures
@@ -67,8 +67,59 @@ class GitHubCreateRepoAutomationResponseTriggersPullRequestCommentTest {
                                 GitHubCreateRepoAutomationResponseTriggersPullRequestCommentCommentType
                                         .TIMELINE_COMMENT));
 
+        final GitHubCreateRepoAutomationResponseTriggersPullRequestComment value = builder.build();
+
+        assertThat(value.commentTypes()).hasSize(2);
+    }
+
+    @Test
+    void constructor_shouldThrow_whenQueryTooShort() {
+        final GitHubCreateRepoAutomationResponseTriggersPullRequestCommentBuilder builder =
+                GitHubCreateRepoAutomationResponseTriggersPullRequestCommentBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationResponseTriggersPullRequestComment())
+                        .query("");
+
         final Throwable thrown = catchThrowable(builder::build);
 
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("commentTypes");
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("query");
+    }
+
+    @Test
+    void constructor_shouldThrow_whenPathsTooSmall() {
+        final GitHubCreateRepoAutomationResponseTriggersPullRequestCommentBuilder builder =
+                GitHubCreateRepoAutomationResponseTriggersPullRequestCommentBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationResponseTriggersPullRequestComment())
+                        .paths(List.of());
+
+        final Throwable thrown = catchThrowable(builder::build);
+
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("paths");
+    }
+
+    @Test
+    void constructor_shouldThrow_whenPathsItemTooShort() {
+        final GitHubCreateRepoAutomationResponseTriggersPullRequestCommentBuilder builder =
+                GitHubCreateRepoAutomationResponseTriggersPullRequestCommentBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationResponseTriggersPullRequestComment())
+                        .paths(List.of(""));
+
+        final Throwable thrown = catchThrowable(builder::build);
+
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("paths");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenPathsNull() {
+        final GitHubCreateRepoAutomationResponseTriggersPullRequestComment value =
+                GitHubCreateRepoAutomationResponseTriggersPullRequestCommentBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationResponseTriggersPullRequestComment())
+                        .paths(null)
+                        .build();
+
+        assertThat(value.paths()).isNull();
     }
 }

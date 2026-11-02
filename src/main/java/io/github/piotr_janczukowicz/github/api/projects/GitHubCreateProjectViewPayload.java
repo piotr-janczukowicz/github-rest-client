@@ -56,7 +56,7 @@ public record GitHubCreateProjectViewPayload(
         }
         if (sortBy != null) {
             sortBy = List.copyOf(sortBy);
-            if (sortBy.stream().anyMatch(sort -> sort.direction() == GitHubProjectViewSortDirection.UNKNOWN)) {
+            if (sortBy.stream().anyMatch(sort -> sort.direction() == GitHubProjectViewSortDirection.UNRECOGNIZED)) {
                 throw new IllegalArgumentException(PARAM_SORT_BY + " must not contain an unknown direction");
             }
         }

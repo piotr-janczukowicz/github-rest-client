@@ -31,12 +31,12 @@ class GitHubPagesProtectedDomainStateTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final GitHubPagesProtectedDomainState decoded = GitHubPagesProtectedDomainState.fromWire("brand_new_value");
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubPagesProtectedDomainState.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubPagesProtectedDomainState.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

@@ -18,7 +18,7 @@ public enum GitHubListCacheInfoItemGitSyncStatus {
     IN_SYNC("in_sync"),
     NOT_IN_SYNC("not_in_sync"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubListCacheInfoItemGitSyncStatus> WIRE_INDEX = EnumUtils.index(
             GitHubListCacheInfoItemGitSyncStatus.class, GitHubListCacheInfoItemGitSyncStatus::wireValue);
@@ -43,13 +43,13 @@ public enum GitHubListCacheInfoItemGitSyncStatus {
      * Status from a wire value.
      *
      * @param value JSON value
-     * @return matching constant, or {@link #UNKNOWN} when the value is not known
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
      */
     @JsonCreator
     public static GitHubListCacheInfoItemGitSyncStatus fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

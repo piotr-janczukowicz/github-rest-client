@@ -18,7 +18,7 @@ public enum GitHubPullRequestReviewCommentEventCommentUserType {
     /** Organization. */
     ORGANIZATION("Organization"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubPullRequestReviewCommentEventCommentUserType> WIRE_INDEX =
             EnumUtils.index(
@@ -52,6 +52,6 @@ public enum GitHubPullRequestReviewCommentEventCommentUserType {
     public static GitHubPullRequestReviewCommentEventCommentUserType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

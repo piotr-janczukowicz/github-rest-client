@@ -18,7 +18,7 @@ public enum GitHubCopilotOrganizationSeatManagementSetting {
     DISABLED("disabled"),
     UNCONFIGURED("unconfigured"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCopilotOrganizationSeatManagementSetting> WIRE_INDEX =
             EnumUtils.index(
@@ -52,6 +52,6 @@ public enum GitHubCopilotOrganizationSeatManagementSetting {
     public static GitHubCopilotOrganizationSeatManagementSetting fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

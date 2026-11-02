@@ -25,16 +25,21 @@ class GitHubManageClusterStatusIndicatorTest {
     }
 
     @Test
-    void fromWire_shouldThrow_whenValueUnknown() {
-        final Throwable thrown = catchThrowable(() -> GitHubManageClusterStatusIndicator.fromWire("other"));
-
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("other");
-    }
-
-    @Test
     void fromWire_shouldThrow_whenValueNull() {
         final Throwable thrown = catchThrowable(() -> GitHubManageClusterStatusIndicator.fromWire(null));
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("value");
+    }
+
+    @Test
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
+        final String wire = "brand_new_value";
+
+        final GitHubManageClusterStatusIndicator decoded = GitHubManageClusterStatusIndicator.fromWire(wire);
+
+        assertSoftly(softly -> {
+            softly.assertThat(decoded).isEqualTo(GitHubManageClusterStatusIndicator.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
+        });
     }
 }

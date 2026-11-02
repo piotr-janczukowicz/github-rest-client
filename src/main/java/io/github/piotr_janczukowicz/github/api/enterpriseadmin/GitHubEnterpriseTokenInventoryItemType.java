@@ -18,7 +18,7 @@ public enum GitHubEnterpriseTokenInventoryItemType {
     /** Token issuer principal. */
     TOKEN_ISSUER_PRINCIPAL("token_issuer_principal"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubEnterpriseTokenInventoryItemType> WIRE_INDEX = EnumUtils.index(
             GitHubEnterpriseTokenInventoryItemType.class, GitHubEnterpriseTokenInventoryItemType::wireValue);
@@ -50,6 +50,6 @@ public enum GitHubEnterpriseTokenInventoryItemType {
     public static GitHubEnterpriseTokenInventoryItemType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

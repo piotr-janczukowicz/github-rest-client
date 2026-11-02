@@ -25,30 +25,28 @@ public final class GitHubAgentAutomationApi extends GitHubResourceApi {
     private static final String PARAM_AUTOMATION_ID = "automationId";
 
     private static final PathTemplate AGENT_AUTOMATIONS = PathTemplate.of("/agents/automations");
-    private static final PathTemplate AGENT_AUTOMATION_AVAILABLE_TOOLS =
-            PathTemplate.of("/agents/automations/available-tools");
-    private static final PathTemplate AGENT_AUTOMATION_AVAILABLE_TRIGGERS =
-            PathTemplate.of("/agents/automations/available-triggers");
-    private static final PathTemplate AGENT_AUTOMATION = PathTemplate.of("/agents/automations/{automation_id}");
-    private static final PathTemplate AGENT_AUTOMATION_TASKS =
-            PathTemplate.of("/agents/automations/{automation_id}/tasks");
     private static final PathTemplate AGENT_REPO_AUTOMATIONS =
             PathTemplate.of("/agents/repos/{owner}/{repo}/automations");
+    private static final PathTemplate AGENT_REPO_AUTOMATION_AVAILABLE_TOOLS =
+            PathTemplate.of("/agents/repos/{owner}/{repo}/automations/available-tools");
+    private static final PathTemplate AGENT_REPO_AUTOMATION_AVAILABLE_TRIGGERS =
+            PathTemplate.of("/agents/repos/{owner}/{repo}/automations/available-triggers");
     private static final PathTemplate AGENT_REPO_AUTOMATION =
             PathTemplate.of("/agents/repos/{owner}/{repo}/automations/{automation_id}");
+    private static final PathTemplate AGENT_REPO_AUTOMATION_TASKS =
+            PathTemplate.of("/agents/repos/{owner}/{repo}/automations/{automation_id}/tasks");
 
     private static final JsonType<List<GitHubListAutomationsItem>> AUTOMATIONS_TYPE =
             JsonTypes.listOf(GitHubListAutomationsItem.class);
-    private static final JsonType<List<GitHubListAvailableAutomationToolsItem>> AVAILABLE_TOOLS_TYPE =
-            JsonTypes.listOf(GitHubListAvailableAutomationToolsItem.class);
-    private static final JsonType<List<GitHubListAvailableAutomationTriggersItem>> AVAILABLE_TRIGGERS_TYPE =
-            JsonTypes.listOf(GitHubListAvailableAutomationTriggersItem.class);
+    private static final JsonType<List<GitHubListAvailableRepoAutomationTriggersItem>> AVAILABLE_TRIGGERS_TYPE =
+            JsonTypes.listOf(GitHubListAvailableRepoAutomationTriggersItem.class);
 
-    private static final GitHubListSpec<GitHubListAutomationTasksTask> AUTOMATION_TASKS_SPEC = GitHubListSpec.wrapper(
-            GitHubPageRequestKindValidators.PAGE,
-            GitHubListAutomationTasksResponse.class,
-            GitHubListAutomationTasksResponse::tasks,
-            null);
+    private static final GitHubListSpec<GitHubListRepoAutomationTasksTask> REPO_AUTOMATION_TASKS_SPEC =
+            GitHubListSpec.wrapper(
+                    GitHubPageRequestKindValidators.PAGE,
+                    GitHubListRepoAutomationTasksResponse.class,
+                    GitHubListRepoAutomationTasksResponse::tasks,
+                    null);
 
     private static final GitHubListSpec<GitHubListRepoAutomationsAutomation> REPO_AUTOMATIONS_SPEC =
             GitHubListSpec.wrapper(
@@ -122,120 +120,6 @@ public final class GitHubAgentAutomationApi extends GitHubResourceApi {
     }
 
     /**
-     * List available automation tools ({@code GET /agents/automations/available-tools}).
-     *
-     * @return tool groups that can be selected in an automation
-     * @throws IOException if the transport fails
-     * @throws GitHubApiException if the response is unsuccessful
-     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
-     *     {@code GHEC}
-     */
-    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
-    public List<GitHubListAvailableAutomationToolsItem> listAvailableAutomationTools() throws IOException {
-        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
-        return caller.fetch(get(AGENT_AUTOMATION_AVAILABLE_TOOLS), AVAILABLE_TOOLS_TYPE);
-    }
-
-    /**
-     * List available automation triggers ({@code GET /agents/automations/available-triggers}).
-     *
-     * @return triggers and their configurable fields
-     * @throws IOException if the transport fails
-     * @throws GitHubApiException if the response is unsuccessful
-     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
-     *     {@code GHEC}
-     */
-    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
-    public List<GitHubListAvailableAutomationTriggersItem> listAvailableAutomationTriggers() throws IOException {
-        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
-        return caller.fetch(get(AGENT_AUTOMATION_AVAILABLE_TRIGGERS), AVAILABLE_TRIGGERS_TYPE);
-    }
-
-    /**
-     * Get an automation by ID ({@code GET /agents/automations/{automation_id}}).
-     *
-     * @param automationId automation identifier
-     * @return automation, or empty on HTTP 404
-     * @throws IllegalArgumentException if {@code automationId} is blank
-     * @throws IOException if the transport fails
-     * @throws GitHubApiException if the response is unsuccessful (HTTP 404 yields empty)
-     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
-     *     {@code GHEC}
-     */
-    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
-    public Optional<GitHubGetAutomationResponse> getAutomation(final String automationId) throws IOException {
-        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
-        return caller.fetchOrEmpty(
-                get(AGENT_AUTOMATION, requireNotBlank(automationId, PARAM_AUTOMATION_ID)),
-                GitHubGetAutomationResponse.class);
-    }
-
-    /**
-     * List tasks for an automation ({@code GET /agents/automations/{automation_id}/tasks}).
-     *
-     * @param automationId automation identifier
-     * @return first HTTP page of tasks
-     * @throws IllegalArgumentException if {@code automationId} is blank
-     * @throws IOException if the transport fails
-     * @throws GitHubApiException if the response is unsuccessful
-     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
-     *     {@code GHEC}
-     */
-    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
-    public GitHubPage<GitHubListAutomationTasksTask> listAutomationTasks(final String automationId) throws IOException {
-        return listAutomationTasks(automationId, GitHubListAutomationTasksFilter.empty(), GitHubPageRequest.byPage());
-    }
-
-    /**
-     * List tasks for an automation ({@code GET /agents/automations/{automation_id}/tasks}).
-     *
-     * @param automationId automation identifier
-     * @param request pagination token
-     * @return first HTTP page of tasks
-     * @throws IllegalArgumentException if {@code automationId} is blank, or {@code request} is invalid
-     * @throws NullPointerException if {@code request} is {@code null}
-     * @throws IOException if the transport fails
-     * @throws GitHubApiException if the response is unsuccessful
-     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
-     *     {@code GHEC}
-     */
-    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
-    public GitHubPage<GitHubListAutomationTasksTask> listAutomationTasks(
-            final String automationId, final GitHubPageRequest request) throws IOException {
-        return listAutomationTasks(automationId, GitHubListAutomationTasksFilter.empty(), request);
-    }
-
-    /**
-     * List tasks for an automation ({@code GET /agents/automations/{automation_id}/tasks}).
-     *
-     * @param automationId automation identifier
-     * @param filter query filters
-     * @param request pagination token
-     * @return first HTTP page of tasks
-     * @throws IllegalArgumentException if {@code automationId} is blank, or {@code request} is invalid
-     * @throws NullPointerException if {@code filter} or {@code request} is {@code null}
-     * @throws IOException if the transport fails
-     * @throws GitHubApiException if the response is unsuccessful
-     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
-     *     {@code GHEC}
-     */
-    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
-    public GitHubPage<GitHubListAutomationTasksTask> listAutomationTasks(
-            final String automationId, final GitHubListAutomationTasksFilter filter, final GitHubPageRequest request)
-            throws IOException {
-        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
-        requireNonNull(filter, PARAM_FILTER);
-        requireNonNull(request, PARAM_REQUEST);
-
-        return list(
-                AGENT_AUTOMATION_TASKS,
-                filter.toQueryParameters(),
-                request,
-                AUTOMATION_TASKS_SPEC,
-                requireNotBlank(automationId, PARAM_AUTOMATION_ID));
-    }
-
-    /**
      * List automations for a repository ({@code GET /agents/repos/{owner}/{repo}/automations}).
      *
      * @param owner repository owner
@@ -300,6 +184,169 @@ public final class GitHubAgentAutomationApi extends GitHubResourceApi {
         requireNonNull(request, PARAM_REQUEST);
 
         return list(AGENT_REPO_AUTOMATIONS, filter.toQueryParameters(), request, REPO_AUTOMATIONS_SPEC, owner, repo);
+    }
+
+    /**
+     * List available automation tools for a repository ({@code GET
+     * /agents/repos/{owner}/{repo}/automations/available-tools}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @return tool groups and configured MCP servers that can be selected in an automation
+     * @throws IllegalArgumentException if {@code owner} or {@code repo} is blank
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public GitHubListAvailableRepoAutomationToolsResponse listAvailableRepoAutomationTools(
+            final String owner, final String repo) throws IOException {
+        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
+        return caller.fetch(
+                get(AGENT_REPO_AUTOMATION_AVAILABLE_TOOLS, owner, repo),
+                GitHubListAvailableRepoAutomationToolsResponse.class);
+    }
+
+    /**
+     * List available automation triggers for a repository ({@code GET
+     * /agents/repos/{owner}/{repo}/automations/available-triggers}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @return triggers and their configurable fields
+     * @throws IllegalArgumentException if {@code owner} or {@code repo} is blank
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public List<GitHubListAvailableRepoAutomationTriggersItem> listAvailableRepoAutomationTriggers(
+            final String owner, final String repo) throws IOException {
+        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
+        return caller.fetch(get(AGENT_REPO_AUTOMATION_AVAILABLE_TRIGGERS, owner, repo), AVAILABLE_TRIGGERS_TYPE);
+    }
+
+    /**
+     * List tasks for an automation in a repository ({@code GET
+     * /agents/repos/{owner}/{repo}/automations/{automation_id}/tasks}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param automationId automation identifier
+     * @return first HTTP page of tasks
+     * @throws IllegalArgumentException if {@code owner}, {@code repo}, or {@code automationId} is blank
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public GitHubPage<GitHubListRepoAutomationTasksTask> listRepoAutomationTasks(
+            final String owner, final String repo, final String automationId) throws IOException {
+        return listRepoAutomationTasks(
+                owner, repo, automationId, GitHubListRepoAutomationTasksFilter.empty(), GitHubPageRequest.byPage());
+    }
+
+    /**
+     * List tasks for an automation in a repository ({@code GET
+     * /agents/repos/{owner}/{repo}/automations/{automation_id}/tasks}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param automationId automation identifier
+     * @param request pagination token
+     * @return first HTTP page of tasks
+     * @throws IllegalArgumentException if {@code owner}, {@code repo}, or {@code automationId} is blank, or
+     *     {@code request} is invalid
+     * @throws NullPointerException if {@code request} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public GitHubPage<GitHubListRepoAutomationTasksTask> listRepoAutomationTasks(
+            final String owner, final String repo, final String automationId, final GitHubPageRequest request)
+            throws IOException {
+        return listRepoAutomationTasks(owner, repo, automationId, GitHubListRepoAutomationTasksFilter.empty(), request);
+    }
+
+    /**
+     * List tasks for an automation in a repository ({@code GET
+     * /agents/repos/{owner}/{repo}/automations/{automation_id}/tasks}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param automationId automation identifier
+     * @param filter query filters
+     * @param request pagination token
+     * @return first HTTP page of tasks
+     * @throws IllegalArgumentException if {@code owner}, {@code repo}, or {@code automationId} is blank, or
+     *     {@code request} is invalid
+     * @throws NullPointerException if {@code filter} or {@code request} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public GitHubPage<GitHubListRepoAutomationTasksTask> listRepoAutomationTasks(
+            final String owner,
+            final String repo,
+            final String automationId,
+            final GitHubListRepoAutomationTasksFilter filter,
+            final GitHubPageRequest request)
+            throws IOException {
+        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
+        requireNonNull(filter, PARAM_FILTER);
+        requireNonNull(request, PARAM_REQUEST);
+
+        return list(
+                AGENT_REPO_AUTOMATION_TASKS,
+                filter.toQueryParameters(),
+                request,
+                REPO_AUTOMATION_TASKS_SPEC,
+                owner,
+                repo,
+                requireNotBlank(automationId, PARAM_AUTOMATION_ID));
+    }
+
+    /**
+     * Run an automation ({@code POST /agents/repos/{owner}/{repo}/automations/{automation_id}/tasks}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param automationId automation identifier
+     * @param payload run request
+     * @return the accepted run
+     * @throws IllegalArgumentException if {@code owner}, {@code repo}, or {@code automationId} is blank
+     * @throws NullPointerException if {@code payload} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public GitHubCreateRepoAutomationTaskResponse createRepoAutomationTask(
+            final String owner,
+            final String repo,
+            final String automationId,
+            final GitHubCreateRepoAutomationTaskPayload payload)
+            throws IOException {
+        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
+        requireNonNull(payload, PARAM_PAYLOAD);
+
+        return caller.fetch(
+                caller.json(
+                        post(
+                                AGENT_REPO_AUTOMATION_TASKS,
+                                owner,
+                                repo,
+                                requireNotBlank(automationId, PARAM_AUTOMATION_ID)),
+                        payload),
+                GitHubCreateRepoAutomationTaskResponse.class);
     }
 
     /**

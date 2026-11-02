@@ -8,29 +8,44 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Public trigger configuration keyed by stable public trigger identifier.
+ * Trigger configuration for the automation.
  *
- * @param interval Interval
- * @param issueOpened Issue opened
- * @param issueLabeled Issue labeled
- * @param workflowRun Workflow run
- * @param pullRequestOpened Pull request opened
- * @param pullRequestSynchronize Pull request synchronize
- * @param pullRequestMerged Pull request merged
- * @param issueComment Issue comment
- * @param pullRequestComment Pull request comment
- * @param discussionOpened Discussion opened
- * @param discussionUpdated Discussion updated
- * @param discussionComment Discussion comment
- * @param issueAssigned Issue assigned
- * @param pullRequestAssigned Pull request assigned
- * @param subIssueAdded Sub issue added
- * @param pullRequestReadyForReview Pull request ready for review
- * @param pullRequestLabeled Pull request labeled
- * @param pullRequestMergeConflict Pull request merge conflict
- * @param pullRequestReviewSubmitted Pull request review submitted
- * @param pullRequestReviewRequested Pull request review requested
- * @param automationCompleted Automation completed
+ * @param interval interval
+ * @param issueOpened issue opened
+ * @param issueLabeled issue labeled
+ * @param workflowRun workflow run
+ * @param pullRequestOpened pull request opened
+ * @param pullRequestSynchronize pull request synchronize
+ * @param pullRequestMerged pull request merged
+ * @param issueComment issue comment
+ * @param pullRequestComment pull request comment
+ * @param discussionOpened discussion opened
+ * @param discussionUpdated discussion updated
+ * @param discussionComment discussion comment
+ * @param issueAssigned issue assigned
+ * @param pullRequestAssigned pull request assigned
+ * @param subIssueAdded sub issue added
+ * @param pullRequestReadyForReview pull request ready for review
+ * @param pullRequestLabeled pull request labeled
+ * @param pullRequestMergeConflict pull request merge conflict
+ * @param pullRequestReviewSubmitted pull request review submitted
+ * @param pullRequestReviewRequested pull request review requested
+ * @param issueClosed issue closed
+ * @param issueReopened issue reopened
+ * @param pullRequestClosed pull request closed
+ * @param pullRequestReopened pull request reopened
+ * @param pullRequestConvertedToDraft pull request converted to draft
+ * @param pullRequestReviewDismissed pull request review dismissed
+ * @param pullRequestReviewThreadResolved pull request review thread resolved
+ * @param pullRequestReviewThreadUnresolved pull request review thread unresolved
+ * @param automationCompleted automation completed
+ * @param automationFailed automation failed
+ * @param codeScanningAlert Runs on the default branch when a security alert of this kind is created in the repository.
+ *     These are system events without an issue, pull request, or human actor, and cannot be run manually.
+ * @param secretScanningAlert Runs on the default branch when a security alert of this kind is created in the
+ *     repository. These are system events without an issue, pull request, or human actor, and cannot be run manually.
+ * @param dependabotAlert Runs on the default branch when a security alert of this kind is created in the repository.
+ *     These are system events without an issue, pull request, or human actor, and cannot be run manually.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
@@ -58,4 +73,19 @@ public record GitHubListRepoAutomationsAutomationTriggers(
         @Nullable GitHubListRepoAutomationsAutomationTriggersPullRequestMergeConflict pullRequestMergeConflict,
         @Nullable GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmitted pullRequestReviewSubmitted,
         @Nullable GitHubListRepoAutomationsAutomationTriggersPullRequestReviewRequested pullRequestReviewRequested,
-        @Nullable GitHubListRepoAutomationsAutomationTriggersAutomationCompleted automationCompleted) {}
+        @Nullable GitHubListRepoAutomationsAutomationTriggersIssueClosed issueClosed,
+        @Nullable GitHubListRepoAutomationsAutomationTriggersIssueReopened issueReopened,
+        @Nullable GitHubListRepoAutomationsAutomationTriggersPullRequestClosed pullRequestClosed,
+        @Nullable GitHubListRepoAutomationsAutomationTriggersPullRequestReopened pullRequestReopened,
+        @Nullable GitHubListRepoAutomationsAutomationTriggersPullRequestConvertedToDraft pullRequestConvertedToDraft,
+        @Nullable GitHubListRepoAutomationsAutomationTriggersPullRequestReviewDismissed pullRequestReviewDismissed,
+
+        @Nullable GitHubListRepoAutomationsAutomationTriggersPullRequestReviewThreadResolved pullRequestReviewThreadResolved,
+
+        @Nullable GitHubListRepoAutomationsAutomationTriggersPullRequestReviewThreadUnresolved pullRequestReviewThreadUnresolved,
+
+        @Nullable GitHubListRepoAutomationsAutomationTriggersAutomationCompleted automationCompleted,
+        @Nullable GitHubListRepoAutomationsAutomationTriggersAutomationFailed automationFailed,
+        @Nullable GitHubListRepoAutomationsAutomationTriggersCodeScanningAlert codeScanningAlert,
+        @Nullable GitHubListRepoAutomationsAutomationTriggersSecretScanningAlert secretScanningAlert,
+        @Nullable GitHubListRepoAutomationsAutomationTriggersDependabotAlert dependabotAlert) {}

@@ -22,7 +22,7 @@ public enum GitHubDiscussionStateReason {
     /** reopened. */
     REOPENED("reopened"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubDiscussionStateReason> WIRE_INDEX =
             EnumUtils.index(GitHubDiscussionStateReason.class, GitHubDiscussionStateReason::wireValue);
@@ -54,6 +54,6 @@ public enum GitHubDiscussionStateReason {
     public static GitHubDiscussionStateReason fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

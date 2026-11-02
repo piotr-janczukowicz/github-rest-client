@@ -12,7 +12,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 public enum GitHubMergedUpstreamMergeType {
     MERGE("merge"),
     FAST_FORWARD("fast-forward"),
-    NONE("none");
+    NONE("none"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubMergedUpstreamMergeType> WIRE_INDEX =
             EnumUtils.index(GitHubMergedUpstreamMergeType.class, GitHubMergedUpstreamMergeType::wireValue);
@@ -39,14 +41,11 @@ public enum GitHubMergedUpstreamMergeType {
      * @param value JSON value
      * @return matching value
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known value
      */
     @JsonCreator
     public static GitHubMergedUpstreamMergeType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException("Unknown GitHub merged upstream merge type: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

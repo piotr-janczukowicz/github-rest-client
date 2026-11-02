@@ -1,7 +1,8 @@
 {
-  "query": "is:open label:bug",
+  "query": "query",
   "paths": [
-    "src/**"
+    "paths"
   ],
-  "write_scope": "trigger"
+  "write_scope": "trigger",
+  "allow_copilot_triggers": true
 }

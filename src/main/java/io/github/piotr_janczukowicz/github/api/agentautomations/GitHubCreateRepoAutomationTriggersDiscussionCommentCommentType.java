@@ -9,7 +9,7 @@ import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import io.github.piotr_janczukowicz.util.EnumUtils;
 
-/** Top-level discussion comments and replies to match. Omit to match both. */
+/** comment types */
 @CatalogSchema(
         "operations/agent-automations/create-repo-automation/requestBody/properties/triggers/properties/discussion_comment/properties/comment_types/items")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})

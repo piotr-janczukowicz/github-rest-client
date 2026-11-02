@@ -39,8 +39,8 @@ class GitHubEnterpriseTokenInventoryExportStatusTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         assertThat(GitHubEnterpriseTokenInventoryExportStatus.fromWire("not-a-known-value"))
-                .isEqualTo(GitHubEnterpriseTokenInventoryExportStatus.UNKNOWN);
+                .isEqualTo(GitHubEnterpriseTokenInventoryExportStatus.UNRECOGNIZED);
     }
 }

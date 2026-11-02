@@ -15,7 +15,10 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 public enum GitHubCopilotSeatPlanType {
     BUSINESS("business"),
     ENTERPRISE("enterprise"),
-    UNKNOWN("unknown");
+    UNKNOWN("unknown"),
+    ACCESS("access"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCopilotSeatPlanType> WIRE_INDEX =
             EnumUtils.index(GitHubCopilotSeatPlanType.class, GitHubCopilotSeatPlanType::wireValue);
@@ -42,14 +45,11 @@ public enum GitHubCopilotSeatPlanType {
      * @param value JSON value
      * @return matching plan type
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known plan type
      */
     @JsonCreator
     public static GitHubCopilotSeatPlanType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException("Unknown Copilot seat plan type: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

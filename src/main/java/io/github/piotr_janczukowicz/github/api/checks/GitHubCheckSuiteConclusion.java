@@ -20,7 +20,7 @@ public enum GitHubCheckSuiteConclusion {
     STARTUP_FAILURE("startup_failure"),
     STALE("stale"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCheckSuiteConclusion> WIRE_INDEX =
             EnumUtils.index(GitHubCheckSuiteConclusion.class, GitHubCheckSuiteConclusion::wireValue);
@@ -52,6 +52,6 @@ public enum GitHubCheckSuiteConclusion {
     public static GitHubCheckSuiteConclusion fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -34,6 +34,9 @@ import org.jspecify.annotations.Nullable;
  * @param dismissalRequest Information about an active dismissal request for this Dependabot alert.
  * @param assignees The users assigned to this alert.
  * @param repository A GitHub repository.
+ * @param reachability The reachability result for the vulnerability that triggered the alert, indicating whether a
+ *     vulnerable function is reachable from the repository's own code. Only the {@code CLOUD} and {@code GHEC} flavors
+ *     define this.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
@@ -56,7 +59,8 @@ public record GitHubDependabotAlertWithRepository(
         @Nullable Instant autoDismissedAt,
         @Nullable GitHubDependabotAlertDismissalRequest dismissalRequest,
         @Nullable List<GitHubSimpleUser> assignees,
-        GitHubSimpleRepository repository) {
+        GitHubSimpleRepository repository,
+        @Nullable GitHubDependabotAlertWithRepositoryReachability reachability) {
 
     private static final int MAX_DISMISSED_COMMENT_LENGTH = 280;
 

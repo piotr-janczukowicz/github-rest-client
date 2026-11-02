@@ -19,7 +19,7 @@ public enum GitHubRepositoryAdvisoryState {
     DRAFT("draft"),
     TRIAGE("triage"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubRepositoryAdvisoryState> WIRE_INDEX =
             EnumUtils.index(GitHubRepositoryAdvisoryState.class, GitHubRepositoryAdvisoryState::wireValue);
@@ -51,6 +51,6 @@ public enum GitHubRepositoryAdvisoryState {
     public static GitHubRepositoryAdvisoryState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

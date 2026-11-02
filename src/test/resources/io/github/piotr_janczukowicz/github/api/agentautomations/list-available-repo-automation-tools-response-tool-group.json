@@ -1,0 +1,12 @@
+{
+  "id": "id",
+  "title": "title",
+  "tools": [
+    {
+      "id": "id",
+      "title": "title",
+      "description": "description",
+      "scope": "read"
+    }
+  ]
+}

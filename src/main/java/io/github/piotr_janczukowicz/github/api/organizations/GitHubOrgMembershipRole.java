@@ -18,7 +18,7 @@ public enum GitHubOrgMembershipRole {
     MEMBER("member"),
     BILLING_MANAGER("billing_manager"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubOrgMembershipRole> WIRE_INDEX =
             EnumUtils.index(GitHubOrgMembershipRole.class, GitHubOrgMembershipRole::wireValue);
@@ -50,6 +50,6 @@ public enum GitHubOrgMembershipRole {
     public static GitHubOrgMembershipRole fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -20,7 +20,7 @@ public enum GitHubCodeScanningVariantAnalysisStatus {
     CANCELED("canceled"),
     TIMED_OUT("timed_out"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningVariantAnalysisStatus> WIRE_INDEX = EnumUtils.index(
             GitHubCodeScanningVariantAnalysisStatus.class, GitHubCodeScanningVariantAnalysisStatus::wireValue);
@@ -45,13 +45,13 @@ public enum GitHubCodeScanningVariantAnalysisStatus {
      * Resolves code scanning variant analysis status from its wire value.
      *
      * @param value JSON value
-     * @return matching constant, or {@link #UNKNOWN} when the value is not known
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
      */
     @JsonCreator
     public static GitHubCodeScanningVariantAnalysisStatus fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

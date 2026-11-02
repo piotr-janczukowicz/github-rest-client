@@ -18,7 +18,7 @@ public enum GitHubProjectItemContentType {
     DRAFT_ISSUE("DraftIssue"),
 
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubProjectItemContentType> WIRE_INDEX =
             EnumUtils.index(GitHubProjectItemContentType.class, GitHubProjectItemContentType::wireValue);
@@ -49,7 +49,7 @@ public enum GitHubProjectItemContentType {
             case ISSUE -> GitHubIssue.class;
             case PULL_REQUEST -> GitHubPullRequestSimple.class;
             case DRAFT_ISSUE -> GitHubProjectDraftIssue.class;
-            case UNKNOWN -> Map.class;
+            case UNRECOGNIZED -> Map.class;
         };
     }
 
@@ -57,13 +57,13 @@ public enum GitHubProjectItemContentType {
      * Item content type from a wire value.
      *
      * @param value JSON value
-     * @return matching content type, or {@link #UNKNOWN} for a value this library does not know
+     * @return matching content type, or {@link #UNRECOGNIZED} for a value this library does not know
      * @throws NullPointerException if {@code value} is {@code null}
      */
     @JsonCreator
     public static GitHubProjectItemContentType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

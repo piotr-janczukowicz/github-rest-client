@@ -14,7 +14,7 @@ public enum GitHubSecretScanningDelegatedBypassMode {
     ALWAYS("ALWAYS"),
     EXEMPT("EXEMPT"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubSecretScanningDelegatedBypassMode> WIRE_INDEX = EnumUtils.index(
             GitHubSecretScanningDelegatedBypassMode.class, GitHubSecretScanningDelegatedBypassMode::wireValue);
@@ -46,6 +46,6 @@ public enum GitHubSecretScanningDelegatedBypassMode {
     public static GitHubSecretScanningDelegatedBypassMode fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -42,15 +42,15 @@ class GitHubRepositoryRulesetCurrentUserCanBypassTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubRepositoryRulesetCurrentUserCanBypass decoded =
                 GitHubRepositoryRulesetCurrentUserCanBypass.fromWire(wire);
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubRepositoryRulesetCurrentUserCanBypass.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubRepositoryRulesetCurrentUserCanBypass.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

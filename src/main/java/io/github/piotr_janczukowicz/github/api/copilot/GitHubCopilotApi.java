@@ -8,13 +8,14 @@ import io.github.piotr_janczukowicz.util.LazyValue;
 /** GitHub Copilot REST resource aggregator for API version {@code 2026-03-10}. */
 public final class GitHubCopilotApi {
 
-    private final LazyValue<GitHubCopilotCopilotCloudAgentManagementApi> copilotCloudAgentManagement;
-    private final LazyValue<GitHubCopilotCopilotCodingAgentManagementApi> copilotCodingAgentManagement;
-    private final LazyValue<GitHubCopilotCopilotContentExclusionManagementApi> copilotContentExclusionManagement;
-    private final LazyValue<GitHubCopilotCopilotCustomAgentsApi> copilotCustomAgents;
-    private final LazyValue<GitHubCopilotCopilotModelPolicyManagementApi> copilotModelPolicyManagement;
-    private final LazyValue<GitHubCopilotCopilotUsageMetricsApi> copilotUsageMetrics;
-    private final LazyValue<GitHubCopilotCopilotUserManagementApi> copilotUserManagement;
+    private final LazyValue<GitHubCopilotCloudAgentManagementApi> cloudAgentManagement;
+    private final LazyValue<GitHubCopilotCodingAgentManagementApi> codingAgentManagement;
+    private final LazyValue<GitHubCopilotContentExclusionManagementApi> contentExclusionManagement;
+    private final LazyValue<GitHubCopilotCustomAgentsApi> customAgents;
+    private final LazyValue<GitHubCopilotFeaturePolicyManagementApi> featurePolicyManagement;
+    private final LazyValue<GitHubCopilotModelPolicyManagementApi> modelPolicyManagement;
+    private final LazyValue<GitHubCopilotUsageMetricsApi> usageMetrics;
+    private final LazyValue<GitHubCopilotUserManagementApi> userManagement;
 
     /**
      * Copilot resource aggregator over {@code caller}.
@@ -24,17 +25,14 @@ public final class GitHubCopilotApi {
      */
     public GitHubCopilotApi(final GitHubCaller caller) {
         requireNonNull(caller, "caller");
-        this.copilotCloudAgentManagement =
-                new LazyValue<>(() -> new GitHubCopilotCopilotCloudAgentManagementApi(caller));
-        this.copilotCodingAgentManagement =
-                new LazyValue<>(() -> new GitHubCopilotCopilotCodingAgentManagementApi(caller));
-        this.copilotContentExclusionManagement =
-                new LazyValue<>(() -> new GitHubCopilotCopilotContentExclusionManagementApi(caller));
-        this.copilotCustomAgents = new LazyValue<>(() -> new GitHubCopilotCopilotCustomAgentsApi(caller));
-        this.copilotModelPolicyManagement =
-                new LazyValue<>(() -> new GitHubCopilotCopilotModelPolicyManagementApi(caller));
-        this.copilotUsageMetrics = new LazyValue<>(() -> new GitHubCopilotCopilotUsageMetricsApi(caller));
-        this.copilotUserManagement = new LazyValue<>(() -> new GitHubCopilotCopilotUserManagementApi(caller));
+        this.cloudAgentManagement = new LazyValue<>(() -> new GitHubCopilotCloudAgentManagementApi(caller));
+        this.codingAgentManagement = new LazyValue<>(() -> new GitHubCopilotCodingAgentManagementApi(caller));
+        this.contentExclusionManagement = new LazyValue<>(() -> new GitHubCopilotContentExclusionManagementApi(caller));
+        this.customAgents = new LazyValue<>(() -> new GitHubCopilotCustomAgentsApi(caller));
+        this.featurePolicyManagement = new LazyValue<>(() -> new GitHubCopilotFeaturePolicyManagementApi(caller));
+        this.modelPolicyManagement = new LazyValue<>(() -> new GitHubCopilotModelPolicyManagementApi(caller));
+        this.usageMetrics = new LazyValue<>(() -> new GitHubCopilotUsageMetricsApi(caller));
+        this.userManagement = new LazyValue<>(() -> new GitHubCopilotUserManagementApi(caller));
     }
 
     /**
@@ -42,8 +40,8 @@ public final class GitHubCopilotApi {
      *
      * @return cloud agent management API
      */
-    public GitHubCopilotCopilotCloudAgentManagementApi copilotCloudAgentManagement() {
-        return copilotCloudAgentManagement.get();
+    public GitHubCopilotCloudAgentManagementApi cloudAgentManagement() {
+        return cloudAgentManagement.get();
     }
 
     /**
@@ -51,8 +49,8 @@ public final class GitHubCopilotApi {
      *
      * @return coding agent management API
      */
-    public GitHubCopilotCopilotCodingAgentManagementApi copilotCodingAgentManagement() {
-        return copilotCodingAgentManagement.get();
+    public GitHubCopilotCodingAgentManagementApi codingAgentManagement() {
+        return codingAgentManagement.get();
     }
 
     /**
@@ -60,8 +58,8 @@ public final class GitHubCopilotApi {
      *
      * @return content exclusion management API
      */
-    public GitHubCopilotCopilotContentExclusionManagementApi copilotContentExclusionManagement() {
-        return copilotContentExclusionManagement.get();
+    public GitHubCopilotContentExclusionManagementApi contentExclusionManagement() {
+        return contentExclusionManagement.get();
     }
 
     /**
@@ -72,8 +70,20 @@ public final class GitHubCopilotApi {
      *
      * @return custom agents API
      */
-    public GitHubCopilotCopilotCustomAgentsApi copilotCustomAgents() {
-        return copilotCustomAgents.get();
+    public GitHubCopilotCustomAgentsApi customAgents() {
+        return customAgents.get();
+    }
+
+    /**
+     * Copilot feature policy management operations ({@code subcategory=copilot-feature-policy-management}).
+     *
+     * <p>Only the {@code GHEC} flavor carries this resource. On a client limited to another flavor, its methods throw
+     * {@link UnsupportedOperationException}.
+     *
+     * @return feature policy management API
+     */
+    public GitHubCopilotFeaturePolicyManagementApi featurePolicyManagement() {
+        return featurePolicyManagement.get();
     }
 
     /**
@@ -84,8 +94,8 @@ public final class GitHubCopilotApi {
      *
      * @return model policy management API
      */
-    public GitHubCopilotCopilotModelPolicyManagementApi copilotModelPolicyManagement() {
-        return copilotModelPolicyManagement.get();
+    public GitHubCopilotModelPolicyManagementApi modelPolicyManagement() {
+        return modelPolicyManagement.get();
     }
 
     /**
@@ -93,8 +103,8 @@ public final class GitHubCopilotApi {
      *
      * @return usage metrics API
      */
-    public GitHubCopilotCopilotUsageMetricsApi copilotUsageMetrics() {
-        return copilotUsageMetrics.get();
+    public GitHubCopilotUsageMetricsApi usageMetrics() {
+        return usageMetrics.get();
     }
 
     /**
@@ -102,7 +112,7 @@ public final class GitHubCopilotApi {
      *
      * @return user management API
      */
-    public GitHubCopilotCopilotUserManagementApi copilotUserManagement() {
-        return copilotUserManagement.get();
+    public GitHubCopilotUserManagementApi userManagement() {
+        return userManagement.get();
     }
 }

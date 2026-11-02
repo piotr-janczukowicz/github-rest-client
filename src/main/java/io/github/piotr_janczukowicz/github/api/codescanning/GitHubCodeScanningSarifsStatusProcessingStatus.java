@@ -14,7 +14,7 @@ public enum GitHubCodeScanningSarifsStatusProcessingStatus {
     COMPLETE("complete"),
     FAILED("failed"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningSarifsStatusProcessingStatus> WIRE_INDEX =
             EnumUtils.index(
@@ -48,6 +48,6 @@ public enum GitHubCodeScanningSarifsStatusProcessingStatus {
     public static GitHubCodeScanningSarifsStatusProcessingStatus fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -21,13 +21,16 @@
     "required_review_thread_resolution": false,
     "required_reviewers": [
       {
-        "file_patterns": ["*.java"],
+        "file_patterns": [
+          "*.java"
+        ],
         "minimum_approvals": 1,
         "reviewer": {
           "id": 1,
           "type": "Team"
         }
       }
-    ]
+    ],
+    "require_extra_approval_for_unattributed_changes": true
   }
 }

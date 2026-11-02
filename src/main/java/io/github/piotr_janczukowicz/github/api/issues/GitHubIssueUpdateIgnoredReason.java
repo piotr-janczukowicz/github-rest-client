@@ -19,7 +19,7 @@ public enum GitHubIssueUpdateIgnoredReason {
     ALREADY_APPLIED("already_applied"),
     ISSUE_ALREADY_CLOSED("issue_already_closed"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubIssueUpdateIgnoredReason> WIRE_INDEX =
             EnumUtils.index(GitHubIssueUpdateIgnoredReason.class, GitHubIssueUpdateIgnoredReason::wireValue);
@@ -51,6 +51,6 @@ public enum GitHubIssueUpdateIgnoredReason {
     public static GitHubIssueUpdateIgnoredReason fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

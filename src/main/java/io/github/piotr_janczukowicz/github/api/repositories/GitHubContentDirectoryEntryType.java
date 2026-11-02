@@ -15,7 +15,7 @@ public enum GitHubContentDirectoryEntryType {
     SUBMODULE("submodule"),
     SYMLINK("symlink"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubContentDirectoryEntryType> WIRE_INDEX =
             EnumUtils.index(GitHubContentDirectoryEntryType.class, GitHubContentDirectoryEntryType::wireValue);
@@ -47,6 +47,6 @@ public enum GitHubContentDirectoryEntryType {
     public static GitHubContentDirectoryEntryType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

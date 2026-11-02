@@ -18,7 +18,7 @@ public enum GitHubCheckRunConclusion {
     TIMED_OUT("timed_out"),
     ACTION_REQUIRED("action_required"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCheckRunConclusion> WIRE_INDEX =
             EnumUtils.index(GitHubCheckRunConclusion.class, GitHubCheckRunConclusion::wireValue);
@@ -50,6 +50,6 @@ public enum GitHubCheckRunConclusion {
     public static GitHubCheckRunConclusion fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

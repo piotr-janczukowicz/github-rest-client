@@ -3,6 +3,7 @@ package io.github.piotr_janczukowicz.github.api.teams;
 import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonNull;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import java.time.Instant;
@@ -29,6 +30,8 @@ import org.jspecify.annotations.Nullable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @CatalogSchema("components/schemas/enterprise-team")
 @RecordBuilder
+// The implemented sealed interface carries the deduction; this type itself decodes as a plain record.
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public record GitHubEnterpriseTeam(
         long id,
         String name,

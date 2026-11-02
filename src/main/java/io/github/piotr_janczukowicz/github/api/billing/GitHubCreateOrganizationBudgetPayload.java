@@ -21,7 +21,9 @@ import org.jspecify.annotations.Nullable;
  *     `multi_user_customer`: Apply a universal budget to all users in the organization. - `user`: Apply the budget to a
  *     single user in the organization. `user` and `multi_user_customer` scopes are only supported when
  *     `budget_product_sku` is `ai_credits` or `premium_requests`.
- * @param budgetEntityName The name of the entity to apply the budget to
+ * @param budgetEntityName The entity to apply the budget to. The expected value depends on {@code budget_scope}: the
+ *     repository name, or {@code owner/repo}, for {@code repository}; not used for {@code organization},
+ *     {@code multi_user_customer} and {@code user} (set the {@code user} field instead for {@code user}).
  * @param budgetType The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted. -
  *     `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`. - `ProductPricing`: Covers
  *     all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`. -

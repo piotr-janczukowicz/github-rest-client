@@ -16,7 +16,7 @@ public enum GitHubProjectStatus {
     OFF_TRACK("OFF_TRACK"),
     COMPLETE("COMPLETE"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubProjectStatus> WIRE_INDEX =
             EnumUtils.index(GitHubProjectStatus.class, GitHubProjectStatus::wireValue);
@@ -48,6 +48,6 @@ public enum GitHubProjectStatus {
     public static GitHubProjectStatus fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -23,7 +23,7 @@ public enum GitHubCodeSecurityAttachmentStatus {
     REMOVED_BY_ENTERPRISE("removed_by_enterprise"),
     ENTERPRISE_ENFORCED("enterprise_enforced"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeSecurityAttachmentStatus> WIRE_INDEX =
             EnumUtils.index(GitHubCodeSecurityAttachmentStatus.class, GitHubCodeSecurityAttachmentStatus::wireValue);
@@ -55,6 +55,6 @@ public enum GitHubCodeSecurityAttachmentStatus {
     public static GitHubCodeSecurityAttachmentStatus fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

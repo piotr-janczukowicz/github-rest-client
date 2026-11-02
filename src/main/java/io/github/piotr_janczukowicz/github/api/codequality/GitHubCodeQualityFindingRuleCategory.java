@@ -15,7 +15,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 public enum GitHubCodeQualityFindingRuleCategory {
     NONE("none"),
     MAINTAINABILITY("maintainability"),
-    RELIABILITY("reliability");
+    RELIABILITY("reliability"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeQualityFindingRuleCategory> WIRE_INDEX = EnumUtils.index(
             GitHubCodeQualityFindingRuleCategory.class, GitHubCodeQualityFindingRuleCategory::wireValue);
@@ -42,15 +44,11 @@ public enum GitHubCodeQualityFindingRuleCategory {
      * @param value JSON value
      * @return matching GitHubCodeQualityFindingRuleCategory
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known code quality finding rule category
      */
     @JsonCreator
     public static GitHubCodeQualityFindingRuleCategory fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() ->
-                        new IllegalArgumentException("Unknown GitHub code quality finding rule category: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

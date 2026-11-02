@@ -4,7 +4,6 @@ import static io.github.piotr_janczukowicz.util.ValidationUtils.requireMinLength
 import static io.github.piotr_janczukowicz.util.ValidationUtils.requireMinLengthIfPresent;
 import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonEmpty;
 import static io.github.piotr_janczukowicz.util.ValidationUtils.requireSizeBetween;
-import static io.github.piotr_janczukowicz.util.ValidationUtils.requireUniqueItems;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
@@ -15,14 +14,18 @@ import java.util.List;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Configuration of the pull request review submitted trigger.
+ * Pull request review submitted.
  *
  * @param query A GitHub issue or pull request search query.
  * @param paths Gitignore-style changed-file path globs.
  * @param states Submitted review states to match.
  * @param writeScope Override the Automation {@code write_scope} for runs started by this trigger. If omitted, the
  *     automation's {@code write_scope} is used. Organization or repository policy may restrict the effective scope to
- *     {@code trigger}.
+ *     {@code trigger}. Explicitly setting {@code repository} on create or edit returns 422 when policy validation is
+ *     enabled and that policy applies.
+ * @param allowCopilotTriggers When true, events Copilot creates, including from other automations and Copilot sessions,
+ *     can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it
+ *     on: creating a trigger with true, or changing it from false to true, returns 422.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
@@ -33,7 +36,8 @@ public record GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmit
         @Nullable String query,
         @Nullable List<String> paths,
         List<GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmittedState> states,
-        @Nullable GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmittedWriteScope writeScope) {
+        @Nullable GitHubAutomationWriteScope writeScope,
+        @Nullable Boolean allowCopilotTriggers) {
     public GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmitted {
         requireMinLengthIfPresent(query, 1, "query");
         if (paths != null) {
@@ -42,6 +46,6 @@ public record GitHubListRepoAutomationsAutomationTriggersPullRequestReviewSubmit
                 requireMinLength(path, 1, "paths");
             }
         }
-        requireUniqueItems(requireSizeBetween(states, 1, 3, "states"), "states");
+        requireSizeBetween(states, 1, 3, "states");
     }
 }

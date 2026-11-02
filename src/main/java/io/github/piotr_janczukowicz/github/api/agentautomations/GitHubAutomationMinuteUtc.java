@@ -12,7 +12,6 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
     "operations/agent-automations/create-repo-automation/201/properties/triggers/properties/interval/properties/minute_utc",
     "operations/agent-automations/edit-repo-automation/requestBody/properties/triggers/properties/interval/properties/minute_utc",
     "operations/agent-automations/edit-repo-automation/200/properties/triggers/properties/interval/properties/minute_utc",
-    "operations/agent-automations/get-automation/200/properties/triggers/properties/interval/properties/minute_utc",
     "operations/agent-automations/get-repo-automation/200/properties/triggers/properties/interval/properties/minute_utc",
     "operations/agent-automations/list-automations/200/items/properties/triggers/properties/interval/properties/minute_utc",
     "operations/agent-automations/list-repo-automations/200/properties/automations/items/properties/triggers/properties/interval/properties/minute_utc"

@@ -49,7 +49,7 @@ class GitHubEditRepoAutomationTriggersIntervalTest {
     }
 
     @Test
-    void constructor_shouldThrow_whenHourUtcBelowMinimum() {
+    void constructor_shouldThrow_whenHourUtcTooSmall() {
         final GitHubEditRepoAutomationTriggersIntervalBuilder builder =
                 GitHubEditRepoAutomationTriggersIntervalBuilder.builder(
                                 AgentAutomationsCatalogFixtures.editRepoAutomationTriggersInterval())
@@ -61,7 +61,7 @@ class GitHubEditRepoAutomationTriggersIntervalTest {
     }
 
     @Test
-    void constructor_shouldThrow_whenHourUtcAboveMaximum() {
+    void constructor_shouldThrow_whenHourUtcTooLarge() {
         final GitHubEditRepoAutomationTriggersIntervalBuilder builder =
                 GitHubEditRepoAutomationTriggersIntervalBuilder.builder(
                                 AgentAutomationsCatalogFixtures.editRepoAutomationTriggersInterval())
@@ -73,7 +73,7 @@ class GitHubEditRepoAutomationTriggersIntervalTest {
     }
 
     @Test
-    void constructor_shouldThrow_whenDayOfWeekBelowMinimum() {
+    void constructor_shouldThrow_whenDayOfWeekTooSmall() {
         final GitHubEditRepoAutomationTriggersIntervalBuilder builder =
                 GitHubEditRepoAutomationTriggersIntervalBuilder.builder(
                                 AgentAutomationsCatalogFixtures.editRepoAutomationTriggersInterval())
@@ -85,7 +85,7 @@ class GitHubEditRepoAutomationTriggersIntervalTest {
     }
 
     @Test
-    void constructor_shouldThrow_whenDayOfWeekAboveMaximum() {
+    void constructor_shouldThrow_whenDayOfWeekTooLarge() {
         final GitHubEditRepoAutomationTriggersIntervalBuilder builder =
                 GitHubEditRepoAutomationTriggersIntervalBuilder.builder(
                                 AgentAutomationsCatalogFixtures.editRepoAutomationTriggersInterval())

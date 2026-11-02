@@ -13,7 +13,7 @@ public enum GitHubCodeScanningDefaultSetupRunnerType {
     STANDARD("standard"),
     LABELED("labeled"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningDefaultSetupRunnerType> WIRE_INDEX = EnumUtils.index(
             GitHubCodeScanningDefaultSetupRunnerType.class, GitHubCodeScanningDefaultSetupRunnerType::wireValue);
@@ -45,6 +45,6 @@ public enum GitHubCodeScanningDefaultSetupRunnerType {
     public static GitHubCodeScanningDefaultSetupRunnerType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -19,7 +19,9 @@ public enum GitHubCheckLicenseComplianceForPackagesPurlResultStatus {
     /** denied. */
     DENIED("denied"),
     /** unknown. */
-    UNKNOWN("unknown");
+    UNKNOWN("unknown"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCheckLicenseComplianceForPackagesPurlResultStatus> WIRE_INDEX =
             EnumUtils.index(
@@ -53,6 +55,6 @@ public enum GitHubCheckLicenseComplianceForPackagesPurlResultStatus {
     public static GitHubCheckLicenseComplianceForPackagesPurlResultStatus fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -630,4 +630,93 @@ class GitHubSecretScanningApiIntegrationTest {
     interface UpdateCustomPatternCall {
         GitHubSecretScanningCustomPattern execute(GitHubSecretScanningApi api) throws Exception;
     }
+
+    private static final String PUBLIC_MONITORING_ALERTS_PATH =
+            "/enterprises/octo-ent/secret-scanning/public-monitoring-alerts";
+    private static final String PUBLIC_MONITORING_ALERT_PATH = PUBLIC_MONITORING_ALERTS_PATH + "/42";
+
+    @Test
+    void listPublicMonitoringAlertsForEnterprise_shouldReturnAlerts_whenResponseIsOk() throws Exception {
+        HTTP.stub(
+                GET,
+                PUBLIC_MONITORING_ALERTS_PATH,
+                okJson(listJsonBytes(GitHubSecretScanningApiIntegrationTest.class, "public-monitoring-alert.json")));
+
+        final GitHubPage<GitHubPublicMonitoringAlert> page;
+        try (final GitHubApiWireMockSupport.SecretScanningApiClient secretScanning = secretScanningApi(HTTP)) {
+            page = secretScanning.api().alerts().listPublicMonitoringAlertsForEnterprise("octo-ent");
+        }
+
+        assertThat(page.items()).containsExactly(SecretScanningCatalogFixtures.publicMonitoringAlert());
+        HTTP.verifyRequested(GET, PUBLIC_MONITORING_ALERTS_PATH);
+    }
+
+    @Test
+    void listPublicMonitoringAlertsForEnterprise_shouldSendFilterQuery_whenFilterProvided() throws Exception {
+        HTTP.stub(
+                GET,
+                PUBLIC_MONITORING_ALERTS_PATH,
+                okJson(listJsonBytes(GitHubSecretScanningApiIntegrationTest.class, "public-monitoring-alert.json")));
+
+        try (final GitHubApiWireMockSupport.SecretScanningApiClient secretScanning = secretScanningApi(HTTP)) {
+            secretScanning
+                    .api()
+                    .alerts()
+                    .listPublicMonitoringAlertsForEnterprise(
+                            "octo-ent", SecretScanningCatalogFixtures.listPublicMonitoringAlertsForEnterpriseFilter());
+        }
+
+        HTTP.verifyQueryParam(GET, PUBLIC_MONITORING_ALERTS_PATH, "attribution", "member_activity");
+        HTTP.verifyQueryParam(GET, PUBLIC_MONITORING_ALERTS_PATH, "direction", "asc");
+    }
+
+    @Test
+    void getPublicMonitoringAlertForEnterprise_shouldReturnAlert_whenResponseIsOk() throws Exception {
+        HTTP.stub(
+                GET,
+                PUBLIC_MONITORING_ALERT_PATH,
+                okJson(jsonBytes(GitHubSecretScanningApiIntegrationTest.class, "public-monitoring-alert.json")));
+
+        final Optional<GitHubPublicMonitoringAlert> alert;
+        try (final GitHubApiWireMockSupport.SecretScanningApiClient secretScanning = secretScanningApi(HTTP)) {
+            alert = secretScanning.api().alerts().getPublicMonitoringAlertForEnterprise("octo-ent", 42);
+        }
+
+        assertThat(alert).contains(SecretScanningCatalogFixtures.publicMonitoringAlert());
+        HTTP.verifyRequested(GET, PUBLIC_MONITORING_ALERT_PATH);
+    }
+
+    @Test
+    void getPublicMonitoringAlertForEnterprise_shouldReturnEmpty_whenResponseIsNotFound() throws Exception {
+        HTTP.stub(GET, PUBLIC_MONITORING_ALERT_PATH, notFound());
+
+        final Optional<GitHubPublicMonitoringAlert> alert;
+        try (final GitHubApiWireMockSupport.SecretScanningApiClient secretScanning = secretScanningApi(HTTP)) {
+            alert = secretScanning.api().alerts().getPublicMonitoringAlertForEnterprise("octo-ent", 42);
+        }
+
+        assertThat(alert).isEmpty();
+    }
+
+    @Test
+    void updatePublicMonitoringAlertForEnterprise_shouldReturnAlert_whenResponseIsOk() throws Exception {
+        HTTP.stub(
+                PATCH,
+                PUBLIC_MONITORING_ALERT_PATH,
+                okJson(jsonBytes(GitHubSecretScanningApiIntegrationTest.class, "public-monitoring-alert.json")));
+
+        final GitHubPublicMonitoringAlert alert;
+        try (final GitHubApiWireMockSupport.SecretScanningApiClient secretScanning = secretScanningApi(HTTP)) {
+            alert = secretScanning
+                    .api()
+                    .alerts()
+                    .updatePublicMonitoringAlertForEnterprise(
+                            "octo-ent",
+                            42,
+                            SecretScanningCatalogFixtures.updatePublicMonitoringAlertForEnterprisePayload());
+        }
+
+        assertThat(alert).isEqualTo(SecretScanningCatalogFixtures.publicMonitoringAlert());
+        HTTP.verifyRequested(PATCH, PUBLIC_MONITORING_ALERT_PATH);
+    }
 }

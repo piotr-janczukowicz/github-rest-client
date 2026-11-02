@@ -32,7 +32,9 @@ public enum GitHubCodespaceState {
     FAILED("Failed"),
     EXPORTING("Exporting"),
     UPDATING("Updating"),
-    REBUILDING("Rebuilding");
+    REBUILDING("Rebuilding"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodespaceState> WIRE_INDEX =
             EnumUtils.index(GitHubCodespaceState.class, GitHubCodespaceState::wireValue);
@@ -64,6 +66,6 @@ public enum GitHubCodespaceState {
     public static GitHubCodespaceState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

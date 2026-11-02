@@ -9,7 +9,7 @@ import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import io.github.piotr_janczukowicz.util.EnumUtils;
 
-/** Workflow conclusions to match. The current trigger supports failure. */
+/** conclusions */
 @CatalogSchema(
         "operations/agent-automations/create-repo-automation/requestBody/properties/triggers/properties/workflow_run/properties/conclusions/items")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})

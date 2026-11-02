@@ -9,7 +9,7 @@ import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import io.github.piotr_janczukowicz.util.EnumUtils;
 
-/** One or more schedules on which the Automation runs. */
+/** cadence */
 @CatalogSchema(
         "operations/agent-automations/list-automations/200/items/properties/triggers/properties/interval/properties/cadence/items")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
@@ -18,7 +18,7 @@ public enum GitHubListAutomationsItemTriggersIntervalCadence {
     DAILY("daily"),
     WEEKLY("weekly"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubListAutomationsItemTriggersIntervalCadence> WIRE_INDEX =
             EnumUtils.index(
@@ -45,13 +45,13 @@ public enum GitHubListAutomationsItemTriggersIntervalCadence {
      * Resolves the constant from its wire value.
      *
      * @param value JSON value
-     * @return matching constant
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
      */
     @JsonCreator
     public static GitHubListAutomationsItemTriggersIntervalCadence fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

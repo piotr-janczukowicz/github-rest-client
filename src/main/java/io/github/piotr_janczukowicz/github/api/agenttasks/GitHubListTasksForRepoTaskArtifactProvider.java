@@ -17,7 +17,7 @@ public enum GitHubListTasksForRepoTaskArtifactProvider {
     /** GitHub. */
     GITHUB("github"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubListTasksForRepoTaskArtifactProvider> WIRE_INDEX = EnumUtils.index(
             GitHubListTasksForRepoTaskArtifactProvider.class, GitHubListTasksForRepoTaskArtifactProvider::wireValue);
@@ -42,13 +42,13 @@ public enum GitHubListTasksForRepoTaskArtifactProvider {
      * Resolves the constant from its wire value.
      *
      * @param value JSON value
-     * @return matching constant, or {@link #UNKNOWN} when the value is not known
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
      */
     @JsonCreator
     public static GitHubListTasksForRepoTaskArtifactProvider fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

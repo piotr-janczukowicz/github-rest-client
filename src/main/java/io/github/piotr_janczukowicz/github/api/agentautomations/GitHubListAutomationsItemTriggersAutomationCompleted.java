@@ -12,12 +12,16 @@ import java.util.List;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Configuration of the automation completed trigger.
+ * Automation completed.
  *
  * @param automationIds Upstream Automation IDs in the same repository.
  * @param writeScope Override the Automation {@code write_scope} for runs started by this trigger. If omitted, the
  *     automation's {@code write_scope} is used. Organization or repository policy may restrict the effective scope to
- *     {@code trigger}.
+ *     {@code trigger}. Explicitly setting {@code repository} on create or edit returns 422 when policy validation is
+ *     enabled and that policy applies.
+ * @param allowCopilotTriggers When true, events Copilot creates, including from other automations and Copilot sessions,
+ *     can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it
+ *     on: creating a trigger with true, or changing it from false to true, returns 422.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
@@ -26,7 +30,8 @@ import org.jspecify.annotations.Nullable;
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public record GitHubListAutomationsItemTriggersAutomationCompleted(
         List<String> automationIds,
-        @Nullable GitHubListAutomationsItemTriggersAutomationCompletedWriteScope writeScope) {
+        @Nullable GitHubAutomationWriteScope writeScope,
+        @Nullable Boolean allowCopilotTriggers) {
     public GitHubListAutomationsItemTriggersAutomationCompleted {
         requireUniqueItems(requireSizeBetween(automationIds, 1, 3, "automationIds"), "automationIds");
     }

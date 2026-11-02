@@ -28,7 +28,7 @@ public enum GitHubEnterpriseTokenInventoryItemCredentialType {
     /** Federated jti. */
     FEDERATED_JTI("federated_jti"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubEnterpriseTokenInventoryItemCredentialType> WIRE_INDEX =
             EnumUtils.index(
@@ -62,6 +62,6 @@ public enum GitHubEnterpriseTokenInventoryItemCredentialType {
     public static GitHubEnterpriseTokenInventoryItemCredentialType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

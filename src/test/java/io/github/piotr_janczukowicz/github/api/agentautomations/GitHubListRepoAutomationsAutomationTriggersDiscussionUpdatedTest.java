@@ -11,19 +11,6 @@ import org.junit.jupiter.api.Test;
 class GitHubListRepoAutomationsAutomationTriggersDiscussionUpdatedTest {
 
     @Test
-    void constructor_shouldLeaveCategoriesNull_whenNull() {
-        final GitHubListRepoAutomationsAutomationTriggersDiscussionUpdatedBuilder builder =
-                GitHubListRepoAutomationsAutomationTriggersDiscussionUpdatedBuilder.builder(
-                                AgentAutomationsCatalogFixtures
-                                        .listRepoAutomationsAutomationTriggersDiscussionUpdated())
-                        .categories(null);
-
-        final GitHubListRepoAutomationsAutomationTriggersDiscussionUpdated sut = builder.build();
-
-        assertThat(sut.categories()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenCategoriesTooSmall() {
         final GitHubListRepoAutomationsAutomationTriggersDiscussionUpdatedBuilder builder =
                 GitHubListRepoAutomationsAutomationTriggersDiscussionUpdatedBuilder.builder(
@@ -42,10 +29,22 @@ class GitHubListRepoAutomationsAutomationTriggersDiscussionUpdatedTest {
                 GitHubListRepoAutomationsAutomationTriggersDiscussionUpdatedBuilder.builder(
                                 AgentAutomationsCatalogFixtures
                                         .listRepoAutomationsAutomationTriggersDiscussionUpdated())
-                        .categories(List.of("a", "a"));
+                        .categories(List.of("categories", "categories"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("categories");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenCategoriesNull() {
+        final GitHubListRepoAutomationsAutomationTriggersDiscussionUpdated value =
+                GitHubListRepoAutomationsAutomationTriggersDiscussionUpdatedBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .listRepoAutomationsAutomationTriggersDiscussionUpdated())
+                        .categories(null)
+                        .build();
+
+        assertThat(value.categories()).isNull();
     }
 }

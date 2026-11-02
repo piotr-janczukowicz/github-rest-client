@@ -20,7 +20,7 @@ public enum GitHubScimUserOperationOp {
     /** Replace the attribute. */
     REPLACE("replace"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubScimUserOperationOp> WIRE_INDEX =
             EnumUtils.index(GitHubScimUserOperationOp.class, GitHubScimUserOperationOp::wireValue);
@@ -52,6 +52,6 @@ public enum GitHubScimUserOperationOp {
     public static GitHubScimUserOperationOp fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

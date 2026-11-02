@@ -1,6 +1,7 @@
 {
   "automation_ids": [
-    "automation-2"
+    "automation_ids"
   ],
-  "write_scope": "trigger"
+  "write_scope": "trigger",
+  "allow_copilot_triggers": true
 }

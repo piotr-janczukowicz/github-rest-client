@@ -226,7 +226,7 @@ class GitHubAgentTaskApiTest {
 
         assertThat(task)
                 .hasValueSatisfying(
-                        found -> assertThat(found.state()).isEqualTo(GitHubGetTaskByIdResponseState.UNKNOWN));
+                        found -> assertThat(found.state()).isEqualTo(GitHubGetTaskByIdResponseState.UNRECOGNIZED));
     }
 
     @Test

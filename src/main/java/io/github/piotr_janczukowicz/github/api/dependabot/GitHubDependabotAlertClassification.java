@@ -13,7 +13,7 @@ public enum GitHubDependabotAlertClassification {
     GENERAL("general"),
     MALWARE("malware"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubDependabotAlertClassification> WIRE_INDEX =
             EnumUtils.index(GitHubDependabotAlertClassification.class, GitHubDependabotAlertClassification::wireValue);
@@ -45,6 +45,6 @@ public enum GitHubDependabotAlertClassification {
     public static GitHubDependabotAlertClassification fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

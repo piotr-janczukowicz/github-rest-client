@@ -23,18 +23,6 @@ class GitHubGetRepoAutomationResponseTriggersPullRequestAssignedTest {
     }
 
     @Test
-    void constructor_shouldLeavePathsNull_whenNull() {
-        final GitHubGetRepoAutomationResponseTriggersPullRequestAssignedBuilder builder =
-                GitHubGetRepoAutomationResponseTriggersPullRequestAssignedBuilder.builder(
-                                AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersPullRequestAssigned())
-                        .paths(null);
-
-        final GitHubGetRepoAutomationResponseTriggersPullRequestAssigned sut = builder.build();
-
-        assertThat(sut.paths()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenPathsTooSmall() {
         final GitHubGetRepoAutomationResponseTriggersPullRequestAssignedBuilder builder =
                 GitHubGetRepoAutomationResponseTriggersPullRequestAssignedBuilder.builder(
@@ -59,18 +47,6 @@ class GitHubGetRepoAutomationResponseTriggersPullRequestAssignedTest {
     }
 
     @Test
-    void constructor_shouldLeaveAssigneesNull_whenNull() {
-        final GitHubGetRepoAutomationResponseTriggersPullRequestAssignedBuilder builder =
-                GitHubGetRepoAutomationResponseTriggersPullRequestAssignedBuilder.builder(
-                                AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersPullRequestAssigned())
-                        .assignees(null);
-
-        final GitHubGetRepoAutomationResponseTriggersPullRequestAssigned sut = builder.build();
-
-        assertThat(sut.assignees()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenAssigneesTooSmall() {
         final GitHubGetRepoAutomationResponseTriggersPullRequestAssignedBuilder builder =
                 GitHubGetRepoAutomationResponseTriggersPullRequestAssignedBuilder.builder(
@@ -87,10 +63,32 @@ class GitHubGetRepoAutomationResponseTriggersPullRequestAssignedTest {
         final GitHubGetRepoAutomationResponseTriggersPullRequestAssignedBuilder builder =
                 GitHubGetRepoAutomationResponseTriggersPullRequestAssignedBuilder.builder(
                                 AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersPullRequestAssigned())
-                        .assignees(List.of("a", "a"));
+                        .assignees(List.of("assignees", "assignees"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("assignees");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenPathsNull() {
+        final GitHubGetRepoAutomationResponseTriggersPullRequestAssigned value =
+                GitHubGetRepoAutomationResponseTriggersPullRequestAssignedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersPullRequestAssigned())
+                        .paths(null)
+                        .build();
+
+        assertThat(value.paths()).isNull();
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenAssigneesNull() {
+        final GitHubGetRepoAutomationResponseTriggersPullRequestAssigned value =
+                GitHubGetRepoAutomationResponseTriggersPullRequestAssignedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersPullRequestAssigned())
+                        .assignees(null)
+                        .build();
+
+        assertThat(value.assignees()).isNull();
     }
 }

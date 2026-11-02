@@ -32,6 +32,9 @@ import org.jspecify.annotations.Nullable;
  * @param autoDismissedAt The time that the alert was auto-dismissed in ISO 8601 format: {@code YYYY-MM-DDTHH:MM:SSZ}.
  * @param dismissalRequest Information about an active dismissal request for this Dependabot alert.
  * @param assignees The users assigned to this alert.
+ * @param reachability The reachability result for the vulnerability that triggered the alert, indicating whether a
+ *     vulnerable function is reachable from the repository's own code. Only the {@code CLOUD} and {@code GHEC} flavors
+ *     define this.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
@@ -53,7 +56,8 @@ public record GitHubDependabotAlert(
         @Nullable Instant fixedAt,
         @Nullable Instant autoDismissedAt,
         @Nullable GitHubDependabotAlertDismissalRequest dismissalRequest,
-        @Nullable List<GitHubSimpleUser> assignees) {
+        @Nullable List<GitHubSimpleUser> assignees,
+        @Nullable GitHubDependabotAlertReachability reachability) {
 
     private static final int MAX_DISMISSED_COMMENT_LENGTH = 280;
 

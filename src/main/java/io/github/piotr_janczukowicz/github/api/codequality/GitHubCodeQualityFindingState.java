@@ -16,7 +16,7 @@ public enum GitHubCodeQualityFindingState {
     OPEN("open"),
     DISMISSED("dismissed"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeQualityFindingState> WIRE_INDEX =
             EnumUtils.index(GitHubCodeQualityFindingState.class, GitHubCodeQualityFindingState::wireValue);
@@ -48,6 +48,6 @@ public enum GitHubCodeQualityFindingState {
     public static GitHubCodeQualityFindingState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

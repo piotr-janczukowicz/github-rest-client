@@ -42,7 +42,9 @@ public record GitHubSecretScanningLocationCommit(
         String commitSha,
         String commitUrl,
         @Nullable String htmlUrl)
-        implements GitHubSecretScanningLocationDetails, GitHubSecretScanningFirstDetectedLocation {
+        implements GitHubSecretScanningLocationDetails,
+                GitHubSecretScanningFirstDetectedLocation,
+                GitHubPublicMonitoringAlertAttributionCommit {
 
     public GitHubSecretScanningLocationCommit {
         requireNonNull(path, "path");

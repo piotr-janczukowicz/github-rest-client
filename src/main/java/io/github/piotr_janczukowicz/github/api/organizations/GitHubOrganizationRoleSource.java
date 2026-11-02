@@ -14,7 +14,7 @@ public enum GitHubOrganizationRoleSource {
     ENTERPRISE("Enterprise"),
     PREDEFINED("Predefined"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubOrganizationRoleSource> WIRE_INDEX =
             EnumUtils.index(GitHubOrganizationRoleSource.class, GitHubOrganizationRoleSource::wireValue);
@@ -46,6 +46,6 @@ public enum GitHubOrganizationRoleSource {
     public static GitHubOrganizationRoleSource fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

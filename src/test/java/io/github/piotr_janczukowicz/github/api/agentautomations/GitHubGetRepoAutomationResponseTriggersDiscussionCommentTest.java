@@ -11,18 +11,6 @@ import org.junit.jupiter.api.Test;
 class GitHubGetRepoAutomationResponseTriggersDiscussionCommentTest {
 
     @Test
-    void constructor_shouldLeaveCommentTypesNull_whenNull() {
-        final GitHubGetRepoAutomationResponseTriggersDiscussionCommentBuilder builder =
-                GitHubGetRepoAutomationResponseTriggersDiscussionCommentBuilder.builder(
-                                AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersDiscussionComment())
-                        .commentTypes(null);
-
-        final GitHubGetRepoAutomationResponseTriggersDiscussionComment sut = builder.build();
-
-        assertThat(sut.commentTypes()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenCommentTypesTooSmall() {
         final GitHubGetRepoAutomationResponseTriggersDiscussionCommentBuilder builder =
                 GitHubGetRepoAutomationResponseTriggersDiscussionCommentBuilder.builder(
@@ -50,7 +38,7 @@ class GitHubGetRepoAutomationResponseTriggersDiscussionCommentTest {
     }
 
     @Test
-    void constructor_shouldThrow_whenCommentTypesDuplicated() {
+    void constructor_shouldAccept_whenCommentTypesRepeat() {
         final GitHubGetRepoAutomationResponseTriggersDiscussionCommentBuilder builder =
                 GitHubGetRepoAutomationResponseTriggersDiscussionCommentBuilder.builder(
                                 AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersDiscussionComment())
@@ -58,21 +46,9 @@ class GitHubGetRepoAutomationResponseTriggersDiscussionCommentTest {
                                 GitHubGetRepoAutomationResponseTriggersDiscussionCommentCommentType.COMMENT,
                                 GitHubGetRepoAutomationResponseTriggersDiscussionCommentCommentType.COMMENT));
 
-        final Throwable thrown = catchThrowable(builder::build);
+        final GitHubGetRepoAutomationResponseTriggersDiscussionComment value = builder.build();
 
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("commentTypes");
-    }
-
-    @Test
-    void constructor_shouldLeaveCategoriesNull_whenNull() {
-        final GitHubGetRepoAutomationResponseTriggersDiscussionCommentBuilder builder =
-                GitHubGetRepoAutomationResponseTriggersDiscussionCommentBuilder.builder(
-                                AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersDiscussionComment())
-                        .categories(null);
-
-        final GitHubGetRepoAutomationResponseTriggersDiscussionComment sut = builder.build();
-
-        assertThat(sut.categories()).isNull();
+        assertThat(value.commentTypes()).hasSize(2);
     }
 
     @Test
@@ -92,10 +68,32 @@ class GitHubGetRepoAutomationResponseTriggersDiscussionCommentTest {
         final GitHubGetRepoAutomationResponseTriggersDiscussionCommentBuilder builder =
                 GitHubGetRepoAutomationResponseTriggersDiscussionCommentBuilder.builder(
                                 AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersDiscussionComment())
-                        .categories(List.of("a", "a"));
+                        .categories(List.of("categories", "categories"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("categories");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenCommentTypesNull() {
+        final GitHubGetRepoAutomationResponseTriggersDiscussionComment value =
+                GitHubGetRepoAutomationResponseTriggersDiscussionCommentBuilder.builder(
+                                AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersDiscussionComment())
+                        .commentTypes(null)
+                        .build();
+
+        assertThat(value.commentTypes()).isNull();
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenCategoriesNull() {
+        final GitHubGetRepoAutomationResponseTriggersDiscussionComment value =
+                GitHubGetRepoAutomationResponseTriggersDiscussionCommentBuilder.builder(
+                                AgentAutomationsCatalogFixtures.getRepoAutomationResponseTriggersDiscussionComment())
+                        .categories(null)
+                        .build();
+
+        assertThat(value.categories()).isNull();
     }
 }

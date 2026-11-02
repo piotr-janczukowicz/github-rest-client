@@ -20,7 +20,7 @@ public enum GitHubBypassResponseStatus {
     /** Dismissed. */
     DISMISSED("dismissed"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubBypassResponseStatus> WIRE_INDEX =
             EnumUtils.index(GitHubBypassResponseStatus.class, GitHubBypassResponseStatus::wireValue);
@@ -52,6 +52,6 @@ public enum GitHubBypassResponseStatus {
     public static GitHubBypassResponseStatus fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -17,7 +17,7 @@ public enum GitHubRepositoryInvitationPermission {
     TRIAGE_PLUS("triage_plus"),
     MAINTAIN("maintain"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubRepositoryInvitationPermission> WIRE_INDEX = EnumUtils.index(
             GitHubRepositoryInvitationPermission.class, GitHubRepositoryInvitationPermission::wireValue);
@@ -49,6 +49,6 @@ public enum GitHubRepositoryInvitationPermission {
     public static GitHubRepositoryInvitationPermission fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

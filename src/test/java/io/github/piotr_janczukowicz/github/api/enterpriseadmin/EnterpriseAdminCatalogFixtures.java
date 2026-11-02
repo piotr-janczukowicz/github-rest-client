@@ -2895,4 +2895,43 @@ final class EnterpriseAdminCatalogFixtures {
                 .expireAt("expire_at")
                 .build();
     }
+
+    static GitHubGetEnterpriseFeaturePoliciesResponseDefaultAvailability
+            getEnterpriseFeaturePoliciesResponseDefaultAvailability() {
+        return GitHubGetEnterpriseFeaturePoliciesResponseDefaultAvailabilityBuilder.builder()
+                .policyState(GitHubGetEnterpriseFeaturePoliciesResponseDefaultAvailabilityPolicyState.ENABLED)
+                .build();
+    }
+
+    static GitHubGetEnterpriseFeaturePoliciesResponse getEnterpriseFeaturePoliciesResponse() {
+        return GitHubGetEnterpriseFeaturePoliciesResponseBuilder.builder()
+                .defaultAvailability(getEnterpriseFeaturePoliciesResponseDefaultAvailability())
+                .build();
+    }
+
+    static GitHubUpdateEnterpriseFeaturePoliciesDefaultAvailability
+            updateEnterpriseFeaturePoliciesDefaultAvailability() {
+        return GitHubUpdateEnterpriseFeaturePoliciesDefaultAvailabilityBuilder.builder()
+                .policyState(GitHubUpdateEnterpriseFeaturePoliciesDefaultAvailabilityPolicyState.ENABLED)
+                .build();
+    }
+
+    static GitHubUpdateEnterpriseFeaturePoliciesPayload updateEnterpriseFeaturePoliciesPayload() {
+        return GitHubUpdateEnterpriseFeaturePoliciesPayloadBuilder.builder()
+                .defaultAvailability(updateEnterpriseFeaturePoliciesDefaultAvailability())
+                .build();
+    }
+
+    static GitHubUpdateEnterpriseFeaturePoliciesResponseDefaultAvailability
+            updateEnterpriseFeaturePoliciesResponseDefaultAvailability() {
+        return GitHubUpdateEnterpriseFeaturePoliciesResponseDefaultAvailabilityBuilder.builder()
+                .policyState(GitHubUpdateEnterpriseFeaturePoliciesResponseDefaultAvailabilityPolicyState.ENABLED)
+                .build();
+    }
+
+    static GitHubUpdateEnterpriseFeaturePoliciesResponse updateEnterpriseFeaturePoliciesResponse() {
+        return GitHubUpdateEnterpriseFeaturePoliciesResponseBuilder.builder()
+                .defaultAvailability(updateEnterpriseFeaturePoliciesResponseDefaultAvailability())
+                .build();
+    }
 }

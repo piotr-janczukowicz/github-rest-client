@@ -1,6 +1,7 @@
 package io.github.piotr_janczukowicz.github.api.enterpriseadmin;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
 import org.junit.jupiter.api.Test;
@@ -27,8 +28,15 @@ class GitHubEnterpriseTokenInventoryItemEffectiveAccessStateTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
-        assertThat(GitHubEnterpriseTokenInventoryItemEffectiveAccessState.fromWire("not-a-known-value"))
-                .isEqualTo(GitHubEnterpriseTokenInventoryItemEffectiveAccessState.UNKNOWN);
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
+        final String wire = "brand_new_value";
+
+        final GitHubEnterpriseTokenInventoryItemEffectiveAccessState decoded =
+                GitHubEnterpriseTokenInventoryItemEffectiveAccessState.fromWire(wire);
+
+        assertSoftly(softly -> {
+            softly.assertThat(decoded).isEqualTo(GitHubEnterpriseTokenInventoryItemEffectiveAccessState.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
+        });
     }
 }

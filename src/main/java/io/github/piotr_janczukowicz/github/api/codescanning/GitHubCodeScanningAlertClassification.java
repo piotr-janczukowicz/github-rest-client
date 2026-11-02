@@ -15,7 +15,7 @@ public enum GitHubCodeScanningAlertClassification {
     TEST("test"),
     LIBRARY("library"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningAlertClassification> WIRE_INDEX = EnumUtils.index(
             GitHubCodeScanningAlertClassification.class, GitHubCodeScanningAlertClassification::wireValue);
@@ -47,6 +47,6 @@ public enum GitHubCodeScanningAlertClassification {
     public static GitHubCodeScanningAlertClassification fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

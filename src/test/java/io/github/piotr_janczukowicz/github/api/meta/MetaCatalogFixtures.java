@@ -109,6 +109,7 @@ final class MetaCatalogFixtures {
                         new GitHubApiOverviewActionsInbound(
                                 List.of("actions.example.com"), List.of("*.actions.example.com")),
                         new GitHubApiOverviewArtifactAttestations("example", List.of("attestations.example.com"))),
-                "3.22.0");
+                "3.22.0",
+                List.of("192.0.2.1"));
     }
 }

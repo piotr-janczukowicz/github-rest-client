@@ -1,10 +1,11 @@
 {
-  "query": "is:open label:bug",
+  "query": "query",
   "paths": [
-    "src/**"
+    "paths"
   ],
   "assignees": [
-    "octocat"
+    "assignees"
   ],
-  "write_scope": "trigger"
+  "write_scope": "trigger",
+  "allow_copilot_triggers": true
 }

@@ -18,7 +18,9 @@ public enum GitHubEnterpriseLicensePolicyItemPackageAction {
     /** allowed. */
     ALLOWED("allowed"),
     /** private. */
-    PRIVATE("private");
+    PRIVATE("private"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubEnterpriseLicensePolicyItemPackageAction> WIRE_INDEX =
             EnumUtils.index(
@@ -45,17 +47,13 @@ public enum GitHubEnterpriseLicensePolicyItemPackageAction {
      * Resolves the action of a package rule from its wire value.
      *
      * @param value JSON value
-     * @return matching constant
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known value
      */
     @JsonCreator
     public static GitHubEnterpriseLicensePolicyItemPackageAction fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException(
-                        "Unknown GitHub enterprise license policy item package action: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

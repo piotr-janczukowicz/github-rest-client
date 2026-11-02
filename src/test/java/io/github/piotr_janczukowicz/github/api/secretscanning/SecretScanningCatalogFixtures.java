@@ -1,5 +1,6 @@
 package io.github.piotr_janczukowicz.github.api.secretscanning;
 
+import io.github.piotr_janczukowicz.github.api.GitHubDirection;
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubRuleSuiteTimePeriod;
 import io.github.piotr_janczukowicz.github.api.repositories.RepositoriesCatalogFixtures;
 import io.github.piotr_janczukowicz.github.api.users.UsersCatalogFixtures;
@@ -592,5 +593,108 @@ public final class SecretScanningCatalogFixtures {
 
     static GitHubReviewDismissalRequestResult reviewDismissalRequestResult() {
         return new GitHubReviewDismissalRequestResult(1L);
+    }
+
+    static GitHubPublicMonitoringAlertLocation publicMonitoringAlertLocation() {
+        return GitHubPublicMonitoringAlertLocationBuilder.builder()
+                .path("path")
+                .startLine(1)
+                .endLine(1)
+                .startColumn(1)
+                .endColumn(1)
+                .blobSha("blob_sha")
+                .commitSha("commit_sha")
+                .htmlUrl("https://api.github.com/html_url")
+                .contentNumber(1)
+                .contentId(1L)
+                .build();
+    }
+
+    static GitHubPublicMonitoringSecretAuthor publicMonitoringSecretAuthor() {
+        return GitHubPublicMonitoringSecretAuthorBuilder.builder()
+                .login("login")
+                .avatarUrl("https://api.github.com/avatar_url")
+                .htmlUrl("https://api.github.com/html_url")
+                .build();
+    }
+
+    static GitHubPublicMonitoringRepository publicMonitoringRepository() {
+        return GitHubPublicMonitoringRepositoryBuilder.builder()
+                .name("name")
+                .fullName("full_name")
+                .isPrivate(true)
+                .htmlUrl("https://api.github.com/html_url")
+                .build();
+    }
+
+    static GitHubPublicMonitoringAlertGistReference publicMonitoringAlertGistReference() {
+        return GitHubPublicMonitoringAlertGistReferenceBuilder.builder()
+                .id("id")
+                .htmlUrl("https://api.github.com/html_url")
+                .build();
+    }
+
+    static GitHubPublicMonitoringAlertAttribution publicMonitoringAlertAttribution() {
+        return GitHubPublicMonitoringAlertAttributionBuilder.builder()
+                .secretAuthor(SecretScanningCatalogFixtures.publicMonitoringSecretAuthor())
+                .committerEmail("committer_email")
+                .method(GitHubPublicMonitoringAlertAttributionMethod.MEMBER_ACTIVITY)
+                .commit(SecretScanningCatalogFixtures.publicMonitoringAlertLocation())
+                .wikiCommit(SecretScanningCatalogFixtures.publicMonitoringAlertLocation())
+                .issueTitle(SecretScanningCatalogFixtures.publicMonitoringAlertLocation())
+                .issueBody(SecretScanningCatalogFixtures.publicMonitoringAlertLocation())
+                .issueComment(SecretScanningCatalogFixtures.publicMonitoringAlertLocation())
+                .pullRequestTitle(SecretScanningCatalogFixtures.publicMonitoringAlertLocation())
+                .pullRequestBody(SecretScanningCatalogFixtures.publicMonitoringAlertLocation())
+                .pullRequestComment(SecretScanningCatalogFixtures.publicMonitoringAlertLocation())
+                .pullRequestReviewComment(SecretScanningCatalogFixtures.publicMonitoringAlertLocation())
+                .pullRequestReview(SecretScanningCatalogFixtures.publicMonitoringAlertLocation())
+                .pullRequestTimelineComment(publicMonitoringAlertLocation())
+                .discussionTitle(SecretScanningCatalogFixtures.publicMonitoringAlertLocation())
+                .discussionBody(SecretScanningCatalogFixtures.publicMonitoringAlertLocation())
+                .discussionComment(SecretScanningCatalogFixtures.publicMonitoringAlertLocation())
+                .commitMetadata(publicMonitoringAlertLocation())
+                .commitComment(publicMonitoringAlertLocation())
+                .actionsLog(publicMonitoringAlertLocation())
+                .gistBlob(publicMonitoringAlertLocation())
+                .build();
+    }
+
+    static GitHubPublicMonitoringAlert publicMonitoringAlert() {
+        return GitHubPublicMonitoringAlertBuilder.builder()
+                .number(1)
+                .url("https://api.github.com/url")
+                .secretType("secret_type")
+                .secretTypeDisplayName("secret_type_display_name")
+                .validity(GitHubPublicMonitoringAlertValidity.ACTIVE)
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .state(GitHubPublicMonitoringAlertState.OPEN)
+                .resolution(GitHubPublicMonitoringAlertResolution.DISMISSED)
+                .resolvedBy(UsersCatalogFixtures.octocat())
+                .resolvedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .resolutionComment("resolution_comment")
+                .secret("secret")
+                .repository(SecretScanningCatalogFixtures.publicMonitoringRepository())
+                .gist(SecretScanningCatalogFixtures.publicMonitoringAlertGistReference())
+                .attribution(publicMonitoringAlertAttribution())
+                .build();
+    }
+
+    static GitHubUpdatePublicMonitoringAlertForEnterprisePayload updatePublicMonitoringAlertForEnterprisePayload() {
+        return GitHubUpdatePublicMonitoringAlertForEnterprisePayloadBuilder.builder()
+                .state(GitHubSecretScanningAlertState.OPEN)
+                .resolution(GitHubUpdatePublicMonitoringAlertForEnterpriseResolution.DISMISSED)
+                .resolutionComment("resolution_comment")
+                .build();
+    }
+
+    static GitHubListPublicMonitoringAlertsForEnterpriseFilter listPublicMonitoringAlertsForEnterpriseFilter() {
+        return new GitHubListPublicMonitoringAlertsForEnterpriseFilter(
+                GitHubDirection.ASC,
+                "octo-org/hello",
+                "octocat",
+                "github_personal_access_token",
+                GitHubListPublicMonitoringAlertsForEnterpriseAttribution.MEMBER_ACTIVITY,
+                "active");
     }
 }

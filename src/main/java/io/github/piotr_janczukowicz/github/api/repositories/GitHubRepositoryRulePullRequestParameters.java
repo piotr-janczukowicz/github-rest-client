@@ -8,7 +8,12 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
-/** Parameters of the pull request rule: required approvals, review requirements and allowed merge methods. */
+/**
+ * Parameters of the pull request rule: required approvals, review requirements and allowed merge methods.
+ *
+ * @param requireExtraApprovalForUnattributedChanges When Copilot opens a pull request without a human collaborator,
+ *     require one more approving review if a non-zero approval count is required.
+ */
 @CatalogSchema("components/schemas/repository-rule-pull-request/properties/parameters")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
@@ -20,7 +25,8 @@ public record GitHubRepositoryRulePullRequestParameters(
         boolean requireLastPushApproval,
         int requiredApprovingReviewCount,
         boolean requiredReviewThreadResolution,
-        @Nullable List<GitHubRepositoryRuleParamsRequiredReviewerConfiguration> requiredReviewers) {
+        @Nullable List<GitHubRepositoryRuleParamsRequiredReviewerConfiguration> requiredReviewers,
+        @Nullable Boolean requireExtraApprovalForUnattributedChanges) {
 
     public GitHubRepositoryRulePullRequestParameters {
         if (allowedMergeMethods != null) {

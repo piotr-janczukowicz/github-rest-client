@@ -17,7 +17,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 class GitHubProjectItemContentTypeTest {
 
     @ParameterizedTest
-    @CsvSource({"Issue,ISSUE", "PullRequest,PULL_REQUEST", "DraftIssue,DRAFT_ISSUE", "unknown,UNKNOWN"})
+    @CsvSource({"Issue,ISSUE", "PullRequest,PULL_REQUEST", "DraftIssue,DRAFT_ISSUE", "unrecognized,UNRECOGNIZED"})
     void fromWire_shouldReturnType_whenKnownValue(final String wire, final GitHubProjectItemContentType value) {
         final GitHubProjectItemContentType decoded = GitHubProjectItemContentType.fromWire(wire);
 
@@ -40,7 +40,7 @@ class GitHubProjectItemContentTypeTest {
     void fromWire_shouldReturnUnknown_whenValueIsNotKnown() {
         final GitHubProjectItemContentType decoded = GitHubProjectItemContentType.fromWire("Widget");
 
-        assertThat(decoded).isEqualTo(GitHubProjectItemContentType.UNKNOWN);
+        assertThat(decoded).isEqualTo(GitHubProjectItemContentType.UNRECOGNIZED);
     }
 
     @Test

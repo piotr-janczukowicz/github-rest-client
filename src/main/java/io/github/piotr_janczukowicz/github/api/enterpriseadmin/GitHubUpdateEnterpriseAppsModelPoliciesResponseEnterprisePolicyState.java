@@ -25,7 +25,7 @@ public enum GitHubUpdateEnterpriseAppsModelPoliciesResponseEnterprisePolicyState
     /** Unconfigured. */
     UNCONFIGURED("unconfigured"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubUpdateEnterpriseAppsModelPoliciesResponseEnterprisePolicyState>
             WIRE_INDEX = EnumUtils.index(
@@ -59,6 +59,6 @@ public enum GitHubUpdateEnterpriseAppsModelPoliciesResponseEnterprisePolicyState
     public static GitHubUpdateEnterpriseAppsModelPoliciesResponseEnterprisePolicyState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

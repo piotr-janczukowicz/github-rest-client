@@ -18,7 +18,7 @@ public enum GitHubUsageReportExportReportType {
     PREMIUM_REQUEST("premium_request"),
     AI_CREDIT("ai_credit"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubUsageReportExportReportType> WIRE_INDEX =
             EnumUtils.index(GitHubUsageReportExportReportType.class, GitHubUsageReportExportReportType::wireValue);
@@ -43,13 +43,13 @@ public enum GitHubUsageReportExportReportType {
      * Resolves the constant of this enum from its wire value.
      *
      * @param value JSON value
-     * @return matching constant, or {@link #UNKNOWN} when the value is not known
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
      */
     @JsonCreator
     public static GitHubUsageReportExportReportType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

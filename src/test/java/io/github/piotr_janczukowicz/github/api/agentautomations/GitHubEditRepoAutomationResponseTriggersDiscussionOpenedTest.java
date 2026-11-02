@@ -11,18 +11,6 @@ import org.junit.jupiter.api.Test;
 class GitHubEditRepoAutomationResponseTriggersDiscussionOpenedTest {
 
     @Test
-    void constructor_shouldLeaveCategoriesNull_whenNull() {
-        final GitHubEditRepoAutomationResponseTriggersDiscussionOpenedBuilder builder =
-                GitHubEditRepoAutomationResponseTriggersDiscussionOpenedBuilder.builder(
-                                AgentAutomationsCatalogFixtures.editRepoAutomationResponseTriggersDiscussionOpened())
-                        .categories(null);
-
-        final GitHubEditRepoAutomationResponseTriggersDiscussionOpened sut = builder.build();
-
-        assertThat(sut.categories()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenCategoriesTooSmall() {
         final GitHubEditRepoAutomationResponseTriggersDiscussionOpenedBuilder builder =
                 GitHubEditRepoAutomationResponseTriggersDiscussionOpenedBuilder.builder(
@@ -39,10 +27,21 @@ class GitHubEditRepoAutomationResponseTriggersDiscussionOpenedTest {
         final GitHubEditRepoAutomationResponseTriggersDiscussionOpenedBuilder builder =
                 GitHubEditRepoAutomationResponseTriggersDiscussionOpenedBuilder.builder(
                                 AgentAutomationsCatalogFixtures.editRepoAutomationResponseTriggersDiscussionOpened())
-                        .categories(List.of("a", "a"));
+                        .categories(List.of("categories", "categories"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("categories");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenCategoriesNull() {
+        final GitHubEditRepoAutomationResponseTriggersDiscussionOpened value =
+                GitHubEditRepoAutomationResponseTriggersDiscussionOpenedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.editRepoAutomationResponseTriggersDiscussionOpened())
+                        .categories(null)
+                        .build();
+
+        assertThat(value.categories()).isNull();
     }
 }

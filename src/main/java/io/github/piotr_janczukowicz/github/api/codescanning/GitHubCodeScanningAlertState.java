@@ -14,7 +14,7 @@ public enum GitHubCodeScanningAlertState {
     DISMISSED("dismissed"),
     FIXED("fixed"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningAlertState> WIRE_INDEX =
             EnumUtils.index(GitHubCodeScanningAlertState.class, GitHubCodeScanningAlertState::wireValue);
@@ -46,6 +46,6 @@ public enum GitHubCodeScanningAlertState {
     public static GitHubCodeScanningAlertState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

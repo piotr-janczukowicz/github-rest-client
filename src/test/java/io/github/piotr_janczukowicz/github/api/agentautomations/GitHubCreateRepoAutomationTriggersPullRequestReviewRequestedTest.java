@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -21,19 +22,6 @@ class GitHubCreateRepoAutomationTriggersPullRequestReviewRequestedTest {
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("query");
-    }
-
-    @Test
-    void constructor_shouldLeavePathsNull_whenNull() {
-        final GitHubCreateRepoAutomationTriggersPullRequestReviewRequestedBuilder builder =
-                GitHubCreateRepoAutomationTriggersPullRequestReviewRequestedBuilder.builder(
-                                AgentAutomationsCatalogFixtures
-                                        .createRepoAutomationTriggersPullRequestReviewRequested())
-                        .paths(null);
-
-        final GitHubCreateRepoAutomationTriggersPullRequestReviewRequested sut = builder.build();
-
-        assertThat(sut.paths()).isNull();
     }
 
     @Test
@@ -60,5 +48,32 @@ class GitHubCreateRepoAutomationTriggersPullRequestReviewRequestedTest {
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("paths");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenPathsNull() {
+        final GitHubCreateRepoAutomationTriggersPullRequestReviewRequested value =
+                GitHubCreateRepoAutomationTriggersPullRequestReviewRequestedBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationTriggersPullRequestReviewRequested())
+                        .paths(null)
+                        .build();
+
+        assertThat(value.paths()).isNull();
+    }
+
+    @Test
+    void constructor_shouldCopy_whenPathsGiven() {
+        final List<String> source = new ArrayList<>(List.of("paths"));
+        final GitHubCreateRepoAutomationTriggersPullRequestReviewRequested value =
+                GitHubCreateRepoAutomationTriggersPullRequestReviewRequestedBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationTriggersPullRequestReviewRequested())
+                        .paths(source)
+                        .build();
+
+        source.add("paths");
+
+        assertThat(value.paths()).hasSize(source.size() - 1);
     }
 }

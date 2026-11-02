@@ -9,7 +9,7 @@ import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import io.github.piotr_janczukowicz.util.EnumUtils;
 
-/** One or more schedules on which the Automation runs. */
+/** cadence */
 @CatalogSchema(
         "operations/agent-automations/edit-repo-automation/requestBody/properties/triggers/properties/interval/properties/cadence/items")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})

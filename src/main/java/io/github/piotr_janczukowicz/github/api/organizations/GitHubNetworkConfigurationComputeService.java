@@ -15,7 +15,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 public enum GitHubNetworkConfigurationComputeService {
     NONE("none"),
     ACTIONS("actions"),
-    CODESPACES("codespaces");
+    CODESPACES("codespaces"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubNetworkConfigurationComputeService> WIRE_INDEX = EnumUtils.index(
             GitHubNetworkConfigurationComputeService.class, GitHubNetworkConfigurationComputeService::wireValue);
@@ -42,15 +44,11 @@ public enum GitHubNetworkConfigurationComputeService {
      * @param value JSON value
      * @return matching compute service
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known compute service
      */
     @JsonCreator
     public static GitHubNetworkConfigurationComputeService fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() ->
-                        new IllegalArgumentException("Unknown GitHub network configuration compute service: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

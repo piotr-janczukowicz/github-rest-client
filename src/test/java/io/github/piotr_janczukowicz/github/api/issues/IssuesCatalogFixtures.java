@@ -866,4 +866,83 @@ public final class IssuesCatalogFixtures {
                 "<p>We should probably include a check for null values here.</p>",
                 "We should probably include a check for null values here.");
     }
+
+    static GitHubIssueArtifactCreator issueArtifactCreator() {
+        return GitHubIssueArtifactCreatorBuilder.builder()
+                .login("octocat")
+                .id(1L)
+                .build();
+    }
+
+    static GitHubIssueArtifactUpdatedByActor issueArtifactUpdatedByActor() {
+        return GitHubIssueArtifactUpdatedByActorBuilder.builder()
+                .login("monalisa")
+                .id(1L)
+                .build();
+    }
+
+    static GitHubIssueArtifact issueArtifact() {
+        return GitHubIssueArtifactBuilder.builder()
+                .id(1L)
+                .htmlUrl("https://github.com/octocat/Hello-World/issues/1347/artifacts/1")
+                .number(1)
+                .type("plan")
+                .name("Implementation plan")
+                .body("## Plan\n\nBuild the feature in two phases.")
+                .bodyHtml("<h2>Plan</h2>\n<p>Build the feature in two phases.</p>")
+                .description("Build the feature in two phases.")
+                .creator(issueArtifactCreator())
+                .updatedByActor(issueArtifactUpdatedByActor())
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .build();
+    }
+
+    static GitHubCreateIssueArtifactPayload createIssueArtifactPayload() {
+        return GitHubCreateIssueArtifactPayloadBuilder.builder()
+                .type(GitHubCreateIssueArtifactType.GENERIC)
+                .name("name")
+                .body("body")
+                .build();
+    }
+
+    static GitHubUpdateIssueArtifactPayload updateIssueArtifactPayload() {
+        return GitHubUpdateIssueArtifactPayloadBuilder.builder()
+                .name("name")
+                .body("body")
+                .build();
+    }
+
+    static GitHubGetIssueArtifactResponseWithVersionsVersionActor getIssueArtifactResponseWithVersionsVersionActor() {
+        return GitHubGetIssueArtifactResponseWithVersionsVersionActorBuilder.builder()
+                .login("monalisa")
+                .id(1L)
+                .build();
+    }
+
+    static GitHubGetIssueArtifactResponseWithVersionsVersion getIssueArtifactResponseWithVersionsVersion() {
+        return GitHubGetIssueArtifactResponseWithVersionsVersionBuilder.builder()
+                .version(1)
+                .name("Updated implementation plan")
+                .body("## Updated plan\n\nBuild the feature in three phases.")
+                .bodyHtml("<h2>Updated plan</h2>\n<p>Build the feature in three phases.</p>")
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .actor(getIssueArtifactResponseWithVersionsVersionActor())
+                .build();
+    }
+
+    static GitHubGetIssueArtifactResponseWithVersions getIssueArtifactResponseWithVersions() {
+        return GitHubGetIssueArtifactResponseWithVersionsBuilder.builder()
+                .artifact(issueArtifact())
+                .versions(List.of(getIssueArtifactResponseWithVersionsVersion()))
+                .build();
+    }
+
+    static GitHubListIssueArtifactsType listIssueArtifactsType() {
+        return GitHubListIssueArtifactsType.GENERIC;
+    }
+
+    static GitHubListIssueArtifactsFilter listIssueArtifactsFilter() {
+        return new GitHubListIssueArtifactsFilter(listIssueArtifactsType());
+    }
 }

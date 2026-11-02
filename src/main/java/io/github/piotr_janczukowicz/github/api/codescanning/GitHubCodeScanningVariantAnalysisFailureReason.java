@@ -17,7 +17,7 @@ public enum GitHubCodeScanningVariantAnalysisFailureReason {
     ACTIONS_WORKFLOW_RUN_FAILED("actions_workflow_run_failed"),
     INTERNAL_ERROR("internal_error"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningVariantAnalysisFailureReason> WIRE_INDEX =
             EnumUtils.index(
@@ -51,6 +51,6 @@ public enum GitHubCodeScanningVariantAnalysisFailureReason {
     public static GitHubCodeScanningVariantAnalysisFailureReason fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

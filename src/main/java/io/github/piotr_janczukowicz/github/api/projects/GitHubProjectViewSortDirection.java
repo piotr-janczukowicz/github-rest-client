@@ -14,7 +14,7 @@ public enum GitHubProjectViewSortDirection {
     DESC("desc"),
 
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubProjectViewSortDirection> WIRE_INDEX =
             EnumUtils.index(GitHubProjectViewSortDirection.class, GitHubProjectViewSortDirection::wireValue);
@@ -39,13 +39,13 @@ public enum GitHubProjectViewSortDirection {
      * Sort direction from a wire value.
      *
      * @param value JSON value
-     * @return matching direction, or {@link #UNKNOWN} for a value this library does not know
+     * @return matching direction, or {@link #UNRECOGNIZED} for a value this library does not know
      * @throws NullPointerException if {@code value} is {@code null}
      */
     @JsonCreator
     public static GitHubProjectViewSortDirection fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

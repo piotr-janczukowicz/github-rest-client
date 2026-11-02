@@ -3,8 +3,9 @@
     "comment"
   ],
   "categories": [
-    "General"
+    "categories"
   ],
-  "body_substring": "/triage",
-  "write_scope": "trigger"
+  "body_substring": "body_substring",
+  "write_scope": "trigger",
+  "allow_copilot_triggers": true
 }
