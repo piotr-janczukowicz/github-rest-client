@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Java 21](https://img.shields.io/badge/Java-21-orange.svg)
 
-**API version:** `2026-03-10` · **Last updated:** 2026-10-24
+**API version:** `2026-03-10` · **Last updated:** 2026-10-31
 
 ## Supported GitHub products
 
@@ -442,7 +442,7 @@ Catch the specific types first: `GitHubApiException` is their parent.
 ## Good to know
 
 - **Newer GitHub data:** a JSON property the library does not know is ignored. An enum that only appears in responses
-  has an `UNKNOWN` constant for a value the library does not know. An enum that is also sent in requests has none,
+  has an `UNRECOGNIZED` constant for a value the library does not know (`UNKNOWN` is only a value GitHub itself lists). An enum that is also sent in requests has none,
   because a request must not be able to send it, and reads such a value as `null`.
 - **Files:** `github.releases().assets()` uploads a release asset from a `Path` or a stream and downloads one to a
   `Path` or an `OutputStream`.
