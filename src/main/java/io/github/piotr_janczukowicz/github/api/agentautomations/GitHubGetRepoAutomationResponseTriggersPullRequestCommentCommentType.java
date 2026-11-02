@@ -9,7 +9,7 @@ import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import io.github.piotr_janczukowicz.util.EnumUtils;
 
-/** Pull request conversation and inline review comment types to match. */
+/** comment types */
 @CatalogSchema(
         "operations/agent-automations/get-repo-automation/200/properties/triggers/properties/pull_request_comment/properties/comment_types/items")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
@@ -17,7 +17,7 @@ public enum GitHubGetRepoAutomationResponseTriggersPullRequestCommentCommentType
     TIMELINE_COMMENT("timeline_comment"),
     REVIEW_COMMENT("review_comment"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubGetRepoAutomationResponseTriggersPullRequestCommentCommentType>
             WIRE_INDEX = EnumUtils.index(
@@ -44,13 +44,13 @@ public enum GitHubGetRepoAutomationResponseTriggersPullRequestCommentCommentType
      * Resolves the constant from its wire value.
      *
      * @param value JSON value
-     * @return matching constant
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
      */
     @JsonCreator
     public static GitHubGetRepoAutomationResponseTriggersPullRequestCommentCommentType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

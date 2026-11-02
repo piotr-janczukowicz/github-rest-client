@@ -16,7 +16,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 class GitHubProjectStatusTest {
 
     @ParameterizedTest
-    @EnumSource(value = GitHubProjectStatus.class, mode = EnumSource.Mode.EXCLUDE, names = "UNKNOWN")
+    @EnumSource(value = GitHubProjectStatus.class, mode = EnumSource.Mode.EXCLUDE, names = "UNRECOGNIZED")
     void fromWire_shouldReturnStatus_whenKnownValue(final GitHubProjectStatus value) {
         final GitHubProjectStatus decoded = GitHubProjectStatus.fromWire(value.wireValue());
 
@@ -40,14 +40,14 @@ class GitHubProjectStatusTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubProjectStatus decoded = GitHubProjectStatus.fromWire(wire);
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubProjectStatus.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubProjectStatus.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

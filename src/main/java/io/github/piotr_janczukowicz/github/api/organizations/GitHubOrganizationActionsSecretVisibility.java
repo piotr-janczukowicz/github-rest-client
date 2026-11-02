@@ -12,7 +12,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 public enum GitHubOrganizationActionsSecretVisibility {
     ALL("all"),
     PRIVATE("private"),
-    SELECTED("selected");
+    SELECTED("selected"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubOrganizationActionsSecretVisibility> WIRE_INDEX = EnumUtils.index(
             GitHubOrganizationActionsSecretVisibility.class, GitHubOrganizationActionsSecretVisibility::wireValue);
@@ -39,15 +41,11 @@ public enum GitHubOrganizationActionsSecretVisibility {
      * @param value JSON value
      * @return matching GitHubOrganizationActionsSecretVisibility
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known organization Actions secret visibility
      */
     @JsonCreator
     public static GitHubOrganizationActionsSecretVisibility fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException(
-                        "Unknown GitHub organization Actions secret visibility: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

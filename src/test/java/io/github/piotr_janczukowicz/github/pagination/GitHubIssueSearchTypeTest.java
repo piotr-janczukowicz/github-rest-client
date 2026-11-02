@@ -21,8 +21,8 @@ class GitHubIssueSearchTypeTest extends BaseWireEnumTest<GitHubIssueSearchType> 
     }
 
     @Override
-    protected GitHubIssueSearchType unknown() {
-        return GitHubIssueSearchType.UNKNOWN;
+    protected GitHubIssueSearchType unrecognized() {
+        return GitHubIssueSearchType.UNRECOGNIZED;
     }
 
     @Override

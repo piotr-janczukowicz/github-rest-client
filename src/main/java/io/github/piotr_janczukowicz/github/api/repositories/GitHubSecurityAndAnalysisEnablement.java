@@ -13,7 +13,7 @@ public enum GitHubSecurityAndAnalysisEnablement {
     ENABLED("enabled"),
     DISABLED("disabled"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubSecurityAndAnalysisEnablement> WIRE_INDEX =
             EnumUtils.index(GitHubSecurityAndAnalysisEnablement.class, GitHubSecurityAndAnalysisEnablement::wireValue);
@@ -45,6 +45,6 @@ public enum GitHubSecurityAndAnalysisEnablement {
     public static GitHubSecurityAndAnalysisEnablement fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -9,6 +9,7 @@ import io.github.piotr_janczukowicz.util.LazyValue;
 public final class GitHubPullRequestsApi {
 
     private final LazyValue<GitHubPullRequestApi> pullRequest;
+    private final LazyValue<GitHubPullsAgentMergeApi> agentMerge;
     private final LazyValue<GitHubPullsCommentsApi> comments;
     private final LazyValue<GitHubPullsReviewRequestsApi> reviewRequests;
     private final LazyValue<GitHubPullsReviewsApi> reviews;
@@ -23,6 +24,7 @@ public final class GitHubPullRequestsApi {
     public GitHubPullRequestsApi(final GitHubCaller caller) {
         requireNonNull(caller, "caller");
         this.pullRequest = new LazyValue<>(() -> new GitHubPullRequestApi(caller));
+        this.agentMerge = new LazyValue<>(() -> new GitHubPullsAgentMergeApi(caller));
         this.comments = new LazyValue<>(() -> new GitHubPullsCommentsApi(caller));
         this.reviewRequests = new LazyValue<>(() -> new GitHubPullsReviewRequestsApi(caller));
         this.reviews = new LazyValue<>(() -> new GitHubPullsReviewsApi(caller));
@@ -36,6 +38,17 @@ public final class GitHubPullRequestsApi {
      */
     public GitHubPullRequestApi pullRequest() {
         return pullRequest.get();
+    }
+
+    /**
+     * Pull request Agent Merge operations ({@code subcategory=agent-merge}).
+     *
+     * <p>The {@code CLOUD} and {@code GHEC} flavors carry this resource.
+     *
+     * @return Agent Merge API
+     */
+    public GitHubPullsAgentMergeApi agentMerge() {
+        return agentMerge.get();
     }
 
     /**

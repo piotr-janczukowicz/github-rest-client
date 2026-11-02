@@ -158,7 +158,7 @@ class GitHubSecurityAdvisoriesApiIntegrationTest {
         final GitHubListGlobalAdvisoriesFilter filter = GitHubListGlobalAdvisoriesFilterBuilder.builder()
                 .type(GitHubGlobalAdvisoryType.REVIEWED)
                 .ecosystem(GitHubSecurityAdvisoryEcosystem.NPM)
-                .severity(GitHubSecurityAdvisorySeverity.HIGH)
+                .severity(GitHubListGlobalAdvisoriesSeverity.HIGH)
                 .direction(GitHubDirection.DESC)
                 .sort(GitHubGlobalAdvisoriesSort.UPDATED)
                 .build();
@@ -410,5 +410,114 @@ class GitHubSecurityAdvisoriesApiIntegrationTest {
         return CODEC.decode(
                 listJsonBytes(GitHubSecurityAdvisoriesApiIntegrationTest.class, "global-advisory.json"),
                 GLOBAL_ADVISORIES_TYPE);
+    }
+
+    private static final String ADVISORY_COMMENTS_PATH =
+            "/repos/octocat/hello-world/security-advisories/GHSA-49wp-qq6x-g2rf/comments";
+    private static final String ADVISORY_COMMENT_PATH = ADVISORY_COMMENTS_PATH + "/42";
+
+    @Test
+    void listRepositoryAdvisoryComments_shouldReturnComments_whenResponseIsOk() throws Exception {
+        HTTP.stub(
+                GET,
+                ADVISORY_COMMENTS_PATH,
+                okJson(listJsonBytes(
+                        GitHubSecurityAdvisoriesApiIntegrationTest.class, "repository-advisory-comment.json")));
+
+        final GitHubPage<GitHubRepositoryAdvisoryComment> page;
+        try (final GitHubApiWireMockSupport.SecurityAdvisoriesApiClient advisories = securityAdvisoriesApi(HTTP)) {
+            page = advisories
+                    .api()
+                    .repositoryAdvisories()
+                    .listRepositoryAdvisoryComments(OWNER, REPO, REPOSITORY_GHSA_ID);
+        }
+
+        assertThat(page.items()).containsExactly(SecurityAdvisoriesCatalogFixtures.repositoryAdvisoryComment());
+        HTTP.verifyRequested(GET, ADVISORY_COMMENTS_PATH);
+        HTTP.verifyQueryParam(GET, ADVISORY_COMMENTS_PATH, "page", "1");
+    }
+
+    @Test
+    void createRepositoryAdvisoryComment_shouldReturnComment_whenResponseIsCreated() throws Exception {
+        HTTP.stub(
+                POST,
+                ADVISORY_COMMENTS_PATH,
+                createdJson(jsonBytes(
+                        GitHubSecurityAdvisoriesApiIntegrationTest.class, "repository-advisory-comment.json")));
+
+        final GitHubRepositoryAdvisoryComment comment;
+        try (final GitHubApiWireMockSupport.SecurityAdvisoriesApiClient advisories = securityAdvisoriesApi(HTTP)) {
+            comment = advisories
+                    .api()
+                    .repositoryAdvisories()
+                    .createRepositoryAdvisoryComment(
+                            OWNER,
+                            REPO,
+                            REPOSITORY_GHSA_ID,
+                            SecurityAdvisoriesCatalogFixtures.createRepositoryAdvisoryCommentPayload());
+        }
+
+        assertThat(comment).isEqualTo(SecurityAdvisoriesCatalogFixtures.repositoryAdvisoryComment());
+        HTTP.verifyRequested(POST, ADVISORY_COMMENTS_PATH);
+    }
+
+    @Test
+    void getRepositoryAdvisoryComment_shouldReturnComment_whenResponseIsOk() throws Exception {
+        HTTP.stub(
+                GET,
+                ADVISORY_COMMENT_PATH,
+                okJson(jsonBytes(
+                        GitHubSecurityAdvisoriesApiIntegrationTest.class, "repository-advisory-comment.json")));
+
+        final Optional<GitHubRepositoryAdvisoryComment> comment;
+        try (final GitHubApiWireMockSupport.SecurityAdvisoriesApiClient advisories = securityAdvisoriesApi(HTTP)) {
+            comment = advisories
+                    .api()
+                    .repositoryAdvisories()
+                    .getRepositoryAdvisoryComment(OWNER, REPO, REPOSITORY_GHSA_ID, 42L);
+        }
+
+        assertThat(comment).contains(SecurityAdvisoriesCatalogFixtures.repositoryAdvisoryComment());
+        HTTP.verifyRequested(GET, ADVISORY_COMMENT_PATH);
+    }
+
+    @Test
+    void getRepositoryAdvisoryComment_shouldReturnEmpty_whenResponseIsNotFound() throws Exception {
+        HTTP.stub(GET, ADVISORY_COMMENT_PATH, notFound());
+
+        final Optional<GitHubRepositoryAdvisoryComment> comment;
+        try (final GitHubApiWireMockSupport.SecurityAdvisoriesApiClient advisories = securityAdvisoriesApi(HTTP)) {
+            comment = advisories
+                    .api()
+                    .repositoryAdvisories()
+                    .getRepositoryAdvisoryComment(OWNER, REPO, REPOSITORY_GHSA_ID, 42L);
+        }
+
+        assertThat(comment).isEmpty();
+    }
+
+    @Test
+    void updateRepositoryAdvisoryComment_shouldReturnComment_whenResponseIsOk() throws Exception {
+        HTTP.stub(
+                PATCH,
+                ADVISORY_COMMENT_PATH,
+                okJson(jsonBytes(
+                        GitHubSecurityAdvisoriesApiIntegrationTest.class, "repository-advisory-comment.json")));
+
+        final GitHubRepositoryAdvisoryComment comment;
+        try (final GitHubApiWireMockSupport.SecurityAdvisoriesApiClient advisories = securityAdvisoriesApi(HTTP)) {
+            comment = advisories
+                    .api()
+                    .repositoryAdvisories()
+                    .updateRepositoryAdvisoryComment(
+                            OWNER,
+                            REPO,
+                            REPOSITORY_GHSA_ID,
+                            42L,
+                            SecurityAdvisoriesCatalogFixtures.updateRepositoryAdvisoryCommentPayload());
+        }
+
+        assertThat(comment).isEqualTo(SecurityAdvisoriesCatalogFixtures.repositoryAdvisoryComment());
+        HTTP.verifyRequested(PATCH, ADVISORY_COMMENT_PATH);
     }
 }

@@ -8,16 +8,15 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import io.github.piotr_janczukowicz.util.EnumUtils;
 
 /** The severity of the advisory. */
-@CatalogSchema({
-    "components/schemas/global-advisory/properties/severity",
-    "operations/security-advisories/list-global-advisories/parameters/4"
-})
+@CatalogSchema("components/schemas/global-advisory/properties/severity")
 public enum GitHubSecurityAdvisorySeverity {
     CRITICAL("critical"),
     HIGH("high"),
     MEDIUM("medium"),
     LOW("low"),
-    UNKNOWN("unknown");
+    UNKNOWN("unknown"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubSecurityAdvisorySeverity> WIRE_INDEX =
             EnumUtils.index(GitHubSecurityAdvisorySeverity.class, GitHubSecurityAdvisorySeverity::wireValue);
@@ -44,14 +43,11 @@ public enum GitHubSecurityAdvisorySeverity {
      * @param value JSON value
      * @return matching GitHubSecurityAdvisorySeverity
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known security advisory severity
      */
     @JsonCreator
     public static GitHubSecurityAdvisorySeverity fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException("Unknown GitHub security advisory severity: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

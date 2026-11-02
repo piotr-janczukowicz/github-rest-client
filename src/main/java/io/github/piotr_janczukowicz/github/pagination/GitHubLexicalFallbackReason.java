@@ -19,7 +19,7 @@ public enum GitHubLexicalFallbackReason {
     ONLY_NON_SEMANTIC_FIELDS_REQUESTED("only_non_semantic_fields_requested"),
     SERVICE_UNAVAILABLE("service_unavailable"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubLexicalFallbackReason> WIRE_INDEX =
             EnumUtils.index(GitHubLexicalFallbackReason.class, GitHubLexicalFallbackReason::wireValue);
@@ -39,6 +39,6 @@ public enum GitHubLexicalFallbackReason {
     public static GitHubLexicalFallbackReason fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

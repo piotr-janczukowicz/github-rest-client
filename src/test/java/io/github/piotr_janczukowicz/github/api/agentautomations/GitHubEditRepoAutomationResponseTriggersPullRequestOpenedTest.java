@@ -23,18 +23,6 @@ class GitHubEditRepoAutomationResponseTriggersPullRequestOpenedTest {
     }
 
     @Test
-    void constructor_shouldLeavePathsNull_whenNull() {
-        final GitHubEditRepoAutomationResponseTriggersPullRequestOpenedBuilder builder =
-                GitHubEditRepoAutomationResponseTriggersPullRequestOpenedBuilder.builder(
-                                AgentAutomationsCatalogFixtures.editRepoAutomationResponseTriggersPullRequestOpened())
-                        .paths(null);
-
-        final GitHubEditRepoAutomationResponseTriggersPullRequestOpened sut = builder.build();
-
-        assertThat(sut.paths()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenPathsTooSmall() {
         final GitHubEditRepoAutomationResponseTriggersPullRequestOpenedBuilder builder =
                 GitHubEditRepoAutomationResponseTriggersPullRequestOpenedBuilder.builder(
@@ -56,5 +44,16 @@ class GitHubEditRepoAutomationResponseTriggersPullRequestOpenedTest {
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("paths");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenPathsNull() {
+        final GitHubEditRepoAutomationResponseTriggersPullRequestOpened value =
+                GitHubEditRepoAutomationResponseTriggersPullRequestOpenedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.editRepoAutomationResponseTriggersPullRequestOpened())
+                        .paths(null)
+                        .build();
+
+        assertThat(value.paths()).isNull();
     }
 }

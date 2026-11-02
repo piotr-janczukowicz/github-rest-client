@@ -18,7 +18,9 @@ public enum GitHubEnterpriseTokenInventoryItemRepositorySelection {
     /** Subset. */
     SUBSET("subset"),
     /** None. */
-    NONE("none");
+    NONE("none"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubEnterpriseTokenInventoryItemRepositorySelection> WIRE_INDEX =
             EnumUtils.index(
@@ -52,9 +54,6 @@ public enum GitHubEnterpriseTokenInventoryItemRepositorySelection {
     public static GitHubEnterpriseTokenInventoryItemRepositorySelection fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException(
-                        "Unknown GitHub enterprise token inventory item repository selection: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

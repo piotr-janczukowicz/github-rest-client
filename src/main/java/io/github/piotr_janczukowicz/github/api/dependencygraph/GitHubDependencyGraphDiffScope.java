@@ -12,7 +12,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 public enum GitHubDependencyGraphDiffScope {
     UNKNOWN("unknown"),
     RUNTIME("runtime"),
-    DEVELOPMENT("development");
+    DEVELOPMENT("development"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubDependencyGraphDiffScope> WIRE_INDEX =
             EnumUtils.index(GitHubDependencyGraphDiffScope.class, GitHubDependencyGraphDiffScope::wireValue);
@@ -44,6 +46,6 @@ public enum GitHubDependencyGraphDiffScope {
     public static GitHubDependencyGraphDiffScope fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

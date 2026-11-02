@@ -983,6 +983,7 @@ class GitHubTest {
             softly.assertThat(pulls.comments()).isNotNull();
             softly.assertThat(pulls.reviewRequests()).isNotNull();
             softly.assertThat(pulls.reviews()).isNotNull();
+            softly.assertThat(pulls.agentMerge()).isNotNull();
             softly.assertThat(pulls.stacks()).isNotNull();
             softly.assertThat(pulls.pullRequest()).isSameAs(pulls.pullRequest());
         });

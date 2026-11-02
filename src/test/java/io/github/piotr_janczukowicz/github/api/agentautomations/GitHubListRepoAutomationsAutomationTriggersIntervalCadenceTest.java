@@ -5,19 +5,16 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
 
 @UnitTest
 class GitHubListRepoAutomationsAutomationTriggersIntervalCadenceTest {
 
     @ParameterizedTest
     @CsvSource({"hourly,HOURLY", "daily,DAILY", "weekly,WEEKLY"})
-    void fromWire_shouldReturnValue_whenKnownValue(
+    void fromWire_shouldReturnConstant_whenKnownValue(
             final String wire, final GitHubListRepoAutomationsAutomationTriggersIntervalCadence value) {
         final GitHubListRepoAutomationsAutomationTriggersIntervalCadence decoded =
                 GitHubListRepoAutomationsAutomationTriggersIntervalCadence.fromWire(wire);
@@ -28,30 +25,25 @@ class GitHubListRepoAutomationsAutomationTriggersIntervalCadenceTest {
         });
     }
 
-    @ParameterizedTest
-    @MethodSource("invalidWire")
-    void fromWire_shouldThrow_whenInvalid(
-            final String wire, final Class<? extends Throwable> type, final String message) {
+    @Test
+    void fromWire_shouldThrow_whenValueNull() {
         final Throwable thrown =
-                catchThrowable(() -> GitHubListRepoAutomationsAutomationTriggersIntervalCadence.fromWire(wire));
+                catchThrowable(() -> GitHubListRepoAutomationsAutomationTriggersIntervalCadence.fromWire(null));
 
-        assertThat(thrown).isInstanceOf(type).hasMessageContaining(message);
-    }
-
-    private static Stream<Arguments> invalidWire() {
-        return Stream.of(Arguments.of(null, NullPointerException.class, "value"));
+        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("value");
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubListRepoAutomationsAutomationTriggersIntervalCadence decoded =
                 GitHubListRepoAutomationsAutomationTriggersIntervalCadence.fromWire(wire);
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubListRepoAutomationsAutomationTriggersIntervalCadence.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded)
+                    .isEqualTo(GitHubListRepoAutomationsAutomationTriggersIntervalCadence.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

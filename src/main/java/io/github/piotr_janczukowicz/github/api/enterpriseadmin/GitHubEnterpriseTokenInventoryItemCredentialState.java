@@ -22,7 +22,7 @@ public enum GitHubEnterpriseTokenInventoryItemCredentialState {
     /** Deleted. */
     DELETED("deleted"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubEnterpriseTokenInventoryItemCredentialState> WIRE_INDEX =
             EnumUtils.index(
@@ -56,6 +56,6 @@ public enum GitHubEnterpriseTokenInventoryItemCredentialState {
     public static GitHubEnterpriseTokenInventoryItemCredentialState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

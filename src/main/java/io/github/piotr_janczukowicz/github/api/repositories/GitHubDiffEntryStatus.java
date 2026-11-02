@@ -18,7 +18,7 @@ public enum GitHubDiffEntryStatus {
     CHANGED("changed"),
     UNCHANGED("unchanged"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubDiffEntryStatus> WIRE_INDEX =
             EnumUtils.index(GitHubDiffEntryStatus.class, GitHubDiffEntryStatus::wireValue);
@@ -50,6 +50,6 @@ public enum GitHubDiffEntryStatus {
     public static GitHubDiffEntryStatus fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

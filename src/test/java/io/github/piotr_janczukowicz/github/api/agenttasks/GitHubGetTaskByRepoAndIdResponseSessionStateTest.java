@@ -42,15 +42,15 @@ class GitHubGetTaskByRepoAndIdResponseSessionStateTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubGetTaskByRepoAndIdResponseSessionState decoded =
                 GitHubGetTaskByRepoAndIdResponseSessionState.fromWire(wire);
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubGetTaskByRepoAndIdResponseSessionState.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubGetTaskByRepoAndIdResponseSessionState.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

@@ -16,7 +16,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 class GitHubCopilotOrganizationPlanTypeTest {
 
     @ParameterizedTest
-    @CsvSource({"business,BUSINESS,enterprise,ENTERPRISE"})
+    @CsvSource({"business,BUSINESS", "enterprise,ENTERPRISE", "access,ACCESS"})
     void fromWire_shouldReturnType_whenKnownValue(final String wire, final GitHubCopilotOrganizationPlanType value) {
         final GitHubCopilotOrganizationPlanType decoded = GitHubCopilotOrganizationPlanType.fromWire(wire);
 
@@ -40,14 +40,14 @@ class GitHubCopilotOrganizationPlanTypeTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubCopilotOrganizationPlanType decoded = GitHubCopilotOrganizationPlanType.fromWire(wire);
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubCopilotOrganizationPlanType.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubCopilotOrganizationPlanType.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

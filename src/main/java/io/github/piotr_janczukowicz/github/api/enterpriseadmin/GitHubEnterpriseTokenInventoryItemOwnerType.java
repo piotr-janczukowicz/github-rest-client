@@ -20,7 +20,7 @@ public enum GitHubEnterpriseTokenInventoryItemOwnerType {
     /** Github app. */
     GITHUB_APP("github_app"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubEnterpriseTokenInventoryItemOwnerType> WIRE_INDEX = EnumUtils.index(
             GitHubEnterpriseTokenInventoryItemOwnerType.class, GitHubEnterpriseTokenInventoryItemOwnerType::wireValue);
@@ -52,6 +52,6 @@ public enum GitHubEnterpriseTokenInventoryItemOwnerType {
     public static GitHubEnterpriseTokenInventoryItemOwnerType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -2,8 +2,9 @@
   "cadence": [
     "hourly"
   ],
-  "hour_utc": 9,
+  "hour_utc": 1,
   "day_of_week": 1,
-  "minute_utc": 15,
-  "write_scope": "trigger"
+  "minute_utc": 0,
+  "write_scope": "trigger",
+  "allow_copilot_triggers": true
 }

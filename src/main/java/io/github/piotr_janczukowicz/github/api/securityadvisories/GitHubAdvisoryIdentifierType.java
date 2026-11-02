@@ -16,7 +16,7 @@ public enum GitHubAdvisoryIdentifierType {
     CVE("CVE"),
     GHSA("GHSA"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubAdvisoryIdentifierType> WIRE_INDEX =
             EnumUtils.index(GitHubAdvisoryIdentifierType.class, GitHubAdvisoryIdentifierType::wireValue);
@@ -48,6 +48,6 @@ public enum GitHubAdvisoryIdentifierType {
     public static GitHubAdvisoryIdentifierType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

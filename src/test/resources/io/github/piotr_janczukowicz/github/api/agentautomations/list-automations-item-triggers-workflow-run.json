@@ -1,10 +1,11 @@
 {
   "workflows": [
-    "CI"
+    "workflows"
   ],
   "conclusions": [
     "failure"
   ],
-  "query": "is:open label:bug",
-  "write_scope": "trigger"
+  "query": "query",
+  "write_scope": "trigger",
+  "allow_copilot_triggers": true
 }

@@ -103,7 +103,7 @@ public final class RepositoriesCatalogFixtures {
     }
 
     static GitHubRepositoryRuleMaxFileSizeParameters maxFileSizeParameters() {
-        return new GitHubRepositoryRuleMaxFileSizeParameters(100);
+        return new GitHubRepositoryRuleMaxFileSizeParameters(100, List.of("assets/big.bin"));
     }
 
     static GitHubRepositoryRuleMaxFilePathLengthParameters maxFilePathLengthParameters() {
@@ -111,7 +111,7 @@ public final class RepositoriesCatalogFixtures {
     }
 
     static GitHubRepositoryRuleFilePathRestrictionParameters filePathRestrictionParameters() {
-        return new GitHubRepositoryRuleFilePathRestrictionParameters(List.of("docs/"));
+        return new GitHubRepositoryRuleFilePathRestrictionParameters(List.of("docs/"), List.of("docs/keep.md"));
     }
 
     static GitHubRepositoryRuleFileExtensionRestrictionParameters fileExtensionRestrictionParameters() {
@@ -165,7 +165,8 @@ public final class RepositoriesCatalogFixtures {
                         List.of("*.java"),
                         1,
                         new GitHubRepositoryRuleParamsRequiredReviewerConfigurationReviewer(
-                                1L, GitHubRepositoryRuleParamsRequiredReviewerConfigurationReviewerType.TEAM))));
+                                1L, GitHubRepositoryRuleParamsRequiredReviewerConfigurationReviewerType.TEAM))),
+                true);
     }
 
     static GitHubRepositoryRuleset repositoryRulesetForVersionState() {
@@ -2187,7 +2188,7 @@ public final class RepositoriesCatalogFixtures {
     public static GitHubRepositoryRuleFilePathRestrictionDetailed repositoryRuleFilePathRestrictionDetailed() {
         return new GitHubRepositoryRuleFilePathRestrictionDetailed(
                 GitHubRepositoryRuleFilePathRestrictionType.FILE_PATH_RESTRICTION,
-                new GitHubRepositoryRuleFilePathRestrictionParameters(List.of("example")),
+                new GitHubRepositoryRuleFilePathRestrictionParameters(List.of("example"), null),
                 GitHubRepositoryRuleRulesetInfoSourceType.REPOSITORY,
                 "my-org/my-repo",
                 42L);
@@ -2215,7 +2216,7 @@ public final class RepositoriesCatalogFixtures {
     public static GitHubRepositoryRuleMaxFileSizeDetailed repositoryRuleMaxFileSizeDetailed() {
         return new GitHubRepositoryRuleMaxFileSizeDetailed(
                 GitHubRepositoryRuleMaxFileSizeType.MAX_FILE_SIZE,
-                new GitHubRepositoryRuleMaxFileSizeParameters(1),
+                new GitHubRepositoryRuleMaxFileSizeParameters(1, null),
                 GitHubRepositoryRuleRulesetInfoSourceType.REPOSITORY,
                 "my-org/my-repo",
                 42L);

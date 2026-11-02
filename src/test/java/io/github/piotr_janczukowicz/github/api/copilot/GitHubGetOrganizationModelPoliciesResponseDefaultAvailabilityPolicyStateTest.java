@@ -22,7 +22,7 @@ class GitHubGetOrganizationModelPoliciesResponseDefaultAvailabilityPolicyStateTe
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubGetOrganizationModelPoliciesResponseDefaultAvailabilityPolicyState decoded =
@@ -30,8 +30,8 @@ class GitHubGetOrganizationModelPoliciesResponseDefaultAvailabilityPolicyStateTe
 
         assertSoftly(softly -> {
             softly.assertThat(decoded)
-                    .isEqualTo(GitHubGetOrganizationModelPoliciesResponseDefaultAvailabilityPolicyState.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+                    .isEqualTo(GitHubGetOrganizationModelPoliciesResponseDefaultAvailabilityPolicyState.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

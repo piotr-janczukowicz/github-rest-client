@@ -6,6 +6,7 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -15,7 +16,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 class GitHubCopilotSeatPlanTypeTest {
 
     @ParameterizedTest
-    @CsvSource({"business,BUSINESS", "enterprise,ENTERPRISE", "unknown,UNKNOWN"})
+    @CsvSource({"business,BUSINESS", "enterprise,ENTERPRISE", "unknown,UNKNOWN", "access,ACCESS"})
     void fromWire_shouldReturnType_whenKnownValue(final String wire, final GitHubCopilotSeatPlanType value) {
         final GitHubCopilotSeatPlanType decoded = GitHubCopilotSeatPlanType.fromWire(wire);
 
@@ -35,8 +36,18 @@ class GitHubCopilotSeatPlanTypeTest {
     }
 
     private static Stream<Arguments> invalidWire() {
-        return Stream.of(
-                Arguments.of("unknown-plan", IllegalArgumentException.class, "unknown-plan"),
-                Arguments.of(null, NullPointerException.class, "value"));
+        return Stream.of(Arguments.of(null, NullPointerException.class, "value"));
+    }
+
+    @Test
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
+        final String wire = "brand_new_value";
+
+        final GitHubCopilotSeatPlanType decoded = GitHubCopilotSeatPlanType.fromWire(wire);
+
+        assertSoftly(softly -> {
+            softly.assertThat(decoded).isEqualTo(GitHubCopilotSeatPlanType.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
+        });
     }
 }

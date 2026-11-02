@@ -31,12 +31,12 @@ class GitHubPagesSiteStatusTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final GitHubPagesSiteStatus decoded = GitHubPagesSiteStatus.fromWire("brand_new_value");
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubPagesSiteStatus.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubPagesSiteStatus.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

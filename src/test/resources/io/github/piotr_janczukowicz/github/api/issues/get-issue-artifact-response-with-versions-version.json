@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "name": "Updated implementation plan",
+  "body": "## Updated plan\n\nBuild the feature in three phases.",
+  "body_html": "<h2>Updated plan</h2>\n<p>Build the feature in three phases.</p>",
+  "created_at": "2026-01-01T00:00:00Z",
+  "actor": {
+    "login": "monalisa",
+    "id": 1
+  }
+}

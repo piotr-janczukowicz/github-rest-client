@@ -1,7 +1,5 @@
 package io.github.piotr_janczukowicz.github.api.enterpriseadmin;
 
-import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonNull;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
@@ -25,12 +23,6 @@ import org.jspecify.annotations.Nullable;
 })
 @Flavors({GitHubFlavor.GHEC, GitHubFlavor.GHES})
 public record GitHubGroupResponseMember(
-        String value,
-        @JsonProperty("$ref") String ref,
-        @Nullable String display) {
-
-    public GitHubGroupResponseMember {
-        requireNonNull(value, "value");
-        requireNonNull(ref, "ref");
-    }
-}
+        @Nullable String value,
+        @Nullable @JsonProperty("$ref") String ref,
+        @Nullable String display) {}

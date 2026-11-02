@@ -31,12 +31,12 @@ class GitHubReleaseAssetStateTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final GitHubReleaseAssetState decoded = GitHubReleaseAssetState.fromWire("brand_new_value");
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubReleaseAssetState.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubReleaseAssetState.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

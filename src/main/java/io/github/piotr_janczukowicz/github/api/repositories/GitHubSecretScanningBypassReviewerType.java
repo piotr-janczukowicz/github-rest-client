@@ -14,7 +14,7 @@ public enum GitHubSecretScanningBypassReviewerType {
     TEAM("TEAM"),
     ROLE("ROLE"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubSecretScanningBypassReviewerType> WIRE_INDEX = EnumUtils.index(
             GitHubSecretScanningBypassReviewerType.class, GitHubSecretScanningBypassReviewerType::wireValue);
@@ -46,6 +46,6 @@ public enum GitHubSecretScanningBypassReviewerType {
     public static GitHubSecretScanningBypassReviewerType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

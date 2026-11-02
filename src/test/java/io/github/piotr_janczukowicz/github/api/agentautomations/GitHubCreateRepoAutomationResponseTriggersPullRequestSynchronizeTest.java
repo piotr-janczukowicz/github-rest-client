@@ -24,19 +24,6 @@ class GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronizeTest {
     }
 
     @Test
-    void constructor_shouldLeavePathsNull_whenNull() {
-        final GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronizeBuilder builder =
-                GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronizeBuilder.builder(
-                                AgentAutomationsCatalogFixtures
-                                        .createRepoAutomationResponseTriggersPullRequestSynchronize())
-                        .paths(null);
-
-        final GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronize sut = builder.build();
-
-        assertThat(sut.paths()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenPathsTooSmall() {
         final GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronizeBuilder builder =
                 GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronizeBuilder.builder(
@@ -60,5 +47,17 @@ class GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronizeTest {
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("paths");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenPathsNull() {
+        final GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronize value =
+                GitHubCreateRepoAutomationResponseTriggersPullRequestSynchronizeBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationResponseTriggersPullRequestSynchronize())
+                        .paths(null)
+                        .build();
+
+        assertThat(value.paths()).isNull();
     }
 }

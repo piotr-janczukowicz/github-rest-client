@@ -1,0 +1,9 @@
+{
+  "name": "name",
+  "tools": [
+    {
+      "id": "id"
+    }
+  ],
+  "supports_wildcard": true
+}

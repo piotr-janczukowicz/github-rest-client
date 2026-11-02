@@ -21,7 +21,7 @@ public enum GitHubCodespaceLocation {
     WEST_EUROPE("WestEurope"),
     WEST_US2("WestUs2"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodespaceLocation> WIRE_INDEX =
             EnumUtils.index(GitHubCodespaceLocation.class, GitHubCodespaceLocation::wireValue);
@@ -46,13 +46,13 @@ public enum GitHubCodespaceLocation {
      * Resolves codespace location from its wire value.
      *
      * @param value JSON value
-     * @return matching constant, or {@link #UNKNOWN} when the value is not known
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
      */
     @JsonCreator
     public static GitHubCodespaceLocation fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -14,6 +14,7 @@ import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubGlobalAd
 import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubGlobalAdvisoryType;
 import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubListGlobalAdvisoriesFilter;
 import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubListGlobalAdvisoriesFilterBuilder;
+import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubListGlobalAdvisoriesSeverity;
 import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubListRepositoryAdvisoriesFilter;
 import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubListRepositoryAdvisoriesFilterBuilder;
 import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubRepositoryAdvisoriesFilterState;
@@ -28,7 +29,6 @@ import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubReposito
 import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubRepositoryAdvisoryVulnerabilityPayloadBuilder;
 import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubSecurityAdvisoryCreditType;
 import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubSecurityAdvisoryEcosystem;
-import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubSecurityAdvisorySeverity;
 import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubUpdateRepositoryAdvisoryPayload;
 import io.github.piotr_janczukowicz.github.api.securityadvisories.GitHubUpdateRepositoryAdvisoryPayloadBuilder;
 import io.github.piotr_janczukowicz.github.api.teams.GitHubCreateTeamPayload;
@@ -371,7 +371,7 @@ class GitHubRecordBuilderTest {
                 GitHubGlobalAdvisoryType.REVIEWED,
                 "CVE-2024-0001",
                 GitHubSecurityAdvisoryEcosystem.NPM,
-                GitHubSecurityAdvisorySeverity.HIGH,
+                GitHubListGlobalAdvisoriesSeverity.HIGH,
                 cwes,
                 true,
                 affects,
@@ -388,7 +388,7 @@ class GitHubRecordBuilderTest {
                 .type(GitHubGlobalAdvisoryType.REVIEWED)
                 .cveId("CVE-2024-0001")
                 .ecosystem(GitHubSecurityAdvisoryEcosystem.NPM)
-                .severity(GitHubSecurityAdvisorySeverity.HIGH)
+                .severity(GitHubListGlobalAdvisoriesSeverity.HIGH)
                 .cwes(cwes)
                 .isWithdrawn(true)
                 .affects(affects)

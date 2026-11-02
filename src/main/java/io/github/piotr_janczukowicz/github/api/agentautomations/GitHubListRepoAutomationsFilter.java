@@ -11,14 +11,14 @@ import org.jspecify.annotations.Nullable;
 /**
  * Query filters for {@code GET /agents/repos/{owner}/{repo}/automations}, excluding pagination.
  *
- * @param ownerType Filter automations by owner type. {@code user} returns automations owned by their creator,
- *     {@code repository} returns automations owned by the repository. Omit to return both.
+ * @param type Filter automations by type. {@code personal} returns automations owned by their creator, {@code shared}
+ *     returns automations owned by the repository. Omit to return both.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
 @CatalogSchema("operations/agent-automations/list-repo-automations/parameters")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
-public record GitHubListRepoAutomationsFilter(@Nullable GitHubListRepoAutomationsOwnerType ownerType) {
+public record GitHubListRepoAutomationsFilter(@Nullable GitHubListRepoAutomationsType type) {
 
     /**
      * Filter with all query parameters unset.
@@ -35,10 +35,10 @@ public record GitHubListRepoAutomationsFilter(@Nullable GitHubListRepoAutomation
      * @return query map
      */
     public Map<String, String> toQueryParameters() {
-        if (ownerType == null) {
+        if (type == null) {
             return Map.of();
         }
 
-        return Map.of("owner_type", ownerType.wireValue());
+        return Map.of("type", type.wireValue());
     }
 }

@@ -35,8 +35,8 @@ import tools.jackson.databind.type.LogicalType;
  * unknown values in {@code fromWire}; Jackson turns that rejection into {@code null} only when reading. Building a
  * request payload with an enum constant or calling {@code fromWire} yourself is unaffected and still fails on an
  * invalid value. A property that is required (a record component that rejects {@code null}) still fails when its value
- * is unknown, except for the open-ended response enums that declare an {@code UNKNOWN} constant: their {@code fromWire}
- * returns it, so the property stays non-null and the page survives.
+ * is unknown, except for the open-ended response enums that declare an {@code UNRECOGNIZED} constant: their
+ * {@code fromWire} returns it, so the property stays non-null and the page survives.
  *
  * <p>A JSON object with the same key twice fails the decode instead of keeping one of the values: a discriminator read
  * from the first and a payload bound from the last could otherwise disagree. GitHub never sends duplicate keys.

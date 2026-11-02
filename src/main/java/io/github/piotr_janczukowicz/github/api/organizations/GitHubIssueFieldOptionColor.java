@@ -22,7 +22,7 @@ public enum GitHubIssueFieldOptionColor {
     PINK("pink"),
     PURPLE("purple"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubIssueFieldOptionColor> WIRE_INDEX =
             EnumUtils.index(GitHubIssueFieldOptionColor.class, GitHubIssueFieldOptionColor::wireValue);
@@ -54,6 +54,6 @@ public enum GitHubIssueFieldOptionColor {
     public static GitHubIssueFieldOptionColor fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

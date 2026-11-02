@@ -21,8 +21,8 @@ class GitHubEnterpriseTokenInventoryItemTypeTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         assertThat(GitHubEnterpriseTokenInventoryItemType.fromWire("not-a-known-value"))
-                .isEqualTo(GitHubEnterpriseTokenInventoryItemType.UNKNOWN);
+                .isEqualTo(GitHubEnterpriseTokenInventoryItemType.UNRECOGNIZED);
     }
 }

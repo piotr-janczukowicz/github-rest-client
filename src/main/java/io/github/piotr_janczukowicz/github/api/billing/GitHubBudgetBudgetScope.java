@@ -26,7 +26,7 @@ public enum GitHubBudgetBudgetScope {
     MULTI_USER_COST_CENTER("multi_user_cost_center"),
     USER("user"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubBudgetBudgetScope> WIRE_INDEX =
             EnumUtils.index(GitHubBudgetBudgetScope.class, GitHubBudgetBudgetScope::wireValue);
@@ -51,13 +51,13 @@ public enum GitHubBudgetBudgetScope {
      * Resolves scope of a budget from its wire value.
      *
      * @param value JSON value
-     * @return matching constant, or {@link #UNKNOWN} when the value is not known
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
      */
     @JsonCreator
     public static GitHubBudgetBudgetScope fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

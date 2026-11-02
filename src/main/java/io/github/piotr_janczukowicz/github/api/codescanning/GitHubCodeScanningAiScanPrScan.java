@@ -21,7 +21,7 @@ public enum GitHubCodeScanningAiScanPrScan {
     ENABLED("enabled"),
     DISABLED("disabled"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningAiScanPrScan> WIRE_INDEX =
             EnumUtils.index(GitHubCodeScanningAiScanPrScan.class, GitHubCodeScanningAiScanPrScan::wireValue);
@@ -53,6 +53,6 @@ public enum GitHubCodeScanningAiScanPrScan {
     public static GitHubCodeScanningAiScanPrScan fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -2,7 +2,6 @@ package io.github.piotr_janczukowicz.github.api.agentautomations;
 
 import static io.github.piotr_janczukowicz.util.ValidationUtils.requireBetweenIfPresent;
 import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonEmpty;
-import static io.github.piotr_janczukowicz.util.ValidationUtils.requireUniqueItems;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
@@ -13,7 +12,7 @@ import java.util.List;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Configuration of the interval trigger.
+ * Interval.
  *
  * @param cadence One or more schedules on which the Automation runs.
  * @param hourUtc UTC hour anchor (0 through 23) for daily and weekly schedules. Omitted daily and weekly values default
@@ -22,9 +21,11 @@ import org.jspecify.annotations.Nullable;
  *     Omitted weekly values default to Monday ({@code 1}).
  * @param minuteUtc UTC minute anchor for daily and weekly schedules. Omitted daily and weekly values default to
  *     {@code 0}. Must be omitted whenever {@code cadence} includes {@code hourly}.
- * @param writeScope Override the Automation {@code write_scope} for runs started by this trigger. If omitted, the
- *     automation's {@code write_scope} is used. Organization or repository policy may restrict the effective scope to
- *     {@code trigger}.
+ * @param writeScope Has no effect: scheduled runs can change any resource in the repository, and an organization or
+ *     repository policy requiring trigger-scoped writes does not apply to them.
+ * @param allowCopilotTriggers When true, events Copilot creates, including from other automations and Copilot sessions,
+ *     can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it
+ *     on: creating a trigger with true, or changing it from false to true, returns 422.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
@@ -35,9 +36,10 @@ public record GitHubGetRepoAutomationResponseTriggersInterval(
         @Nullable Integer hourUtc,
         @Nullable Integer dayOfWeek,
         @Nullable GitHubAutomationMinuteUtc minuteUtc,
-        @Nullable GitHubGetRepoAutomationResponseTriggersIntervalWriteScope writeScope) {
+        @Nullable GitHubAutomationWriteScope writeScope,
+        @Nullable Boolean allowCopilotTriggers) {
     public GitHubGetRepoAutomationResponseTriggersInterval {
-        requireUniqueItems(requireNonEmpty(cadence, "cadence"), "cadence");
+        requireNonEmpty(cadence, "cadence");
         requireBetweenIfPresent(hourUtc, 0, 23, "hourUtc");
         requireBetweenIfPresent(dayOfWeek, 0, 6, "dayOfWeek");
     }

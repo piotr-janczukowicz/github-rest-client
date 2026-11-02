@@ -20,7 +20,7 @@ public enum GitHubDiscussionAnswerChosenByType {
     /** Organization. */
     ORGANIZATION("Organization"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubDiscussionAnswerChosenByType> WIRE_INDEX =
             EnumUtils.index(GitHubDiscussionAnswerChosenByType.class, GitHubDiscussionAnswerChosenByType::wireValue);
@@ -52,6 +52,6 @@ public enum GitHubDiscussionAnswerChosenByType {
     public static GitHubDiscussionAnswerChosenByType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -35,7 +35,7 @@ class GitHubCreateRepoAutomationResponseTriggersIntervalTest {
     }
 
     @Test
-    void constructor_shouldThrow_whenCadenceDuplicated() {
+    void constructor_shouldAccept_whenCadenceRepeat() {
         final GitHubCreateRepoAutomationResponseTriggersIntervalBuilder builder =
                 GitHubCreateRepoAutomationResponseTriggersIntervalBuilder.builder(
                                 AgentAutomationsCatalogFixtures.createRepoAutomationResponseTriggersInterval())
@@ -43,13 +43,13 @@ class GitHubCreateRepoAutomationResponseTriggersIntervalTest {
                                 GitHubCreateRepoAutomationResponseTriggersIntervalCadence.HOURLY,
                                 GitHubCreateRepoAutomationResponseTriggersIntervalCadence.HOURLY));
 
-        final Throwable thrown = catchThrowable(builder::build);
+        final GitHubCreateRepoAutomationResponseTriggersInterval value = builder.build();
 
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("cadence");
+        assertThat(value.cadence()).hasSize(2);
     }
 
     @Test
-    void constructor_shouldThrow_whenHourUtcBelowMinimum() {
+    void constructor_shouldThrow_whenHourUtcTooSmall() {
         final GitHubCreateRepoAutomationResponseTriggersIntervalBuilder builder =
                 GitHubCreateRepoAutomationResponseTriggersIntervalBuilder.builder(
                                 AgentAutomationsCatalogFixtures.createRepoAutomationResponseTriggersInterval())
@@ -61,7 +61,7 @@ class GitHubCreateRepoAutomationResponseTriggersIntervalTest {
     }
 
     @Test
-    void constructor_shouldThrow_whenHourUtcAboveMaximum() {
+    void constructor_shouldThrow_whenHourUtcTooLarge() {
         final GitHubCreateRepoAutomationResponseTriggersIntervalBuilder builder =
                 GitHubCreateRepoAutomationResponseTriggersIntervalBuilder.builder(
                                 AgentAutomationsCatalogFixtures.createRepoAutomationResponseTriggersInterval())
@@ -73,7 +73,7 @@ class GitHubCreateRepoAutomationResponseTriggersIntervalTest {
     }
 
     @Test
-    void constructor_shouldThrow_whenDayOfWeekBelowMinimum() {
+    void constructor_shouldThrow_whenDayOfWeekTooSmall() {
         final GitHubCreateRepoAutomationResponseTriggersIntervalBuilder builder =
                 GitHubCreateRepoAutomationResponseTriggersIntervalBuilder.builder(
                                 AgentAutomationsCatalogFixtures.createRepoAutomationResponseTriggersInterval())
@@ -85,7 +85,7 @@ class GitHubCreateRepoAutomationResponseTriggersIntervalTest {
     }
 
     @Test
-    void constructor_shouldThrow_whenDayOfWeekAboveMaximum() {
+    void constructor_shouldThrow_whenDayOfWeekTooLarge() {
         final GitHubCreateRepoAutomationResponseTriggersIntervalBuilder builder =
                 GitHubCreateRepoAutomationResponseTriggersIntervalBuilder.builder(
                                 AgentAutomationsCatalogFixtures.createRepoAutomationResponseTriggersInterval())

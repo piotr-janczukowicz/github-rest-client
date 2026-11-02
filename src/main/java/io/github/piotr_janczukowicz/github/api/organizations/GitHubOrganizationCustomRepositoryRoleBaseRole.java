@@ -22,7 +22,7 @@ public enum GitHubOrganizationCustomRepositoryRoleBaseRole {
     /** Maintain. */
     MAINTAIN("maintain"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubOrganizationCustomRepositoryRoleBaseRole> WIRE_INDEX =
             EnumUtils.index(
@@ -56,6 +56,6 @@ public enum GitHubOrganizationCustomRepositoryRoleBaseRole {
     public static GitHubOrganizationCustomRepositoryRoleBaseRole fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

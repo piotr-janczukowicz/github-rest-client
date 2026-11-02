@@ -147,7 +147,7 @@ class GitHubProjectItemSimpleDeserializerTest {
         final GitHubProjectItemSimple item = GitHubJsonCodecs.defaults().decode(json, GitHubProjectItemSimple.class);
 
         assertSoftly(softly -> {
-            softly.assertThat(item.contentType()).isEqualTo(GitHubProjectItemContentType.UNKNOWN);
+            softly.assertThat(item.contentType()).isEqualTo(GitHubProjectItemContentType.UNRECOGNIZED);
             softly.assertThat(item.content()).isEqualTo(new GitHubProjectItemContent.Unknown(Map.of("id", 1)));
         });
     }
@@ -161,7 +161,7 @@ class GitHubProjectItemSimpleDeserializerTest {
         final GitHubProjectItemSimple item = GitHubJsonCodecs.defaults().decode(json, GitHubProjectItemSimple.class);
 
         assertSoftly(softly -> {
-            softly.assertThat(item.contentType()).isEqualTo(GitHubProjectItemContentType.UNKNOWN);
+            softly.assertThat(item.contentType()).isEqualTo(GitHubProjectItemContentType.UNRECOGNIZED);
             softly.assertThat(item.content()).isNull();
         });
     }
@@ -196,7 +196,7 @@ class GitHubProjectItemSimpleDeserializerTest {
 
         assertThat(items)
                 .extracting(GitHubProjectItemSimple::contentType)
-                .containsExactly(GitHubProjectItemContentType.ISSUE, GitHubProjectItemContentType.UNKNOWN);
+                .containsExactly(GitHubProjectItemContentType.ISSUE, GitHubProjectItemContentType.UNRECOGNIZED);
     }
 
     @ParameterizedTest

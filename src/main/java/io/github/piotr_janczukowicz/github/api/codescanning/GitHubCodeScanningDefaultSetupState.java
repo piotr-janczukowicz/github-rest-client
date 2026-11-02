@@ -13,7 +13,7 @@ public enum GitHubCodeScanningDefaultSetupState {
     CONFIGURED("configured"),
     NOT_CONFIGURED("not-configured"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningDefaultSetupState> WIRE_INDEX =
             EnumUtils.index(GitHubCodeScanningDefaultSetupState.class, GitHubCodeScanningDefaultSetupState::wireValue);
@@ -45,6 +45,6 @@ public enum GitHubCodeScanningDefaultSetupState {
     public static GitHubCodeScanningDefaultSetupState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

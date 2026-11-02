@@ -24,19 +24,6 @@ class GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledTest {
     }
 
     @Test
-    void constructor_shouldLeavePathsNull_whenNull() {
-        final GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledBuilder builder =
-                GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledBuilder.builder(
-                                AgentAutomationsCatalogFixtures
-                                        .createRepoAutomationResponseTriggersPullRequestLabeled())
-                        .paths(null);
-
-        final GitHubCreateRepoAutomationResponseTriggersPullRequestLabeled sut = builder.build();
-
-        assertThat(sut.paths()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenPathsTooSmall() {
         final GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledBuilder builder =
                 GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledBuilder.builder(
@@ -63,28 +50,39 @@ class GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledTest {
     }
 
     @Test
-    void constructor_shouldLeaveLabelsNull_whenNull() {
-        final GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledBuilder builder =
-                GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledBuilder.builder(
-                                AgentAutomationsCatalogFixtures
-                                        .createRepoAutomationResponseTriggersPullRequestLabeled())
-                        .labels(null);
-
-        final GitHubCreateRepoAutomationResponseTriggersPullRequestLabeled sut = builder.build();
-
-        assertThat(sut.labels()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenLabelsDuplicated() {
         final GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledBuilder builder =
                 GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledBuilder.builder(
                                 AgentAutomationsCatalogFixtures
                                         .createRepoAutomationResponseTriggersPullRequestLabeled())
-                        .labels(List.of("a", "a"));
+                        .labels(List.of("labels", "labels"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("labels");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenPathsNull() {
+        final GitHubCreateRepoAutomationResponseTriggersPullRequestLabeled value =
+                GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationResponseTriggersPullRequestLabeled())
+                        .paths(null)
+                        .build();
+
+        assertThat(value.paths()).isNull();
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenLabelsNull() {
+        final GitHubCreateRepoAutomationResponseTriggersPullRequestLabeled value =
+                GitHubCreateRepoAutomationResponseTriggersPullRequestLabeledBuilder.builder(
+                                AgentAutomationsCatalogFixtures
+                                        .createRepoAutomationResponseTriggersPullRequestLabeled())
+                        .labels(null)
+                        .build();
+
+        assertThat(value.labels()).isNull();
     }
 }

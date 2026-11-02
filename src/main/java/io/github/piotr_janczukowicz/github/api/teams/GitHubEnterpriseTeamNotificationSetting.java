@@ -13,7 +13,7 @@ public enum GitHubEnterpriseTeamNotificationSetting {
     NOTIFICATIONS_ENABLED("notifications_enabled"),
     NOTIFICATIONS_DISABLED("notifications_disabled"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubEnterpriseTeamNotificationSetting> WIRE_INDEX = EnumUtils.index(
             GitHubEnterpriseTeamNotificationSetting.class, GitHubEnterpriseTeamNotificationSetting::wireValue);
@@ -45,6 +45,6 @@ public enum GitHubEnterpriseTeamNotificationSetting {
     public static GitHubEnterpriseTeamNotificationSetting fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

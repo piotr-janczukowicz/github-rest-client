@@ -15,7 +15,7 @@ public enum GitHubForkEventForkeePullRequestCreationPolicy {
     /** collaborators_only. */
     COLLABORATORS_ONLY("collaborators_only"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubForkEventForkeePullRequestCreationPolicy> WIRE_INDEX =
             EnumUtils.index(
@@ -49,6 +49,6 @@ public enum GitHubForkEventForkeePullRequestCreationPolicy {
     public static GitHubForkEventForkeePullRequestCreationPolicy fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

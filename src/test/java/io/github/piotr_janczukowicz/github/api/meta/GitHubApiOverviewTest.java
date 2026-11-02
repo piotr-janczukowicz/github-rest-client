@@ -28,6 +28,7 @@ class GitHubApiOverviewTest {
             softly.assertThat(overview.dependabot()).isNull();
             softly.assertThat(overview.copilot()).isNull();
             softly.assertThat(overview.commitSigningKeys()).isNull();
+            softly.assertThat(overview.sharedIngress()).isNull();
         });
     }
 }

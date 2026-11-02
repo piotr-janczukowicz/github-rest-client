@@ -20,7 +20,7 @@ public enum GitHubCodeScanningDefaultSetupLanguage {
     RUBY("ruby"),
     SWIFT("swift"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningDefaultSetupLanguage> WIRE_INDEX = EnumUtils.index(
             GitHubCodeScanningDefaultSetupLanguage.class, GitHubCodeScanningDefaultSetupLanguage::wireValue);
@@ -52,6 +52,6 @@ public enum GitHubCodeScanningDefaultSetupLanguage {
     public static GitHubCodeScanningDefaultSetupLanguage fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -18,7 +18,7 @@ public enum GitHubGroupResponseSchemaUrn {
     /** urn:ietf:params:scim:api:messages:2.0:ListResponse. */
     LIST_RESPONSE("urn:ietf:params:scim:api:messages:2.0:ListResponse"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubGroupResponseSchemaUrn> WIRE_INDEX =
             EnumUtils.index(GitHubGroupResponseSchemaUrn.class, GitHubGroupResponseSchemaUrn::wireValue);
@@ -50,6 +50,6 @@ public enum GitHubGroupResponseSchemaUrn {
     public static GitHubGroupResponseSchemaUrn fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

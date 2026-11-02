@@ -20,7 +20,7 @@ public enum GitHubMarketplaceListingPlanPriceModel {
     /** Per unit plan. */
     PER_UNIT("PER_UNIT"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubMarketplaceListingPlanPriceModel> WIRE_INDEX = EnumUtils.index(
             GitHubMarketplaceListingPlanPriceModel.class, GitHubMarketplaceListingPlanPriceModel::wireValue);
@@ -52,6 +52,6 @@ public enum GitHubMarketplaceListingPlanPriceModel {
     public static GitHubMarketplaceListingPlanPriceModel fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -9,7 +9,7 @@ import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import io.github.piotr_janczukowicz.util.EnumUtils;
 
-/** Pull request conversation and inline review comment types to match. */
+/** comment types */
 @CatalogSchema(
         "operations/agent-automations/edit-repo-automation/requestBody/properties/triggers/properties/pull_request_comment/properties/comment_types/items")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})

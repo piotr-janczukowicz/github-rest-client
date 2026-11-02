@@ -11,18 +11,6 @@ import org.junit.jupiter.api.Test;
 class GitHubListAutomationsItemTriggersDiscussionUpdatedTest {
 
     @Test
-    void constructor_shouldLeaveCategoriesNull_whenNull() {
-        final GitHubListAutomationsItemTriggersDiscussionUpdatedBuilder builder =
-                GitHubListAutomationsItemTriggersDiscussionUpdatedBuilder.builder(
-                                AgentAutomationsCatalogFixtures.listAutomationsItemTriggersDiscussionUpdated())
-                        .categories(null);
-
-        final GitHubListAutomationsItemTriggersDiscussionUpdated sut = builder.build();
-
-        assertThat(sut.categories()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenCategoriesTooSmall() {
         final GitHubListAutomationsItemTriggersDiscussionUpdatedBuilder builder =
                 GitHubListAutomationsItemTriggersDiscussionUpdatedBuilder.builder(
@@ -39,10 +27,21 @@ class GitHubListAutomationsItemTriggersDiscussionUpdatedTest {
         final GitHubListAutomationsItemTriggersDiscussionUpdatedBuilder builder =
                 GitHubListAutomationsItemTriggersDiscussionUpdatedBuilder.builder(
                                 AgentAutomationsCatalogFixtures.listAutomationsItemTriggersDiscussionUpdated())
-                        .categories(List.of("a", "a"));
+                        .categories(List.of("categories", "categories"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("categories");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenCategoriesNull() {
+        final GitHubListAutomationsItemTriggersDiscussionUpdated value =
+                GitHubListAutomationsItemTriggersDiscussionUpdatedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.listAutomationsItemTriggersDiscussionUpdated())
+                        .categories(null)
+                        .build();
+
+        assertThat(value.categories()).isNull();
     }
 }

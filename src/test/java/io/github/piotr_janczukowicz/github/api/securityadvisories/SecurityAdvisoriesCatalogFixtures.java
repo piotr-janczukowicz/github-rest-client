@@ -2,6 +2,7 @@ package io.github.piotr_janczukowicz.github.api.securityadvisories;
 
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubRepositoryPermissions;
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubSimpleRepository;
+import io.github.piotr_janczukowicz.github.api.search.GitHubAuthorAssociation;
 import io.github.piotr_janczukowicz.github.api.teams.GitHubTeam;
 import io.github.piotr_janczukowicz.github.api.teams.GitHubTeamAccessSource;
 import io.github.piotr_janczukowicz.github.api.teams.GitHubTeamOwnershipType;
@@ -235,5 +236,37 @@ final class SecurityAdvisoriesCatalogFixtures {
                 "https://api.github.com/repos/octocat/GHSA-49wp-qq6x-g2rf/teams",
                 "https://api.github.com/repos/octocat/GHSA-49wp-qq6x-g2rf/git/trees{/sha}",
                 "https://api.github.com/repos/octocat/GHSA-49wp-qq6x-g2rf/hooks");
+    }
+
+    static GitHubRepositoryAdvisoryComment repositoryAdvisoryComment() {
+        return GitHubRepositoryAdvisoryCommentBuilder.builder()
+                .id(1L)
+                .nodeId("node_id")
+                .url(
+                        "https://api.github.com/repos/octocat/Hello-World/security-advisories/GHSA-abcd-1234-5679/comments/1")
+                .htmlUrl("https://api.github.com/html_url")
+                .body("body")
+                .user(UsersCatalogFixtures.octocat())
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .advisoryUrl("https://api.github.com/advisory_url")
+                .authorAssociation(GitHubAuthorAssociation.COLLABORATOR)
+                .build();
+    }
+
+    static GitHubCreateRepositoryAdvisoryCommentPayload createRepositoryAdvisoryCommentPayload() {
+        return GitHubCreateRepositoryAdvisoryCommentPayloadBuilder.builder()
+                .body("body")
+                .build();
+    }
+
+    static GitHubUpdateRepositoryAdvisoryCommentPayload updateRepositoryAdvisoryCommentPayload() {
+        return GitHubUpdateRepositoryAdvisoryCommentPayloadBuilder.builder()
+                .body("body")
+                .build();
+    }
+
+    static GitHubListRepositoryAdvisoryCommentsFilter listRepositoryAdvisoryCommentsFilter() {
+        return new GitHubListRepositoryAdvisoryCommentsFilter(Instant.parse("2026-01-01T00:00:00Z"));
     }
 }

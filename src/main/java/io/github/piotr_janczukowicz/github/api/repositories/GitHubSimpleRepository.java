@@ -4,7 +4,9 @@ import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonNull;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
+import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubPublicMonitoringAlertRepository;
 import io.github.piotr_janczukowicz.github.api.users.GitHubSimpleUser;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import org.jspecify.annotations.Nullable;
@@ -60,6 +62,8 @@ import org.jspecify.annotations.Nullable;
  * @param hooksUrl The API URL to list the hooks on the repository.
  */
 @CatalogSchema("components/schemas/simple-repository")
+// The implemented sealed interface carries the deduction; this type itself decodes as a plain record.
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
 public record GitHubSimpleRepository(
@@ -108,7 +112,8 @@ public record GitHubSimpleRepository(
         String tagsUrl,
         String teamsUrl,
         String treesUrl,
-        String hooksUrl) {
+        String hooksUrl)
+        implements GitHubPublicMonitoringAlertRepository {
     public GitHubSimpleRepository {
         requireNonNull(nodeId, "nodeId");
         requireNonNull(name, "name");

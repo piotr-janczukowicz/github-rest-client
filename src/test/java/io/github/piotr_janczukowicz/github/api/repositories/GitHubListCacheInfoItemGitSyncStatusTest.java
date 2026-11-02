@@ -25,10 +25,10 @@ class GitHubListCacheInfoItemGitSyncStatusTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final GitHubListCacheInfoItemGitSyncStatus decoded = GitHubListCacheInfoItemGitSyncStatus.fromWire("new_state");
 
-        assertThat(decoded).isEqualTo(GitHubListCacheInfoItemGitSyncStatus.UNKNOWN);
+        assertThat(decoded).isEqualTo(GitHubListCacheInfoItemGitSyncStatus.UNRECOGNIZED);
     }
 
     @Test

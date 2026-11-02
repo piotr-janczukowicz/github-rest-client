@@ -33,8 +33,8 @@ class GitHubEnterpriseTokenInventoryItemCredentialStateTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         assertThat(GitHubEnterpriseTokenInventoryItemCredentialState.fromWire("not-a-known-value"))
-                .isEqualTo(GitHubEnterpriseTokenInventoryItemCredentialState.UNKNOWN);
+                .isEqualTo(GitHubEnterpriseTokenInventoryItemCredentialState.UNRECOGNIZED);
     }
 }

@@ -1,0 +1,8 @@
+{
+  "direction": "asc",
+  "repository": "octo-org/hello",
+  "secret_author": "octocat",
+  "secret_type": "github_personal_access_token",
+  "attribution": "member_activity",
+  "validity": "active"
+}

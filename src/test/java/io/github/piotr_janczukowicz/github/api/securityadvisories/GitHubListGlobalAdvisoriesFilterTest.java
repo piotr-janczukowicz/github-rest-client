@@ -53,7 +53,7 @@ class GitHubListGlobalAdvisoriesFilterTest {
                 .type(GitHubGlobalAdvisoryType.REVIEWED)
                 .cveId("CVE-2024-0001")
                 .ecosystem(GitHubSecurityAdvisoryEcosystem.NPM)
-                .severity(GitHubSecurityAdvisorySeverity.HIGH)
+                .severity(GitHubListGlobalAdvisoriesSeverity.HIGH)
                 .cwes(List.of("79", "284"))
                 .isWithdrawn(true)
                 .affects(List.of("pkg1", "pkg2@1.0.0"))

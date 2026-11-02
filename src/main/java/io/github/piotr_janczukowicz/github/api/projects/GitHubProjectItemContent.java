@@ -53,7 +53,7 @@ public sealed interface GitHubProjectItemContent
     }
 
     /**
-     * Content of a type this library version does not know ({@link GitHubProjectItemContentType#UNKNOWN}), kept as
+     * Content of a type this library version does not know ({@link GitHubProjectItemContentType#UNRECOGNIZED}), kept as
      * GitHub sent it so that one new content type does not fail the whole item or the page it is in.
      *
      * <p>The map is a shallow, unmodifiable copy in JSON order; nested objects and arrays are the plain maps and lists

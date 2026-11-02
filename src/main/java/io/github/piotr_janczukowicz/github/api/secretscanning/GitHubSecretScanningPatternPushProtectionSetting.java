@@ -21,7 +21,7 @@ public enum GitHubSecretScanningPatternPushProtectionSetting {
     DISABLED("disabled"),
     ENABLED("enabled"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubSecretScanningPatternPushProtectionSetting> WIRE_INDEX =
             EnumUtils.index(
@@ -55,6 +55,6 @@ public enum GitHubSecretScanningPatternPushProtectionSetting {
     public static GitHubSecretScanningPatternPushProtectionSetting fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

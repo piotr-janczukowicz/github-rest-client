@@ -21,7 +21,7 @@ public enum GitHubUpdateEnterpriseModelPoliciesResponseDefaultAvailabilityPolicy
     /** Delegate to organizations. */
     DELEGATE_TO_ORGANIZATIONS("delegate_to_organizations"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubUpdateEnterpriseModelPoliciesResponseDefaultAvailabilityPolicyState>
             WIRE_INDEX = EnumUtils.index(
@@ -56,6 +56,6 @@ public enum GitHubUpdateEnterpriseModelPoliciesResponseDefaultAvailabilityPolicy
             final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

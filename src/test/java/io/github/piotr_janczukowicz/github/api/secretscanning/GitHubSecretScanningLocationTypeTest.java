@@ -45,12 +45,12 @@ class GitHubSecretScanningLocationTypeTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final GitHubSecretScanningLocationType decoded = GitHubSecretScanningLocationType.fromWire("gist_comment");
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubSecretScanningLocationType.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubSecretScanningLocationType.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

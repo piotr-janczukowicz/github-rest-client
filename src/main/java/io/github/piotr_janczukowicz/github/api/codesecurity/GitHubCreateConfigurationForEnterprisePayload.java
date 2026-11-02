@@ -33,6 +33,11 @@ import org.jspecify.annotations.Nullable;
  * @param secretScanningValidityChecks The enablement status of secret scanning validity checks
  * @param secretScanningNonProviderPatterns The enablement status of secret scanning non provider patterns
  * @param secretScanningGenericSecrets The enablement status of Copilot secret scanning
+ * @param secretScanningGenericSecretsPushProtection The enablement status of generic secrets push protection. Only the
+ *     {@code CLOUD} and {@code GHEC} flavors define this.
+ * @param dependabotReachability The enablement status of reachability analysis for Dependabot. Only returned for
+ *     organizations and enterprises with access to reachability analysis. Only the {@code CLOUD} and {@code GHEC}
+ *     flavors define this.
  * @param secretScanningDelegatedAlertDismissal The enablement status of secret scanning delegated alert dismissal
  * @param secretScanningExtendedMetadata The enablement status of secret scanning extended metadata
  * @param privateVulnerabilityReporting The enablement status of private vulnerability reporting
@@ -61,6 +66,8 @@ public record GitHubCreateConfigurationForEnterprisePayload(
         @Nullable GitHubCodeSecurityEnablement secretScanningValidityChecks,
         @Nullable GitHubCodeSecurityEnablement secretScanningNonProviderPatterns,
         @Nullable GitHubCodeSecurityEnablement secretScanningGenericSecrets,
+        @Nullable GitHubCodeSecurityEnablement secretScanningGenericSecretsPushProtection,
+        @Nullable GitHubCodeSecurityEnablement dependabotReachability,
         @Nullable GitHubCodeSecurityEnablement secretScanningDelegatedAlertDismissal,
         @Nullable GitHubCodeSecurityEnablement secretScanningExtendedMetadata,
         @Nullable GitHubCodeSecurityEnablement privateVulnerabilityReporting,

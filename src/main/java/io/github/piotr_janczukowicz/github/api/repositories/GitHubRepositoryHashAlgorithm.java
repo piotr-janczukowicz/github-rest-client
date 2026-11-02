@@ -16,7 +16,7 @@ public enum GitHubRepositoryHashAlgorithm {
     SHA1("sha1"),
     SHA256("sha256"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubRepositoryHashAlgorithm> WIRE_INDEX =
             EnumUtils.index(GitHubRepositoryHashAlgorithm.class, GitHubRepositoryHashAlgorithm::wireValue);
@@ -48,6 +48,6 @@ public enum GitHubRepositoryHashAlgorithm {
     public static GitHubRepositoryHashAlgorithm fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

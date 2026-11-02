@@ -51,8 +51,8 @@ class GitHubEnterpriseTokenInventoryItemCredentialTypeTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         assertThat(GitHubEnterpriseTokenInventoryItemCredentialType.fromWire("not-a-known-value"))
-                .isEqualTo(GitHubEnterpriseTokenInventoryItemCredentialType.UNKNOWN);
+                .isEqualTo(GitHubEnterpriseTokenInventoryItemCredentialType.UNRECOGNIZED);
     }
 }

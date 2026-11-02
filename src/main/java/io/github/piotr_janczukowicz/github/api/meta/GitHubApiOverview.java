@@ -8,7 +8,7 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * Response of {@code GET /meta}: the IP ranges and host keys GitHub uses, for firewall allow lists and SSH host
- * verification. A {@code null} list or group was not sent; lists are unmodifiable copies.
+ * verification. A {@code null} list or group was not sent.
  *
  * @param verifiablePasswordAuthentication whether password authentication is verifiable on this instance
  * @param sshKeyFingerprints SHA-256 fingerprints of the SSH host keys
@@ -28,6 +28,10 @@ import org.jspecify.annotations.Nullable;
  * @param copilot IP ranges of Copilot
  * @param commitSigningKeys public keys that GitHub signs web commits with
  * @param domains domains that GitHub features use
+ * @param installedVersion the installed GitHub Enterprise Server version, for example {@code 3.22.0}
+ * @param sharedIngress Public destination IP ranges in CIDR notation for shared GitHub-managed ingress infrastructure.
+ *     These ranges may serve multiple GitHub services and are not outbound source ranges. Use them alongside the
+ *     relevant product-specific network requirements. Omitted when no ranges are available.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
@@ -51,4 +55,5 @@ public record GitHubApiOverview(
         @Nullable List<String> copilot,
         @Nullable List<String> commitSigningKeys,
         @Nullable GitHubApiOverviewDomains domains,
-        @Nullable String installedVersion) {}
+        @Nullable String installedVersion,
+        @Nullable List<String> sharedIngress) {}

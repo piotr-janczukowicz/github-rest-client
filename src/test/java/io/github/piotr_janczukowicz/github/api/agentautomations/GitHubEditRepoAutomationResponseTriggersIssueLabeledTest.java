@@ -23,26 +23,25 @@ class GitHubEditRepoAutomationResponseTriggersIssueLabeledTest {
     }
 
     @Test
-    void constructor_shouldLeaveLabelsNull_whenNull() {
-        final GitHubEditRepoAutomationResponseTriggersIssueLabeledBuilder builder =
-                GitHubEditRepoAutomationResponseTriggersIssueLabeledBuilder.builder(
-                                AgentAutomationsCatalogFixtures.editRepoAutomationResponseTriggersIssueLabeled())
-                        .labels(null);
-
-        final GitHubEditRepoAutomationResponseTriggersIssueLabeled sut = builder.build();
-
-        assertThat(sut.labels()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenLabelsDuplicated() {
         final GitHubEditRepoAutomationResponseTriggersIssueLabeledBuilder builder =
                 GitHubEditRepoAutomationResponseTriggersIssueLabeledBuilder.builder(
                                 AgentAutomationsCatalogFixtures.editRepoAutomationResponseTriggersIssueLabeled())
-                        .labels(List.of("a", "a"));
+                        .labels(List.of("labels", "labels"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("labels");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenLabelsNull() {
+        final GitHubEditRepoAutomationResponseTriggersIssueLabeled value =
+                GitHubEditRepoAutomationResponseTriggersIssueLabeledBuilder.builder(
+                                AgentAutomationsCatalogFixtures.editRepoAutomationResponseTriggersIssueLabeled())
+                        .labels(null)
+                        .build();
+
+        assertThat(value.labels()).isNull();
     }
 }

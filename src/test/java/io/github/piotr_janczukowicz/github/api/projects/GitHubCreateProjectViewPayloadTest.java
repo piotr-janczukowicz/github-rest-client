@@ -54,7 +54,7 @@ class GitHubCreateProjectViewPayloadTest {
     @Test
     void constructor_shouldThrow_whenSortDirectionIsUnknown() {
         final List<GitHubProjectViewSort> sortBy =
-                List.of(new GitHubProjectViewSort(123, GitHubProjectViewSortDirection.UNKNOWN));
+                List.of(new GitHubProjectViewSort(123, GitHubProjectViewSortDirection.UNRECOGNIZED));
 
         final Throwable thrown = catchThrowable(() -> new GitHubCreateProjectViewPayload(
                 "Board", GitHubProjectViewLayout.BOARD, null, null, sortBy, null, null));

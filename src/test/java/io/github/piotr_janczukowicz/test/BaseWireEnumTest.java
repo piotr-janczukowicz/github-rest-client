@@ -20,7 +20,7 @@ public abstract class BaseWireEnumTest<E extends Enum<E>> {
 
     protected abstract Function<E, String> wireValue();
 
-    protected abstract E unknown();
+    protected abstract E unrecognized();
 
     protected abstract Stream<Arguments> knownValues();
 
@@ -43,14 +43,14 @@ public abstract class BaseWireEnumTest<E extends Enum<E>> {
     }
 
     @Test
-    public void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    public void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final E decoded = fromWire().apply(wire);
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(unknown());
-            softly.assertThat(wireValue().apply(decoded)).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(unrecognized());
+            softly.assertThat(wireValue().apply(decoded)).isEqualTo("unrecognized");
         });
     }
 }

@@ -29,7 +29,7 @@ import tools.jackson.databind.deser.std.StdDeserializer;
  * Decodes {@code secret-scanning-location} using the sibling {@code type} property as discriminator.
  *
  * <p>A location {@code type} that this library does not know does not fail the decode: the location gets the type
- * {@link GitHubSecretScanningLocationType#UNKNOWN} and its {@code details} are kept as a
+ * {@link GitHubSecretScanningLocationType#UNRECOGNIZED} and its {@code details} are kept as a
  * {@link GitHubSecretScanningUnknownLocationDetails}. A missing {@code type} or {@code details} property does fail the
  * decode.
  */
@@ -78,7 +78,7 @@ final class GitHubSecretScanningLocationDeserializer extends StdDeserializer<Git
             case PULL_REQUEST_COMMENT -> GitHubSecretScanningLocationPullRequestComment.class;
             case PULL_REQUEST_REVIEW -> GitHubSecretScanningLocationPullRequestReview.class;
             case PULL_REQUEST_REVIEW_COMMENT -> GitHubSecretScanningLocationPullRequestReviewComment.class;
-            case UNKNOWN -> null;
+            case UNRECOGNIZED -> null;
         };
     }
 }

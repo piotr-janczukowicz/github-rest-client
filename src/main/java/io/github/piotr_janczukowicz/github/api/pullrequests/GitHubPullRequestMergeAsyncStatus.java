@@ -18,7 +18,7 @@ public enum GitHubPullRequestMergeAsyncStatus {
     ENQUEUED("enqueued"),
     FAILED("failed"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubPullRequestMergeAsyncStatus> WIRE_INDEX =
             EnumUtils.index(GitHubPullRequestMergeAsyncStatus.class, GitHubPullRequestMergeAsyncStatus::wireValue);
@@ -50,6 +50,6 @@ public enum GitHubPullRequestMergeAsyncStatus {
     public static GitHubPullRequestMergeAsyncStatus fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

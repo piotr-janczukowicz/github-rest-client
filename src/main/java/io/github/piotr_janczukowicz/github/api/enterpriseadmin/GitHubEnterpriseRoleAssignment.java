@@ -20,7 +20,7 @@ public enum GitHubEnterpriseRoleAssignment {
     /** Mixed. */
     MIXED("mixed"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubEnterpriseRoleAssignment> WIRE_INDEX =
             EnumUtils.index(GitHubEnterpriseRoleAssignment.class, GitHubEnterpriseRoleAssignment::wireValue);
@@ -52,6 +52,6 @@ public enum GitHubEnterpriseRoleAssignment {
     public static GitHubEnterpriseRoleAssignment fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

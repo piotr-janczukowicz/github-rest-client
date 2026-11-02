@@ -58,9 +58,9 @@ class GitHubCredentialAuthorizationCredentialTypeTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         assertThat(GitHubCredentialAuthorizationCredentialType.fromWire("not-a-known-value"))
-                .isEqualTo(GitHubCredentialAuthorizationCredentialType.UNKNOWN);
+                .isEqualTo(GitHubCredentialAuthorizationCredentialType.UNRECOGNIZED);
     }
 
     @Test

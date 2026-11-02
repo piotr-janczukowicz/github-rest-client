@@ -19,7 +19,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 })
 public enum GitHubUserViewType {
     PUBLIC("public"),
-    PRIVATE("private");
+    PRIVATE("private"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubUserViewType> WIRE_INDEX =
             EnumUtils.index(GitHubUserViewType.class, GitHubUserViewType::wireValue);
@@ -46,14 +48,11 @@ public enum GitHubUserViewType {
      * @param value JSON value
      * @return matching view type
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known view type
      */
     @JsonCreator
     public static GitHubUserViewType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException("Unknown GitHub user view type: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

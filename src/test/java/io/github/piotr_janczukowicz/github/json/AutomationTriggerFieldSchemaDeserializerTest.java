@@ -2,10 +2,10 @@ package io.github.piotr_janczukowicz.github.json;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListAvailableAutomationTriggersItemFieldSchema;
-import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListAvailableAutomationTriggersItemFieldSchemaInteger;
-import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListAvailableAutomationTriggersItemFieldSchemaString;
-import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListAvailableAutomationTriggersItemFieldSchemaUnknown;
+import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListAvailableRepoAutomationTriggersItemFieldSchema;
+import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListAvailableRepoAutomationTriggersItemFieldSchemaInteger;
+import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListAvailableRepoAutomationTriggersItemFieldSchemaString;
+import io.github.piotr_janczukowicz.github.api.agentautomations.GitHubListAvailableRepoAutomationTriggersItemFieldSchemaUnknown;
 import io.github.piotr_janczukowicz.json.JsonCodec;
 import io.github.piotr_janczukowicz.json.JsonTypes;
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
@@ -25,31 +25,32 @@ class AutomationTriggerFieldSchemaDeserializerTest {
     @CsvSource(
             delimiter = '|',
             value = {
-                "{\"type\":\"string\"}|GitHubListAvailableAutomationTriggersItemFieldSchemaString",
-                "{\"type\":\"array\",\"items\":{\"type\":\"string\"}}|GitHubListAvailableAutomationTriggersItemFieldSchemaArray",
-                "{\"type\":\"integer\"}|GitHubListAvailableAutomationTriggersItemFieldSchemaInteger"
+                "{\"type\":\"string\"}|GitHubListAvailableRepoAutomationTriggersItemFieldSchemaString",
+                "{\"type\":\"array\",\"items\":{\"type\":\"string\"}}|GitHubListAvailableRepoAutomationTriggersItemFieldSchemaArray",
+                "{\"type\":\"integer\"}|GitHubListAvailableRepoAutomationTriggersItemFieldSchemaInteger"
             })
     void decode_shouldReturnTheKnownVariant_whenTypeIsKnown(final String json, final String variant)
             throws ClassNotFoundException {
         final byte[] bytes = json.getBytes(StandardCharsets.UTF_8);
 
-        final GitHubListAvailableAutomationTriggersItemFieldSchema decoded =
-                CODEC.decode(bytes, GitHubListAvailableAutomationTriggersItemFieldSchema.class);
+        final GitHubListAvailableRepoAutomationTriggersItemFieldSchema decoded =
+                CODEC.decode(bytes, GitHubListAvailableRepoAutomationTriggersItemFieldSchema.class);
 
         assertThat(decoded)
-                .isInstanceOf(Class.forName(
-                        GitHubListAvailableAutomationTriggersItemFieldSchema.class.getPackageName() + "." + variant));
+                .isInstanceOf(
+                        Class.forName(GitHubListAvailableRepoAutomationTriggersItemFieldSchema.class.getPackageName()
+                                + "." + variant));
     }
 
     @Test
     void decode_shouldReturnUnknown_whenTypeIsNotKnown() {
         final byte[] bytes = "{\"type\":\"boolean\",\"default\":true}".getBytes(StandardCharsets.UTF_8);
 
-        final GitHubListAvailableAutomationTriggersItemFieldSchema decoded =
-                CODEC.decode(bytes, GitHubListAvailableAutomationTriggersItemFieldSchema.class);
+        final GitHubListAvailableRepoAutomationTriggersItemFieldSchema decoded =
+                CODEC.decode(bytes, GitHubListAvailableRepoAutomationTriggersItemFieldSchema.class);
 
         assertThat(decoded)
-                .isEqualTo(new GitHubListAvailableAutomationTriggersItemFieldSchemaUnknown(
+                .isEqualTo(new GitHubListAvailableRepoAutomationTriggersItemFieldSchemaUnknown(
                         Map.of("type", "boolean", "default", true)));
     }
 
@@ -58,14 +59,14 @@ class AutomationTriggerFieldSchemaDeserializerTest {
         final byte[] bytes =
                 "[{\"type\":\"string\"},{\"type\":\"object\"},{\"type\":\"integer\"}]".getBytes(StandardCharsets.UTF_8);
 
-        final List<GitHubListAvailableAutomationTriggersItemFieldSchema> decoded =
-                CODEC.decode(bytes, JsonTypes.listOf(GitHubListAvailableAutomationTriggersItemFieldSchema.class));
+        final List<GitHubListAvailableRepoAutomationTriggersItemFieldSchema> decoded =
+                CODEC.decode(bytes, JsonTypes.listOf(GitHubListAvailableRepoAutomationTriggersItemFieldSchema.class));
 
         assertThat(decoded)
                 .hasSize(3)
                 .hasOnlyElementsOfTypes(
-                        GitHubListAvailableAutomationTriggersItemFieldSchemaString.class,
-                        GitHubListAvailableAutomationTriggersItemFieldSchemaUnknown.class,
-                        GitHubListAvailableAutomationTriggersItemFieldSchemaInteger.class);
+                        GitHubListAvailableRepoAutomationTriggersItemFieldSchemaString.class,
+                        GitHubListAvailableRepoAutomationTriggersItemFieldSchemaUnknown.class,
+                        GitHubListAvailableRepoAutomationTriggersItemFieldSchemaInteger.class);
     }
 }

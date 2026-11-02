@@ -17,7 +17,7 @@ public enum GitHubIssueSuggestionConfidence {
     MEDIUM("MEDIUM"),
     HIGH("HIGH"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubIssueSuggestionConfidence> WIRE_INDEX =
             EnumUtils.index(GitHubIssueSuggestionConfidence.class, GitHubIssueSuggestionConfidence::wireValue);
@@ -49,6 +49,6 @@ public enum GitHubIssueSuggestionConfidence {
     public static GitHubIssueSuggestionConfidence fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

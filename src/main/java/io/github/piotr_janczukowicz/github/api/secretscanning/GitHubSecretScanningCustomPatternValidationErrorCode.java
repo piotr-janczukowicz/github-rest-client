@@ -22,7 +22,7 @@ public enum GitHubSecretScanningCustomPatternValidationErrorCode {
     MUST_NOT_MATCH("must_not_match"),
     CUSTOM_PATTERN_VERSION_MISMATCH("custom_pattern_version_mismatch"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubSecretScanningCustomPatternValidationErrorCode> WIRE_INDEX =
             EnumUtils.index(
@@ -56,6 +56,6 @@ public enum GitHubSecretScanningCustomPatternValidationErrorCode {
     public static GitHubSecretScanningCustomPatternValidationErrorCode fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

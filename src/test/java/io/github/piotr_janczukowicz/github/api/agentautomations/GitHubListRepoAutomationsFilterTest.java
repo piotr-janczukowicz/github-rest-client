@@ -16,9 +16,9 @@ class GitHubListRepoAutomationsFilterTest {
     @Test
     void toQueryParameters_shouldEncodeField_whenSet() {
         final GitHubListRepoAutomationsFilter filter = GitHubListRepoAutomationsFilterBuilder.builder()
-                .ownerType(GitHubListRepoAutomationsOwnerType.USER)
+                .type(GitHubListRepoAutomationsType.PERSONAL)
                 .build();
 
-        assertThat(filter.toQueryParameters()).containsEntry("owner_type", "user");
+        assertThat(filter.toQueryParameters()).containsEntry("type", "personal");
     }
 }

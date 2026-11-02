@@ -23,18 +23,6 @@ class GitHubListAutomationsItemTriggersPullRequestReviewRequestedTest {
     }
 
     @Test
-    void constructor_shouldLeavePathsNull_whenNull() {
-        final GitHubListAutomationsItemTriggersPullRequestReviewRequestedBuilder builder =
-                GitHubListAutomationsItemTriggersPullRequestReviewRequestedBuilder.builder(
-                                AgentAutomationsCatalogFixtures.listAutomationsItemTriggersPullRequestReviewRequested())
-                        .paths(null);
-
-        final GitHubListAutomationsItemTriggersPullRequestReviewRequested sut = builder.build();
-
-        assertThat(sut.paths()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenPathsTooSmall() {
         final GitHubListAutomationsItemTriggersPullRequestReviewRequestedBuilder builder =
                 GitHubListAutomationsItemTriggersPullRequestReviewRequestedBuilder.builder(
@@ -56,5 +44,16 @@ class GitHubListAutomationsItemTriggersPullRequestReviewRequestedTest {
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("paths");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenPathsNull() {
+        final GitHubListAutomationsItemTriggersPullRequestReviewRequested value =
+                GitHubListAutomationsItemTriggersPullRequestReviewRequestedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.listAutomationsItemTriggersPullRequestReviewRequested())
+                        .paths(null)
+                        .build();
+
+        assertThat(value.paths()).isNull();
     }
 }

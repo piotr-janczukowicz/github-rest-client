@@ -21,8 +21,8 @@ class GitHubLexicalFallbackReasonTest extends BaseWireEnumTest<GitHubLexicalFall
     }
 
     @Override
-    protected GitHubLexicalFallbackReason unknown() {
-        return GitHubLexicalFallbackReason.UNKNOWN;
+    protected GitHubLexicalFallbackReason unrecognized() {
+        return GitHubLexicalFallbackReason.UNRECOGNIZED;
     }
 
     @Override

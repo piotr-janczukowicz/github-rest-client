@@ -39,9 +39,15 @@ public final class GitHubSecretScanningAlertsApi extends GitHubResourceApi {
             PathTemplate.of("/repos/{owner}/{repo}/secret-scanning/alerts");
     private static final PathTemplate ORG_SECRET_SCANNING_ALERTS =
             PathTemplate.of("/orgs/{org}/secret-scanning/alerts");
+    private static final PathTemplate ENTERPRISE_PUBLIC_MONITORING_ALERTS =
+            PathTemplate.of("/enterprises/{enterprise}/secret-scanning/public-monitoring-alerts");
+    private static final PathTemplate ENTERPRISE_PUBLIC_MONITORING_ALERT =
+            PathTemplate.of("/enterprises/{enterprise}/secret-scanning/public-monitoring-alerts/{alert_number}");
     private static final PathTemplate ENTERPRISE_SECRET_SCANNING_ALERTS =
             PathTemplate.of("/enterprises/{enterprise}/secret-scanning/alerts");
 
+    private static final JsonType<List<GitHubPublicMonitoringAlert>> PUBLIC_MONITORING_ALERTS_TYPE =
+            JsonTypes.listOf(GitHubPublicMonitoringAlert.class);
     private static final JsonType<List<GitHubOrganizationSecretScanningAlert>> ORG_ALERTS_TYPE =
             JsonTypes.listOf(GitHubOrganizationSecretScanningAlert.class);
     private static final JsonType<List<GitHubSecretScanningAlert>> REPO_ALERTS_TYPE =
@@ -408,5 +414,130 @@ public final class GitHubSecretScanningAlertsApi extends GitHubResourceApi {
                 request,
                 GitHubListSpec.array(GitHubPageRequestKindValidators.CURSOR, ORG_ALERTS_TYPE),
                 enterprise);
+    }
+
+    /**
+     * List public monitoring alerts of an enterprise ({@code GET
+     * /enterprises/{enterprise}/secret-scanning/public-monitoring-alerts}).
+     *
+     * <p>Uses {@link GitHubPageRequest#byCursor()}.
+     *
+     * @param enterprise enterprise slug
+     * @return first HTTP page of public monitoring alerts
+     * @throws IllegalArgumentException if {@code enterprise} is blank
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code GHEC}
+     */
+    @Flavors(GitHubFlavor.GHEC)
+    public GitHubPage<GitHubPublicMonitoringAlert> listPublicMonitoringAlertsForEnterprise(final String enterprise)
+            throws IOException {
+        return listPublicMonitoringAlertsForEnterprise(
+                enterprise, GitHubListPublicMonitoringAlertsForEnterpriseFilter.empty(), GitHubPageRequest.byCursor());
+    }
+
+    /**
+     * List public monitoring alerts of an enterprise ({@code GET
+     * /enterprises/{enterprise}/secret-scanning/public-monitoring-alerts}).
+     *
+     * <p>Uses {@link GitHubPageRequest#byCursor()}.
+     *
+     * @param enterprise enterprise slug
+     * @param filter query filters
+     * @return first HTTP page of public monitoring alerts
+     * @throws IllegalArgumentException if {@code enterprise} is blank
+     * @throws NullPointerException if {@code filter} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code GHEC}
+     */
+    @Flavors(GitHubFlavor.GHEC)
+    public GitHubPage<GitHubPublicMonitoringAlert> listPublicMonitoringAlertsForEnterprise(
+            final String enterprise, final GitHubListPublicMonitoringAlertsForEnterpriseFilter filter)
+            throws IOException {
+        return listPublicMonitoringAlertsForEnterprise(enterprise, filter, GitHubPageRequest.byCursor());
+    }
+
+    /**
+     * List public monitoring alerts of an enterprise ({@code GET
+     * /enterprises/{enterprise}/secret-scanning/public-monitoring-alerts}).
+     *
+     * <p>Accepts {@link io.github.piotr_janczukowicz.github.pagination.GitHubNoneRequest} and
+     * {@link io.github.piotr_janczukowicz.github.pagination.GitHubCursorRequest} only.
+     *
+     * @param enterprise enterprise slug
+     * @param filter query filters
+     * @param request pagination token
+     * @return first HTTP page of public monitoring alerts
+     * @throws IllegalArgumentException if {@code enterprise} is blank, or {@code request} is a page or since variant
+     * @throws NullPointerException if {@code filter} or {@code request} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code GHEC}
+     */
+    @Flavors(GitHubFlavor.GHEC)
+    public GitHubPage<GitHubPublicMonitoringAlert> listPublicMonitoringAlertsForEnterprise(
+            final String enterprise,
+            final GitHubListPublicMonitoringAlertsForEnterpriseFilter filter,
+            final GitHubPageRequest request)
+            throws IOException {
+        requireFlavor(GitHubFlavor.GHEC);
+        requireNonNull(filter, PARAM_FILTER);
+        requireNonNull(request, PARAM_REQUEST);
+
+        return list(
+                ENTERPRISE_PUBLIC_MONITORING_ALERTS,
+                filter.toQueryParameters(),
+                request,
+                GitHubListSpec.array(GitHubPageRequestKindValidators.CURSOR, PUBLIC_MONITORING_ALERTS_TYPE),
+                enterprise);
+    }
+
+    /**
+     * Get a public monitoring alert of an enterprise ({@code GET
+     * /enterprises/{enterprise}/secret-scanning/public-monitoring-alerts/{alert_number}}).
+     *
+     * @param enterprise enterprise slug
+     * @param alertNumber alert number
+     * @return the alert, or empty on HTTP 404
+     * @throws IllegalArgumentException if {@code enterprise} is blank
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful (HTTP 404 yields empty)
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code GHEC}
+     */
+    @Flavors(GitHubFlavor.GHEC)
+    public Optional<GitHubPublicMonitoringAlert> getPublicMonitoringAlertForEnterprise(
+            final String enterprise, final int alertNumber) throws IOException {
+        requireFlavor(GitHubFlavor.GHEC);
+        return caller.fetchOrEmpty(
+                get(ENTERPRISE_PUBLIC_MONITORING_ALERT, enterprise, alertNumber), GitHubPublicMonitoringAlert.class);
+    }
+
+    /**
+     * Update a public monitoring alert of an enterprise ({@code PATCH
+     * /enterprises/{enterprise}/secret-scanning/public-monitoring-alerts/{alert_number}}).
+     *
+     * @param enterprise enterprise slug
+     * @param alertNumber alert number
+     * @param payload state and resolution to set
+     * @return the updated alert
+     * @throws IllegalArgumentException if {@code enterprise} is blank
+     * @throws NullPointerException if {@code payload} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code GHEC}
+     */
+    @Flavors(GitHubFlavor.GHEC)
+    public GitHubPublicMonitoringAlert updatePublicMonitoringAlertForEnterprise(
+            final String enterprise,
+            final int alertNumber,
+            final GitHubUpdatePublicMonitoringAlertForEnterprisePayload payload)
+            throws IOException {
+        requireFlavor(GitHubFlavor.GHEC);
+        requireNonNull(payload, PARAM_PAYLOAD);
+
+        return caller.fetch(
+                caller.json(patch(ENTERPRISE_PUBLIC_MONITORING_ALERT, enterprise, alertNumber), payload),
+                GitHubPublicMonitoringAlert.class);
     }
 }

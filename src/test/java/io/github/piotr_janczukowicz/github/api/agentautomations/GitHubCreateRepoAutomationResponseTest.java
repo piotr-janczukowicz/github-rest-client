@@ -43,28 +43,6 @@ class GitHubCreateRepoAutomationResponseTest {
     }
 
     @Test
-    void constructor_shouldLeaveToolsNull_whenNull() {
-        final GitHubCreateRepoAutomationResponseBuilder builder = GitHubCreateRepoAutomationResponseBuilder.builder(
-                        AgentAutomationsCatalogFixtures.createRepoAutomationResponse())
-                .tools(null);
-
-        final GitHubCreateRepoAutomationResponse sut = builder.build();
-
-        assertThat(sut.tools()).isNull();
-    }
-
-    @Test
-    void constructor_shouldLeaveAllowedCustomAgentsNull_whenNull() {
-        final GitHubCreateRepoAutomationResponseBuilder builder = GitHubCreateRepoAutomationResponseBuilder.builder(
-                        AgentAutomationsCatalogFixtures.createRepoAutomationResponse())
-                .allowedCustomAgents(null);
-
-        final GitHubCreateRepoAutomationResponse sut = builder.build();
-
-        assertThat(sut.allowedCustomAgents()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenCreatedAtNull() {
         final GitHubCreateRepoAutomationResponseBuilder builder = GitHubCreateRepoAutomationResponseBuilder.builder(
                         AgentAutomationsCatalogFixtures.createRepoAutomationResponse())

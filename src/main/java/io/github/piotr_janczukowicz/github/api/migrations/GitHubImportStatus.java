@@ -35,7 +35,9 @@ public enum GitHubImportStatus {
     UNKNOWN("unknown"),
     DETECTION_FOUND_MULTIPLE("detection_found_multiple"),
     DETECTION_FOUND_NOTHING("detection_found_nothing"),
-    DETECTION_NEEDS_AUTH("detection_needs_auth");
+    DETECTION_NEEDS_AUTH("detection_needs_auth"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubImportStatus> WIRE_INDEX =
             EnumUtils.index(GitHubImportStatus.class, GitHubImportStatus::wireValue);
@@ -62,14 +64,11 @@ public enum GitHubImportStatus {
      * @param value JSON value
      * @return matching status
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known status
      */
     @JsonCreator
     public static GitHubImportStatus fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException("Unknown GitHub import status: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

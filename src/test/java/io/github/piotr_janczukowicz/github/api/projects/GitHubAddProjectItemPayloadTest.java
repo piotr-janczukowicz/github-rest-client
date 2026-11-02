@@ -45,7 +45,7 @@ class GitHubAddProjectItemPayloadTest {
     @Test
     void constructor_shouldThrow_whenTypeIsUnknown() {
         final Throwable thrown =
-                catchThrowable(() -> GitHubAddProjectItemPayload.byId(GitHubProjectItemContentType.UNKNOWN, 1L));
+                catchThrowable(() -> GitHubAddProjectItemPayload.byId(GitHubProjectItemContentType.UNRECOGNIZED, 1L));
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("type");
     }

@@ -15,7 +15,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 public enum GitHubCodespaceMachinePrebuildAvailability {
     NONE("none"),
     READY("ready"),
-    IN_PROGRESS("in_progress");
+    IN_PROGRESS("in_progress"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodespaceMachinePrebuildAvailability> WIRE_INDEX = EnumUtils.index(
             GitHubCodespaceMachinePrebuildAvailability.class, GitHubCodespaceMachinePrebuildAvailability::wireValue);
@@ -42,14 +44,11 @@ public enum GitHubCodespaceMachinePrebuildAvailability {
      * @param value JSON value
      * @return matching GitHubCodespaceMachinePrebuildAvailability
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known prebuild availability
      */
     @JsonCreator
     public static GitHubCodespaceMachinePrebuildAvailability fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException("Unknown GitHub prebuild availability: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

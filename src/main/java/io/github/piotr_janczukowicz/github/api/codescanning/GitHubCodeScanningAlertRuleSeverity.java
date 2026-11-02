@@ -13,7 +13,9 @@ public enum GitHubCodeScanningAlertRuleSeverity {
     NONE("none"),
     NOTE("note"),
     WARNING("warning"),
-    ERROR("error");
+    ERROR("error"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningAlertRuleSeverity> WIRE_INDEX =
             EnumUtils.index(GitHubCodeScanningAlertRuleSeverity.class, GitHubCodeScanningAlertRuleSeverity::wireValue);
@@ -40,15 +42,11 @@ public enum GitHubCodeScanningAlertRuleSeverity {
      * @param value JSON value
      * @return matching GitHubCodeScanningAlertRuleSeverity
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known code scanning alert rule severity
      */
     @JsonCreator
     public static GitHubCodeScanningAlertRuleSeverity fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() ->
-                        new IllegalArgumentException("Unknown GitHub code scanning alert rule severity: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -16,7 +16,7 @@ public enum GitHubCodeQualitySetupRunnerType {
     STANDARD("standard"),
     LABELED("labeled"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeQualitySetupRunnerType> WIRE_INDEX =
             EnumUtils.index(GitHubCodeQualitySetupRunnerType.class, GitHubCodeQualitySetupRunnerType::wireValue);
@@ -48,6 +48,6 @@ public enum GitHubCodeQualitySetupRunnerType {
     public static GitHubCodeQualitySetupRunnerType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

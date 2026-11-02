@@ -6,6 +6,7 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -36,8 +37,18 @@ class GitHubSecretScanningAlertValidityTest {
     }
 
     private static Stream<Arguments> invalidWire() {
-        return Stream.of(
-                Arguments.of("expired", IllegalArgumentException.class, "expired"),
-                Arguments.of(null, NullPointerException.class, "value"));
+        return Stream.of(Arguments.of(null, NullPointerException.class, "value"));
+    }
+
+    @Test
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
+        final String wire = "brand_new_value";
+
+        final GitHubSecretScanningAlertValidity decoded = GitHubSecretScanningAlertValidity.fromWire(wire);
+
+        assertSoftly(softly -> {
+            softly.assertThat(decoded).isEqualTo(GitHubSecretScanningAlertValidity.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
+        });
     }
 }

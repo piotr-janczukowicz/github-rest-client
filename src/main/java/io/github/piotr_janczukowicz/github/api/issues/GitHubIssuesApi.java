@@ -8,6 +8,7 @@ import io.github.piotr_janczukowicz.util.LazyValue;
 /** GitHub Issues REST resource aggregator for API version {@code 2026-03-10}. */
 public final class GitHubIssuesApi {
 
+    private final LazyValue<GitHubIssuesArtifactsApi> artifacts;
     private final LazyValue<GitHubIssuesAssigneesApi> assignees;
     private final LazyValue<GitHubIssuesCommentsApi> comments;
     private final LazyValue<GitHubIssuesEventsApi> events;
@@ -27,6 +28,7 @@ public final class GitHubIssuesApi {
      */
     public GitHubIssuesApi(final GitHubCaller caller) {
         requireNonNull(caller, "caller");
+        this.artifacts = new LazyValue<>(() -> new GitHubIssuesArtifactsApi(caller));
         this.assignees = new LazyValue<>(() -> new GitHubIssuesAssigneesApi(caller));
         this.comments = new LazyValue<>(() -> new GitHubIssuesCommentsApi(caller));
         this.events = new LazyValue<>(() -> new GitHubIssuesEventsApi(caller));
@@ -37,6 +39,17 @@ public final class GitHubIssuesApi {
         this.milestones = new LazyValue<>(() -> new GitHubIssuesMilestonesApi(caller));
         this.subIssues = new LazyValue<>(() -> new GitHubIssuesSubIssuesApi(caller));
         this.timeline = new LazyValue<>(() -> new GitHubIssuesTimelineApi(caller));
+    }
+
+    /**
+     * Issue artifact operations ({@code subcategory=artifacts}).
+     *
+     * <p>The {@code CLOUD} and {@code GHEC} flavors carry this resource.
+     *
+     * @return artifacts API
+     */
+    public GitHubIssuesArtifactsApi artifacts() {
+        return artifacts.get();
     }
 
     /**

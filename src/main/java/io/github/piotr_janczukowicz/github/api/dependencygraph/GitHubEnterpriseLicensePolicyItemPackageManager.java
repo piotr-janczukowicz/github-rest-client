@@ -36,7 +36,9 @@ public enum GitHubEnterpriseLicensePolicyItemPackageManager {
     /** pub. */
     PUB("pub"),
     /** swift. */
-    SWIFT("swift");
+    SWIFT("swift"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubEnterpriseLicensePolicyItemPackageManager> WIRE_INDEX =
             EnumUtils.index(
@@ -63,17 +65,13 @@ public enum GitHubEnterpriseLicensePolicyItemPackageManager {
      * Resolves the package manager of a package rule from its wire value.
      *
      * @param value JSON value
-     * @return matching constant
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known value
      */
     @JsonCreator
     public static GitHubEnterpriseLicensePolicyItemPackageManager fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException(
-                        "Unknown GitHub enterprise license policy item package manager: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

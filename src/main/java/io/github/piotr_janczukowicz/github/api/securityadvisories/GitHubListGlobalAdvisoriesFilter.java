@@ -42,7 +42,7 @@ public record GitHubListGlobalAdvisoriesFilter(
         @Nullable GitHubGlobalAdvisoryType type,
         @Nullable String cveId,
         @Nullable GitHubSecurityAdvisoryEcosystem ecosystem,
-        @Nullable GitHubSecurityAdvisorySeverity severity,
+        @Nullable GitHubListGlobalAdvisoriesSeverity severity,
         @Nullable @CatalogSimpleXor("string|array") List<String> cwes,
         @Nullable Boolean isWithdrawn,
         @Nullable @CatalogSimpleXor("string|array") List<String> affects,

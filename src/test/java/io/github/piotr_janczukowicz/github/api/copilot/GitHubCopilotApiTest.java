@@ -35,7 +35,7 @@ class GitHubCopilotApiTest {
             api = new GitHubCopilotApi(TestClients.caller(client));
         }
 
-        assertThat(api.copilotCloudAgentManagement()).isNotNull();
+        assertThat(api.cloudAgentManagement()).isNotNull();
     }
 
     @Test
@@ -45,7 +45,7 @@ class GitHubCopilotApiTest {
             api = new GitHubCopilotApi(TestClients.caller(client));
         }
 
-        assertThat(api.copilotCodingAgentManagement()).isNotNull();
+        assertThat(api.codingAgentManagement()).isNotNull();
     }
 
     @Test
@@ -55,7 +55,7 @@ class GitHubCopilotApiTest {
             api = new GitHubCopilotApi(TestClients.caller(client));
         }
 
-        assertThat(api.copilotContentExclusionManagement()).isNotNull();
+        assertThat(api.contentExclusionManagement()).isNotNull();
     }
 
     @Test
@@ -65,7 +65,7 @@ class GitHubCopilotApiTest {
             api = new GitHubCopilotApi(TestClients.caller(client));
         }
 
-        assertThat(api.copilotUsageMetrics()).isNotNull();
+        assertThat(api.usageMetrics()).isNotNull();
     }
 
     @Test
@@ -75,7 +75,7 @@ class GitHubCopilotApiTest {
             api = new GitHubCopilotApi(TestClients.caller(client));
         }
 
-        assertThat(api.copilotUserManagement()).isNotNull();
+        assertThat(api.userManagement()).isNotNull();
     }
 
     @Test
@@ -85,7 +85,7 @@ class GitHubCopilotApiTest {
             api = new GitHubCopilotApi(TestClients.caller(client));
         }
 
-        assertThat(api.copilotCustomAgents()).isNotNull();
+        assertThat(api.customAgents()).isNotNull();
     }
 
     @Test
@@ -95,6 +95,6 @@ class GitHubCopilotApiTest {
             api = new GitHubCopilotApi(TestClients.caller(client));
         }
 
-        assertThat(api.copilotModelPolicyManagement()).isNotNull();
+        assertThat(api.modelPolicyManagement()).isNotNull();
     }
 }

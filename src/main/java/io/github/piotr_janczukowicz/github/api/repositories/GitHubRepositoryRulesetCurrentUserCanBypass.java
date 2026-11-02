@@ -15,7 +15,7 @@ public enum GitHubRepositoryRulesetCurrentUserCanBypass {
     NEVER("never"),
     EXEMPT("exempt"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubRepositoryRulesetCurrentUserCanBypass> WIRE_INDEX = EnumUtils.index(
             GitHubRepositoryRulesetCurrentUserCanBypass.class, GitHubRepositoryRulesetCurrentUserCanBypass::wireValue);
@@ -47,6 +47,6 @@ public enum GitHubRepositoryRulesetCurrentUserCanBypass {
     public static GitHubRepositoryRulesetCurrentUserCanBypass fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

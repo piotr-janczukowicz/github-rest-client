@@ -71,7 +71,7 @@ class GitHubAgentAutomationApiTest {
         api().listAutomations(AgentAutomationsCatalogFixtures.listAutomationsFilter(), GitHubPageRequest.byPage());
         final URI requestUri = captureSingleRequest().uri();
 
-        assertThat(requestUri.getQuery()).contains("owner_type=user");
+        assertThat(requestUri.getQuery()).contains("type=personal");
     }
 
     @Test
@@ -86,66 +86,79 @@ class GitHubAgentAutomationApiTest {
     }
 
     @Test
-    void listAvailableAutomationTools_shouldReturnTools_whenResponseIsOk() throws Exception {
+    void listAvailableRepoAutomationTools_shouldReturnTools_whenResponseIsOk() throws Exception {
         when(transport.execute(any()))
-                .thenReturn(
-                        response(HttpStatus.OK.code(), "[" + json("list-available-automation-tools-item.json") + "]"));
+                .thenReturn(response(HttpStatus.OK.code(), json("list-available-repo-automation-tools-response.json")));
 
-        final List<GitHubListAvailableAutomationToolsItem> tools = api().listAvailableAutomationTools();
+        final GitHubListAvailableRepoAutomationToolsResponse tools =
+                api().listAvailableRepoAutomationTools(OWNER, REPO);
         final URI requestUri = captureSingleRequest().uri();
 
         assertSoftly(softly -> {
             softly.assertThat(tools)
-                    .containsExactly(AgentAutomationsCatalogFixtures.listAvailableAutomationToolsItem());
-            softly.assertThat(requestUri).hasToString("https://api.github.com/agents/automations/available-tools");
+                    .isEqualTo(AgentAutomationsCatalogFixtures.listAvailableRepoAutomationToolsResponse());
+            softly.assertThat(requestUri)
+                    .hasToString("https://api.github.com/agents/repos/octocat/Hello-World/automations/available-tools");
         });
     }
 
     @Test
-    void listAvailableAutomationTriggers_shouldReturnTriggers_whenResponseIsOk() throws Exception {
+    void listAvailableRepoAutomationTriggers_shouldReturnTriggers_whenResponseIsOk() throws Exception {
         when(transport.execute(any()))
                 .thenReturn(response(
-                        HttpStatus.OK.code(), "[" + json("list-available-automation-triggers-item.json") + "]"));
+                        HttpStatus.OK.code(), "[" + json("list-available-repo-automation-triggers-item.json") + "]"));
 
-        final List<GitHubListAvailableAutomationTriggersItem> triggers = api().listAvailableAutomationTriggers();
+        final List<GitHubListAvailableRepoAutomationTriggersItem> triggers =
+                api().listAvailableRepoAutomationTriggers(OWNER, REPO);
         final URI requestUri = captureSingleRequest().uri();
 
         assertSoftly(softly -> {
             softly.assertThat(triggers)
-                    .containsExactly(AgentAutomationsCatalogFixtures.listAvailableAutomationTriggersItem());
-            softly.assertThat(requestUri).hasToString("https://api.github.com/agents/automations/available-triggers");
+                    .containsExactly(AgentAutomationsCatalogFixtures.listAvailableRepoAutomationTriggersItem());
+            softly.assertThat(requestUri)
+                    .hasToString(
+                            "https://api.github.com/agents/repos/octocat/Hello-World/automations/available-triggers");
         });
     }
 
     @Test
-    void getAutomation_shouldReturnAutomation_whenResponseIsOk() throws Exception {
-        when(transport.execute(any())).thenReturn(response(HttpStatus.OK.code(), json("get-automation-response.json")));
+    void createRepoAutomationTask_shouldPostPayload_whenResponseIsAccepted() throws Exception {
+        when(transport.execute(any()))
+                .thenReturn(response(HttpStatus.ACCEPTED.code(), json("create-repo-automation-task-response.json")));
+        final GitHubCreateRepoAutomationTaskPayload payload =
+                AgentAutomationsCatalogFixtures.createRepoAutomationTaskPayload();
 
-        final Optional<GitHubGetAutomationResponse> automation = api().getAutomation(AUTOMATION_ID);
-        final URI requestUri = captureSingleRequest().uri();
+        final GitHubCreateRepoAutomationTaskResponse accepted =
+                api().createRepoAutomationTask(OWNER, REPO, AUTOMATION_ID, payload);
+        final HttpRequest request = captureSingleRequest();
 
         assertSoftly(softly -> {
-            softly.assertThat(automation).contains(AgentAutomationsCatalogFixtures.getAutomationResponse());
-            softly.assertThat(requestUri).hasToString("https://api.github.com/agents/automations/automation-1");
+            softly.assertThat(accepted).isEqualTo(AgentAutomationsCatalogFixtures.createRepoAutomationTaskResponse());
+            softly.assertThat(request.method()).isEqualTo(HttpMethod.POST);
+            softly.assertThat(request.uri())
+                    .hasToString(
+                            "https://api.github.com/agents/repos/octocat/Hello-World/automations/automation-1/tasks");
         });
     }
 
     @Test
-    void getAutomation_shouldReturnEmpty_whenResponseIsNotFound() throws Exception {
-        when(transport.execute(any())).thenReturn(response(HttpStatus.NOT_FOUND.code(), null));
+    void createRepoAutomationTask_shouldThrow_whenPayloadNull() {
+        final GitHubAgentAutomationApi api = api();
 
-        final Optional<GitHubGetAutomationResponse> automation = api().getAutomation(AUTOMATION_ID);
+        final Throwable thrown = catchThrowable(() -> api.createRepoAutomationTask(OWNER, REPO, AUTOMATION_ID, null));
 
-        assertThat(automation).isEmpty();
+        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("payload");
     }
 
     @Test
-    void getAutomation_shouldThrow_whenAutomationIdBlank() {
+    void createRepoAutomationTask_shouldThrow_whenAutomationIdBlank() {
+        final GitHubCreateRepoAutomationTaskPayload payload =
+                AgentAutomationsCatalogFixtures.createRepoAutomationTaskPayload();
         final GitHubAgentAutomationApi api = api();
 
-        final Throwable thrown = catchThrowable(() -> api.getAutomation(" "));
+        final Throwable thrown = catchThrowable(() -> api.createRepoAutomationTask(OWNER, REPO, " ", payload));
 
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("automationId");
     }
 
     @Test
@@ -178,32 +191,36 @@ class GitHubAgentAutomationApiTest {
     }
 
     @Test
-    void listAutomationTasks_shouldReturnTasks_whenResponseIsOk() throws Exception {
+    void listRepoAutomationTasks_shouldReturnTasks_whenResponseIsOk() throws Exception {
         when(transport.execute(any()))
-                .thenReturn(response(HttpStatus.OK.code(), json("list-automation-tasks-response.json")));
+                .thenReturn(response(HttpStatus.OK.code(), json("list-repo-automation-tasks-response.json")));
 
-        final GitHubPage<GitHubListAutomationTasksTask> page = api().listAutomationTasks(AUTOMATION_ID);
+        final GitHubPage<GitHubListRepoAutomationTasksTask> page =
+                api().listRepoAutomationTasks(OWNER, REPO, AUTOMATION_ID);
         final URI requestUri = captureSingleRequest().uri();
 
         assertSoftly(softly -> {
             softly.assertThat(page.items())
-                    .containsExactlyElementsOf(AgentAutomationsCatalogFixtures.listAutomationTasksResponse()
+                    .containsExactlyElementsOf(AgentAutomationsCatalogFixtures.listRepoAutomationTasksResponse()
                             .tasks());
             softly.assertThat(page.totalCount()).isNull();
             softly.assertThat(requestUri)
-                    .hasToString("https://api.github.com/agents/automations/automation-1/tasks?page=1&"
-                            + TestClients.perPageQuery());
+                    .hasToString(
+                            "https://api.github.com/agents/repos/octocat/Hello-World/automations/automation-1/tasks?page=1&"
+                                    + TestClients.perPageQuery());
         });
     }
 
     @Test
-    void listAutomationTasks_shouldSendFilterQuery_whenFilterProvided() throws Exception {
+    void listRepoAutomationTasks_shouldSendFilterQuery_whenFilterProvided() throws Exception {
         when(transport.execute(any()))
-                .thenReturn(response(HttpStatus.OK.code(), json("list-automation-tasks-response.json")));
+                .thenReturn(response(HttpStatus.OK.code(), json("list-repo-automation-tasks-response.json")));
 
-        api().listAutomationTasks(
+        api().listRepoAutomationTasks(
+                        OWNER,
+                        REPO,
                         AUTOMATION_ID,
-                        AgentAutomationsCatalogFixtures.listAutomationTasksFilter(),
+                        AgentAutomationsCatalogFixtures.listRepoAutomationTasksFilter(),
                         GitHubPageRequest.byPage());
         final URI requestUri = captureSingleRequest().uri();
 
@@ -215,11 +232,11 @@ class GitHubAgentAutomationApiTest {
     }
 
     @Test
-    void listAutomationTasks_shouldRequestGivenPage_whenOnlyRequestProvided() throws Exception {
+    void listRepoAutomationTasks_shouldRequestGivenPage_whenOnlyRequestProvided() throws Exception {
         when(transport.execute(any()))
-                .thenReturn(response(HttpStatus.OK.code(), json("list-automation-tasks-response.json")));
+                .thenReturn(response(HttpStatus.OK.code(), json("list-repo-automation-tasks-response.json")));
 
-        api().listAutomationTasks(AUTOMATION_ID, GitHubPageNumberRequest.of(2, 10));
+        api().listRepoAutomationTasks(OWNER, REPO, AUTOMATION_ID, GitHubPageNumberRequest.of(2, 10));
         final URI requestUri = captureSingleRequest().uri();
 
         assertThat(requestUri.getQuery()).contains("page=2").contains("per_page=10");
@@ -237,10 +254,10 @@ class GitHubAgentAutomationApiTest {
     }
 
     @Test
-    void listAutomationTasks_shouldThrow_whenAutomationIdBlank() {
+    void listRepoAutomationTasks_shouldThrow_whenAutomationIdBlank() {
         final GitHubAgentAutomationApi api = api();
 
-        final Throwable thrown = catchThrowable(() -> api.listAutomationTasks(" "));
+        final Throwable thrown = catchThrowable(() -> api.listRepoAutomationTasks(OWNER, REPO, " "));
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
     }
@@ -276,7 +293,7 @@ class GitHubAgentAutomationApiTest {
                         GitHubPageRequest.byPage());
         final URI requestUri = captureSingleRequest().uri();
 
-        assertThat(requestUri.getQuery()).contains("owner_type=user");
+        assertThat(requestUri.getQuery()).contains("type=personal");
     }
 
     @Test

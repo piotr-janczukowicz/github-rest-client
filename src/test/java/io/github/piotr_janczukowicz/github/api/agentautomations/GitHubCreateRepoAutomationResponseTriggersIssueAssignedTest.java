@@ -23,18 +23,6 @@ class GitHubCreateRepoAutomationResponseTriggersIssueAssignedTest {
     }
 
     @Test
-    void constructor_shouldLeaveAssigneesNull_whenNull() {
-        final GitHubCreateRepoAutomationResponseTriggersIssueAssignedBuilder builder =
-                GitHubCreateRepoAutomationResponseTriggersIssueAssignedBuilder.builder(
-                                AgentAutomationsCatalogFixtures.createRepoAutomationResponseTriggersIssueAssigned())
-                        .assignees(null);
-
-        final GitHubCreateRepoAutomationResponseTriggersIssueAssigned sut = builder.build();
-
-        assertThat(sut.assignees()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenAssigneesTooSmall() {
         final GitHubCreateRepoAutomationResponseTriggersIssueAssignedBuilder builder =
                 GitHubCreateRepoAutomationResponseTriggersIssueAssignedBuilder.builder(
@@ -51,10 +39,21 @@ class GitHubCreateRepoAutomationResponseTriggersIssueAssignedTest {
         final GitHubCreateRepoAutomationResponseTriggersIssueAssignedBuilder builder =
                 GitHubCreateRepoAutomationResponseTriggersIssueAssignedBuilder.builder(
                                 AgentAutomationsCatalogFixtures.createRepoAutomationResponseTriggersIssueAssigned())
-                        .assignees(List.of("a", "a"));
+                        .assignees(List.of("assignees", "assignees"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("assignees");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenAssigneesNull() {
+        final GitHubCreateRepoAutomationResponseTriggersIssueAssigned value =
+                GitHubCreateRepoAutomationResponseTriggersIssueAssignedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.createRepoAutomationResponseTriggersIssueAssigned())
+                        .assignees(null)
+                        .build();
+
+        assertThat(value.assignees()).isNull();
     }
 }

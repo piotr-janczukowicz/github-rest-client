@@ -23,6 +23,18 @@ class GitHubEditRepoAutomationTriggersWorkflowRunTest {
     }
 
     @Test
+    void constructor_shouldThrow_whenConclusionsNull() {
+        final GitHubEditRepoAutomationTriggersWorkflowRunBuilder builder =
+                GitHubEditRepoAutomationTriggersWorkflowRunBuilder.builder(
+                                AgentAutomationsCatalogFixtures.editRepoAutomationTriggersWorkflowRun())
+                        .conclusions(null);
+
+        final Throwable thrown = catchThrowable(builder::build);
+
+        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("conclusions");
+    }
+
+    @Test
     void constructor_shouldThrow_whenWorkflowsTooSmall() {
         final GitHubEditRepoAutomationTriggersWorkflowRunBuilder builder =
                 GitHubEditRepoAutomationTriggersWorkflowRunBuilder.builder(
@@ -44,18 +56,6 @@ class GitHubEditRepoAutomationTriggersWorkflowRunTest {
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("workflows");
-    }
-
-    @Test
-    void constructor_shouldThrow_whenConclusionsNull() {
-        final GitHubEditRepoAutomationTriggersWorkflowRunBuilder builder =
-                GitHubEditRepoAutomationTriggersWorkflowRunBuilder.builder(
-                                AgentAutomationsCatalogFixtures.editRepoAutomationTriggersWorkflowRun())
-                        .conclusions(null);
-
-        final Throwable thrown = catchThrowable(builder::build);
-
-        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("conclusions");
     }
 
     @Test

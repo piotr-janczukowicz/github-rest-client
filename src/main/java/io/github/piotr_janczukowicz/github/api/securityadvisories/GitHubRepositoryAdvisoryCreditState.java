@@ -17,7 +17,7 @@ public enum GitHubRepositoryAdvisoryCreditState {
     DECLINED("declined"),
     PENDING("pending"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubRepositoryAdvisoryCreditState> WIRE_INDEX =
             EnumUtils.index(GitHubRepositoryAdvisoryCreditState.class, GitHubRepositoryAdvisoryCreditState::wireValue);
@@ -49,6 +49,6 @@ public enum GitHubRepositoryAdvisoryCreditState {
     public static GitHubRepositoryAdvisoryCreditState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

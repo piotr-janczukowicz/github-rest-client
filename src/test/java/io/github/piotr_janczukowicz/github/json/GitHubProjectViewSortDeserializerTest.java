@@ -55,7 +55,7 @@ class GitHubProjectViewSortDeserializerTest {
     void deserialize_shouldReturnUnknownDirection_whenDirectionIsNotKnown() {
         final GitHubProjectViewSort decoded = decode("[12,\"sideways\"]");
 
-        assertThat(decoded).isEqualTo(new GitHubProjectViewSort(12, GitHubProjectViewSortDirection.UNKNOWN));
+        assertThat(decoded).isEqualTo(new GitHubProjectViewSort(12, GitHubProjectViewSortDirection.UNRECOGNIZED));
     }
 
     private static GitHubProjectViewSort decode(final String json) {

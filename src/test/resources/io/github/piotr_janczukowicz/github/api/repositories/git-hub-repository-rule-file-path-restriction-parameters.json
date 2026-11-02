@@ -1,5 +1,8 @@
 {
   "restricted_file_paths": [
     "example"
+  ],
+  "ignored_file_paths": [
+    "ignored"
   ]
 }

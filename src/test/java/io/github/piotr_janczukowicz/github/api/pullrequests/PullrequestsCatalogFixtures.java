@@ -873,4 +873,36 @@ public final class PullrequestsCatalogFixtures {
                                 new GitHubPullRequestStackMinimalPullRequestHead(
                                         "user-api", "bbb2222bbb2222bbb2222bbb2222bbb2222bbb22")))));
     }
+
+    static GitHubGetAgentMergeEnrollmentResponseUser getAgentMergeEnrollmentResponseUser() {
+        return GitHubGetAgentMergeEnrollmentResponseUserBuilder.builder().id(1L).build();
+    }
+
+    static GitHubGetAgentMergeEnrollmentResponse getAgentMergeEnrollmentResponse() {
+        return GitHubGetAgentMergeEnrollmentResponseBuilder.builder()
+                .allowedActions(List.of(GitHubGetAgentMergeEnrollmentResponseAllowedAction.FIX_CI))
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .user(getAgentMergeEnrollmentResponseUser())
+                .build();
+    }
+
+    static GitHubPutAgentMergeEnrollmentPayload putAgentMergeEnrollmentPayload() {
+        return GitHubPutAgentMergeEnrollmentPayloadBuilder.builder()
+                .allowedActions(List.of(GitHubPutAgentMergeEnrollmentAllowedAction.FIX_CI))
+                .build();
+    }
+
+    static GitHubPutAgentMergeEnrollmentResponseUser putAgentMergeEnrollmentResponseUser() {
+        return GitHubPutAgentMergeEnrollmentResponseUserBuilder.builder().id(1L).build();
+    }
+
+    static GitHubPutAgentMergeEnrollmentResponse putAgentMergeEnrollmentResponse() {
+        return GitHubPutAgentMergeEnrollmentResponseBuilder.builder()
+                .allowedActions(List.of(GitHubPutAgentMergeEnrollmentResponseAllowedAction.FIX_CI))
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .user(putAgentMergeEnrollmentResponseUser())
+                .build();
+    }
 }

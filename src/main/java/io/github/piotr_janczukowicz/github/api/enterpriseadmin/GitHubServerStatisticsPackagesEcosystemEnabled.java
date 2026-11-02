@@ -20,7 +20,7 @@ public enum GitHubServerStatisticsPackagesEcosystemEnabled {
     /** READONLY. */
     READONLY("READONLY"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubServerStatisticsPackagesEcosystemEnabled> WIRE_INDEX =
             EnumUtils.index(
@@ -54,6 +54,6 @@ public enum GitHubServerStatisticsPackagesEcosystemEnabled {
     public static GitHubServerStatisticsPackagesEcosystemEnabled fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -9,7 +9,7 @@ import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import io.github.piotr_janczukowicz.util.EnumUtils;
 
-/** Submitted review states to match. */
+/** states */
 @CatalogSchema(
         "operations/agent-automations/create-repo-automation/requestBody/properties/triggers/properties/pull_request_review_submitted/properties/states/items")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})

@@ -39,7 +39,9 @@ public record GitHubSecretScanningLocationWikiCommit(
         String pageUrl,
         String commitSha,
         String commitUrl)
-        implements GitHubSecretScanningLocationDetails, GitHubSecretScanningFirstDetectedLocation {
+        implements GitHubSecretScanningLocationDetails,
+                GitHubSecretScanningFirstDetectedLocation,
+                GitHubPublicMonitoringAlertAttributionWikiCommit {
 
     public GitHubSecretScanningLocationWikiCommit {
         requireNonNull(path, "path");

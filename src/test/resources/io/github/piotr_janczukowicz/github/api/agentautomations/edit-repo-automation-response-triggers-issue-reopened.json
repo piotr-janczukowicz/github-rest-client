@@ -1,0 +1,5 @@
+{
+  "query": "query",
+  "write_scope": "trigger",
+  "allow_copilot_triggers": true
+}

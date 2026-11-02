@@ -37,7 +37,7 @@ class GitHubSecretScanningLocationDeserializerTest {
     private static final JsonCodec CODEC = GitHubJsonCodecs.defaults();
 
     @ParameterizedTest
-    @EnumSource(value = GitHubSecretScanningLocationType.class, mode = EnumSource.Mode.EXCLUDE, names = "UNKNOWN")
+    @EnumSource(value = GitHubSecretScanningLocationType.class, mode = EnumSource.Mode.EXCLUDE, names = "UNRECOGNIZED")
     void deserialize_shouldMapDetails_whenTypeKnown(final GitHubSecretScanningLocationType type) {
         final byte[] json = FileUtils.readBytes(
                 GitHubSecretScanningLocation.class,
@@ -59,7 +59,7 @@ class GitHubSecretScanningLocationDeserializerTest {
         final GitHubSecretScanningLocation decoded = CODEC.decode(json, GitHubSecretScanningLocation.class);
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded.type()).isEqualTo(GitHubSecretScanningLocationType.UNKNOWN);
+            softly.assertThat(decoded.type()).isEqualTo(GitHubSecretScanningLocationType.UNRECOGNIZED);
             softly.assertThat(decoded.details())
                     .isInstanceOfSatisfying(GitHubSecretScanningUnknownLocationDetails.class, unknown -> {
                         assertThat(unknown.properties()).containsEntry("gist_id", "abc");
@@ -106,7 +106,7 @@ class GitHubSecretScanningLocationDeserializerTest {
             case PULL_REQUEST_COMMENT -> GitHubSecretScanningLocationPullRequestComment.class;
             case PULL_REQUEST_REVIEW -> GitHubSecretScanningLocationPullRequestReview.class;
             case PULL_REQUEST_REVIEW_COMMENT -> GitHubSecretScanningLocationPullRequestReviewComment.class;
-            case UNKNOWN -> GitHubSecretScanningUnknownLocationDetails.class;
+            case UNRECOGNIZED -> GitHubSecretScanningUnknownLocationDetails.class;
         };
     }
 }

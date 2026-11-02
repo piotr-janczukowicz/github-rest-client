@@ -26,6 +26,10 @@ import java.util.Optional;
  */
 public final class GitHubSecurityAdvisoriesRepositoryAdvisoriesApi extends GitHubResourceApi {
 
+    private static final PathTemplate SECURITY_ADVISORY_COMMENTS =
+            PathTemplate.of("/repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments");
+    private static final PathTemplate SECURITY_ADVISORY_COMMENT =
+            PathTemplate.of("/repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments/{comment_id}");
     private static final PathTemplate SECURITY_ADVISORY_FORKS =
             PathTemplate.of("/repos/{owner}/{repo}/security-advisories/{ghsa_id}/forks");
     private static final PathTemplate SECURITY_ADVISORY_CVE =
@@ -40,6 +44,8 @@ public final class GitHubSecurityAdvisoriesRepositoryAdvisoriesApi extends GitHu
 
     private static final JsonType<List<GitHubRepositoryAdvisory>> REPOSITORY_ADVISORIES_TYPE =
             JsonTypes.listOf(GitHubRepositoryAdvisory.class);
+    private static final JsonType<List<GitHubRepositoryAdvisoryComment>> ADVISORY_COMMENTS_TYPE =
+            JsonTypes.listOf(GitHubRepositoryAdvisoryComment.class);
 
     /**
      * Repository security advisories resource over {@code caller}.
@@ -340,5 +346,173 @@ public final class GitHubSecurityAdvisoriesRepositoryAdvisoriesApi extends GitHu
         requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
 
         return caller.fetch(post(SECURITY_ADVISORY_FORKS, owner, repo, ghsaId), GitHubFullRepository.class);
+    }
+
+    /**
+     * List repository advisory comments ({@code GET /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param ghsaId GHSA identifier
+     * @return first HTTP page of comments
+     * @throws IllegalArgumentException if {@code owner}, {@code repo}, or {@code ghsaId} is blank
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public GitHubPage<GitHubRepositoryAdvisoryComment> listRepositoryAdvisoryComments(
+            final String owner, final String repo, final String ghsaId) throws IOException {
+        return listRepositoryAdvisoryComments(owner, repo, ghsaId, GitHubPageRequest.byPage());
+    }
+
+    /**
+     * List repository advisory comments ({@code GET /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param ghsaId GHSA identifier
+     * @param request pagination token
+     * @return first HTTP page of comments
+     * @throws IllegalArgumentException if {@code owner}, {@code repo}, or {@code ghsaId} is blank, or {@code request}
+     *     is invalid
+     * @throws NullPointerException if {@code request} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public GitHubPage<GitHubRepositoryAdvisoryComment> listRepositoryAdvisoryComments(
+            final String owner, final String repo, final String ghsaId, final GitHubPageRequest request)
+            throws IOException {
+        return listRepositoryAdvisoryComments(
+                owner, repo, ghsaId, GitHubListRepositoryAdvisoryCommentsFilter.empty(), request);
+    }
+
+    /**
+     * List repository advisory comments ({@code GET /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param ghsaId GHSA identifier
+     * @param filter query filters
+     * @param request pagination token
+     * @return first HTTP page of comments
+     * @throws IllegalArgumentException if {@code owner}, {@code repo}, or {@code ghsaId} is blank, or {@code request}
+     *     is invalid
+     * @throws NullPointerException if {@code filter} or {@code request} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public GitHubPage<GitHubRepositoryAdvisoryComment> listRepositoryAdvisoryComments(
+            final String owner,
+            final String repo,
+            final String ghsaId,
+            final GitHubListRepositoryAdvisoryCommentsFilter filter,
+            final GitHubPageRequest request)
+            throws IOException {
+        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
+        requireNonNull(filter, PARAM_FILTER);
+        requireNonNull(request, PARAM_REQUEST);
+
+        return pageList(
+                SECURITY_ADVISORY_COMMENTS,
+                filter.toQueryParameters(),
+                request,
+                ADVISORY_COMMENTS_TYPE,
+                owner,
+                repo,
+                ghsaId);
+    }
+
+    /**
+     * Create a repository advisory comment ({@code POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param ghsaId GHSA identifier
+     * @param payload comment to create
+     * @return created comment
+     * @throws IllegalArgumentException if {@code owner}, {@code repo}, or {@code ghsaId} is blank
+     * @throws NullPointerException if {@code payload} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public GitHubRepositoryAdvisoryComment createRepositoryAdvisoryComment(
+            final String owner,
+            final String repo,
+            final String ghsaId,
+            final GitHubCreateRepositoryAdvisoryCommentPayload payload)
+            throws IOException {
+        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
+        requireNonNull(payload, PARAM_PAYLOAD);
+
+        return caller.fetch(
+                caller.json(post(SECURITY_ADVISORY_COMMENTS, owner, repo, ghsaId), payload),
+                GitHubRepositoryAdvisoryComment.class);
+    }
+
+    /**
+     * Get a repository advisory comment ({@code GET
+     * /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments/{comment_id}}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param ghsaId GHSA identifier
+     * @param commentId comment identifier
+     * @return the comment, or empty on HTTP 404
+     * @throws IllegalArgumentException if {@code owner}, {@code repo}, or {@code ghsaId} is blank
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful (HTTP 404 yields empty)
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public Optional<GitHubRepositoryAdvisoryComment> getRepositoryAdvisoryComment(
+            final String owner, final String repo, final String ghsaId, final long commentId) throws IOException {
+        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
+        return caller.fetchOrEmpty(
+                get(SECURITY_ADVISORY_COMMENT, owner, repo, ghsaId, commentId), GitHubRepositoryAdvisoryComment.class);
+    }
+
+    /**
+     * Update a repository advisory comment ({@code PATCH
+     * /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments/{comment_id}}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param ghsaId GHSA identifier
+     * @param commentId comment identifier
+     * @param payload comment fields to update
+     * @return updated comment
+     * @throws IllegalArgumentException if {@code owner}, {@code repo}, or {@code ghsaId} is blank
+     * @throws NullPointerException if {@code payload} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public GitHubRepositoryAdvisoryComment updateRepositoryAdvisoryComment(
+            final String owner,
+            final String repo,
+            final String ghsaId,
+            final long commentId,
+            final GitHubUpdateRepositoryAdvisoryCommentPayload payload)
+            throws IOException {
+        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
+        requireNonNull(payload, PARAM_PAYLOAD);
+
+        return caller.fetch(
+                caller.json(patch(SECURITY_ADVISORY_COMMENT, owner, repo, ghsaId, commentId), payload),
+                GitHubRepositoryAdvisoryComment.class);
     }
 }

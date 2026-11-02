@@ -23,18 +23,6 @@ class GitHubListAutomationsItemTriggersIssueAssignedTest {
     }
 
     @Test
-    void constructor_shouldLeaveAssigneesNull_whenNull() {
-        final GitHubListAutomationsItemTriggersIssueAssignedBuilder builder =
-                GitHubListAutomationsItemTriggersIssueAssignedBuilder.builder(
-                                AgentAutomationsCatalogFixtures.listAutomationsItemTriggersIssueAssigned())
-                        .assignees(null);
-
-        final GitHubListAutomationsItemTriggersIssueAssigned sut = builder.build();
-
-        assertThat(sut.assignees()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenAssigneesTooSmall() {
         final GitHubListAutomationsItemTriggersIssueAssignedBuilder builder =
                 GitHubListAutomationsItemTriggersIssueAssignedBuilder.builder(
@@ -51,10 +39,21 @@ class GitHubListAutomationsItemTriggersIssueAssignedTest {
         final GitHubListAutomationsItemTriggersIssueAssignedBuilder builder =
                 GitHubListAutomationsItemTriggersIssueAssignedBuilder.builder(
                                 AgentAutomationsCatalogFixtures.listAutomationsItemTriggersIssueAssigned())
-                        .assignees(List.of("a", "a"));
+                        .assignees(List.of("assignees", "assignees"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("assignees");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenAssigneesNull() {
+        final GitHubListAutomationsItemTriggersIssueAssigned value =
+                GitHubListAutomationsItemTriggersIssueAssignedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.listAutomationsItemTriggersIssueAssigned())
+                        .assignees(null)
+                        .build();
+
+        assertThat(value.assignees()).isNull();
     }
 }

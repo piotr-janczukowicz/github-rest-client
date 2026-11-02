@@ -1,7 +1,7 @@
 package io.github.piotr_janczukowicz.github.api.enterpriseadmin;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
 import org.junit.jupiter.api.Test;
@@ -28,10 +28,15 @@ class GitHubEnterpriseTokenInventoryItemRepositorySelectionTest {
     }
 
     @Test
-    void fromWire_shouldThrowIllegalArgumentException_whenValueUnknown() {
-        final Throwable thrown =
-                catchThrowable(() -> GitHubEnterpriseTokenInventoryItemRepositorySelection.fromWire("unknown"));
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
+        final String wire = "brand_new_value";
 
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("unknown");
+        final GitHubEnterpriseTokenInventoryItemRepositorySelection decoded =
+                GitHubEnterpriseTokenInventoryItemRepositorySelection.fromWire(wire);
+
+        assertSoftly(softly -> {
+            softly.assertThat(decoded).isEqualTo(GitHubEnterpriseTokenInventoryItemRepositorySelection.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
+        });
     }
 }

@@ -21,7 +21,7 @@ import tools.jackson.databind.deser.std.StdDeserializer;
  *
  * <p>A missing {@code content_type} fails the decode with a
  * {@link io.github.piotr_janczukowicz.json.JsonDecodeException}; there is no value to return in its place. An unknown
- * one decodes as {@link GitHubProjectItemContentType#UNKNOWN} with the content kept as a
+ * one decodes as {@link GitHubProjectItemContentType#UNRECOGNIZED} with the content kept as a
  * {@link GitHubProjectItemContent.Unknown}.
  */
 final class GitHubProjectItemSimpleDeserializer extends StdDeserializer<GitHubProjectItemSimple> {
@@ -72,7 +72,7 @@ final class GitHubProjectItemSimpleDeserializer extends StdDeserializer<GitHubPr
             case ISSUE -> new GitHubProjectItemContent.Issue((GitHubIssue) value);
             case PULL_REQUEST -> new GitHubProjectItemContent.PullRequest((GitHubPullRequestSimple) value);
             case DRAFT_ISSUE -> new GitHubProjectItemContent.DraftIssue((GitHubProjectDraftIssue) value);
-            case UNKNOWN -> new GitHubProjectItemContent.Unknown(properties(value));
+            case UNRECOGNIZED -> new GitHubProjectItemContent.Unknown(properties(value));
         };
     }
 

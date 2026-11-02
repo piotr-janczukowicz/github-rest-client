@@ -17,7 +17,10 @@ import org.jspecify.annotations.Nullable;
  * @param preventFurtherUsage Whether to prevent additional spending once the budget is exceeded.
  * @param budgetAlerting Alerting configuration.
  * @param budgetScope The scope of the budget.
- * @param budgetEntityName The name of the entity to apply the budget to.
+ * @param budgetEntityName The entity to apply the budget to. The expected value depends on {@code budget_scope}: the
+ *     organization login for {@code organization}, {@code owner/repo} for {@code repository}, the cost center UUID for
+ *     {@code cost_center} and {@code multi_user_cost_center}; not used for {@code enterprise},
+ *     {@code multi_user_customer} and {@code user} (set the {@code user} field instead for {@code user}).
  * @param budgetType The type of pricing model used by the budget.
  * @param budgetProductSku A single product or SKU that will be covered in the budget.
  * @param user The username of the user for user scope budgets.

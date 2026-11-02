@@ -23,18 +23,6 @@ class GitHubListAutomationsItemTriggersPullRequestAssignedTest {
     }
 
     @Test
-    void constructor_shouldLeavePathsNull_whenNull() {
-        final GitHubListAutomationsItemTriggersPullRequestAssignedBuilder builder =
-                GitHubListAutomationsItemTriggersPullRequestAssignedBuilder.builder(
-                                AgentAutomationsCatalogFixtures.listAutomationsItemTriggersPullRequestAssigned())
-                        .paths(null);
-
-        final GitHubListAutomationsItemTriggersPullRequestAssigned sut = builder.build();
-
-        assertThat(sut.paths()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenPathsTooSmall() {
         final GitHubListAutomationsItemTriggersPullRequestAssignedBuilder builder =
                 GitHubListAutomationsItemTriggersPullRequestAssignedBuilder.builder(
@@ -59,18 +47,6 @@ class GitHubListAutomationsItemTriggersPullRequestAssignedTest {
     }
 
     @Test
-    void constructor_shouldLeaveAssigneesNull_whenNull() {
-        final GitHubListAutomationsItemTriggersPullRequestAssignedBuilder builder =
-                GitHubListAutomationsItemTriggersPullRequestAssignedBuilder.builder(
-                                AgentAutomationsCatalogFixtures.listAutomationsItemTriggersPullRequestAssigned())
-                        .assignees(null);
-
-        final GitHubListAutomationsItemTriggersPullRequestAssigned sut = builder.build();
-
-        assertThat(sut.assignees()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenAssigneesTooSmall() {
         final GitHubListAutomationsItemTriggersPullRequestAssignedBuilder builder =
                 GitHubListAutomationsItemTriggersPullRequestAssignedBuilder.builder(
@@ -87,10 +63,32 @@ class GitHubListAutomationsItemTriggersPullRequestAssignedTest {
         final GitHubListAutomationsItemTriggersPullRequestAssignedBuilder builder =
                 GitHubListAutomationsItemTriggersPullRequestAssignedBuilder.builder(
                                 AgentAutomationsCatalogFixtures.listAutomationsItemTriggersPullRequestAssigned())
-                        .assignees(List.of("a", "a"));
+                        .assignees(List.of("assignees", "assignees"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("assignees");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenPathsNull() {
+        final GitHubListAutomationsItemTriggersPullRequestAssigned value =
+                GitHubListAutomationsItemTriggersPullRequestAssignedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.listAutomationsItemTriggersPullRequestAssigned())
+                        .paths(null)
+                        .build();
+
+        assertThat(value.paths()).isNull();
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenAssigneesNull() {
+        final GitHubListAutomationsItemTriggersPullRequestAssigned value =
+                GitHubListAutomationsItemTriggersPullRequestAssignedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.listAutomationsItemTriggersPullRequestAssigned())
+                        .assignees(null)
+                        .build();
+
+        assertThat(value.assignees()).isNull();
     }
 }

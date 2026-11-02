@@ -23,7 +23,9 @@ public enum GitHubCheckLicenseComplianceForPackagesPurlResultReason {
     /** unsupported package ecosystem. */
     UNSUPPORTED_PACKAGE_ECOSYSTEM("unsupported_package_ecosystem"),
     /** unknown. */
-    UNKNOWN("unknown");
+    UNKNOWN("unknown"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCheckLicenseComplianceForPackagesPurlResultReason> WIRE_INDEX =
             EnumUtils.index(
@@ -57,6 +59,6 @@ public enum GitHubCheckLicenseComplianceForPackagesPurlResultReason {
     public static GitHubCheckLicenseComplianceForPackagesPurlResultReason fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

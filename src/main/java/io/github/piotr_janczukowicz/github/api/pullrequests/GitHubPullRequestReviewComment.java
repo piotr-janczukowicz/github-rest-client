@@ -4,6 +4,7 @@ import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonNull;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.issues.GitHubTimelineComment;
 import io.github.piotr_janczukowicz.github.api.search.GitHubAuthorAssociation;
@@ -18,6 +19,8 @@ import org.jspecify.annotations.Nullable;
 @CatalogSchema("components/schemas/pull-request-review-comment")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
+// The implemented sealed interface carries the deduction; this type itself decodes as a plain record.
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public record GitHubPullRequestReviewComment(
         String url,
         @Nullable Long pullRequestReviewId,

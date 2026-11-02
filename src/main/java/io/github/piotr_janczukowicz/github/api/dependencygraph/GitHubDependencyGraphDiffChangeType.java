@@ -13,7 +13,7 @@ public enum GitHubDependencyGraphDiffChangeType {
     ADDED("added"),
     REMOVED("removed"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubDependencyGraphDiffChangeType> WIRE_INDEX =
             EnumUtils.index(GitHubDependencyGraphDiffChangeType.class, GitHubDependencyGraphDiffChangeType::wireValue);
@@ -45,6 +45,6 @@ public enum GitHubDependencyGraphDiffChangeType {
     public static GitHubDependencyGraphDiffChangeType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

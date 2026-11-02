@@ -5,18 +5,16 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
-import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
 
 @UnitTest
 class GitHubCreateRepoAutomationTriggersIntervalCadenceTest {
 
     @ParameterizedTest
     @CsvSource({"hourly,HOURLY", "daily,DAILY", "weekly,WEEKLY"})
-    void fromWire_shouldReturnValue_whenKnownValue(
+    void fromWire_shouldReturnConstant_whenKnownValue(
             final String wire, final GitHubCreateRepoAutomationTriggersIntervalCadence value) {
         final GitHubCreateRepoAutomationTriggersIntervalCadence decoded =
                 GitHubCreateRepoAutomationTriggersIntervalCadence.fromWire(wire);
@@ -27,18 +25,18 @@ class GitHubCreateRepoAutomationTriggersIntervalCadenceTest {
         });
     }
 
-    @ParameterizedTest
-    @MethodSource("invalidWire")
-    void fromWire_shouldThrow_whenInvalid(
-            final String wire, final Class<? extends Throwable> type, final String message) {
-        final Throwable thrown = catchThrowable(() -> GitHubCreateRepoAutomationTriggersIntervalCadence.fromWire(wire));
+    @Test
+    void fromWire_shouldThrow_whenValueUnknown() {
+        final Throwable thrown =
+                catchThrowable(() -> GitHubCreateRepoAutomationTriggersIntervalCadence.fromWire("other"));
 
-        assertThat(thrown).isInstanceOf(type).hasMessageContaining(message);
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("other");
     }
 
-    private static Stream<Arguments> invalidWire() {
-        return Stream.of(
-                Arguments.of("unknown", IllegalArgumentException.class, "unknown"),
-                Arguments.of(null, NullPointerException.class, "value"));
+    @Test
+    void fromWire_shouldThrow_whenValueNull() {
+        final Throwable thrown = catchThrowable(() -> GitHubCreateRepoAutomationTriggersIntervalCadence.fromWire(null));
+
+        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("value");
     }
 }

@@ -1,6 +1,5 @@
 package io.github.piotr_janczukowicz.github.api.dependencygraph;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
@@ -31,10 +30,15 @@ class GitHubCheckLicenseComplianceForPackagesPurlResultReasonTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
-        final GitHubCheckLicenseComplianceForPackagesPurlResultReason decoded =
-                GitHubCheckLicenseComplianceForPackagesPurlResultReason.fromWire("not-a-value");
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
+        final String wire = "brand_new_value";
 
-        assertThat(decoded).isEqualTo(GitHubCheckLicenseComplianceForPackagesPurlResultReason.UNKNOWN);
+        final GitHubCheckLicenseComplianceForPackagesPurlResultReason decoded =
+                GitHubCheckLicenseComplianceForPackagesPurlResultReason.fromWire(wire);
+
+        assertSoftly(softly -> {
+            softly.assertThat(decoded).isEqualTo(GitHubCheckLicenseComplianceForPackagesPurlResultReason.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
+        });
     }
 }

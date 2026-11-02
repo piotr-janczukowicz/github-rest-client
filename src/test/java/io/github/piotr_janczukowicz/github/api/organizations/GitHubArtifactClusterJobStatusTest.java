@@ -31,12 +31,12 @@ class GitHubArtifactClusterJobStatusTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final GitHubArtifactClusterJobStatus decoded = GitHubArtifactClusterJobStatus.fromWire("brand_new_value");
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubArtifactClusterJobStatus.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubArtifactClusterJobStatus.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

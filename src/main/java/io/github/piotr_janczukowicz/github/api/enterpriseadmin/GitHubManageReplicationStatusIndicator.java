@@ -16,7 +16,9 @@ public enum GitHubManageReplicationStatusIndicator {
     UNKNOWN("UNKNOWN"),
     OK("OK"),
     WARNING("WARNING"),
-    CRITICAL("CRITICAL");
+    CRITICAL("CRITICAL"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubManageReplicationStatusIndicator> WIRE_INDEX = EnumUtils.index(
             GitHubManageReplicationStatusIndicator.class, GitHubManageReplicationStatusIndicator::wireValue);
@@ -41,16 +43,13 @@ public enum GitHubManageReplicationStatusIndicator {
      * ManageReplicationStatusIndicator from a wire value.
      *
      * @param value JSON value
-     * @return matching constant
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not known
      */
     @JsonCreator
     public static GitHubManageReplicationStatusIndicator fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException("Unknown ManageReplicationStatusIndicator: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

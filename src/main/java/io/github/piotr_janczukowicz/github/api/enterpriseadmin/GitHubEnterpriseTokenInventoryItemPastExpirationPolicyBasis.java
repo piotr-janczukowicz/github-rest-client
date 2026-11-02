@@ -18,7 +18,7 @@ public enum GitHubEnterpriseTokenInventoryItemPastExpirationPolicyBasis {
     /** Proposed baseline. */
     PROPOSED_BASELINE("proposed_baseline"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubEnterpriseTokenInventoryItemPastExpirationPolicyBasis> WIRE_INDEX =
             EnumUtils.index(
@@ -52,6 +52,6 @@ public enum GitHubEnterpriseTokenInventoryItemPastExpirationPolicyBasis {
     public static GitHubEnterpriseTokenInventoryItemPastExpirationPolicyBasis fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

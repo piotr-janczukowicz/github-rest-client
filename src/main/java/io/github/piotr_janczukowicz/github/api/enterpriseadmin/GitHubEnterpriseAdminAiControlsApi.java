@@ -16,6 +16,8 @@ public final class GitHubEnterpriseAdminAiControlsApi extends GitHubResourceApi 
 
     private static final PathTemplate APPS_MODEL_POLICIES =
             PathTemplate.of("/enterprises/{enterprise}/copilot/apps/model-policies");
+    private static final PathTemplate FEATURE_POLICIES =
+            PathTemplate.of("/enterprises/{enterprise}/copilot/feature-policies");
     private static final PathTemplate MODEL_POLICIES =
             PathTemplate.of("/enterprises/{enterprise}/copilot/model-policies");
     private static final PathTemplate TEAM_MODEL_POLICIES =
@@ -112,6 +114,48 @@ public final class GitHubEnterpriseAdminAiControlsApi extends GitHubResourceApi 
         return caller.fetch(
                 caller.json(patch(MODEL_POLICIES, enterprise), payload),
                 GitHubUpdateEnterpriseModelPoliciesResponse.class);
+    }
+
+    /**
+     * Get the Copilot feature policies of an enterprise ({@code GET
+     * /enterprises/{enterprise}/copilot/feature-policies}).
+     *
+     * @param enterprise the slug version of the enterprise name
+     * @return feature policies of the enterprise
+     * @throws IllegalArgumentException if {@code enterprise} is blank
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code GHEC}
+     */
+    @Flavors(GitHubFlavor.GHEC)
+    public GitHubGetEnterpriseFeaturePoliciesResponse getEnterpriseFeaturePolicies(final String enterprise)
+            throws IOException {
+        requireFlavor(GitHubFlavor.GHEC);
+        return caller.fetch(get(FEATURE_POLICIES, enterprise), GitHubGetEnterpriseFeaturePoliciesResponse.class);
+    }
+
+    /**
+     * Update the Copilot feature policies of an enterprise ({@code PATCH
+     * /enterprises/{enterprise}/copilot/feature-policies}).
+     *
+     * @param enterprise the slug version of the enterprise name
+     * @param payload the default availability and feature policies to update
+     * @return feature policies of the enterprise after the update
+     * @throws IllegalArgumentException if {@code enterprise} is blank
+     * @throws NullPointerException if {@code payload} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code GHEC}
+     */
+    @Flavors(GitHubFlavor.GHEC)
+    public GitHubUpdateEnterpriseFeaturePoliciesResponse updateEnterpriseFeaturePolicies(
+            final String enterprise, final GitHubUpdateEnterpriseFeaturePoliciesPayload payload) throws IOException {
+        requireFlavor(GitHubFlavor.GHEC);
+        requireNonNull(payload, PARAM_PAYLOAD);
+
+        return caller.fetch(
+                caller.json(patch(FEATURE_POLICIES, enterprise), payload),
+                GitHubUpdateEnterpriseFeaturePoliciesResponse.class);
     }
 
     /**

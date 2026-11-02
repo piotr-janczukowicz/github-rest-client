@@ -42,15 +42,15 @@ class GitHubCopilotOrganizationPublicCodeSuggestionsTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubCopilotOrganizationPublicCodeSuggestions decoded =
                 GitHubCopilotOrganizationPublicCodeSuggestions.fromWire(wire);
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubCopilotOrganizationPublicCodeSuggestions.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded).isEqualTo(GitHubCopilotOrganizationPublicCodeSuggestions.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

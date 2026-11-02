@@ -25,16 +25,21 @@ class GitHubManageReplicationStatusIndicatorTest {
     }
 
     @Test
-    void fromWire_shouldThrow_whenValueUnknown() {
-        final Throwable thrown = catchThrowable(() -> GitHubManageReplicationStatusIndicator.fromWire("other"));
-
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("other");
-    }
-
-    @Test
     void fromWire_shouldThrow_whenValueNull() {
         final Throwable thrown = catchThrowable(() -> GitHubManageReplicationStatusIndicator.fromWire(null));
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("value");
+    }
+
+    @Test
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
+        final String wire = "brand_new_value";
+
+        final GitHubManageReplicationStatusIndicator decoded = GitHubManageReplicationStatusIndicator.fromWire(wire);
+
+        assertSoftly(softly -> {
+            softly.assertThat(decoded).isEqualTo(GitHubManageReplicationStatusIndicator.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
+        });
     }
 }

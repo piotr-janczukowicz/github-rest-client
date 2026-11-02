@@ -14,7 +14,7 @@ public enum GitHubRuleSuiteRuleEvaluationEnforcement {
     EVALUATE("evaluate"),
     DELETED_RULESET("deleted ruleset"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubRuleSuiteRuleEvaluationEnforcement> WIRE_INDEX = EnumUtils.index(
             GitHubRuleSuiteRuleEvaluationEnforcement.class, GitHubRuleSuiteRuleEvaluationEnforcement::wireValue);
@@ -46,6 +46,6 @@ public enum GitHubRuleSuiteRuleEvaluationEnforcement {
     public static GitHubRuleSuiteRuleEvaluationEnforcement fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

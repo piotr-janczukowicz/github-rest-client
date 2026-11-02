@@ -43,7 +43,7 @@ class GitHubUpdateEnterpriseAppsModelPoliciesResponseEnterprisePolicyStateTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubUpdateEnterpriseAppsModelPoliciesResponseEnterprisePolicyState decoded =
@@ -51,8 +51,8 @@ class GitHubUpdateEnterpriseAppsModelPoliciesResponseEnterprisePolicyStateTest {
 
         assertSoftly(softly -> {
             softly.assertThat(decoded)
-                    .isEqualTo(GitHubUpdateEnterpriseAppsModelPoliciesResponseEnterprisePolicyState.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+                    .isEqualTo(GitHubUpdateEnterpriseAppsModelPoliciesResponseEnterprisePolicyState.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }

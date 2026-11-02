@@ -5,6 +5,7 @@ import static io.github.piotr_janczukowicz.http.HttpMethod.DELETE;
 import static io.github.piotr_janczukowicz.http.HttpMethod.GET;
 import static io.github.piotr_janczukowicz.http.HttpMethod.PATCH;
 import static io.github.piotr_janczukowicz.http.HttpMethod.POST;
+import static io.github.piotr_janczukowicz.test.support.GitHubApiWireMockSupport.acceptedJson;
 import static io.github.piotr_janczukowicz.test.support.GitHubApiWireMockSupport.agentAutomationsApi;
 import static io.github.piotr_janczukowicz.test.support.GitHubApiWireMockSupport.createdJson;
 import static io.github.piotr_janczukowicz.test.support.GitHubApiWireMockSupport.jsonBytes;
@@ -34,12 +35,13 @@ class GitHubAgentAutomationApiIntegrationTest {
     private static final String REPO = "Hello-World";
     private static final String AUTOMATION_ID = "automation-1";
     private static final String AUTOMATIONS_PATH = "/agents/automations";
-    private static final String AVAILABLE_TOOLS_PATH = "/agents/automations/available-tools";
-    private static final String AVAILABLE_TRIGGERS_PATH = "/agents/automations/available-triggers";
-    private static final String AUTOMATION_PATH = "/agents/automations/automation-1";
-    private static final String AUTOMATION_TASKS_PATH = "/agents/automations/automation-1/tasks";
     private static final String REPO_AUTOMATIONS_PATH = "/agents/repos/octocat/Hello-World/automations";
     private static final String REPO_AUTOMATION_PATH = "/agents/repos/octocat/Hello-World/automations/automation-1";
+    private static final String AVAILABLE_TOOLS_PATH = "/agents/repos/octocat/Hello-World/automations/available-tools";
+    private static final String AVAILABLE_TRIGGERS_PATH =
+            "/agents/repos/octocat/Hello-World/automations/available-triggers";
+    private static final String AUTOMATION_TASKS_PATH =
+            "/agents/repos/octocat/Hello-World/automations/automation-1/tasks";
 
     @RegisterExtension
     static final StubHttpServer HTTP = new StubHttpServer();
@@ -103,87 +105,83 @@ class GitHubAgentAutomationApiIntegrationTest {
     }
 
     @Test
-    void listAvailableAutomationTools_shouldReturnTools_whenResponseIsOk() throws Exception {
+    void listAvailableRepoAutomationTools_shouldReturnTools_whenResponseIsOk() throws Exception {
         HTTP.stub(
                 GET,
                 AVAILABLE_TOOLS_PATH,
-                okJson(listJsonBytes(
-                        GitHubAgentAutomationApiIntegrationTest.class, "list-available-automation-tools-item.json")));
+                okJson(jsonBytes(
+                        GitHubAgentAutomationApiIntegrationTest.class,
+                        "list-available-repo-automation-tools-response.json")));
 
-        final List<GitHubListAvailableAutomationToolsItem> tools;
+        final GitHubListAvailableRepoAutomationToolsResponse tools;
         try (final GitHubApiWireMockSupport.AgentAutomationsApiClient automations = agentAutomationsApi(HTTP)) {
-            tools = automations.api().listAvailableAutomationTools();
+            tools = automations.api().listAvailableRepoAutomationTools(OWNER, REPO);
         }
 
-        assertThat(tools).containsExactly(AgentAutomationsCatalogFixtures.listAvailableAutomationToolsItem());
+        assertThat(tools).isEqualTo(AgentAutomationsCatalogFixtures.listAvailableRepoAutomationToolsResponse());
         HTTP.verifyRequested(GET, AVAILABLE_TOOLS_PATH);
     }
 
     @Test
-    void listAvailableAutomationTriggers_shouldReturnTriggers_whenResponseIsOk() throws Exception {
+    void listAvailableRepoAutomationTriggers_shouldReturnTriggers_whenResponseIsOk() throws Exception {
         HTTP.stub(
                 GET,
                 AVAILABLE_TRIGGERS_PATH,
                 okJson(listJsonBytes(
                         GitHubAgentAutomationApiIntegrationTest.class,
-                        "list-available-automation-triggers-item.json")));
+                        "list-available-repo-automation-triggers-item.json")));
 
-        final List<GitHubListAvailableAutomationTriggersItem> triggers;
+        final List<GitHubListAvailableRepoAutomationTriggersItem> triggers;
         try (final GitHubApiWireMockSupport.AgentAutomationsApiClient automations = agentAutomationsApi(HTTP)) {
-            triggers = automations.api().listAvailableAutomationTriggers();
+            triggers = automations.api().listAvailableRepoAutomationTriggers(OWNER, REPO);
         }
 
-        assertThat(triggers).containsExactly(AgentAutomationsCatalogFixtures.listAvailableAutomationTriggersItem());
+        assertThat(triggers).containsExactly(AgentAutomationsCatalogFixtures.listAvailableRepoAutomationTriggersItem());
         HTTP.verifyRequested(GET, AVAILABLE_TRIGGERS_PATH);
     }
 
     @Test
-    void getAutomation_shouldReturnAutomation_whenResponseIsOk() throws Exception {
-        HTTP.stub(
-                GET,
-                AUTOMATION_PATH,
-                okJson(jsonBytes(GitHubAgentAutomationApiIntegrationTest.class, "get-automation-response.json")));
-
-        final Optional<GitHubGetAutomationResponse> automation;
-        try (final GitHubApiWireMockSupport.AgentAutomationsApiClient automations = agentAutomationsApi(HTTP)) {
-            automation = automations.api().getAutomation(AUTOMATION_ID);
-        }
-
-        assertThat(automation).contains(AgentAutomationsCatalogFixtures.getAutomationResponse());
-        HTTP.verifyRequested(GET, AUTOMATION_PATH);
-    }
-
-    @Test
-    void getAutomation_shouldReturnEmpty_whenResponseIsNotFound() throws Exception {
-        HTTP.stub(GET, AUTOMATION_PATH, notFound());
-
-        final Optional<GitHubGetAutomationResponse> automation;
-        try (final GitHubApiWireMockSupport.AgentAutomationsApiClient automations = agentAutomationsApi(HTTP)) {
-            automation = automations.api().getAutomation(AUTOMATION_ID);
-        }
-
-        assertThat(automation).isEmpty();
-    }
-
-    @Test
-    void listAutomationTasks_shouldReturnTasks_whenResponseIsOk() throws Exception {
+    void listRepoAutomationTasks_shouldReturnTasks_whenResponseIsOk() throws Exception {
         HTTP.stub(
                 GET,
                 AUTOMATION_TASKS_PATH,
                 okJson(jsonBytes(
-                        GitHubAgentAutomationApiIntegrationTest.class, "list-automation-tasks-response.json")));
+                        GitHubAgentAutomationApiIntegrationTest.class, "list-repo-automation-tasks-response.json")));
 
-        final GitHubPage<GitHubListAutomationTasksTask> page;
+        final GitHubPage<GitHubListRepoAutomationTasksTask> page;
         try (final GitHubApiWireMockSupport.AgentAutomationsApiClient automations = agentAutomationsApi(HTTP)) {
-            page = automations.api().listAutomationTasks(AUTOMATION_ID);
+            page = automations.api().listRepoAutomationTasks(OWNER, REPO, AUTOMATION_ID);
         }
 
         assertThat(page.items())
-                .containsExactlyElementsOf(AgentAutomationsCatalogFixtures.listAutomationTasksResponse()
+                .containsExactlyElementsOf(AgentAutomationsCatalogFixtures.listRepoAutomationTasksResponse()
                         .tasks());
         HTTP.verifyRequested(GET, AUTOMATION_TASKS_PATH);
         HTTP.verifyQueryParam(GET, AUTOMATION_TASKS_PATH, "page", "1");
         HTTP.verifyQueryParam(GET, AUTOMATION_TASKS_PATH, "per_page", "100");
+    }
+
+    @Test
+    void createRepoAutomationTask_shouldReturnAcceptedRun_whenResponseIsAccepted() throws Exception {
+        HTTP.stub(
+                POST,
+                AUTOMATION_TASKS_PATH,
+                acceptedJson(jsonBytes(
+                        GitHubAgentAutomationApiIntegrationTest.class, "create-repo-automation-task-response.json")));
+
+        final GitHubCreateRepoAutomationTaskResponse accepted;
+        try (final GitHubApiWireMockSupport.AgentAutomationsApiClient automations = agentAutomationsApi(HTTP)) {
+            accepted = automations
+                    .api()
+                    .createRepoAutomationTask(
+                            OWNER,
+                            REPO,
+                            AUTOMATION_ID,
+                            AgentAutomationsCatalogFixtures.createRepoAutomationTaskPayload());
+        }
+
+        assertThat(accepted).isEqualTo(AgentAutomationsCatalogFixtures.createRepoAutomationTaskResponse());
+        HTTP.verifyRequested(POST, AUTOMATION_TASKS_PATH);
     }
 
     @Test

@@ -4,7 +4,9 @@ import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonNull;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
+import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubPublicMonitoringAlertGist;
 import io.github.piotr_janczukowicz.github.api.users.GitHubSimpleUser;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import java.time.Instant;
@@ -33,6 +35,8 @@ import org.jspecify.annotations.Nullable;
  * @param owner Owner
  * @param truncated Truncated
  */
+// The implemented sealed interface carries the deduction; this type itself decodes as a plain record.
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @CatalogSchema("components/schemas/base-gist")
 @RecordBuilder
@@ -54,7 +58,8 @@ public record GitHubBaseGist(
         @Nullable Boolean commentsEnabled,
         String commentsUrl,
         @Nullable GitHubSimpleUser owner,
-        @Nullable Boolean truncated) {
+        @Nullable Boolean truncated)
+        implements GitHubPublicMonitoringAlertGist {
 
     public GitHubBaseGist {
         requireNonNull(url, "url");

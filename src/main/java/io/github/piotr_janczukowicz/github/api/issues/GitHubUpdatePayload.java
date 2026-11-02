@@ -16,7 +16,9 @@ import org.jspecify.annotations.Nullable;
  * @param body issue body
  * @param state open or closed state
  * @param stateReason reason for the state change
- * @param duplicateIssueId canonical duplicate issue id when closing as duplicate
+ * @param duplicateIssueId The ID of the issue that this issue duplicates, used when marking this issue as a duplicate
+ *     with {@code status: Duplicate} or {@code state_reason: duplicate}. The issue must exist and be accessible to the
+ *     authenticated user.
  * @param milestone milestone reference
  * @param labels labels to replace on the issue
  * @param assignees assignees to replace on the issue

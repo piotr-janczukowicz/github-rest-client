@@ -16,7 +16,9 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
 public record GitHubSecretScanningLocationDiscussionComment(String discussionCommentUrl)
-        implements GitHubSecretScanningLocationDetails, GitHubSecretScanningFirstDetectedLocation {
+        implements GitHubSecretScanningLocationDetails,
+                GitHubSecretScanningFirstDetectedLocation,
+                GitHubPublicMonitoringAlertAttributionDiscussionComment {
 
     public GitHubSecretScanningLocationDiscussionComment {
         requireNonNull(discussionCommentUrl, "discussionCommentUrl");

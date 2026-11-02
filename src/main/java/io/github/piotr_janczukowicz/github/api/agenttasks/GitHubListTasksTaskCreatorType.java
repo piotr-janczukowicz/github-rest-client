@@ -18,7 +18,7 @@ public enum GitHubListTasksTaskCreatorType {
     /** Organization. */
     ORGANIZATION("organization"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubListTasksTaskCreatorType> WIRE_INDEX =
             EnumUtils.index(GitHubListTasksTaskCreatorType.class, GitHubListTasksTaskCreatorType::wireValue);
@@ -43,13 +43,13 @@ public enum GitHubListTasksTaskCreatorType {
      * Resolves the constant from its wire value.
      *
      * @param value JSON value
-     * @return matching constant, or {@link #UNKNOWN} when the value is not known
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
      */
     @JsonCreator
     public static GitHubListTasksTaskCreatorType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

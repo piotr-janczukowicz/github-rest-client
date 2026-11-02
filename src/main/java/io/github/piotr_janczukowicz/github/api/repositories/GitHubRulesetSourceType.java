@@ -14,7 +14,7 @@ public enum GitHubRulesetSourceType {
     ORGANIZATION("Organization"),
     ENTERPRISE("Enterprise"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubRulesetSourceType> WIRE_INDEX =
             EnumUtils.index(GitHubRulesetSourceType.class, GitHubRulesetSourceType::wireValue);
@@ -46,6 +46,6 @@ public enum GitHubRulesetSourceType {
     public static GitHubRulesetSourceType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 class GitHubProjectViewSortDirectionTest {
 
     @ParameterizedTest
-    @CsvSource({"asc,ASC", "desc,DESC", "unknown,UNKNOWN"})
+    @CsvSource({"asc,ASC", "desc,DESC", "unrecognized,UNRECOGNIZED"})
     void fromWire_shouldReturnDirection_whenKnownValue(final String wire, final GitHubProjectViewSortDirection value) {
         final GitHubProjectViewSortDirection decoded = GitHubProjectViewSortDirection.fromWire(wire);
 
@@ -27,7 +27,7 @@ class GitHubProjectViewSortDirectionTest {
     void fromWire_shouldReturnUnknown_whenValueIsNotKnown() {
         final GitHubProjectViewSortDirection decoded = GitHubProjectViewSortDirection.fromWire("sideways");
 
-        assertThat(decoded).isEqualTo(GitHubProjectViewSortDirection.UNKNOWN);
+        assertThat(decoded).isEqualTo(GitHubProjectViewSortDirection.UNRECOGNIZED);
     }
 
     @Test

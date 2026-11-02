@@ -28,7 +28,9 @@ public enum GitHubDiscussionAuthorAssociation {
     /** NONE. */
     NONE("NONE"),
     /** OWNER. */
-    OWNER("OWNER");
+    OWNER("OWNER"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubDiscussionAuthorAssociation> WIRE_INDEX =
             EnumUtils.index(GitHubDiscussionAuthorAssociation.class, GitHubDiscussionAuthorAssociation::wireValue);
@@ -55,14 +57,11 @@ public enum GitHubDiscussionAuthorAssociation {
      * @param value wire value
      * @return constant
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known constant
      */
     @JsonCreator
     public static GitHubDiscussionAuthorAssociation fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException("Unknown GitHubDiscussionAuthorAssociation: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

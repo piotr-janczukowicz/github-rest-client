@@ -16,7 +16,7 @@ public enum GitHubOrganizationRoleBaseRole {
     MAINTAIN("maintain"),
     ADMIN("admin"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubOrganizationRoleBaseRole> WIRE_INDEX =
             EnumUtils.index(GitHubOrganizationRoleBaseRole.class, GitHubOrganizationRoleBaseRole::wireValue);
@@ -48,6 +48,6 @@ public enum GitHubOrganizationRoleBaseRole {
     public static GitHubOrganizationRoleBaseRole fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

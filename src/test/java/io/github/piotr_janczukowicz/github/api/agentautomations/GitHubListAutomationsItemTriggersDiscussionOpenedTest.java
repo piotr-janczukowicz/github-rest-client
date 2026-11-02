@@ -11,18 +11,6 @@ import org.junit.jupiter.api.Test;
 class GitHubListAutomationsItemTriggersDiscussionOpenedTest {
 
     @Test
-    void constructor_shouldLeaveCategoriesNull_whenNull() {
-        final GitHubListAutomationsItemTriggersDiscussionOpenedBuilder builder =
-                GitHubListAutomationsItemTriggersDiscussionOpenedBuilder.builder(
-                                AgentAutomationsCatalogFixtures.listAutomationsItemTriggersDiscussionOpened())
-                        .categories(null);
-
-        final GitHubListAutomationsItemTriggersDiscussionOpened sut = builder.build();
-
-        assertThat(sut.categories()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenCategoriesTooSmall() {
         final GitHubListAutomationsItemTriggersDiscussionOpenedBuilder builder =
                 GitHubListAutomationsItemTriggersDiscussionOpenedBuilder.builder(
@@ -39,10 +27,21 @@ class GitHubListAutomationsItemTriggersDiscussionOpenedTest {
         final GitHubListAutomationsItemTriggersDiscussionOpenedBuilder builder =
                 GitHubListAutomationsItemTriggersDiscussionOpenedBuilder.builder(
                                 AgentAutomationsCatalogFixtures.listAutomationsItemTriggersDiscussionOpened())
-                        .categories(List.of("a", "a"));
+                        .categories(List.of("categories", "categories"));
 
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("categories");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenCategoriesNull() {
+        final GitHubListAutomationsItemTriggersDiscussionOpened value =
+                GitHubListAutomationsItemTriggersDiscussionOpenedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.listAutomationsItemTriggersDiscussionOpened())
+                        .categories(null)
+                        .build();
+
+        assertThat(value.categories()).isNull();
     }
 }

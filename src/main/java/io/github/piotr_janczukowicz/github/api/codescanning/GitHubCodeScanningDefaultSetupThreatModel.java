@@ -13,7 +13,7 @@ public enum GitHubCodeScanningDefaultSetupThreatModel {
     REMOTE("remote"),
     REMOTE_AND_LOCAL("remote_and_local"),
     /** A value this library version does not know. */
-    UNKNOWN("unknown");
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningDefaultSetupThreatModel> WIRE_INDEX = EnumUtils.index(
             GitHubCodeScanningDefaultSetupThreatModel.class, GitHubCodeScanningDefaultSetupThreatModel::wireValue);
@@ -45,6 +45,6 @@ public enum GitHubCodeScanningDefaultSetupThreatModel {
     public static GitHubCodeScanningDefaultSetupThreatModel fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX.fromWire(value, UNKNOWN);
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

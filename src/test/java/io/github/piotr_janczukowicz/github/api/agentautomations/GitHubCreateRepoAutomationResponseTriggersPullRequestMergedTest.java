@@ -23,18 +23,6 @@ class GitHubCreateRepoAutomationResponseTriggersPullRequestMergedTest {
     }
 
     @Test
-    void constructor_shouldLeavePathsNull_whenNull() {
-        final GitHubCreateRepoAutomationResponseTriggersPullRequestMergedBuilder builder =
-                GitHubCreateRepoAutomationResponseTriggersPullRequestMergedBuilder.builder(
-                                AgentAutomationsCatalogFixtures.createRepoAutomationResponseTriggersPullRequestMerged())
-                        .paths(null);
-
-        final GitHubCreateRepoAutomationResponseTriggersPullRequestMerged sut = builder.build();
-
-        assertThat(sut.paths()).isNull();
-    }
-
-    @Test
     void constructor_shouldThrow_whenPathsTooSmall() {
         final GitHubCreateRepoAutomationResponseTriggersPullRequestMergedBuilder builder =
                 GitHubCreateRepoAutomationResponseTriggersPullRequestMergedBuilder.builder(
@@ -56,5 +44,16 @@ class GitHubCreateRepoAutomationResponseTriggersPullRequestMergedTest {
         final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("paths");
+    }
+
+    @Test
+    void constructor_shouldAcceptNull_whenPathsNull() {
+        final GitHubCreateRepoAutomationResponseTriggersPullRequestMerged value =
+                GitHubCreateRepoAutomationResponseTriggersPullRequestMergedBuilder.builder(
+                                AgentAutomationsCatalogFixtures.createRepoAutomationResponseTriggersPullRequestMerged())
+                        .paths(null)
+                        .build();
+
+        assertThat(value.paths()).isNull();
     }
 }

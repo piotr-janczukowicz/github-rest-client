@@ -16,7 +16,9 @@ public enum GitHubDependabotAlertDependencyRelationship {
     UNKNOWN("unknown"),
     DIRECT("direct"),
     TRANSITIVE("transitive"),
-    INCONCLUSIVE("inconclusive");
+    INCONCLUSIVE("inconclusive"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubDependabotAlertDependencyRelationship> WIRE_INDEX = EnumUtils.index(
             GitHubDependabotAlertDependencyRelationship.class, GitHubDependabotAlertDependencyRelationship::wireValue);
@@ -43,15 +45,11 @@ public enum GitHubDependabotAlertDependencyRelationship {
      * @param value JSON value
      * @return matching GitHubDependabotAlertDependencyRelationship
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known Dependabot alert dependency relationship
      */
     @JsonCreator
     public static GitHubDependabotAlertDependencyRelationship fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException(
-                        "Unknown GitHub Dependabot alert dependency relationship: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

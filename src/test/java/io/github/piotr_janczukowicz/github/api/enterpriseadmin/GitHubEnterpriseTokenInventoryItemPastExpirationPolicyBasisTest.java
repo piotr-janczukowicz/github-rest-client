@@ -22,15 +22,16 @@ class GitHubEnterpriseTokenInventoryItemPastExpirationPolicyBasisTest {
     }
 
     @Test
-    void fromWire_shouldReturnUnknown_whenValueNotKnown() {
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
         final String wire = "brand_new_value";
 
         final GitHubEnterpriseTokenInventoryItemPastExpirationPolicyBasis decoded =
                 GitHubEnterpriseTokenInventoryItemPastExpirationPolicyBasis.fromWire(wire);
 
         assertSoftly(softly -> {
-            softly.assertThat(decoded).isEqualTo(GitHubEnterpriseTokenInventoryItemPastExpirationPolicyBasis.UNKNOWN);
-            softly.assertThat(decoded.wireValue()).isEqualTo("unknown");
+            softly.assertThat(decoded)
+                    .isEqualTo(GitHubEnterpriseTokenInventoryItemPastExpirationPolicyBasis.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
         });
     }
 }
