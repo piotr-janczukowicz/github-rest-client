@@ -29,7 +29,7 @@ Every `GitHubApiException` carries `statusCode()`, `documentationUrl()`, `reques
 ## What the client handles for you
 
 - **Rate limits** are waited out when the wait is at most `maxRateLimitWait`, with the attempts and the coordination across
-  calls described in [Rate limiting](../../README.md#rate-limiting). You see `GitHubRateLimitException` only for a longer wait or after the
+  calls described in [Rate limiting](rate-limiting.md). You see `GitHubRateLimitException` only for a longer wait or after the
   attempts are used up.
 - **Transient failures** are retried: `502`, `503` and `504`, and I/O failures. By default only for `GET`, `HEAD` and
   `OPTIONS`; a failed connection attempt is retried for every method. A `POST`, `PATCH`, `PUT` or `DELETE` that fails
