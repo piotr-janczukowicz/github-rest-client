@@ -1,12 +1,54 @@
+# github-rest-client
+
+Java 21 client for the [GitHub REST API](https://docs.github.com/en/rest): typed models and operations for github.com, GitHub Enterprise Cloud and GitHub Enterprise Server, with pagination and rate-limit handling built in.
+
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b1f7def0919f47b88374ae4bd4fdc531)](https://app.codacy.com/gh/piotr-janczukowicz/github-rest-client/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Codacy Coverage](https://app.codacy.com/project/badge/Coverage/b1f7def0919f47b88374ae4bd4fdc531)](https://app.codacy.com/gh/piotr-janczukowicz/github-rest-client/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 [![Build](https://github.com/piotr-janczukowicz/github-rest-client/actions/workflows/main.yml/badge.svg)](https://github.com/piotr-janczukowicz/github-rest-client/actions/workflows/main.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.piotr-janczukowicz/github-rest-client)](https://central.sonatype.com/artifact/io.github.piotr-janczukowicz/github-rest-client)
-[![Release](https://img.shields.io/github/v/release/piotr-janczukowicz/github-rest-client)](https://github.com/piotr-janczukowicz/github-rest-client/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Java 21](https://img.shields.io/badge/Java-21-orange.svg)
 
 **API version:** `2026-03-10` · **Last updated:** 2026-10-31
+
+## Why this library
+
+- **Generated from GitHub's own descriptions.** Every resource has a typed `GitHub*Api` class, built from the official [OpenAPI descriptions](https://github.com/github/rest-api-description/tree/main/descriptions-next), and a `GitHub` aggregator gives access to all of them.
+- **One client for three products.** github.com, GitHub Enterprise Cloud and GitHub Enterprise Server 3.21 and 3.22. A call a product lacks is marked in the code and can be rejected before any request is sent.
+- **Safe when GitHub adds values.** A response value the library does not know decodes to `UNRECOGNIZED` instead of throwing, so a new enum value on GitHub's side does not break your code.
+- **The boring parts are handled.** Rate limits are waited out, pagination is followed and responses are immutable.
+- **Small on purpose.** Synchronous REST only: no GraphQL and no async API.
+
+## Install
+
+**Requirements:** Java 21. The library is a Java module, `io.github.piotr_janczukowicz.githubrestclient`, and also works on the class path. It is published on [Maven Central](https://central.sonatype.com/artifact/io.github.piotr-janczukowicz/github-rest-client):
+
+```xml
+<dependency>
+    <groupId>io.github.piotr-janczukowicz</groupId>
+    <artifactId>github-rest-client</artifactId>
+    <version>LATEST_VERSION</version>
+</dependency>
+```
+
+Replace `LATEST_VERSION` with the version in the Maven Central badge at the top of this page, or with the newest entry on the [releases page](https://github.com/piotr-janczukowicz/github-rest-client/releases).
+
+The library is in prerelease; see the [Disclaimer](#disclaimer) before relying on it.
+
+## Quick start
+
+```java
+try (GitHubClient client = GitHubClients.create(AuthenticationProviders.bearer(System.getenv("GITHUB_TOKEN")), "my-app/1.0")) {
+    GitHub github = new GitHub(GitHubCaller.of(client));
+
+    GitHubIssueApi issues = github.issues().issue();
+    for (GitHubIssue issue : issues.listForRepo("octocat", "Hello-World").all()) {
+        System.out.println(issue.number() + " " + issue.title());
+    }
+}
+```
+
+A lookup of one resource returns an `Optional` (a 404 is an empty result), and a list returns a `GitHubPage`. See [Usage](#usage) for creating, filtering and configuring.
 
 ## Supported GitHub products
 
@@ -18,29 +60,7 @@
 | GitHub Enterprise Server | `GitHubFlavor.GHES`, required, with the release | `https://HOST/api/v3/` | Supported: versions 3.21 to 3.22; a server-only operation is marked `@Flavors(GitHubFlavor.GHES)`, and one that only some versions carry is marked `@GhesVersions` |
 <!-- support-table:end -->
 
-## Overview
-
-A Java client for the [GitHub REST API](https://docs.github.com/en/rest) for github.com, GitHub Enterprise Cloud and
-GitHub Enterprise Server 3.21 and 3.22. Each GitHub resource has a typed `GitHub*Api` class, generated from GitHub's
-[OpenAPI descriptions](https://github.com/github/rest-api-description/tree/main/descriptions-next), and a `GitHub`
-aggregator gives access to all of them. The client waits out rate limits, follows pagination and keeps responses
-immutable. Keep the defaults on github.com and Enterprise Cloud; tune an Enterprise Server client to the instance.
-
-**Requirements:** Java 21. The library is a Java module, `io.github.piotr_janczukowicz.githubrestclient`, and also works on the class
-path. It is published on [Maven Central](https://central.sonatype.com/artifact/io.github.piotr-janczukowicz/github-rest-client):
-
-```xml
-<dependency>
-    <groupId>io.github.piotr-janczukowicz</groupId>
-    <artifactId>github-rest-client</artifactId>
-    <version>LATEST_VERSION</version>
-</dependency>
-```
-
-Replace `LATEST_VERSION` with the version in the Maven Central badge at the top of this page, or with the newest entry on the
-[releases page](https://github.com/piotr-janczukowicz/github-rest-client/releases).
-
-The library is in prerelease; see the [Disclaimer](#disclaimer) before relying on it.
+Keep the defaults on github.com and Enterprise Cloud; tune an Enterprise Server client to the instance.
 
 In this README: [Usage](#usage) · [Flavors](#flavors) · [Enterprise Cloud and Server](#github-enterprise-cloud-and-server) ·
 [Pagination](#pagination) · [Rate limiting](#rate-limiting) · [Authentication](#authentication) ·
