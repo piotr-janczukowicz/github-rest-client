@@ -33,9 +33,12 @@ path. It is published on [Maven Central](https://central.sonatype.com/artifact/i
 <dependency>
     <groupId>io.github.piotr-janczukowicz</groupId>
     <artifactId>github-rest-client</artifactId>
-    <version>2026.3.10.0</version>
+    <version>LATEST_VERSION</version>
 </dependency>
 ```
+
+Replace `LATEST_VERSION` with the version in the Maven Central badge at the top of this page, or with the newest entry on the
+[releases page](https://github.com/piotr-janczukowicz/github-rest-client/releases).
 
 The library is in prerelease; see the [Disclaimer](#disclaimer) before relying on it.
 
