@@ -11,7 +11,7 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 /**
  * An explicitly configured MCP tool with a server-qualified ID. Descriptions and input schemas are not discovered.
  *
- * @param id The tool identifier in <server-name>/<tool-name> format, for example sentry/list_issues.
+ * @param id The tool identifier in &lt;server-name&gt;/&lt;tool-name&gt; format, for example sentry/list_issues.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
