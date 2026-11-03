@@ -62,11 +62,29 @@ A lookup of one resource returns an `Optional` (a 404 is an empty result), and a
 
 Keep the defaults on github.com and Enterprise Cloud; tune an Enterprise Server client to the instance.
 
-In this README: [Usage](#usage) · [Flavors](#flavors) · [Enterprise Cloud and Server](#github-enterprise-cloud-and-server) ·
+In this README: [Comparison](#comparison-with-hub4jgithub-api) · [Usage](#usage) · [Flavors](#flavors) · [Enterprise Cloud and Server](#github-enterprise-cloud-and-server) ·
 [Pagination](#pagination) · [Rate limiting](#rate-limiting) · [Authentication](#authentication) ·
 [Immutability](#immutability) · [Exception handling](#exception-handling) · [Good to know](#good-to-know) ·
 [Limitations](#limitations) · [Performance](#performance). The [user guide](docs/guide/README.md) has the detail: [rate limiting](docs/guide/rate-limiting.md),
 [authentication](docs/guide/authentication.md), [performance](docs/guide/performance.md) and [live smoke tests](docs/guide/smoke-tests.md).
+
+## Comparison with hub4j/github-api
+
+[hub4j/github-api](https://github.com/hub4j/github-api) is the long-established Java library for GitHub and a fine
+choice, especially if you like its object-oriented style. The two differ in design, so pick by what you need. The
+hub4j column is taken from its [documentation](https://hub4j.github.io/github-api/) as of November 2026.
+
+| | github-rest-client | hub4j/github-api |
+|---|---|---|
+| Style | A typed class per resource, reached as `github.area().group().method(...)`; requests and responses are records | An object-oriented model: classes such as `GHRepository` and `GHUser` with the operations as methods on them |
+| Coverage | Generated from GitHub's OpenAPI descriptions, so an operation in the description has a method | Most of the GitHub APIs; its documentation says some corners are not implemented yet |
+| GitHub products | github.com, GitHub Enterprise Cloud and Enterprise Server 3.21 and 3.22, with a per-flavor check that can fail a call before it is sent | github.com and GitHub Enterprise |
+| Java | 21 | 11 |
+| Maturity | Prerelease, see the [Disclaimer](#disclaimer) | Long-established and widely used |
+
+Choose hub4j/github-api if you need Java 11, an object-oriented API, or a library with a long track record. Choose this
+library if you want every operation in GitHub's description typed and immutable, one client for the three products, or
+responses that keep decoding when GitHub adds an enum value.
 
 ## Usage
 
