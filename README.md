@@ -128,104 +128,31 @@ List<GitHubIssue> open = issues.listForRepo("octocat", "Hello-World", filter, Gi
 ### Configure only what you need
 
 `GitHubClients.create(auth, userAgent)` uses the defaults, and the defaults follow GitHub's own advice for github.com. On
-**github.com and GitHub Enterprise Cloud** keep them and set only what your case needs, such as the base URI of a
-data-residency tenant. Raising the concurrency or shortening the pause between writes makes GitHub's secondary limits
-likelier, so the client does not let you go below the floors in the table.
-
-A **GitHub Enterprise Server** instance is yours: its administrator decides whether and how rate limits apply, and what
-the hardware can take. Tune the client to it as you like, within the same safety rules, and set the three things it
-always needs: the base URI, the `GHES` flavor and the release (see [GitHub Enterprise Server](#github-enterprise-server)).
-
-| Option | Default | github.com and Enterprise Cloud | Enterprise Server |
-|---|---|---|---|
-| `maxConcurrentRequests` | 1 | Keep 1; more raises the risk of secondary limits | 1 to 100, as the instance can take |
-| `mutationInterval` | 1 s | At least 1 s | Any value from `Duration.ZERO` (no pacing) up |
-| `retry` (waits, attempts, backoff) | Waits out rate limits, retries transient failures | Tune the waits and attempts; rate-limit handling cannot be switched off | The same |
-| Conditional cache limits | 64 entries, 1 MiB per body, 4 MiB in all | Rarely worth changing | Size to your workload; the cache cannot be switched off |
-| Timeouts, proxy and TLS of the transport | OkHttp defaults of the library | Set what your network needs | The same |
-| `allowInsecureHttp` | `false` | Not needed | `true` for a plain `http` base URI on a host other than loopback |
-| Base URI | `https://api.github.com/` | Only for `https://api.SUBDOMAIN.ghe.com/` | Required: `https://HOST/api/v3/` |
-| `flavor` and `ghesVersion` | Unset: every method is allowed | Set `GHEC` for Enterprise Cloud, which shares the base URI with github.com: a method it lacks then fails fast | Required: `GHES` with the release 3.21 or 3.22 |
-
-```java
-// github.com: defaults
-GitHubClient cloud = GitHubClients.create(AuthenticationProviders.bearer(token), "my-app/1.0");
-
-// Enterprise Server: tuned to the instance
-GitHubClient server = GitHubClients.create(
-        AuthenticationProviders.bearer(token),
-        "my-app/1.0",
-        GitHubClientConfiguration.builder()
-                .configuration(HttpClientConfiguration.of(URI.create("https://HOST/api/v3/")))
-                .flavor(GitHubFlavor.GHES)
-                .ghesVersion(new GhesVersion(3, 22))
-                .transport(HttpTransportConfiguration.builder().maxConcurrentRequests(8).build())
-                .mutationInterval(Duration.ZERO)
-                .build());
-```
+github.com and GitHub Enterprise Cloud keep them. A GitHub Enterprise Server instance is yours to tune, within the same
+safety rules, and always needs the base URI, the `GHES` flavor and the release. The options, their defaults and limits,
+and the examples are in [Configuration](docs/guide/configuration.md).
 
 ## Flavors
 
-The library follows three OpenAPI descriptions of the REST API, one per *flavor*: github.com (`api.github.com`, called
-*cloud* here), GitHub Enterprise Cloud (*GHEC*) and GitHub Enterprise Server (*GHES*, releases 3.21 and 3.22). Most
-operations and schemas are in all three. Some exist in two or in one only: the enterprise-scoped ones (enterprise
-administration, enterprise teams, SCIM, announcement banners and others) are in GHEC, most of them also in GHES; the
-server administration (management console, statistics, pre-receive hooks and others) is in GHES only; a few
-organization and user billing operations are in cloud only.
-
-The flavor never changes the base URI: you set it yourself, and it is the same `https://api.github.com/` for cloud and
-GHEC. GHEC with data residency has its own host (see [below](#github-enterprise-cloud-with-data-residency)), and a
-GHES client needs `https://HOST/api/v3/` (see [below](#github-enterprise-server)).
-
-- **Marked in the code:** a type or method that does not exist in every flavor carries `@Flavors` with the flavors that
-  have it, such as `@Flavors(GitHubFlavor.GHES)` or `@Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})`; one without the
-  annotation exists in all three. A GHES item that only some releases carry also has `@GhesVersions(since = "3.22")`. The
-  annotations are generated from the three official OpenAPI descriptions.
-- **Shapes that differ:** when a schema differs between the flavors, one type covers all of them: a property that only
-  some flavors have is `@Nullable`, and enum constants are the union.
-- **Default:** a client does not check the flavor. Calling an operation that your product lacks fails with GitHub's own
-  `404`; a getter that returns an `Optional` answers with an empty one instead of throwing.
-- **Fail fast:** give the configuration a flavor to reject an operation the flavor does not carry before any request is
-  sent. The method throws `UnsupportedOperationException` and names the flavors that have it. `GHES` is required for a
-  server and also needs its release, which rejects a method that the release lacks in the same way.
-
-```java
-GitHubClientConfiguration clientConfiguration = GitHubClientConfiguration.builder()
-        .flavor(GitHubFlavor.GHEC)
-        .build();
-GitHubClient client = GitHubClients.create(AuthenticationProviders.bearer(token), userAgent, clientConfiguration);
-
-GitHub github = new GitHub(GitHubCaller.of(client));
-github.enterpriseAdmin().enterpriseRoles().listEnterpriseRoles("my-enterprise"); // GHEC: allowed on a GHEC client
-github.billing().budgets().listBudgets("my-org");                                // cloud only: UnsupportedOperationException
-github.enterpriseAdmin().adminStats().getAllStats();                             // GHES only: UnsupportedOperationException
-```
+The library follows three OpenAPI descriptions, one per *flavor*: github.com (*cloud*), GitHub Enterprise Cloud (*GHEC*)
+and GitHub Enterprise Server (*GHES*, releases 3.21 and 3.22). Most operations are in all three. A type or method that
+is not carries `@Flavors` with the flavors that have it, and a client that is given a flavor rejects a call its product
+lacks with `UnsupportedOperationException` before any request is sent. Without a flavor, such a call fails with GitHub's
+own `404`. The flavor never changes the base URI. The details are in
+[Flavors and GitHub Enterprise](docs/guide/flavors.md).
 
 ## GitHub Enterprise Cloud and Server
 
 ### GitHub Enterprise Cloud with data residency
 
-A tenant on `*.ghe.com` has its own API host. Use `https://api.SUBDOMAIN.ghe.com/` as the base URI (no `/api/v3`
-prefix) and, if you want operations the tenant does not carry to fail before a request is sent, set the flavor
-separately. The uploads host is derived as `uploads.SUBDOMAIN.ghe.com`.
-
-```java
-GitHubClientConfiguration clientConfiguration = GitHubClientConfiguration.builder()
-        .configuration(HttpClientConfiguration.of(URI.create("https://api.SUBDOMAIN.ghe.com/")))
-        .flavor(GitHubFlavor.GHEC)
-        .build();
-GitHubClient client = GitHubClients.create(AuthenticationProviders.bearer(token), userAgent, clientConfiguration);
-```
+A tenant on `*.ghe.com` has its own API host: use `https://api.SUBDOMAIN.ghe.com/` as the base URI and set the `GHEC`
+flavor. See [the guide](docs/guide/flavors.md#github-enterprise-cloud-with-data-residency).
 
 ### GitHub Enterprise Server
 
-Pass the API base URI of the server, which must end in `/api/v3/`, select the `GHES` flavor and name the server's
-release. The release is always explicit: there is no default, `build()` rejects a release that the library does not
-support (3.21 and 3.22) and lists the supported ones, and a server that is newer than the library needs a library
-release first. A method that only some releases carry fails fast with `UnsupportedOperationException` on a client of
-another release, and so does a method of another flavor. For installation auth, give the same `clientConfiguration` to
-`GitHubInstallationAuthenticationProviders.create(...)`, so the token requests go to the same host. Uploads go to the
-host's `/api/uploads/` path.
+Pass the API base URI of the server (it ends in `/api/v3/`), select the `GHES` flavor and name the server's release. The
+release is always explicit. See [the guide](docs/guide/flavors.md#github-enterprise-server) for versions, installation
+auth, uploads and the management console.
 
 ```java
 GitHubClientConfiguration clientConfiguration = GitHubClientConfiguration.builder()
@@ -236,53 +163,17 @@ GitHubClientConfiguration clientConfiguration = GitHubClientConfiguration.builde
 GitHubClient client = GitHubClients.create(AuthenticationProviders.bearer(token), userAgent, clientConfiguration);
 ```
 
-The management console (`github.enterpriseAdmin().manageGhes()`) is on the same host under `/manage/v1`, outside the API
-base path, and takes the console password instead of the token: every method takes a `GitHubManagementCredentials` for
-that one call, which is sent as HTTP Basic authentication and is never stored or printed. The client sends these calls
-through a console view of itself (`client.management()`): the API token is never sent to the console, and an ordinary
-call to `/manage/v1` is refused. The base URI of a client that uses it must be `https://HOST/api/v3/`.
-
-```java
-List<GitHubManageVersion> versions =
-        github.enterpriseAdmin().manageGhes().getVersion(new GitHubManagementCredentials(consolePassword));
-```
-
 ## Pagination
 
-GitHub returns list endpoints in pages. Each response holds up to `per_page` items (30 by default, 100 at most), and
-the `Link` header with `rel="next"` points to the next page. GitHub asks clients to follow that link rather than build
-URLs themselves, and to stop when there is no `rel="next"`. Search endpoints return at most 1,000 results per query.
-
-The library follows these rules. Each list method returns a `GitHubPage<T>` for one HTTP page. `next()` fetches the
-following page only when the `Link` header has one, and the other methods walk the remaining pages. Page size defaults
-to 100. A walk has no page cap unless `maxPages` is set on the client's
-`PaginationConfiguration`; a walk that reaches the cap throws `GitHubPaginationLimitExceededException`. Search walks stop
-at 1,000 items.
+Each list method returns a `GitHubPage<T>` for one HTTP page. `next()` fetches the following page only when GitHub sent a
+`rel="next"` link, and `all()`, `stream()`, `pages()` and `forEachPage(...)` walk the rest. The page size defaults to 100
+and a walk has no page cap unless you set `maxPages`. The rules, the examples and the limits are in
+[Pagination](docs/guide/pagination.md).
 
 ```java
-GitHubRepositoriesForksApi forks = new GitHubRepositoriesForksApi(caller);
-
-// One HTTP page
-GitHubPage<GitHubMinimalRepository> page = forks.listForks("octocat", "Hello-World");
-List<GitHubMinimalRepository> firstPage = page.items();
-Optional<GitHubPage<GitHubMinimalRepository>> second = page.next(); // empty when there is no next link
-
-// Every item, in memory
 List<GitHubMinimalRepository> all = forks.listForks("octocat", "Hello-World").all();
-
-// Lazy: stops fetching pages once the limit is reached
 List<GitHubMinimalRepository> fifty = forks.listForks("octocat", "Hello-World").stream().limit(50).toList();
-
-// Page by page, keeping pages that were read before a later failure
-forks.listForks("octocat", "Hello-World").forEachPage(p -> process(p.items()));
 ```
-
-Use one terminal call per walk: `all()`, `stream()`, `pages()` and `forEachPage(...)` advance the walk, and `next()` on a
-page that has already been passed throws `IllegalStateException`. A `GitHubPage` is not thread-safe.
-
-GitHub silently caps `per_page` at 100 and returns fewer items, without an error. This library does not cap it: an
-explicit `perPage` above the endpoint maximum throws `IllegalArgumentException` when the request is sent. Without an
-explicit value, the page size is the smaller of `PaginationConfiguration.perPage()` and the endpoint maximum.
 
 ## Rate limiting
 
@@ -361,106 +252,17 @@ Token renewal, back-off, SAML partial results, redirects and the security notes 
 
 ## Immutability
 
-What you get back cannot be changed by accident, and what you hand in cannot be changed behind the library's back.
-
-### Output
-
-- **Models are records.** Every response model is an immutable record.
-- **Collections and maps are unmodifiable.** Every list, set and map in a response throws `UnsupportedOperationException`
-  on `add`, `put` or `remove`. Copy it if you need to change it.
-- **What GitHub sends is what you get.** A field that GitHub leaves out is `null`, not an empty collection, and a `null`
-  element that GitHub sends is kept. A property that can be absent is marked `@Nullable`.
-- **Pages, headers, errors and configuration** are immutable too, so you can share them between threads.
-
-```java
-GitHubPage<GitHubMinimalRepository> page = forks.listForks("octocat", "Hello-World");
-List<GitHubMinimalRepository> items = page.items();
-items.add(other); // UnsupportedOperationException
-```
-
-### Input
-
-A payload, filter or other object that you build and pass to a method copies every list, set and map you give it. Changing
-your own collection afterwards does not change the request. A `null` collection that the type allows stays `null`; a `null`
-element or value is rejected with a `NullPointerException`.
-
-```java
-List<String> labels = new ArrayList<>(List.of("gpu"));
-GitHubAddCustomLabelsToSelfHostedRunnerForRepoPayload payload =
-        new GitHubAddCustomLabelsToSelfHostedRunnerForRepoPayload(labels);
-labels.add("arm"); // not in payload.labels()
-```
+Models are immutable records, and every list, set and map in a response is unmodifiable. A field that GitHub leaves out
+is `null`, not an empty collection. Collections you pass in a payload or filter are copied. See
+[Immutability](docs/guide/immutability.md).
 
 ## Exception handling
 
-### What reaches your code
-
-| Exception | When | Type |
-|---|---|---|
-| `GitHubUnauthorizedException` | 401: the token is missing, expired, revoked or malformed | unchecked |
-| `GitHubForbiddenException` | 403 that is not a rate limit: missing permission, blocked access, policy, SAML SSO (`ssoUrl()`) | unchecked |
-| `GitHubNotFoundException` | 404: the resource is missing, or private and not visible to this credential | unchecked |
-| `GitHubValidationException` | 422: the payload was rejected; `errors()` lists the fields | unchecked |
-| `GitHubRateLimitException` | a rate limit the client did not wait out (see [Long waits fail fast](docs/guide/rate-limiting.md#long-waits-fail-fast)) | unchecked |
-| `GitHubApiException` | any other unsuccessful status: 409, 410, 5xx after the retries, or 304 you did not ask for | unchecked |
-| `IOException` | the transport failed: connection, timeout, TLS, a body above the size limit (`ResponseTooLargeException`) | checked |
-| `UncheckedIOException` | the same transport failures while you read `stream()` or `pages()`, which cannot throw a checked exception; the cause is the `IOException` (`all()` and `forEachPage(...)` throw it directly) | unchecked |
-| `JsonDecodeException` | the response body could not be read as the expected model | unchecked |
-| `JsonEncodeException` | a payload you passed could not be written as JSON | unchecked |
-| `HttpEmptyResponseException` | a successful response without a body where a value was expected (202, 204) | unchecked |
-| `GitHubPaginationException` | the next page cannot be followed, a page repeats, or `maxPages` is reached (`GitHubPaginationLimitExceededException`) | unchecked |
-| `GitHubInstallationTokenUnavailableException` | an installation token fetch failed earlier and the provider is in its backoff; `retryAt()` | unchecked |
-| `UnsupportedOperationException` | the operation is not in the configured [flavor](#flavors) | unchecked |
-| `HttpOriginViolationException` | a request target leaves the API origin, such as an absolute URL on another host; it is an `IllegalArgumentException` | unchecked |
-| `IllegalArgumentException`, `NullPointerException` | an argument is blank, null or outside its limits | unchecked |
-
-Every `GitHubApiException` carries `statusCode()`, `documentationUrl()`, `requestId()` (quote it to GitHub support),
-`rawBody()`, `headers()`, `method()` and `uri()`.
-
-### What the client handles for you
-
-- **Rate limits** are waited out when the wait is at most `maxRateLimitWait`, with the attempts and the coordination across
-  calls described in [Rate limiting](#rate-limiting). You see `GitHubRateLimitException` only for a longer wait or after the
-  attempts are used up.
-- **Transient failures** are retried: `502`, `503` and `504`, and I/O failures. By default only for `GET`, `HEAD` and
-  `OPTIONS`; a failed connection attempt is retried for every method. A `POST`, `PATCH`, `PUT` or `DELETE` that fails
-  after the request was sent is not repeated, because the change may have been applied.
-- **A 304** is handled by the conditional cache; you do not see it.
-- **Token refresh** is done by the authentication you chose; see [Rotating tokens](docs/guide/authentication.md#rotating-tokens).
-
-### What you should handle
-
-- **Not found.** `GitHubNotFoundException` does not prove the resource is missing: GitHub answers 404 for a private resource
-  too. For a lookup of one resource by a key, use the `Optional`-returning method, which turns a 404 into an empty result;
-  other 404s still throw.
-- **Retry yourself only what is safe.** After an `IOException` on a mutation, read the state before repeating the call.
-  After `GitHubRateLimitException`, wait until `retryAt()`. After `GitHubValidationException`, fix the payload; repeating
-  it fails the same way.
-- **Stop on credentials.** On `GitHubUnauthorizedException`, re-authenticate; do not loop with the same token. On a
-  `GitHubForbiddenException` with `ssoUrl()`, the user must authorize the token for the organization.
-- **Do not catch programming errors.** `IllegalArgumentException`, `NullPointerException` and
-  `UnsupportedOperationException` mean the call is wrong, not that GitHub failed.
-- **Logging.** Exception messages contain no query string and no token, and `Authorization` is printed as `***`. The cause
-  of a `JsonDecodeException` may quote a value from the response body, so do not log it where the body is secret.
-
-```java
-try {
-    return repositories.get("octocat", "Hello-World"); // Optional: a 404 is an empty result
-} catch (GitHubRateLimitException e) {
-    schedule(e.retryAt().orElse(Instant.now().plusSeconds(60)));
-    throw e;
-} catch (GitHubValidationException e) {
-    e.errors().forEach(error -> log.warn("{} {}: {}", error.field(), error.code(), error.message()));
-    throw e;
-} catch (GitHubApiException e) {
-    log.error("GitHub answered {} (request {})", e.statusCode(), e.requestId().orElse("unknown"), e);
-    throw e;
-} catch (IOException e) {
-    throw new UncheckedIOException("GitHub is unreachable", e);
-}
-```
-
-Catch the specific types first: `GitHubApiException` is their parent.
+HTTP errors are unchecked and share the parent `GitHubApiException`: `GitHubUnauthorizedException` (401),
+`GitHubForbiddenException` (403), `GitHubNotFoundException` (404), `GitHubValidationException` (422) and
+`GitHubRateLimitException`. Transport failures are `IOException`. The client waits out rate limits and retries transient
+failures itself; a 404 on a lookup of one resource is an empty `Optional`. Catch the specific types first, and see
+[Exception handling](docs/guide/exception-handling.md) for the full table and what to handle yourself.
 
 ## Good to know
 
