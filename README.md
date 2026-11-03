@@ -178,27 +178,12 @@ List<GitHubMinimalRepository> fifty = forks.listForks("octocat", "Hello-World").
 ## Rate limiting
 
 The client follows GitHub's [rate-limit rules](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api)
-for you, and you cannot switch this off:
-
-- **Primary limit:** when the quota is used up, the client waits for the reset and retries.
-- **Secondary limit:** it waits for `retry-after`, or 60 seconds doubling up to 5 minutes, for at most 4 attempts.
-- **Long waits fail fast:** a wait longer than `maxRateLimitWait` (5 minutes) throws `GitHubRateLimitException` at once
-  with `retryAt()`, and later calls with the same credential fail locally until the block ends (an hour at most).
-- **Per credential and bucket:** limits, waits and cached responses belong to one credential and one bucket (`core`,
-  `search` and others), and are never shared between credentials.
-- **Conditional requests:** repeated `GET`s are sent with `If-None-Match` or `If-Modified-Since`, and a 304 returns the
-  kept response (64 entries, 4 MiB by default; the cache cannot be switched off).
-- **Gentle by default:** one request at a time and writes at least one second apart; see
-  [Configure only what you need](#configure-only-what-you-need).
+for you, and you cannot switch this off: it waits out a used-up quota and a secondary limit, keeps limits and cached
+responses per credential and bucket, and sends repeated `GET`s as conditional requests. It is gentle by default: one
+request at a time and writes at least one second apart. A wait longer than `maxRateLimitWait` (5 minutes) throws
+`GitHubRateLimitException` at once, with `retryAt()`.
 
 ```java
-GitHubClient client = GitHubClients.create(
-        AuthenticationProviders.bearer(System.getenv("GITHUB_TOKEN")),
-        "my-app/1.0",
-        GitHubClientConfiguration.builder()
-                .retry(RetryConfiguration.builder().maxRateLimitWait(Duration.ofMinutes(10)).build())
-                .build());
-
 try {
     return forks.listForks("octocat", "Hello-World").all();
 } catch (GitHubRateLimitException e) {
@@ -207,9 +192,9 @@ try {
 }
 ```
 
-`client.lastRateLimit("core")` and `client.lastRateLimits()` return the latest quota seen, for monitoring and budgeting
-only. Primary and secondary limits, buckets, credentials, unauthenticated access, polling and the details of the
-conditional cache are in [Rate limiting in depth](docs/guide/rate-limiting.md).
+`client.lastRateLimit("core")` and `client.lastRateLimits()` return the latest quota seen, for monitoring only. Primary
+and secondary limits, buckets, credentials, unauthenticated access, polling and the conditional cache are in
+[Rate limiting in depth](docs/guide/rate-limiting.md).
 
 ## Authentication
 
@@ -226,29 +211,9 @@ another client. GitHub's rules are in its
 | An OAuth app, for endpoints that take its client credentials | `AuthenticationProviders.basic(clientId, clientSecret)` |
 | Nothing, for public data (60 requests per hour per IP address) | `AuthenticationProviders.none()` |
 
-```java
-GitHubClient client = GitHubClients.create(AuthenticationProviders.bearer(System.getenv("GITHUB_TOKEN")), "my-app/1.0");
-
-GitHubInstallationAuthenticationProvider auth = GitHubInstallationAuthenticationProviders.create(
-        userAgent, clientConfiguration, GitHubInstallationAuthConfiguration.builder()
-        .appId("Iv1.0123456789abcdef")          // client ID (recommended) or numeric app ID
-        .privateKeyPem(pem)                      // PKCS#1 or PKCS#8, unencrypted
-        .installationId(12345678L)
-        .build());
-GitHubClient installationClient = GitHubClients.create(auth, userAgent, clientConfiguration);
-```
-
-You create the installation auth, so you close it as well: `installationClient.close()` does not close it.
-
-- `GitHubUnauthorizedException` (401): the credentials are invalid, expired or revoked.
-- `GitHubForbiddenException` (403): the token lacks the permission the request needs; `ssoUrl()` is set when the token
-  must be authorized for an organization that uses SAML SSO.
-- `GitHubNotFoundException` (404): for private resources GitHub may answer 404 instead of 403.
-- The auth types never print their secrets, and a plain `http` base URI is refused on a host other than loopback unless
-  you allow it with `allowInsecureHttp(true)`.
-
-Token renewal, back-off, SAML partial results, redirects and the security notes are in
-[Authentication in depth](docs/guide/authentication.md).
+You create an installation auth, so you close it as well: `installationClient.close()` does not close it. The auth types
+never print their secrets. Installation setup, token renewal and back-off, SAML single sign-on, the error types and the
+security notes are in [Authentication in depth](docs/guide/authentication.md).
 
 ## Immutability
 
