@@ -3,10 +3,12 @@
 Java 21 client for the [GitHub REST API](https://docs.github.com/en/rest): typed models and operations for github.com,
 GitHub Enterprise Cloud and GitHub Enterprise Server, with pagination and rate-limit handling built in.
 
-[![Codacy Coverage](https://app.codacy.com/project/badge/Coverage/b1f7def0919f47b88374ae4bd4fdc531)](https://app.codacy.com/gh/piotr-janczukowicz/github-rest-client/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
-[![Build](https://github.com/piotr-janczukowicz/github-rest-client/actions/workflows/main.yml/badge.svg)](https://github.com/piotr-janczukowicz/github-rest-client/actions/workflows/main.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.piotr-janczukowicz/github-rest-client)](https://central.sonatype.com/artifact/io.github.piotr-janczukowicz/github-rest-client)
+![Java 21](https://img.shields.io/badge/Java-21-orange.svg)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Build](https://github.com/piotr-janczukowicz/github-rest-client/actions/workflows/main.yml/badge.svg)](https://github.com/piotr-janczukowicz/github-rest-client/actions/workflows/main.yml)
+[![Codacy Coverage](https://app.codacy.com/project/badge/Coverage/b1f7def0919f47b88374ae4bd4fdc531)](https://app.codacy.com/gh/piotr-janczukowicz/github-rest-client/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b1f7def0919f47b88374ae4bd4fdc531)](https://app.codacy.com/gh/piotr-janczukowicz/github-rest-client/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 **API version:** `2026-03-10` · **Last updated:** 2026-10-31
 
