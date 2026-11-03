@@ -64,7 +64,7 @@ import org.slf4j.LoggerFactory;
  * client only approximates. Separate root clients share none of it. A client is thread-safe and meant to be shared, so
  * create one per credential and {@link GitHubClient#close() close} it when done: an unclosed client holds its pooled
  * sockets until the connection keep-alive expires (5 minutes by default). See the <a
- * href="https://github.com/piotr-janczukowicz/github-rest-client/blob/main/README.md#rate-limiting">Rate limiting</a>
+ * href="https://github.com/piotr-janczukowicz/github-rest-client/blob/main/docs/guide/rate-limiting.md">Rate limiting</a>
  * section of the README for what the client does for you and what you can tune.
  */
 public final class GitHubClients {
