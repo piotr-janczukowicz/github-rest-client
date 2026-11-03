@@ -50,18 +50,6 @@ try (GitHubClient client = GitHubClients.create(AuthenticationProviders.bearer(S
 
 A lookup of one resource returns an `Optional` (a 404 is an empty result), and a list returns a `GitHubPage`. See [Usage](#usage) for creating, filtering and configuring.
 
-## Supported GitHub products
-
-<!-- support-table:start -->
-| Product | Client flavor | Base URI | Status |
-|---|---|---|---|
-| GitHub.com | `GitHubFlavor.CLOUD`, or unset | `https://api.github.com/` (default) | Supported: every operation and model comes from the description; one that only github.com has is marked `@Flavors(GitHubFlavor.CLOUD)` |
-| GitHub Enterprise Cloud | `GitHubFlavor.GHEC`, recommended: it shares the base URI with github.com | `https://api.github.com/`, or `https://api.SUBDOMAIN.ghe.com/` with data residency | Supported: an enterprise-scoped operation is marked `@Flavors(GitHubFlavor.GHEC)` |
-| GitHub Enterprise Server | `GitHubFlavor.GHES`, required, with the release | `https://HOST/api/v3/` | Supported: versions 3.21 to 3.22; a server-only operation is marked `@Flavors(GitHubFlavor.GHES)`, and one that only some versions carry is marked `@GhesVersions` |
-<!-- support-table:end -->
-
-Keep the defaults on github.com and Enterprise Cloud; tune an Enterprise Server client to the instance.
-
 In this README: [Comparison](#comparison-with-hub4jgithub-api) · [Usage](#usage) · [Flavors](#flavors) · [Enterprise Cloud and Server](#github-enterprise-cloud-and-server) ·
 [Pagination](#pagination) · [Rate limiting](#rate-limiting) · [Authentication](#authentication) ·
 [Immutability](#immutability) · [Exception handling](#exception-handling) · [Good to know](#good-to-know) ·
@@ -151,13 +139,18 @@ safety rules, and always needs the base URI, the `GHES` flavor and the release. 
 and the examples are in [Configuration](docs/guide/configuration.md).
 
 ## Flavors
-
 The library follows three OpenAPI descriptions, one per *flavor*: github.com (*cloud*), GitHub Enterprise Cloud (*GHEC*)
 and GitHub Enterprise Server (*GHES*, releases 3.21 and 3.22). Most operations are in all three. A type or method that
 is not carries `@Flavors` with the flavors that have it, and a client that is given a flavor rejects a call its product
 lacks with `UnsupportedOperationException` before any request is sent. Without a flavor, such a call fails with GitHub's
 own `404`. The flavor never changes the base URI. The details are in
 [Flavors and GitHub Enterprise](docs/guide/flavors.md).
+
+| Product | Client flavor | Base URI |
+|---|---|---|
+| GitHub.com | `GitHubFlavor.CLOUD`, or unset | `https://api.github.com/` (default) |
+| GitHub Enterprise Cloud | `GitHubFlavor.GHEC`, recommended: it shares the base URI with github.com | `https://api.github.com/`, or `https://api.SUBDOMAIN.ghe.com/` with data residency |
+| GitHub Enterprise Server | `GitHubFlavor.GHES`, required, with the release (3.21 or 3.22) | `https://HOST/api/v3/` |
 
 ## GitHub Enterprise Cloud and Server
 
