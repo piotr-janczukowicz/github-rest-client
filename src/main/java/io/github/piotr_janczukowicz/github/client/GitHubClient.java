@@ -28,8 +28,8 @@ import java.util.Optional;
  * the other calls of the same credential meanwhile), mutation pacing (one second between mutations by default), a limit
  * on concurrent requests (1 by default, strictly serial as GitHub recommends), then the OkHttp transport. The
  * rate-limit behaviour is described in the <a
- * href="https://github.com/piotr-janczukowicz/github-rest-client/blob/main/README.md#rate-limiting">Rate limiting</a>
- * section of the README.
+ * href="https://github.com/piotr-janczukowicz/github-rest-client/blob/main/docs/guide/rate-limiting.md">Rate
+ * limiting</a> section of the README.
  *
  * <p><strong>Secondary rate limits.</strong> GitHub limits, besides the hourly quota, at most 100 concurrent requests
  * (enforced by {@link GitHubClients}, which by default sends one request at a time), 900 points per minute per endpoint

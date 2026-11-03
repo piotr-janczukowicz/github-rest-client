@@ -2,7 +2,7 @@
 
 [Guide index](README.md) · Next: [Authentication in depth](authentication.md)
 
-This page is the detail behind the [Rate limiting](../../README.md#rate-limiting) section of the README.
+This page is part of the [user guide](README.md). The [README](../../README.md) has the short version.
 
 Clients created with `GitHubClients` follow GitHub's [REST API rate-limit
 rules](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api). You can tune them through

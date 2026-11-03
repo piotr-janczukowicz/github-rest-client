@@ -48,7 +48,7 @@ conditional-cache hit (a 304 answered from memory) costs slightly less than a fu
 
 Walks are lazy: `stream().limit(150)` over 100-item pages fetched 2 pages. Walking with `stream()` or `forEachPage(...)`
 keeps memory flat however many pages there are. `all()` keeps every item, so it grows with the result. See
-[Pagination](../../README.md#pagination).
+[Pagination](pagination.md).
 
 <details>
 <summary>Pagination table</summary>
@@ -161,8 +161,8 @@ was measured for 16 MiB over OkHttp. `stream(...)` hands over the body without b
 
 Creating a client takes well under a millisecond. `close()` releases its connections and threads. A client that is
 never closed keeps its pooled sockets until the connection keep-alive ends (5 minutes by default), so close clients you
-no longer need (see [Close the client](../../README.md#close-the-client)) and share one per credential (see
-[Create a client](../../README.md#create-a-client)).
+no longer need (see [Client lifecycle](../../README.md#usage)) and share one per credential (see
+[Client lifecycle](../../README.md#usage)).
 
 <details>
 <summary>Lifecycle table</summary>
