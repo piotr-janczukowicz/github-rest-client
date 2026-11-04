@@ -8,6 +8,8 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.LocalDate;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -29,7 +31,9 @@ import org.jspecify.annotations.Nullable;
 @CatalogSchema("components/schemas/billing-usage-report-user/properties/usageItems/items")
 @Flavors(GitHubFlavor.CLOUD)
 public record GitHubBillingUsageReportUserUsageItem(
-        String date,
+        @SuppressSchemaTypeMismatch("type rule: date (date)")
+        LocalDate date,
+
         String product,
         String sku,
         int quantity,

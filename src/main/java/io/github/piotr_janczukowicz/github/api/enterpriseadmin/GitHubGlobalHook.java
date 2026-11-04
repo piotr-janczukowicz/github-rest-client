@@ -5,6 +5,8 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
@@ -33,7 +35,10 @@ public record GitHubGlobalHook(
         @Nullable Boolean active,
         @Nullable List<String> events,
         @Nullable GitHubGlobalHookConfig config,
-        @Nullable String updatedAt,
-        @Nullable String createdAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (updated_at)") @Nullable Instant updatedAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (created_at)") @Nullable Instant createdAt,
+
         @Nullable String url,
         @Nullable String pingUrl) {}

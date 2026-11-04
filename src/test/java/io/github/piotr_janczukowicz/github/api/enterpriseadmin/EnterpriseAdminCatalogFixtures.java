@@ -123,8 +123,8 @@ final class EnterpriseAdminCatalogFixtures {
     static GitHubMeta meta() {
         return GitHubMetaBuilder.builder()
                 .resourceType(GitHubMetaResourceType.GROUP)
-                .created("2023-01-01T00:00:00Z")
-                .lastModified("2023-01-01T12:00:00Z")
+                .created(Instant.parse("2023-01-01T00:00:00Z"))
+                .lastModified(Instant.parse("2023-01-01T12:00:00Z"))
                 .location("https://api.github.com/scim/v2/Groups/24b28bbb-5fc4-4686-a153-a020debb1155")
                 .build();
     }
@@ -535,7 +535,7 @@ final class EnterpriseAdminCatalogFixtures {
 
     static GitHubGetLicenseSyncStatusLastSync getLicenseSyncStatusLastSync() {
         return GitHubGetLicenseSyncStatusLastSyncBuilder.builder()
-                .date("sample-date")
+                .date(Instant.parse("2026-01-01T00:00:00Z"))
                 .status("sample-status")
                 .error("sample-error")
                 .build();
@@ -849,7 +849,7 @@ final class EnterpriseAdminCatalogFixtures {
     static GitHubServerStatistics serverStatistics() {
         return GitHubServerStatisticsBuilder.builder()
                 .serverId("sample-server_id")
-                .collectionDate("sample-collection_date")
+                .collectionDate(Instant.parse("2026-01-01T00:00:00Z"))
                 .schemaVersion("sample-schema_version")
                 .ghesVersion("sample-ghes_version")
                 .hostName("sample-host_name")
@@ -1688,7 +1688,7 @@ final class EnterpriseAdminCatalogFixtures {
                 .url("url")
                 .htmlUrl("html_url")
                 .defaultEnvironment(true)
-                .createdAt("created_at")
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
                 .hooksCount(1)
                 .download(preReceiveEnvironmentDownload())
                 .build();
@@ -1729,7 +1729,7 @@ final class EnterpriseAdminCatalogFixtures {
                 .url("url")
                 .htmlUrl("html_url")
                 .defaultEnvironment(true)
-                .createdAt("created_at")
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
                 .hooksCount(1)
                 .download(preReceiveHookEnvironmentDownload())
                 .build();
@@ -1860,8 +1860,8 @@ final class EnterpriseAdminCatalogFixtures {
                 .active(true)
                 .events(List.of("events"))
                 .config(globalHookConfig())
-                .updatedAt("updated_at")
-                .createdAt("created_at")
+                .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
                 .url("url")
                 .pingUrl("ping_url")
                 .build();
@@ -1883,8 +1883,8 @@ final class EnterpriseAdminCatalogFixtures {
                 .active(true)
                 .events(List.of("events"))
                 .config(globalHookWithoutSecretConfig())
-                .updatedAt("updated_at")
-                .createdAt("created_at")
+                .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
                 .url("url")
                 .pingUrl("ping_url")
                 .build();
@@ -2462,7 +2462,7 @@ final class EnterpriseAdminCatalogFixtures {
                 .supportKey("support_key")
                 .sshAllowed(true)
                 .clusterSupport(true)
-                .expireAt("expire_at")
+                .expireAt(Instant.parse("2026-01-01T00:00:00Z"))
                 .build();
     }
 

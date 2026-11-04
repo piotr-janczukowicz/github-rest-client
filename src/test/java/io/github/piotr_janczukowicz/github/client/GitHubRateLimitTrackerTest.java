@@ -27,8 +27,10 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Isolated;
 
 @UnitTest
+@Isolated
 class GitHubRateLimitTrackerTest {
 
     private static final Instant NOW = Instant.parse("2026-01-01T00:00:00Z");

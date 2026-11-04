@@ -61,6 +61,7 @@ import java.util.stream.Stream;
 import nl.altindag.log.LogCaptor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Isolated;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -69,6 +70,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.MockedConstruction;
 
 @UnitTest
+@Isolated
 class GitHubClientTest {
 
     private static final String TARBALL_PATH = "/repos/octocat/Hello-World/tarball/main";

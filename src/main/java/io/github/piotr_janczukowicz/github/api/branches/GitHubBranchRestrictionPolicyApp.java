@@ -3,6 +3,8 @@ package io.github.piotr_janczukowicz.github.api.branches;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
@@ -36,7 +38,10 @@ public record GitHubBranchRestrictionPolicyApp(
         @Nullable String description,
         @Nullable String externalUrl,
         @Nullable String htmlUrl,
-        @Nullable String createdAt,
-        @Nullable String updatedAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (created_at)") @Nullable Instant createdAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (updated_at)") @Nullable Instant updatedAt,
+
         @Nullable GitHubBranchRestrictionPolicyAppPermissions permissions,
         @Nullable List<String> events) {}

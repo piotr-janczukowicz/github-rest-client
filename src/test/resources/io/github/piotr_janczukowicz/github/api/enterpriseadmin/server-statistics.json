@@ -1,6 +1,6 @@
 {
   "server_id": "sample-server_id",
-  "collection_date": "sample-collection_date",
+  "collection_date": "2026-01-01T00:00:00Z",
   "schema_version": "sample-schema_version",
   "ghes_version": "sample-ghes_version",
   "host_name": "sample-host_name",

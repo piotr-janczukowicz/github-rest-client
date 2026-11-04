@@ -23,8 +23,10 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneOffset;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Isolated;
 
 @UnitTest
+@Isolated
 class GitHubErrorsRateLimitTest {
 
     private static final URI REQUEST_URI = URI.create("https://api.github.com/user");

@@ -46,8 +46,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.parallel.Isolated;
 
 @IntegrationTest
+@Isolated
 class GitHubInstallationAuthenticationProviderIntegrationTest {
 
     private static final String TOKEN_PATH = "/app/installations/42/access_tokens";

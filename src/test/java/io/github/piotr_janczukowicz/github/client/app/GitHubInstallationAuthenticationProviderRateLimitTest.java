@@ -45,9 +45,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Isolated;
 import org.mockito.ArgumentCaptor;
 
 @UnitTest
+@Isolated
 class GitHubInstallationAuthenticationProviderRateLimitTest {
 
     private static final String READ_PATH = "/repos/o/r";

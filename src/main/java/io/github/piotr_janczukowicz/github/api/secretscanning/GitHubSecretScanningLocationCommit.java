@@ -5,6 +5,7 @@ import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -29,13 +30,17 @@ import org.jspecify.annotations.Nullable;
 public record GitHubSecretScanningLocationCommit(
         String path,
 
-        double startLine,
+        @SuppressSchemaTypeMismatch("type rule: int (start_line)")
+        int startLine,
 
-        double endLine,
+        @SuppressSchemaTypeMismatch("type rule: int (end_line)")
+        int endLine,
 
-        double startColumn,
+        @SuppressSchemaTypeMismatch("type rule: int (start_column)")
+        int startColumn,
 
-        double endColumn,
+        @SuppressSchemaTypeMismatch("type rule: int (end_column)")
+        int endColumn,
 
         String blobSha,
         String blobUrl,

@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
+import java.time.Instant;
 import org.junit.jupiter.api.Test;
 
 @UnitTest
@@ -12,23 +13,53 @@ class GitHubCommitStatusTest {
     @Test
     void constructor_shouldThrow_whenUrlNull() {
         final Throwable thrown = catchThrowable(() -> new GitHubCommitStatus(
-                null, null, 1L, "node", "success", null, null, "ci", "created", "updated", null));
+                null,
+                null,
+                1L,
+                "node",
+                "success",
+                null,
+                null,
+                "ci",
+                Instant.parse("2026-01-01T00:00:00Z"),
+                Instant.parse("2026-01-01T00:00:00Z"),
+                null));
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("url");
     }
 
     @Test
     void constructor_shouldThrow_whenNodeIdNull() {
-        final Throwable thrown = catchThrowable(() ->
-                new GitHubCommitStatus("url", null, 1L, null, "success", null, null, "ci", "created", "updated", null));
+        final Throwable thrown = catchThrowable(() -> new GitHubCommitStatus(
+                "url",
+                null,
+                1L,
+                null,
+                "success",
+                null,
+                null,
+                "ci",
+                Instant.parse("2026-01-01T00:00:00Z"),
+                Instant.parse("2026-01-01T00:00:00Z"),
+                null));
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("nodeId");
     }
 
     @Test
     void constructor_shouldThrow_whenStateNull() {
-        final Throwable thrown = catchThrowable(() ->
-                new GitHubCommitStatus("url", null, 1L, "node", null, null, null, "ci", "created", "updated", null));
+        final Throwable thrown = catchThrowable(() -> new GitHubCommitStatus(
+                "url",
+                null,
+                1L,
+                "node",
+                null,
+                null,
+                null,
+                "ci",
+                Instant.parse("2026-01-01T00:00:00Z"),
+                Instant.parse("2026-01-01T00:00:00Z"),
+                null));
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("state");
     }
@@ -36,23 +67,53 @@ class GitHubCommitStatusTest {
     @Test
     void constructor_shouldThrow_whenContextNull() {
         final Throwable thrown = catchThrowable(() -> new GitHubCommitStatus(
-                "url", null, 1L, "node", "success", null, null, null, "created", "updated", null));
+                "url",
+                null,
+                1L,
+                "node",
+                "success",
+                null,
+                null,
+                null,
+                Instant.parse("2026-01-01T00:00:00Z"),
+                Instant.parse("2026-01-01T00:00:00Z"),
+                null));
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("context");
     }
 
     @Test
     void constructor_shouldThrow_whenCreatedAtNull() {
-        final Throwable thrown = catchThrowable(() ->
-                new GitHubCommitStatus("url", null, 1L, "node", "success", null, null, "ci", null, "updated", null));
+        final Throwable thrown = catchThrowable(() -> new GitHubCommitStatus(
+                "url",
+                null,
+                1L,
+                "node",
+                "success",
+                null,
+                null,
+                "ci",
+                null,
+                Instant.parse("2026-01-01T00:00:00Z"),
+                null));
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("createdAt");
     }
 
     @Test
     void constructor_shouldThrow_whenUpdatedAtNull() {
-        final Throwable thrown = catchThrowable(() ->
-                new GitHubCommitStatus("url", null, 1L, "node", "success", null, null, "ci", "created", null, null));
+        final Throwable thrown = catchThrowable(() -> new GitHubCommitStatus(
+                "url",
+                null,
+                1L,
+                "node",
+                "success",
+                null,
+                null,
+                "ci",
+                Instant.parse("2026-01-01T00:00:00Z"),
+                null,
+                null));
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("updatedAt");
     }

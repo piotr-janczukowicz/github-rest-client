@@ -109,8 +109,10 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Isolated;
 
 @UnitTest
+@Isolated
 class GitHubTest {
 
     private HttpTransport transport;

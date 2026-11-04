@@ -12,7 +12,7 @@ class GitHubRunnerGroupsOrgTest {
 
     @Test
     void constructor_shouldThrowNullPointerException_whenNameNull() {
-        final double id = 1.0;
+        final long id = 1L;
         final String visibility = "visibility-sample";
         final boolean isDefault = true;
         final String selectedRepositoriesUrl = "https://api.github.com/example";
@@ -47,7 +47,7 @@ class GitHubRunnerGroupsOrgTest {
 
     @Test
     void constructor_shouldThrowNullPointerException_whenVisibilityNull() {
-        final double id = 1.0;
+        final long id = 1L;
         final String name = "name-sample";
         final boolean isDefault = true;
         final String selectedRepositoriesUrl = "https://api.github.com/example";
@@ -82,7 +82,7 @@ class GitHubRunnerGroupsOrgTest {
 
     @Test
     void constructor_shouldThrowNullPointerException_whenRunnersUrlNull() {
-        final double id = 1.0;
+        final long id = 1L;
         final String name = "name-sample";
         final String visibility = "visibility-sample";
         final boolean isDefault = true;

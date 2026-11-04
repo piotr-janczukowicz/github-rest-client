@@ -52,8 +52,8 @@ final class CommitsCatalogFixtures {
                 .description(DESCRIPTION)
                 .targetUrl(TARGET_URL)
                 .context(CONTEXT)
-                .createdAt("2011-04-14T16:00:49Z")
-                .updatedAt("2011-04-14T16:00:49Z")
+                .createdAt(Instant.parse("2011-04-14T16:00:49Z"))
+                .updatedAt(Instant.parse("2011-04-14T16:00:49Z"))
                 .creator(UsersCatalogFixtures.octocat())
                 .build();
     }

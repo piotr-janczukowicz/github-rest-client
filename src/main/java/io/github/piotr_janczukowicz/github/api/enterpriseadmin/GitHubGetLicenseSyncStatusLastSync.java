@@ -5,6 +5,8 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -19,6 +21,7 @@ import org.jspecify.annotations.Nullable;
 @CatalogSchema("components/schemas/get-license-sync-status/properties/server_instances/items/properties/last_sync")
 @Flavors(GitHubFlavor.GHEC)
 public record GitHubGetLicenseSyncStatusLastSync(
-        @Nullable String date,
+        @SuppressSchemaTypeMismatch("type rule: date-time (date)") @Nullable Instant date,
+
         @Nullable String status,
         @Nullable String error) {}

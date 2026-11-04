@@ -6,5 +6,5 @@
   "support_key": "support_key",
   "ssh_allowed": true,
   "cluster_support": true,
-  "expire_at": "expire_at"
+  "expire_at": "2026-01-01T00:00:00Z"
 }

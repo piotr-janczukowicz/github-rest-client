@@ -1835,8 +1835,10 @@ public final class RepositoriesCatalogFixtures {
                         "MDY6Q29tbWl0NmRjYjA5YjViNTc4NzVmMzM0ZjYxYWViZWQ2OTVlMmU0MTkzZGI1ZQ==",
                         "https://api.github.com/repos/octocat/Hello-World/commits/6dcb09b5b57875f334f61aebed695e2e4193db5e",
                         "https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e",
-                        new GitHubFileCommitPerson("2011-04-14T16:00:49Z", "Monalisa Octocat", "octocat@github.com"),
-                        new GitHubFileCommitPerson("2011-04-14T16:00:49Z", "Monalisa Octocat", "octocat@github.com"),
+                        new GitHubFileCommitPerson(
+                                Instant.parse("2011-04-14T16:00:49Z"), "Monalisa Octocat", "octocat@github.com"),
+                        new GitHubFileCommitPerson(
+                                Instant.parse("2011-04-14T16:00:49Z"), "Monalisa Octocat", "octocat@github.com"),
                         "my commit message",
                         new GitHubFileCommitTree(
                                 "https://api.github.com/repos/octocat/Hello-World/git/trees/827efc6d56897b048c772eb4087f854f46256132",

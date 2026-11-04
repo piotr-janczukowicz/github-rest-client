@@ -30,7 +30,7 @@ public final class BillingCatalogFixtures {
     static GitHubAdvancedSecurityActiveCommittersUser advancedSecurityActiveCommittersUser() {
         return GitHubAdvancedSecurityActiveCommittersUserBuilder.builder()
                 .userLogin("octocat")
-                .lastPushedDate("2021-11-03")
+                .lastPushedDate(LocalDate.parse("2021-11-03"))
                 .lastPushedEmail("monalisa@github.com")
                 .build();
     }
@@ -43,7 +43,7 @@ public final class BillingCatalogFixtures {
 
     static GitHubBillingUsageReportUsageItem billingUsageReportUsageItem() {
         return GitHubBillingUsageReportUsageItemBuilder.builder()
-                .date("2026-08-01")
+                .date(LocalDate.parse("2026-08-01"))
                 .product("actions")
                 .sku("actions_linux")
                 .quantity(100)
@@ -65,7 +65,7 @@ public final class BillingCatalogFixtures {
 
     static GitHubBillingUsageReportUserUsageItem billingUsageReportUserUsageItem() {
         return GitHubBillingUsageReportUserUsageItemBuilder.builder()
-                .date("2026-08-01")
+                .date(LocalDate.parse("2026-08-01"))
                 .product("actions")
                 .sku("actions_linux")
                 .quantity(100)

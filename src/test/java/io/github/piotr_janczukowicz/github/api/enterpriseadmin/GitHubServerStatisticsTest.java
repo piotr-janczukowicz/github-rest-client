@@ -3,6 +3,7 @@ package io.github.piotr_janczukowicz.github.api.enterpriseadmin;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
+import java.time.Instant;
 import org.junit.jupiter.api.Test;
 
 @UnitTest
@@ -13,7 +14,7 @@ class GitHubServerStatisticsTest {
         final GitHubServerStatistics value = EnterpriseAdminCatalogFixtures.serverStatistics();
 
         assertThat(value.serverId()).isEqualTo("sample-server_id");
-        assertThat(value.collectionDate()).isEqualTo("sample-collection_date");
+        assertThat(value.collectionDate()).isEqualTo(Instant.parse("2026-01-01T00:00:00Z"));
         assertThat(value.schemaVersion()).isEqualTo("sample-schema_version");
         assertThat(value.ghesVersion()).isEqualTo("sample-ghes_version");
         assertThat(value.hostName()).isEqualTo("sample-host_name");

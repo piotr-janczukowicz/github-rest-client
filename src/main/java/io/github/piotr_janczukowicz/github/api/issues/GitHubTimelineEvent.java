@@ -12,6 +12,7 @@ import io.github.piotr_janczukowicz.github.api.search.GitHubReactionRollup;
 import io.github.piotr_janczukowicz.github.api.teams.GitHubTeam;
 import io.github.piotr_janczukowicz.github.api.users.GitHubSimpleUser;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
 import java.time.Instant;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
@@ -82,7 +83,9 @@ public record GitHubTimelineEvent(
         @Nullable String event,
         @Nullable String commitId,
         @Nullable String commitUrl,
-        @Nullable Instant createdAt,
+
+        @SuppressSchemaTypeMismatch("dump declares a plain string; the value is an ISO 8601 timestamp") @Nullable Instant createdAt,
+
         @Nullable GitHubIssueEventLabel label,
         @Nullable GitHubSimpleUser assignee,
         @Nullable GitHubSimpleUser reviewRequester,

@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 
 import io.github.piotr_janczukowicz.github.api.users.UsersCatalogFixtures;
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
+import java.time.Instant;
 import org.junit.jupiter.api.Test;
 
 @UnitTest
@@ -14,7 +15,7 @@ class GitHubOrganizationInvitationTest {
     void constructor_shouldThrow_whenRoleNull() {
         final GitHubOrganizationInvitation base = GitHubOrganizationInvitationBuilder.builder()
                 .role("direct_member")
-                .createdAt("2016-05-30T19:18:10Z")
+                .createdAt(Instant.parse("2016-05-30T19:18:10Z"))
                 .inviter(UsersCatalogFixtures.octocat())
                 .nodeId("MDIyOk9yZ2FuaXphdGlvbkludml0YXRpb24x")
                 .invitationTeamsUrl("https://api.github.com/organizations/16/invitations/1/teams")
@@ -25,7 +26,7 @@ class GitHubOrganizationInvitationTest {
                 "octocat",
                 "octocat@github.com",
                 null,
-                "2016-05-30T19:18:10Z",
+                Instant.parse("2016-05-30T19:18:10Z"),
                 null,
                 null,
                 base.inviter(),
@@ -44,7 +45,7 @@ class GitHubOrganizationInvitationTest {
                 "octocat",
                 "octocat@github.com",
                 "direct_member",
-                "2016-05-30T19:18:10Z",
+                Instant.parse("2016-05-30T19:18:10Z"),
                 null,
                 null,
                 null,

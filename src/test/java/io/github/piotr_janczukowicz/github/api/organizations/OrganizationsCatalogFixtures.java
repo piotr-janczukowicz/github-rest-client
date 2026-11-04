@@ -268,7 +268,12 @@ public final class OrganizationsCatalogFixtures {
 
     static GitHubApiInsightsRouteStat apiInsightsRouteStat() {
         return new GitHubApiInsightsRouteStat(
-                "GET", "/repositories/:repository_id", 544_665L, 13L, "2024-09-18T06:30:09Z", "2024-09-18T15:43:03Z");
+                "GET",
+                "/repositories/:repository_id",
+                544_665L,
+                13L,
+                "2024-09-18T06:30:09Z",
+                Instant.parse("2024-09-18T15:43:03Z"));
     }
 
     static GitHubApiInsightsRouteStatsFilter apiInsightsRouteStatsFilter() {
@@ -288,7 +293,7 @@ public final class OrganizationsCatalogFixtures {
                 544_665,
                 13,
                 "2024-09-18T06:30:09Z",
-                "2024-09-18T15:43:03Z");
+                Instant.parse("2024-09-18T15:43:03Z"));
     }
 
     static GitHubApiInsightsSubjectStatsFilter apiInsightsSubjectStatsFilter() {
@@ -305,7 +310,7 @@ public final class OrganizationsCatalogFixtures {
     }
 
     static GitHubApiInsightsTimeStat apiInsightsTimeStat() {
-        return new GitHubApiInsightsTimeStat("2024-09-11T15:00:00Z", 34_225L, 0L);
+        return new GitHubApiInsightsTimeStat(Instant.parse("2024-09-11T15:00:00Z"), 34_225L, 0L);
     }
 
     static GitHubApiInsightsTimeWindowFilter apiInsightsTimeWindowFilter() {
@@ -328,7 +333,7 @@ public final class OrganizationsCatalogFixtures {
                 544_665,
                 13,
                 "2024-09-18T06:30:09Z",
-                "2024-09-18T15:43:03Z");
+                Instant.parse("2024-09-18T15:43:03Z"));
     }
 
     static GitHubApiInsightsUserStatsFilter apiInsightsUserStatsFilter() {
@@ -380,8 +385,8 @@ public final class OrganizationsCatalogFixtures {
                 "prod-deployment",
                 Map.of("data", "sensitive"),
                 List.of(GitHubArtifactRuntimeRisk.INTERNET_EXPOSED),
-                "2011-01-26T19:14:43Z",
-                "2011-01-26T19:14:43Z",
+                Instant.parse("2011-01-26T19:14:43Z"),
+                Instant.parse("2011-01-26T19:14:43Z"),
                 456L);
     }
 
@@ -1199,12 +1204,12 @@ public final class OrganizationsCatalogFixtures {
 
     static List<GitHubApiInsightsTimeStat> apiInsightsTimeStats() {
         return List.of(
-                new GitHubApiInsightsTimeStat("2024-09-11T15:00:00Z", 34_225L, 0L),
-                new GitHubApiInsightsTimeStat("2024-09-11T15:05:00Z", 10_587L, 18L),
-                new GitHubApiInsightsTimeStat("2024-09-11T15:10:00Z", 43_587L, 14L),
-                new GitHubApiInsightsTimeStat("2024-09-11T15:15:00Z", 19_463L, 4L),
-                new GitHubApiInsightsTimeStat("2024-09-11T15:20:00Z", 60_542L, 3L),
-                new GitHubApiInsightsTimeStat("2024-09-11T15:25:00Z", 55_872L, 23L));
+                new GitHubApiInsightsTimeStat(Instant.parse("2024-09-11T15:00:00Z"), 34_225L, 0L),
+                new GitHubApiInsightsTimeStat(Instant.parse("2024-09-11T15:05:00Z"), 10_587L, 18L),
+                new GitHubApiInsightsTimeStat(Instant.parse("2024-09-11T15:10:00Z"), 43_587L, 14L),
+                new GitHubApiInsightsTimeStat(Instant.parse("2024-09-11T15:15:00Z"), 19_463L, 4L),
+                new GitHubApiInsightsTimeStat(Instant.parse("2024-09-11T15:20:00Z"), 60_542L, 3L),
+                new GitHubApiInsightsTimeStat(Instant.parse("2024-09-11T15:25:00Z"), 55_872L, 23L));
     }
 
     static List<GitHubAttestationRepository> attestationRepositories() {
@@ -1221,7 +1226,7 @@ public final class OrganizationsCatalogFixtures {
                 544_665,
                 13,
                 "2024-09-18T06:30:09Z",
-                "2024-09-18T15:43:03Z");
+                Instant.parse("2024-09-18T15:43:03Z"));
     }
 
     static List<GitHubCustomProperty> customPropertyDefinitions() {
@@ -1370,8 +1375,8 @@ public final class OrganizationsCatalogFixtures {
                         "deployment-pod",
                         Map.of("owning-team", "platform"),
                         List.of(GitHubArtifactRuntimeRisk.SENSITIVE_DATA),
-                        "2024-01-01T12:00:00Z",
-                        "2024-01-01T12:30:00Z",
+                        Instant.parse("2024-01-01T12:00:00Z"),
+                        Instant.parse("2024-01-01T12:30:00Z"),
                         777L)),
                 List.of(new GitHubArtifactDeploymentError(
                         GitHubArtifactDeploymentErrorCause.UNAUTHORIZED,

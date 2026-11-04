@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.users.GitHubSimpleUser;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
-import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
@@ -61,10 +60,8 @@ public record GitHubGistSimpleForkOf(
         String commentsUrl,
         @Nullable GitHubSimpleUser owner,
         @Nullable Boolean truncated,
-
-        @SuppressSchemaTypeMismatch("dump items are empty object; java is Map") @Nullable List<Map<String, Object>> forks,
-
-        @SuppressSchemaTypeMismatch("dump items are empty object; java is Map") @Nullable List<Map<String, Object>> history) {
+        @Nullable List<Map<String, Object>> forks,
+        @Nullable List<Map<String, Object>> history) {
 
     public GitHubGistSimpleForkOf {
         requireNonNull(url, "url");

@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubMinimalRepository;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -30,7 +32,10 @@ public record GitHubThread(
         GitHubThreadSubject subject,
         String reason,
         boolean unread,
-        String updatedAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (updated_at)")
+        Instant updatedAt,
+
         @Nullable String lastReadAt,
         String url,
         String subscriptionUrl) {

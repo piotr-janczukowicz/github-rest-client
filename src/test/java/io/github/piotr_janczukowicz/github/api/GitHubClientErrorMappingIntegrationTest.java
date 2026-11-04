@@ -28,10 +28,12 @@ import io.github.piotr_janczukowicz.test.support.GitHubApiWireMockSupport;
 import io.github.piotr_janczukowicz.testsupport.IntegrationTest;
 import java.util.Map;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.parallel.Isolated;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
 @IntegrationTest
+@Isolated
 class GitHubClientErrorMappingIntegrationTest {
 
     private static final String PROBE_PATH = "/probe";

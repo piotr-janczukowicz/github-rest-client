@@ -22,8 +22,10 @@ import java.time.Instant;
 import java.time.ZoneOffset;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.parallel.Isolated;
 
 @IntegrationTest
+@Isolated
 class GitHubInstallationAuthenticationProvidersIntegrationTest {
 
     private static final String TOKEN_PATH = "/app/installations/42/access_tokens";

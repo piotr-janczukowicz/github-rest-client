@@ -5,6 +5,8 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -31,6 +33,8 @@ public record GitHubPreReceiveEnvironment(
         @Nullable String url,
         @Nullable String htmlUrl,
         @Nullable Boolean defaultEnvironment,
-        @Nullable String createdAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (created_at)") @Nullable Instant createdAt,
+
         @Nullable Integer hooksCount,
         @Nullable GitHubPreReceiveEnvironmentDownload download) {}

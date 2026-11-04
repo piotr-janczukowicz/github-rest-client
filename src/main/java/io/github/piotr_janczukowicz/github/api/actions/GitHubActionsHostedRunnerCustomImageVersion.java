@@ -7,6 +7,8 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 
 /**
  * Details of a hosted runner custom image version.
@@ -22,7 +24,14 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 @CatalogSchema("components/schemas/actions-hosted-runner-custom-image-version")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public record GitHubActionsHostedRunnerCustomImageVersion(
-        String version, String state, int sizeGb, String createdOn, String stateDetails) {
+        String version,
+        String state,
+        int sizeGb,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (created_on)")
+        Instant createdOn,
+
+        String stateDetails) {
 
     public GitHubActionsHostedRunnerCustomImageVersion {
         requireNonNull(version, "version");

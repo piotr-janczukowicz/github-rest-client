@@ -47,8 +47,10 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.random.RandomGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Isolated;
 
 @UnitTest
+@Isolated
 class GitHubClientRateLimitGateTest {
 
     private static final HttpCall GET_USER = HttpCall.get("/user");

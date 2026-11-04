@@ -46,8 +46,10 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Isolated;
 
 @UnitTest
+@Isolated
 class GitHubClientsTest {
 
     private static final URI API = URI.create("https://api.github.com/");

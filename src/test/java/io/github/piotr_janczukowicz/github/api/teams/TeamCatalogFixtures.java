@@ -262,7 +262,7 @@ public final class TeamCatalogFixtures {
                 "octocat",
                 "octocat@github.com",
                 "direct_member",
-                "2016-05-30T19:18:10Z",
+                Instant.parse("2016-05-30T19:18:10Z"),
                 "2016-05-31T10:00:00Z",
                 "user_already_org_member",
                 UsersCatalogFixtures.octocat(),
@@ -276,7 +276,7 @@ public final class TeamCatalogFixtures {
         return new GitHubExternalGroup(
                 1L,
                 "group-azuread-test",
-                "2021-01-03 22:27:15:000 -700",
+                Instant.parse("2026-01-01T00:00:00Z"),
                 List.of(externalGroupTeam()),
                 List.of(externalGroupMember()));
     }
@@ -294,7 +294,7 @@ public final class TeamCatalogFixtures {
     }
 
     static GitHubExternalGroupsGroup externalGroupsGroup() {
-        return new GitHubExternalGroupsGroup(1L, "group-azuread-test", "2021-01-03 22:27:15:000 -700");
+        return new GitHubExternalGroupsGroup(1L, "group-azuread-test", Instant.parse("2026-01-01T00:00:00Z"));
     }
 
     static GitHubGroupMapping groupMapping() {

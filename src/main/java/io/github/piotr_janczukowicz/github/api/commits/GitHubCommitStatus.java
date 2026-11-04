@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.users.GitHubSimpleUser;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -35,8 +37,13 @@ public record GitHubCommitStatus(
         @Nullable String description,
         @Nullable String targetUrl,
         String context,
-        String createdAt,
-        String updatedAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (created_at)")
+        Instant createdAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (updated_at)")
+        Instant updatedAt,
+
         @Nullable GitHubSimpleUser creator) {
 
     public GitHubCommitStatus {

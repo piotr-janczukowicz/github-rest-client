@@ -41,8 +41,10 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.parallel.Isolated;
 
 @IntegrationTest
+@Isolated
 class GitHubClientsIntegrationTest {
 
     private static final String USER_PATH = "/user";

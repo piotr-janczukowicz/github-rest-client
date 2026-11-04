@@ -7,6 +7,8 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
@@ -26,7 +28,9 @@ import org.jspecify.annotations.Nullable;
 public record GitHubExternalGroup(
         long groupId,
         String groupName,
-        @Nullable String updatedAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (updated_at)") @Nullable Instant updatedAt,
+
         List<GitHubExternalGroupTeam> teams,
         List<GitHubExternalGroupMember> members) {
 

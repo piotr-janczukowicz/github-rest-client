@@ -136,7 +136,7 @@ final class DependencyGraphCatalogFixtures {
 
     static GitHubSpdxSbomCreationInfo spdxSbomCreationInfo() {
         return GitHubSpdxSbomCreationInfoBuilder.builder()
-                .created("2021-11-03T00:00:00Z")
+                .created(Instant.parse("2021-11-03T00:00:00Z"))
                 .creators(List.of("GitHub.com-Dependency-Graph"))
                 .build();
     }
