@@ -16,17 +16,7 @@
       <password>${env.PACKAGES_TOKEN}</password>
     </server>
     <server>
-      <id>github-common-util</id>
-      <username>${env.GITHUB_ACTOR}</username>
-      <password>${env.PACKAGES_TOKEN}</password>
-    </server>
-    <server>
-      <id>github-common-json</id>
-      <username>${env.GITHUB_ACTOR}</username>
-      <password>${env.PACKAGES_TOKEN}</password>
-    </server>
-    <server>
-      <id>github-common-http</id>
+      <id>github-common-core</id>
       <username>${env.GITHUB_ACTOR}</username>
       <password>${env.PACKAGES_TOKEN}</password>
     </server>
@@ -48,22 +38,8 @@
           </snapshots>
         </repository>
         <repository>
-          <id>github-common-util</id>
-          <url>https://maven.pkg.github.com/piotr-janczukowicz/common-util</url>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-        <repository>
-          <id>github-common-json</id>
-          <url>https://maven.pkg.github.com/piotr-janczukowicz/common-json</url>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-        <repository>
-          <id>github-common-http</id>
-          <url>https://maven.pkg.github.com/piotr-janczukowicz/common-http</url>
+          <id>github-common-core</id>
+          <url>https://maven.pkg.github.com/piotr-janczukowicz/common-core</url>
           <snapshots>
             <enabled>false</enabled>
           </snapshots>

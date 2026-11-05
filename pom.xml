@@ -18,31 +18,17 @@
   <url>https://github.com/piotr-janczukowicz/github-rest-client</url>
 
   <properties>
-    <common-util.version>10</common-util.version>
-    <common-json.version>9</common-json.version>
-    <common-http.version>7</common-http.version>
-    <common-test-support.version>8</common-test-support.version>
+    <common-core.version>2</common-core.version>
+    <common-test-support.version>9</common-test-support.version>
     <junit.parallel.enabled>true</junit.parallel.enabled>
-    <test.module.args>--add-modules jdk.httpserver --add-reads io.github.piotr_janczukowicz.githubrestclient=jdk.httpserver --add-opens io.github.piotr_janczukowicz.githubrestclient/io.github.piotr_janczukowicz.test.support=common.util --add-opens io.github.piotr_janczukowicz.githubrestclient/io.github.piotr_janczukowicz.test=ALL-UNNAMED</test.module.args>
+    <test.module.args>--add-modules jdk.httpserver --add-reads io.github.piotr_janczukowicz.githubrestclient=jdk.httpserver --add-opens io.github.piotr_janczukowicz.githubrestclient/io.github.piotr_janczukowicz.test.support=common.core --add-opens io.github.piotr_janczukowicz.githubrestclient/io.github.piotr_janczukowicz.test=ALL-UNNAMED</test.module.args>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>io.github.piotr-janczukowicz</groupId>
-      <artifactId>common-util</artifactId>
-      <version>${common-util.version}</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.github.piotr-janczukowicz</groupId>
-      <artifactId>common-json</artifactId>
-      <version>${common-json.version}</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.github.piotr-janczukowicz</groupId>
-      <artifactId>common-http</artifactId>
-      <version>${common-http.version}</version>
+      <artifactId>common-core</artifactId>
+      <version>${common-core.version}</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -67,8 +53,8 @@
     </dependency>
     <dependency>
       <groupId>io.github.piotr-janczukowicz</groupId>
-      <artifactId>common-http</artifactId>
-      <version>${common-http.version}</version>
+      <artifactId>common-core</artifactId>
+      <version>${common-core.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
