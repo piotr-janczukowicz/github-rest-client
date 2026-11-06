@@ -38,8 +38,8 @@ on the class path. It is published on
 ```
 
 Replace `LATEST_VERSION` with the version in the Maven Central badge at the top of this page, or with the newest entry on
-the [releases page](https://github.com/piotr-janczukowicz/github-rest-client/releases). The library is in prerelease; see
-the [Disclaimer](#disclaimer) before relying on it.
+the [releases page](https://github.com/piotr-janczukowicz/github-rest-client/releases). The library is new and not yet proven in production;
+see the [Disclaimer](#disclaimer) before relying on it.
 
 ## Quick start
 
@@ -152,24 +152,6 @@ The [user guide](docs/guide/README.md) has a chapter for each topic below.
   (64 MiB by default); a larger body fails with `ResponseTooLargeException`. Prefer `stream(...)` or the download helpers
   for large bodies. See [Performance › Memory](docs/guide/performance.md#memory).
 
-## Comparison with hub4j/github-api
-
-[hub4j/github-api](https://github.com/hub4j/github-api) is the long-established Java library for GitHub and a fine
-choice, especially if you like its object-oriented style. The two differ in design, so pick by what you need. The
-hub4j column is taken from its [documentation](https://hub4j.github.io/github-api/) as of November 2026.
-
-| | github-rest-client | hub4j/github-api |
-|---|---|---|
-| Style | A typed class per resource, reached as `github.area().group().method(...)`; requests and responses are records | An object-oriented model: classes such as `GHRepository` and `GHUser` with the operations as methods on them |
-| Coverage | Generated from GitHub's OpenAPI descriptions, so an operation in the description has a method | Most of the GitHub APIs; its documentation says some corners are not implemented yet |
-| GitHub products | github.com, GitHub Enterprise Cloud and Enterprise Server 3.21 and 3.22, with a per-flavor check that can fail a call before it is sent | github.com and GitHub Enterprise |
-| Java | 21 | 11 |
-| Maturity | Prerelease, see the [Disclaimer](#disclaimer) | Long-established and widely used |
-
-Choose hub4j/github-api if you need Java 11, an object-oriented API, or a library with a long track record. Choose this
-library if you want every operation in GitHub's description typed and immutable, one client for the three products, or
-responses that keep decoding when GitHub adds an enum value.
-
 ## Disclaimer
 
 This library is built on the OpenAPI JSON schemas that GitHub publishes in
@@ -177,5 +159,5 @@ This library is built on the OpenAPI JSON schemas that GitHub publishes in
 caveats of that project apply here too (see [Good to know](docs/guide/good-to-know.md#schema-caveats)).
 
 **Only smoke tests have been run on the live GitHub environment, covering particular feature sets. Not every endpoint has
-been tested. This library is a prerelease, intended to surface errors in the schemas and the code. Verify the behavior of
+been tested. This library is new and not yet proven in production, and is meant to surface errors in the schemas and the code. Verify the behavior of
 any endpoint you depend on before using it in production.**
