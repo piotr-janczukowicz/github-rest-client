@@ -38,6 +38,7 @@ module io.github.piotr_janczukowicz.githubrestclient {
     exports io.github.piotr_janczukowicz.github.api.emojis;
     exports io.github.piotr_janczukowicz.github.api.enterpriseadmin;
     exports io.github.piotr_janczukowicz.github.api.enterpriseteams;
+    exports io.github.piotr_janczukowicz.github.api.generic;
     exports io.github.piotr_janczukowicz.github.api.gists;
     exports io.github.piotr_janczukowicz.github.api.gitdatabase;
     exports io.github.piotr_janczukowicz.github.api.gitignore;

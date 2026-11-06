@@ -66,6 +66,7 @@ import io.github.piotr_janczukowicz.github.api.enterpriseteams.GitHubEnterpriseT
 import io.github.piotr_janczukowicz.github.api.enterpriseteams.GitHubEnterpriseTeamsApi;
 import io.github.piotr_janczukowicz.github.api.enterpriseteams.GitHubEnterpriseTeamsEnterpriseTeamMembersApi;
 import io.github.piotr_janczukowicz.github.api.enterpriseteams.GitHubEnterpriseTeamsEnterpriseTeamOrganizationsApi;
+import io.github.piotr_janczukowicz.github.api.generic.GitHubGenericApi;
 import io.github.piotr_janczukowicz.github.api.gists.GitHubGistsApi;
 import io.github.piotr_janczukowicz.github.api.gitdatabase.GitHubGitDatabaseApi;
 import io.github.piotr_janczukowicz.github.api.gitignore.GitHubGitignoreApi;
@@ -444,6 +445,15 @@ class GitHubTest {
         final GitHub github = new GitHub(GitHubCaller.of(client));
 
         assertThat(github.markdown()).isSameAs(github.markdown());
+    }
+
+    @Test
+    void generic_shouldReturnSameInstance_whenCalledTwice() {
+        final GitHubClient client = TestClients.client(URI.create("https://api.github.com/"), transport);
+
+        final GitHub github = new GitHub(GitHubCaller.of(client));
+
+        assertThat(github.generic()).isInstanceOf(GitHubGenericApi.class).isSameAs(github.generic());
     }
 
     @Test
