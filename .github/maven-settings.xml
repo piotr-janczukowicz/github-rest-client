@@ -20,11 +20,6 @@
       <username>${env.GITHUB_ACTOR}</username>
       <password>${env.PACKAGES_TOKEN}</password>
     </server>
-    <server>
-      <id>github-common-test-support</id>
-      <username>${env.GITHUB_ACTOR}</username>
-      <password>${env.PACKAGES_TOKEN}</password>
-    </server>
   </servers>
   <profiles>
     <profile>
@@ -40,13 +35,6 @@
         <repository>
           <id>github-common-core</id>
           <url>https://maven.pkg.github.com/piotr-janczukowicz/common-core</url>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-        <repository>
-          <id>github-common-test-support</id>
-          <url>https://maven.pkg.github.com/piotr-janczukowicz/common-test-support</url>
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
