@@ -113,7 +113,7 @@ final class GitDatabaseCatalogFixtures {
 
     static GitHubGitTagTagger gitTagTagger() {
         return GitHubGitTagTaggerBuilder.builder()
-                .date("2014-11-07T22:01:45Z")
+                .date(Instant.parse("2014-11-07T22:01:45Z"))
                 .email("schacon@gmail.com")
                 .name("Scott Chacon")
                 .build();

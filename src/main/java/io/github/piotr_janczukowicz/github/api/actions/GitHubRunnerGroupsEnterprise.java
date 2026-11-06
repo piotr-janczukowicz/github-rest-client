@@ -8,6 +8,7 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
@@ -32,7 +33,7 @@ import org.jspecify.annotations.Nullable;
 @CatalogSchema("components/schemas/runner-groups-enterprise")
 @Flavors({GitHubFlavor.GHEC, GitHubFlavor.GHES})
 public record GitHubRunnerGroupsEnterprise(
-        double id,
+        @SuppressSchemaTypeMismatch("type rule: long (id)") long id,
         String name,
         String visibility,
         @JsonProperty("default") boolean isDefault,

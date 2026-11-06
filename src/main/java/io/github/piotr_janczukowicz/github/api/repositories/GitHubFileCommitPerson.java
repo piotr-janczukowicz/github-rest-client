@@ -3,6 +3,8 @@ package io.github.piotr_janczukowicz.github.api.repositories;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -16,6 +18,7 @@ import org.jspecify.annotations.Nullable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
 public record GitHubFileCommitPerson(
-        @Nullable String date,
+        @SuppressSchemaTypeMismatch("type rule: date-time (date)") @Nullable Instant date,
+
         @Nullable String name,
         @Nullable String email) {}

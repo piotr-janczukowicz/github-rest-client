@@ -120,7 +120,7 @@ public final class AppsCatalogFixtures {
     static GitHubMarketplacePurchaseMarketplacePendingChange marketplacePurchasePendingChange() {
         return GitHubMarketplacePurchaseMarketplacePendingChangeBuilder.builder()
                 .isInstalled(true)
-                .effectiveDate("2024-03-01T00:00:00Z")
+                .effectiveDate(Instant.parse("2024-03-01T00:00:00Z"))
                 .unitCount(5)
                 .id(2L)
                 .plan(marketplaceListingPlan())
@@ -135,7 +135,7 @@ public final class AppsCatalogFixtures {
                 .unitCount(5)
                 .onFreeTrial(false)
                 .freeTrialEndsOn("2024-03-15T00:00:00Z")
-                .updatedAt("2024-03-01T00:00:00Z")
+                .updatedAt(Instant.parse("2024-03-01T00:00:00Z"))
                 .plan(marketplaceListingPlan())
                 .build();
     }

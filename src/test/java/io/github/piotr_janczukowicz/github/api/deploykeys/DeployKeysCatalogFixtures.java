@@ -13,7 +13,7 @@ final class DeployKeysCatalogFixtures {
                 .url("https://api.github.com/repos/octocat/Hello-World/keys/1")
                 .title("octocat@octomac")
                 .verified(true)
-                .createdAt("2014-12-10T15:53:42Z")
+                .createdAt(Instant.parse("2014-12-10T15:53:42Z"))
                 .readOnly(true)
                 .addedBy("octocat")
                 .lastUsed(Instant.parse("2022-01-10T15:53:42Z"))

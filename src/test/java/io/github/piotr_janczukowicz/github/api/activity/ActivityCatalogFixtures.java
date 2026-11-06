@@ -156,7 +156,7 @@ final class ActivityCatalogFixtures {
                 .subject(threadSubject())
                 .reason("subscribed")
                 .unread(true)
-                .updatedAt("2024-01-01T00:00:00Z")
+                .updatedAt(Instant.parse("2024-01-01T00:00:00Z"))
                 .lastReadAt("2024-01-02T00:00:00Z")
                 .url(API_URL + "/notifications/threads/1")
                 .subscriptionUrl(API_URL + "/notifications/threads/1/subscription")

@@ -5,6 +5,8 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -19,6 +21,7 @@ import org.jspecify.annotations.Nullable;
 @CatalogSchema("components/schemas/api-insights-time-stats/items")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public record GitHubApiInsightsTimeStat(
-        @Nullable String timestamp,
+        @SuppressSchemaTypeMismatch("type rule: date-time (timestamp)") @Nullable Instant timestamp,
+
         @Nullable Long totalRequestCount,
         @Nullable Long rateLimitedRequestCount) {}

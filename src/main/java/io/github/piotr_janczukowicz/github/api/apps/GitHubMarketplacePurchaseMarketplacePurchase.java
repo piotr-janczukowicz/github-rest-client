@@ -5,6 +5,8 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -30,5 +32,7 @@ public record GitHubMarketplacePurchaseMarketplacePurchase(
         @Nullable Integer unitCount,
         @Nullable Boolean onFreeTrial,
         @Nullable String freeTrialEndsOn,
-        @Nullable String updatedAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (updated_at)") @Nullable Instant updatedAt,
+
         @Nullable GitHubMarketplaceListingPlan plan) {}

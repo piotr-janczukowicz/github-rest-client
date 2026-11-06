@@ -8,6 +8,8 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -24,8 +26,11 @@ import org.jspecify.annotations.Nullable;
 @Flavors({GitHubFlavor.GHEC, GitHubFlavor.GHES})
 public record GitHubMeta(
         @JsonProperty("resourceType") GitHubMetaResourceType resourceType,
-        @Nullable String created,
-        @JsonProperty("lastModified") @Nullable String lastModified,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (created)") @Nullable Instant created,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (last_modified)") @JsonProperty("lastModified") @Nullable Instant lastModified,
+
         @Nullable String location) {
 
     public GitHubMeta {

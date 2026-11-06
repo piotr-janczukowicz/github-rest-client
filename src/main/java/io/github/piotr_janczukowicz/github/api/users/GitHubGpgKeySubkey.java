@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import org.jspecify.annotations.Nullable;
@@ -36,13 +37,15 @@ public record GitHubGpgKeySubkey(
         @Nullable String publicKey,
         @Nullable List<GitHubGpgKeyEmail> emails,
 
-        @SuppressSchemaTypeMismatch("dump items are empty object; java is Map") @Nullable List<Map<String, Object>> subkeys,
+        @Nullable List<Map<String, Object>> subkeys,
 
         @Nullable Boolean canSign,
         @Nullable Boolean canEncryptComms,
         @Nullable Boolean canEncryptStorage,
         @Nullable Boolean canCertify,
-        @Nullable String createdAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (created_at)") @Nullable Instant createdAt,
+
         @Nullable String expiresAt,
         @Nullable String rawKey,
         @Nullable Boolean revoked) {}

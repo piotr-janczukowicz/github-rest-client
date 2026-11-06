@@ -22,8 +22,10 @@ import java.time.Duration;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Isolated;
 
 @UnitTest
+@Isolated
 class GitHubMetricsStatisticsApiPollingTest {
 
     private static final String OWNER = "octocat";

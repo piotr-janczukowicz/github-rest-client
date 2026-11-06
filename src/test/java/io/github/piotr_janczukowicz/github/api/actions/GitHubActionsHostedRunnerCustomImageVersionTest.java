@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
+import java.time.Instant;
 import org.junit.jupiter.api.Test;
 
 @UnitTest
@@ -13,7 +14,7 @@ class GitHubActionsHostedRunnerCustomImageVersionTest {
     void constructor_shouldThrowNullPointerException_whenVersionNull() {
         final String state = "state-sample";
         final int sizeGb = 1;
-        final String createdOn = "createdOn-sample";
+        final Instant createdOn = Instant.parse("2026-01-01T00:00:00Z");
         final String stateDetails = "stateDetails-sample";
 
         final Throwable thrown = catchThrowable(
@@ -26,7 +27,7 @@ class GitHubActionsHostedRunnerCustomImageVersionTest {
     void constructor_shouldThrowNullPointerException_whenStateNull() {
         final String version = "version-sample";
         final int sizeGb = 1;
-        final String createdOn = "createdOn-sample";
+        final Instant createdOn = Instant.parse("2026-01-01T00:00:00Z");
         final String stateDetails = "stateDetails-sample";
 
         final Throwable thrown = catchThrowable(
@@ -53,7 +54,7 @@ class GitHubActionsHostedRunnerCustomImageVersionTest {
         final String version = "version-sample";
         final String state = "state-sample";
         final int sizeGb = 1;
-        final String createdOn = "createdOn-sample";
+        final Instant createdOn = Instant.parse("2026-01-01T00:00:00Z");
 
         final Throwable thrown = catchThrowable(
                 () -> new GitHubActionsHostedRunnerCustomImageVersion(version, state, sizeGb, createdOn, null));

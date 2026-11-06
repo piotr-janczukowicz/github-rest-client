@@ -4,7 +4,7 @@
       "server_id": "sample-server_id",
       "hostname": "sample-hostname",
       "last_sync": {
-        "date": "sample-date",
+        "date": "2026-01-01T00:00:00Z",
         "status": "sample-status",
         "error": "sample-error"
       }

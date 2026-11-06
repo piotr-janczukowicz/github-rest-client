@@ -5,6 +5,8 @@ import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 
 /**
  * Person who created a Git tag.
@@ -16,7 +18,12 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
 @CatalogSchema("components/schemas/git-tag/properties/tagger")
-public record GitHubGitTagTagger(String date, String email, String name) {
+public record GitHubGitTagTagger(
+        @SuppressSchemaTypeMismatch("type rule: date-time (date)")
+        Instant date,
+
+        String email,
+        String name) {
 
     public GitHubGitTagTagger {
         requireNonNull(date, "date");

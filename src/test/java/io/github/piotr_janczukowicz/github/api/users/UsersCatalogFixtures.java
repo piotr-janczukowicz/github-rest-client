@@ -254,7 +254,7 @@ public final class UsersCatalogFixtures {
                         true,
                         true,
                         false,
-                        "2016-03-24T11:31:04-06:00",
+                        Instant.parse("2016-03-24T17:31:04Z"),
                         "2016-03-24T11:31:04-07:00",
                         "nested-raw-key",
                         false)),

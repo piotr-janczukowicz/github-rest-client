@@ -88,7 +88,7 @@ class GitHubRunnerGroupsEnterpriseTest {
         final GitHubRunnerGroupsEnterprise value = ActionsCatalogFixtures.runnerGroupsEnterprise();
 
         assertSoftly(softly -> {
-            softly.assertThat(value.id()).isEqualTo(1.0);
+            softly.assertThat(value.id()).isEqualTo(1L);
             softly.assertThat(value.name()).isEqualTo("name-sample");
             softly.assertThat(value.visibility()).isEqualTo("visibility-sample");
             softly.assertThat(value.isDefault()).isTrue();

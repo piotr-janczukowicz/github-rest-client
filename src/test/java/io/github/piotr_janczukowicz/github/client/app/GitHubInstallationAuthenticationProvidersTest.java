@@ -33,9 +33,11 @@ import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneOffset;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Isolated;
 import org.mockito.ArgumentCaptor;
 
 @UnitTest
+@Isolated
 class GitHubInstallationAuthenticationProvidersTest {
 
     private static final Instant NOW = Instant.parse("2026-01-01T00:00:00Z");

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
-import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -42,13 +41,8 @@ public record GitHubContentFile(
         @Nullable String gitUrl,
         @Nullable String htmlUrl,
         @Nullable String downloadUrl,
-
         @JsonProperty("_links") GitHubContentLinks links,
-
         @Nullable String target,
-
-        @SuppressSchemaTypeMismatch(
-                "content-file dump declares submodule_git_url as a plain string; the value is a git URI (content-submodule uses format uri)")
         @Nullable String submoduleGitUrl)
         implements GitHubContentResult {
 

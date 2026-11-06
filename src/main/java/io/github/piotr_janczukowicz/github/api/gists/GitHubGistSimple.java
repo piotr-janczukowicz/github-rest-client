@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.users.GitHubSimpleUser;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import java.util.Map;
 import org.jspecify.annotations.Nullable;
 
@@ -47,8 +49,11 @@ public record GitHubGistSimple(
         @Nullable String htmlUrl,
         @Nullable Map<String, @Nullable GitHubGistSimpleFile> files,
         @JsonProperty("public") @Nullable Boolean isPublic,
-        @Nullable String createdAt,
-        @Nullable String updatedAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (created_at)") @Nullable Instant createdAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (updated_at)") @Nullable Instant updatedAt,
+
         @Nullable String description,
         @Nullable Integer comments,
         @Nullable Boolean commentsEnabled,

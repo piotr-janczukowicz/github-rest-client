@@ -5,6 +5,8 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -22,7 +24,9 @@ import org.jspecify.annotations.Nullable;
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public record GitHubMarketplacePurchaseMarketplacePendingChange(
         @Nullable Boolean isInstalled,
-        @Nullable String effectiveDate,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (effective_date)") @Nullable Instant effectiveDate,
+
         @Nullable Integer unitCount,
         @Nullable Long id,
         @Nullable GitHubMarketplaceListingPlan plan) {}

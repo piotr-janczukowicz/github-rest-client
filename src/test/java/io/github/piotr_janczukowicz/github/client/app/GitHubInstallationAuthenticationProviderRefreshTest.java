@@ -40,8 +40,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Isolated;
 
 @UnitTest
+@Isolated
 class GitHubInstallationAuthenticationProviderRefreshTest {
 
     private static final Instant NOW = Instant.parse("2026-01-01T00:00:00Z");

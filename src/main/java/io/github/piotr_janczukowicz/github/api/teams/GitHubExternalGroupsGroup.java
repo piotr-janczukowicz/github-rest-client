@@ -7,6 +7,8 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 
 /**
  * An external group available to be mapped to a team.
@@ -19,7 +21,12 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 @RecordBuilder
 @CatalogSchema("components/schemas/external-groups/properties/groups/items")
 @Flavors({GitHubFlavor.GHEC, GitHubFlavor.GHES})
-public record GitHubExternalGroupsGroup(long groupId, String groupName, String updatedAt) {
+public record GitHubExternalGroupsGroup(
+        long groupId,
+        String groupName,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (updated_at)")
+        Instant updatedAt) {
 
     public GitHubExternalGroupsGroup {
         requireNonNull(groupName, "groupName");

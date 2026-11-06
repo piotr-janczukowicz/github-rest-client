@@ -244,7 +244,7 @@ public final class ActionsCatalogFixtures {
                 .version("version-sample")
                 .state("state-sample")
                 .sizeGb(1)
-                .createdOn("createdOn-sample")
+                .createdOn(Instant.parse("2026-01-01T00:00:00Z"))
                 .stateDetails("stateDetails-sample")
                 .build();
     }
@@ -999,7 +999,7 @@ public final class ActionsCatalogFixtures {
 
     static GitHubRunnerGroupsOrg runnerGroupsOrg() {
         return GitHubRunnerGroupsOrgBuilder.builder()
-                .id(1.0)
+                .id(1L)
                 .name("name-sample")
                 .visibility("visibility-sample")
                 .isDefault(true)
@@ -1018,7 +1018,7 @@ public final class ActionsCatalogFixtures {
 
     static GitHubRunnerGroupsEnterprise runnerGroupsEnterprise() {
         return GitHubRunnerGroupsEnterpriseBuilder.builder()
-                .id(1.0)
+                .id(1L)
                 .name("name-sample")
                 .visibility("visibility-sample")
                 .isDefault(true)

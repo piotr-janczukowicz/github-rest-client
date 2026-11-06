@@ -5,7 +5,7 @@
       "version": "version-sample",
       "state": "state-sample",
       "size_gb": 1,
-      "created_on": "createdOn-sample",
+      "created_on": "2026-01-01T00:00:00Z",
       "state_details": "stateDetails-sample"
     }
   ]

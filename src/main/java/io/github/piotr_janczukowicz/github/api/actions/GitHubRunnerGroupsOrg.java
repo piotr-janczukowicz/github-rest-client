@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 
@@ -31,7 +32,7 @@ import org.jspecify.annotations.Nullable;
 @RecordBuilder
 @CatalogSchema("components/schemas/runner-groups-org")
 public record GitHubRunnerGroupsOrg(
-        double id,
+        @SuppressSchemaTypeMismatch("type rule: long (id)") long id,
         String name,
         String visibility,
         @JsonProperty("default") boolean isDefault,

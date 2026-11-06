@@ -7,6 +7,8 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.LocalDate;
 
 /**
  * User who committed to a repository with GitHub Advanced Security enabled.
@@ -20,7 +22,12 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 @CatalogSchema("components/schemas/advanced-security-active-committers-user")
 @Flavors({GitHubFlavor.GHEC, GitHubFlavor.GHES})
 public record GitHubAdvancedSecurityActiveCommittersUser(
-        String userLogin, String lastPushedDate, String lastPushedEmail) {
+        String userLogin,
+
+        @SuppressSchemaTypeMismatch("type rule: date (last_pushed_date)")
+        LocalDate lastPushedDate,
+
+        String lastPushedEmail) {
 
     public GitHubAdvancedSecurityActiveCommittersUser {
         requireNonNull(userLogin, "userLogin");

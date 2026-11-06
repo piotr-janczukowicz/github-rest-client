@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import java.util.List;
 
 /**
@@ -21,7 +23,9 @@ import java.util.List;
 @CatalogSchema("components/schemas/dependency-graph-spdx-sbom/properties/sbom/properties/creationInfo")
 @RecordBuilder
 public record GitHubSpdxSbomCreationInfo(
-        @JsonProperty("created") String created,
+        @SuppressSchemaTypeMismatch("type rule: date-time (created)") @JsonProperty("created")
+        Instant created,
+
         @JsonProperty("creators") List<String> creators) {
 
     public GitHubSpdxSbomCreationInfo {

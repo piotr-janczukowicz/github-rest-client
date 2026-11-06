@@ -5,6 +5,8 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
+import java.time.Instant;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -33,4 +35,5 @@ public record GitHubApiInsightsUserStat(
         @Nullable Integer totalRequestCount,
         @Nullable Integer rateLimitedRequestCount,
         @Nullable String lastRateLimitedTimestamp,
-        @Nullable String lastRequestTimestamp) {}
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (last_request_timestamp)") @Nullable Instant lastRequestTimestamp) {}

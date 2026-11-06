@@ -5,6 +5,7 @@ import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
 import java.time.Instant;
 import org.jspecify.annotations.Nullable;
 
@@ -31,7 +32,10 @@ public record GitHubDeployKey(
         String url,
         String title,
         boolean verified,
-        String createdAt,
+
+        @SuppressSchemaTypeMismatch("type rule: date-time (created_at)")
+        Instant createdAt,
+
         boolean readOnly,
         @Nullable String addedBy,
         @Nullable Instant lastUsed,

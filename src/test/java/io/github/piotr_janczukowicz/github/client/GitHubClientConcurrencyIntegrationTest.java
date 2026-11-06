@@ -35,8 +35,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.IntFunction;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.parallel.Isolated;
 
 @IntegrationTest
+@Isolated
 class GitHubClientConcurrencyIntegrationTest {
 
     private static final int THREADS = 8;

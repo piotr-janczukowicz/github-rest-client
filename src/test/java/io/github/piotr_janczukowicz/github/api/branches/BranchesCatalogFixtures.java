@@ -72,8 +72,8 @@ public final class BranchesCatalogFixtures {
                 "A GitHub App",
                 "https://example.com",
                 "https://github.com/apps/octoapp",
-                "2017-07-08T16:18:44-04:00",
-                "2017-07-08T16:18:44-04:00",
+                Instant.parse("2017-07-08T20:18:44Z"),
+                Instant.parse("2017-07-08T20:18:44Z"),
                 branchRestrictionPolicyAppPermissions(),
                 List.of("push", "pull_request"));
     }

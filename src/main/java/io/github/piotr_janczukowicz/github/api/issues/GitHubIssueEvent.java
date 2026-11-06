@@ -10,6 +10,7 @@ import io.github.piotr_janczukowicz.github.api.search.GitHubAuthorAssociation;
 import io.github.piotr_janczukowicz.github.api.teams.GitHubTeam;
 import io.github.piotr_janczukowicz.github.api.users.GitHubSimpleUser;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import io.github.piotr_janczukowicz.openapi.model.SuppressSchemaTypeMismatch;
 import java.time.Instant;
 import org.jspecify.annotations.Nullable;
 
@@ -57,7 +58,10 @@ public record GitHubIssueEvent(
         String event,
         @Nullable String commitId,
         @Nullable String commitUrl,
+
+        @SuppressSchemaTypeMismatch("dump declares a plain string; the value is an ISO 8601 timestamp")
         Instant createdAt,
+
         @Nullable GitHubIssue issue,
         @Nullable GitHubIssueEventLabel label,
         @Nullable GitHubSimpleUser assignee,
