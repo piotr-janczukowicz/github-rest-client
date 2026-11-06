@@ -31,6 +31,7 @@ import io.github.piotr_janczukowicz.github.api.deployments.GitHubDeploymentsApi;
 import io.github.piotr_janczukowicz.github.api.emojis.GitHubEmojisApi;
 import io.github.piotr_janczukowicz.github.api.enterpriseadmin.GitHubEnterpriseAdminApi;
 import io.github.piotr_janczukowicz.github.api.enterpriseteams.GitHubEnterpriseTeamsApi;
+import io.github.piotr_janczukowicz.github.api.generic.GitHubGenericApi;
 import io.github.piotr_janczukowicz.github.api.gists.GitHubGistsApi;
 import io.github.piotr_janczukowicz.github.api.gitdatabase.GitHubGitDatabaseApi;
 import io.github.piotr_janczukowicz.github.api.gitignore.GitHubGitignoreApi;
@@ -112,6 +113,7 @@ public final class GitHub {
     private final LazyValue<GitHubInteractionsApi> interactions;
     private final LazyValue<GitHubLicensesApi> licenses;
     private final LazyValue<GitHubMarkdownApi> markdown;
+    private final LazyValue<GitHubGenericApi> generic;
     private final LazyValue<GitHubMetaApi> meta;
     private final LazyValue<GitHubMetricsApi> metrics;
     private final LazyValue<GitHubMigrationsApi> migrations;
@@ -178,6 +180,7 @@ public final class GitHub {
         this.interactions = new LazyValue<>(() -> new GitHubInteractionsApi(caller));
         this.licenses = new LazyValue<>(() -> new GitHubLicensesApi(caller));
         this.markdown = new LazyValue<>(() -> new GitHubMarkdownApi(caller));
+        this.generic = new LazyValue<>(() -> new GitHubGenericApi(caller));
         this.meta = new LazyValue<>(() -> new GitHubMetaApi(caller));
         this.metrics = new LazyValue<>(() -> new GitHubMetricsApi(caller));
         this.migrations = new LazyValue<>(() -> new GitHubMigrationsApi(caller));
@@ -612,6 +615,15 @@ public final class GitHub {
      */
     public GitHubMarkdownApi markdown() {
         return markdown.get();
+    }
+
+    /**
+     * Generic REST access, a last resort for calls the typed APIs do not cover or cover incorrectly.
+     *
+     * @return generic API
+     */
+    public GitHubGenericApi generic() {
+        return generic.get();
     }
 
     /**

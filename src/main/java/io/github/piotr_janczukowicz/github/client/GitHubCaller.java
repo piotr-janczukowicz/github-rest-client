@@ -176,6 +176,27 @@ public final class GitHubCaller extends AbstractHttpCaller {
     }
 
     /**
+     * Whether {@code path} could be read differently by a client, a proxy and the server: it contains a query, a
+     * fragment, a backslash, an empty segment, a dot segment (also percent-encoded) or an encoded path separator.
+     *
+     * @param path absolute path to check
+     * @return {@code true} if the path is ambiguous and must be refused
+     * @throws NullPointerException if {@code path} is {@code null}
+     */
+    public static boolean isAmbiguousPath(final String path) {
+        final String lower = path.toLowerCase(Locale.ROOT);
+        return lower.contains("?")
+                || lower.contains("#")
+                || lower.contains("\\")
+                || lower.contains("//")
+                || lower.contains("%2f")
+                || lower.contains("%5c")
+                || Arrays.stream(lower.split("/"))
+                        .map(segment -> segment.replace("%2e", "."))
+                        .anyMatch(segment -> ".".equals(segment) || "..".equals(segment));
+    }
+
+    /**
      * Fails fast when the flavor configured for this client (see {@link GitHubClientConfiguration#flavor()}) is not one
      * of {@code available}. A client without a configured flavor allows every operation.
      *
@@ -215,19 +236,6 @@ public final class GitHubCaller extends AbstractHttpCaller {
             throw new UnsupportedOperationException("This operation is not available in GitHub Enterprise Server "
                     + version + "; it exists " + rangeOf(since, until));
         }
-    }
-
-    private static boolean isAmbiguousPath(final String path) {
-        final String lower = path.toLowerCase(Locale.ROOT);
-        return lower.contains("?")
-                || lower.contains("#")
-                || lower.contains("\\")
-                || lower.contains("//")
-                || lower.contains("%2f")
-                || lower.contains("%5c")
-                || Arrays.stream(lower.split("/"))
-                        .map(segment -> segment.replace("%2e", "."))
-                        .anyMatch(segment -> ".".equals(segment) || "..".equals(segment));
     }
 
     private static String rangeOf(final String since, final String until) {

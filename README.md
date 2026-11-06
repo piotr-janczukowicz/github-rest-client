@@ -21,6 +21,8 @@ GitHub Enterprise Cloud and GitHub Enterprise Server, with pagination and rate-l
 - **Safe when GitHub adds values.** A response value the library does not know decodes to `UNRECOGNIZED` instead of
   throwing, so a new enum value on GitHub's side does not break your code.
 - **The boring parts are handled.** Rate limits are waited out, pagination is followed and responses are immutable.
+- **An escape hatch.** If a typed method has a bug or an endpoint is missing, `github.generic()` sends any REST call
+  through the same client, so you can work around it without waiting for a release.
 - **Small on purpose.** Synchronous REST only: no GraphQL and no async API.
 
 ## Install
@@ -84,6 +86,17 @@ one `GitHubCaller` and share it; `new GitHub(caller)` gives every resource, crea
 `new GitHubRateLimitApi(caller)` gives a single one. `client.close()` closes the transport, and a second credential needs
 its own client and caller. Clients, callers and resources are thread-safe; a `GitHubPage` is not.
 
+**Escape hatch.** If a typed method misbehaves or GitHub has an endpoint the library does not model yet, send the call
+yourself with `github.generic()`. It uses the same client (retry, rate limits, caching, error mapping, pagination) and
+keeps the API version fixed, but it has no models and no flavor check, so prefer the typed APIs. See
+[Generic API](docs/guide/generic-api.md).
+
+```java
+GitHubGenericRequest request = GitHubGenericRequest.get("/repos/{owner}/{repo}/issues")
+        .withPathVariables(List.of("octocat", "Hello-World"));
+List<GitHubIssue> issues = github.generic().fetch(request, JsonTypes.listOf(GitHubIssue.class));
+```
+
 ## Flavors
 
 The library follows three OpenAPI descriptions, one per *flavor*: github.com (*cloud*), GitHub Enterprise Cloud (*GHEC*)
@@ -140,6 +153,7 @@ The [user guide](docs/guide/README.md) has a chapter for each topic below.
 | [Immutability](docs/guide/immutability.md) | Immutable records, unmodifiable response collections, absent fields are `null`, your inputs are copied |
 | [Exception handling](docs/guide/exception-handling.md) | HTTP errors are unchecked `GitHubApiException` subclasses (401, 403, 404, 422, rate limit); transport failures are `IOException` |
 | [Performance](docs/guide/performance.md) | About 0.1 ms and 90 KB of allocation per call on top of the network round trip, with the measurements |
+| [Generic API](docs/guide/generic-api.md) | `github.generic()` sends any REST call through the same client when a typed method is broken or missing; the API version stays fixed |
 | [Good to know](docs/guide/good-to-know.md) | Newer GitHub data, file uploads, deprecated operations, logging, and the caveats of the schema descriptions |
 | [Live smoke tests](docs/guide/smoke-tests.md) | Running the opt-in tests against api.github.com |
 

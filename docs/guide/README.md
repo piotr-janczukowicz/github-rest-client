@@ -15,3 +15,4 @@ pages are the detail behind it. Read them in order, or jump to the one you need.
 | 8. [Immutability](immutability.md) | What a response guarantees and how your inputs are copied |
 | 9. [Exception handling](exception-handling.md) | Every exception that reaches your code, what the client handles for you and what you should handle |
 | 10. [Good to know](good-to-know.md) | Newer GitHub data, file uploads, deprecated operations, threads and logging, and the caveats of the schema descriptions |
+| 11. [Generic API](generic-api.md) | The escape hatch for a broken or missing typed method: describing a call, what it keeps from the client, what it refuses and its limits |
