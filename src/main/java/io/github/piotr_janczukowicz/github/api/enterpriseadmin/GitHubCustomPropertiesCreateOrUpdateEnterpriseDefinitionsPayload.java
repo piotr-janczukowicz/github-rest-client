@@ -6,7 +6,7 @@ import static io.github.piotr_janczukowicz.util.ValidationUtils.requireSizeAtMos
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
-import io.github.piotr_janczukowicz.github.api.organizations.GitHubCustomProperty;
+import io.github.piotr_janczukowicz.github.api.organizations.GitHubCustomPropertyBatchItemPayload;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import java.util.List;
@@ -21,7 +21,8 @@ import java.util.List;
 @CatalogSchema(
         "operations/enterprise-admin/custom-properties-for-repos-create-or-update-enterprise-definitions/requestBody")
 @Flavors({GitHubFlavor.GHEC, GitHubFlavor.GHES})
-public record GitHubCustomPropertiesCreateOrUpdateEnterpriseDefinitionsPayload(List<GitHubCustomProperty> properties) {
+public record GitHubCustomPropertiesCreateOrUpdateEnterpriseDefinitionsPayload(
+        List<GitHubCustomPropertyBatchItemPayload> properties) {
 
     public GitHubCustomPropertiesCreateOrUpdateEnterpriseDefinitionsPayload {
         properties = List.copyOf(requireSizeAtMost(requireNonEmpty(properties, "properties"), 100, "properties"));

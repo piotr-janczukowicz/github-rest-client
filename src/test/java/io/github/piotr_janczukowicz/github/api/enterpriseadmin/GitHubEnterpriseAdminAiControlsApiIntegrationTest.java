@@ -21,6 +21,7 @@ class GitHubEnterpriseAdminAiControlsApiIntegrationTest {
     private static final Class<?> RESOURCES = GitHubEnterpriseAdminAiControlsApiIntegrationTest.class;
     private static final String APPS_PATH = "/enterprises/octo-enterprise/copilot/apps/model-policies";
     private static final String FEATURE_PATH = "/enterprises/octo-enterprise/copilot/feature-policies";
+    private static final String FUSION_PATH = "/enterprises/octo-enterprise/copilot/fusion/model-policies";
     private static final String MODEL_PATH = "/enterprises/octo-enterprise/copilot/model-policies";
     private static final String TEAM_PATH = "/enterprises/octo-enterprise/teams/1/copilot/model-policies";
 
@@ -148,5 +149,38 @@ class GitHubEnterpriseAdminAiControlsApiIntegrationTest {
 
         assertThat(policies).isEqualTo(EnterpriseAdminCatalogFixtures.updateEnterpriseFeaturePoliciesResponse());
         HTTP.verifyRequested(PATCH, FEATURE_PATH);
+    }
+
+    @Test
+    void getEnterpriseFusionModelPolicies_shouldReturnPolicies_whenResponseIsOk() throws Exception {
+        HTTP.stub(GET, FUSION_PATH, okJson(jsonBytes(RESOURCES, "get-enterprise-fusion-model-policies-response.json")));
+
+        final GitHubGetEnterpriseFusionModelPoliciesResponse policies;
+        try (final GitHubApiWireMockSupport.EnterpriseAdminAiControlsApiClient api =
+                enterpriseAdminAiControlsApi(HTTP)) {
+            policies = api.api().getEnterpriseFusionModelPolicies(ENTERPRISE);
+        }
+
+        assertThat(policies).isEqualTo(EnterpriseAdminCatalogFixtures.getEnterpriseFusionModelPoliciesResponse());
+        HTTP.verifyRequested(GET, FUSION_PATH);
+    }
+
+    @Test
+    void updateEnterpriseFusionModelPolicies_shouldReturnPolicies_whenResponseIsOk() throws Exception {
+        HTTP.stub(
+                PATCH,
+                FUSION_PATH,
+                okJson(jsonBytes(RESOURCES, "update-enterprise-fusion-model-policies-response.json")));
+
+        final GitHubUpdateEnterpriseFusionModelPoliciesResponse policies;
+        try (final GitHubApiWireMockSupport.EnterpriseAdminAiControlsApiClient api =
+                enterpriseAdminAiControlsApi(HTTP)) {
+            policies = api.api()
+                    .updateEnterpriseFusionModelPolicies(
+                            ENTERPRISE, EnterpriseAdminCatalogFixtures.updateEnterpriseFusionModelPoliciesPayload());
+        }
+
+        assertThat(policies).isEqualTo(EnterpriseAdminCatalogFixtures.updateEnterpriseFusionModelPoliciesResponse());
+        HTTP.verifyRequested(PATCH, FUSION_PATH);
     }
 }

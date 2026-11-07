@@ -205,7 +205,7 @@ public final class OrganizationsCatalogFixtures {
     }
 
     static GitHubCreateOrUpdateOrganizationDefinitionsPayload createOrUpdateOrganizationDefinitionsPayload() {
-        return new GitHubCreateOrUpdateOrganizationDefinitionsPayload(List.of(customProperty()));
+        return new GitHubCreateOrUpdateOrganizationDefinitionsPayload(List.of(customPropertyBatchItemPayload()));
     }
 
     static GitHubCreateOrUpdateOrganizationValuesPayload createOrUpdateOrganizationValuesPayload() {
@@ -259,6 +259,7 @@ public final class OrganizationsCatalogFixtures {
                 OptionalNull.of("Prod or dev environment"),
                 OptionalNull.of(List.of("production", "development")),
                 OptionalNull.of(GitHubCustomPropertyValuesEditableBy.ORG_ACTORS),
+                OptionalNull.of("^[a-z0-9-]+$"),
                 true);
     }
 
@@ -450,6 +451,20 @@ public final class OrganizationsCatalogFixtures {
                 "Prod or dev environment",
                 List.of("production", "development"),
                 GitHubCustomPropertyValuesEditableBy.ORG_ACTORS,
+                "^[a-z0-9-]+$",
+                true);
+    }
+
+    public static GitHubCustomPropertyBatchItemPayload customPropertyBatchItemPayload() {
+        return new GitHubCustomPropertyBatchItemPayload(
+                "environment",
+                GitHubCustomPropertyValueType.SINGLE_SELECT,
+                true,
+                OptionalNull.of(List.of("production")),
+                OptionalNull.of("Prod or dev environment"),
+                OptionalNull.of(List.of("production", "development")),
+                OptionalNull.of(GitHubCustomPropertyValuesEditableBy.ORG_ACTORS),
+                OptionalNull.of("^[a-z0-9-]+$"),
                 true);
     }
 
@@ -1242,6 +1257,7 @@ public final class OrganizationsCatalogFixtures {
                         null,
                         null,
                         null,
+                        null,
                         null),
                 new GitHubCustomProperty(
                         "team",
@@ -1251,6 +1267,7 @@ public final class OrganizationsCatalogFixtures {
                         null,
                         null,
                         "Team owning the repository",
+                        null,
                         null,
                         null,
                         null));

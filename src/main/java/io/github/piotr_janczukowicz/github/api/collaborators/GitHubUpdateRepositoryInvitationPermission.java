@@ -14,6 +14,7 @@ public enum GitHubUpdateRepositoryInvitationPermission {
     WRITE("write"),
     MAINTAIN("maintain"),
     TRIAGE("triage"),
+    MODERATE("moderate"),
     ADMIN("admin");
 
     private static final EnumUtils.WireIndex<GitHubUpdateRepositoryInvitationPermission> WIRE_INDEX = EnumUtils.index(

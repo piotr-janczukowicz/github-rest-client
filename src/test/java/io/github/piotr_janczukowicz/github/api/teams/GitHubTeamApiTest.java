@@ -463,7 +463,7 @@ class GitHubTeamApiTest {
         when(transport.execute(any())).thenReturn(response(HttpStatus.NO_CONTENT.code(), null));
         final GitHubUpsertTeamRepositoryPermissionLegacyPayload payload =
                 GitHubUpsertTeamRepositoryPermissionLegacyPayloadBuilder.builder()
-                        .permission(GitHubTeamLegacyPermission.PUSH)
+                        .permission(GitHubUpsertTeamRepositoryPermissionLegacyPermission.PUSH)
                         .build();
 
         new GitHubTeamApi(TestClients.caller(transport))

@@ -71,5 +71,13 @@
     "rocket": 0
   },
   "body_html": "<p>We should probably include a check for null values here.</p>",
-  "body_text": "We should probably include a check for null values here."
+  "body_text": "We should probably include a check for null values here.",
+  "copilot_code_review_sources": [
+    {
+      "kind": "SKILL",
+      "name": "name",
+      "path": "path"
+    }
+  ],
+  "is_copilot_code_review": true
 }

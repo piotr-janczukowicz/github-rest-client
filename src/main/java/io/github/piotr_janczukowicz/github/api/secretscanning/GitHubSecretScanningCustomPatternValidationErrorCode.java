@@ -21,6 +21,8 @@ public enum GitHubSecretScanningCustomPatternValidationErrorCode {
     MUST_MATCH("must_match"),
     MUST_NOT_MATCH("must_not_match"),
     CUSTOM_PATTERN_VERSION_MISMATCH("custom_pattern_version_mismatch"),
+    INVALID_STATE("invalid_state"),
+    DRY_RUN_IN_PROGRESS("dry_run_in_progress"),
     /** A value this library version does not know. */
     UNRECOGNIZED("unrecognized");
 

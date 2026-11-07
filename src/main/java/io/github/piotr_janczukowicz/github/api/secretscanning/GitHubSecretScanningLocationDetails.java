@@ -5,8 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 
 /**
- * Location-specific details for a secret scanning finding. Jackson deduction selects the implementing record from the
- * JSON object shape.
+ * Location-specific details for a secret scanning finding. The sibling {@code type} of the location selects the
+ * implementing record (see {@code GitHubSecretScanningLocationDeserializer}); the {@code actions_log} shape is a subset
+ * of the commit shapes, so the object shape alone cannot tell it apart.
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.DEDUCTION)
 @JsonSubTypes({
@@ -22,7 +23,8 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
     @JsonSubTypes.Type(GitHubSecretScanningLocationPullRequestBody.class),
     @JsonSubTypes.Type(GitHubSecretScanningLocationPullRequestComment.class),
     @JsonSubTypes.Type(GitHubSecretScanningLocationPullRequestReview.class),
-    @JsonSubTypes.Type(GitHubSecretScanningLocationPullRequestReviewComment.class)
+    @JsonSubTypes.Type(GitHubSecretScanningLocationPullRequestReviewComment.class),
+    @JsonSubTypes.Type(GitHubSecretScanningLocationActionsLog.class)
 })
 @CatalogSchema("components/schemas/secret-scanning-location/properties/details")
 public sealed interface GitHubSecretScanningLocationDetails
@@ -39,4 +41,5 @@ public sealed interface GitHubSecretScanningLocationDetails
                 GitHubSecretScanningLocationPullRequestComment,
                 GitHubSecretScanningLocationPullRequestReview,
                 GitHubSecretScanningLocationPullRequestReviewComment,
+                GitHubSecretScanningLocationActionsLog,
                 GitHubSecretScanningUnknownLocationDetails {}

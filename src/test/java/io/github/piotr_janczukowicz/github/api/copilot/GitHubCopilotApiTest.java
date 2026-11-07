@@ -97,4 +97,24 @@ class GitHubCopilotApiTest {
 
         assertThat(api.modelPolicyManagement()).isNotNull();
     }
+
+    @Test
+    void copilotCodeReview_shouldReturnApi_whenConstructed() {
+        final GitHubCopilotApi api;
+        try (final GitHubClient client = TestClients.client(transport)) {
+            api = new GitHubCopilotApi(TestClients.caller(client));
+        }
+
+        assertThat(api.codeReview()).isNotNull();
+    }
+
+    @Test
+    void copilotTeamCustomizations_shouldReturnApi_whenConstructed() {
+        final GitHubCopilotApi api;
+        try (final GitHubClient client = TestClients.client(transport)) {
+            api = new GitHubCopilotApi(TestClients.caller(client));
+        }
+
+        assertThat(api.teamCustomizations()).isNotNull();
+    }
 }

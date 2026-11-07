@@ -219,7 +219,9 @@ public final class PullrequestsCatalogFixtures {
                 "54bb654c9e6025347f57900a4a5c2313a96b8035",
                 "<p>This looks great.</p>",
                 "This looks great.",
-                GitHubAuthorAssociation.OWNER);
+                GitHubAuthorAssociation.OWNER,
+                "balanced",
+                true);
     }
 
     static GitHubPullRequestReview pullRequestReviewFromListStub() {
@@ -238,7 +240,9 @@ public final class PullrequestsCatalogFixtures {
                 "54bb654c9e6025347f57900a4a5c2313a96b8035",
                 null,
                 null,
-                GitHubAuthorAssociation.OWNER);
+                GitHubAuthorAssociation.OWNER,
+                null,
+                null);
     }
 
     static GitHubPullRequestReviewLinks pullRequestReviewLinks() {
@@ -295,7 +299,9 @@ public final class PullrequestsCatalogFixtures {
                         0,
                         0),
                 "<p>We should probably include a check for null values here.</p>",
-                "We should probably include a check for null values here.");
+                "We should probably include a check for null values here.",
+                List.of(pullRequestReviewCommentCopilotCodeReviewSource()),
+                true);
     }
 
     static GitHubPullRequestReviewComment pullRequestReviewCommentMultiLine() {
@@ -331,6 +337,8 @@ public final class PullrequestsCatalogFixtures {
                 null,
                 null,
                 null,
+                null,
+                null,
                 null);
     }
 
@@ -358,6 +366,8 @@ public final class PullrequestsCatalogFixtures {
                         new GitHubLink("https://api.github.com/repos/octocat/Hello-World/pulls/comments/1"),
                         new GitHubLink("https://github.com/octocat/Hello-World/pull/1#discussion-diff-1"),
                         new GitHubLink("https://api.github.com/repos/octocat/Hello-World/pulls/1")),
+                null,
+                null,
                 null,
                 null,
                 null,
@@ -420,7 +430,9 @@ public final class PullrequestsCatalogFixtures {
                 2,
                 1,
                 1,
-                GitHubPullRequestReviewCommentSubjectType.LINE);
+                GitHubPullRequestReviewCommentSubjectType.LINE,
+                List.of(reviewCommentCopilotCodeReviewSource()),
+                true);
     }
 
     static GitHubPullRequestMergeResult pullRequestMergeResult() {
@@ -903,6 +915,35 @@ public final class PullrequestsCatalogFixtures {
                 .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
                 .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
                 .user(putAgentMergeEnrollmentResponseUser())
+                .build();
+    }
+
+    static GitHubCopilotCodeReviewRequest copilotCodeReviewRequest() {
+        return GitHubCopilotCodeReviewRequestBuilder.builder()
+                .nodeId("RRR_kwDOAA")
+                .state(GitHubCopilotCodeReviewRequestState.PENDING)
+                .build();
+    }
+
+    static GitHubRequestCopilotCodeReviewPayload requestCopilotCodeReviewPayload() {
+        return GitHubRequestCopilotCodeReviewPayloadBuilder.builder()
+                .reviewEffort("review_effort")
+                .build();
+    }
+
+    static GitHubPullRequestReviewCommentCopilotCodeReviewSource pullRequestReviewCommentCopilotCodeReviewSource() {
+        return GitHubPullRequestReviewCommentCopilotCodeReviewSourceBuilder.builder()
+                .kind(GitHubPullRequestReviewCommentCopilotCodeReviewSourceKind.SKILL)
+                .name("name")
+                .path("path")
+                .build();
+    }
+
+    static GitHubReviewCommentCopilotCodeReviewSource reviewCommentCopilotCodeReviewSource() {
+        return GitHubReviewCommentCopilotCodeReviewSourceBuilder.builder()
+                .kind(GitHubReviewCommentCopilotCodeReviewSourceKind.SKILL)
+                .name("name")
+                .path("path")
                 .build();
     }
 }

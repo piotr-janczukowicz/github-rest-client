@@ -614,4 +614,146 @@ public final class CopilotCatalogFixtures {
                 .defaultAvailability(updateOrganizationFeaturePoliciesResponseDefaultAvailability())
                 .build();
     }
+
+    static GitHubEnterpriseCopilotCodeReviewPolicy enterpriseCopilotCodeReviewPolicy() {
+        return GitHubEnterpriseCopilotCodeReviewPolicyBuilder.builder()
+                .policyState(GitHubEnterpriseCopilotCodeReviewPolicyPolicyState.ENABLED_FOR_ALL_ORGANIZATIONS)
+                .build();
+    }
+
+    static GitHubOrganizationCopilotCodeReviewPolicy organizationCopilotCodeReviewPolicy() {
+        return GitHubOrganizationCopilotCodeReviewPolicyBuilder.builder()
+                .configuredState(GitHubOrganizationCopilotCodeReviewPolicyConfiguredState.ENABLED)
+                .effectiveState(GitHubOrganizationCopilotCodeReviewPolicyEffectiveState.ENABLED)
+                .editable(true)
+                .managedBy(GitHubOrganizationCopilotCodeReviewPolicyManagedBy.ENTERPRISE)
+                .build();
+    }
+
+    static GitHubOrganizationCopilotCodeReviewRunner organizationCopilotCodeReviewRunner() {
+        return GitHubOrganizationCopilotCodeReviewRunnerBuilder.builder()
+                .runnerType(GitHubOrganizationCopilotCodeReviewRunnerRunnerType.STANDARD)
+                .runnerLabels(List.of("runner_labels"))
+                .runnerGroupName("runner_group_name")
+                .allowRepositoryCustomization(true)
+                .configuredBy(GitHubOrganizationCopilotCodeReviewRunnerConfiguredBy.CODE_REVIEW)
+                .build();
+    }
+
+    static GitHubOrganizationCopilotCodeReviewSettingsDefaultReviewEffort
+            organizationCopilotCodeReviewSettingsDefaultReviewEffort() {
+        return GitHubOrganizationCopilotCodeReviewSettingsDefaultReviewEffortBuilder.builder()
+                .configured("configured")
+                .effective("effective")
+                .githubDefault("github_default")
+                .editable(true)
+                .managedBy(GitHubOrganizationCopilotCodeReviewSettingsDefaultReviewEffortManagedBy.ENTERPRISE)
+                .build();
+    }
+
+    static GitHubOrganizationCopilotCodeReviewSettings organizationCopilotCodeReviewSettings() {
+        return GitHubOrganizationCopilotCodeReviewSettingsBuilder.builder()
+                .defaultReviewEffort(organizationCopilotCodeReviewSettingsDefaultReviewEffort())
+                .availableReviewEfforts(List.of("available_review_efforts"))
+                .build();
+    }
+
+    static GitHubRepositoryCopilotCodeReviewSettingsReviewEffort repositoryCopilotCodeReviewSettingsReviewEffort() {
+        return GitHubRepositoryCopilotCodeReviewSettingsReviewEffortBuilder.builder()
+                .configured("configured")
+                .effective("effective")
+                .build();
+    }
+
+    static GitHubRepositoryCopilotCodeReviewSettings repositoryCopilotCodeReviewSettings() {
+        return GitHubRepositoryCopilotCodeReviewSettingsBuilder.builder()
+                .reviewEffort(repositoryCopilotCodeReviewSettingsReviewEffort())
+                .availableReviewEfforts(List.of("available_review_efforts"))
+                .severityFilter(GitHubRepositoryCopilotCodeReviewSettingsSeverityFilter.NO_FILTER)
+                .customInstructionsEnabled(true)
+                .mcpEnabled(true)
+                .build();
+    }
+
+    static GitHubSetEnterpriseCodeReviewPolicyPayload setEnterpriseCodeReviewPolicyPayload() {
+        return GitHubSetEnterpriseCodeReviewPolicyPayloadBuilder.builder()
+                .policyState(GitHubSetEnterpriseCodeReviewPolicyPolicyState.ENABLED_FOR_ALL_ORGANIZATIONS)
+                .build();
+    }
+
+    static GitHubSetOrganizationCodeReviewRunnerPayload setOrganizationCodeReviewRunnerPayload() {
+        return GitHubSetOrganizationCodeReviewRunnerPayloadBuilder.builder()
+                .runnerType(GitHubSetOrganizationCodeReviewRunnerRunnerType.STANDARD)
+                .runnerLabels(List.of("runner_labels"))
+                .runnerGroupName("runner_group_name")
+                .allowRepositoryCustomization(true)
+                .build();
+    }
+
+    static GitHubUpdateOrganizationCodeReviewSettingsPayload updateOrganizationCodeReviewSettingsPayload() {
+        return GitHubUpdateOrganizationCodeReviewSettingsPayloadBuilder.builder()
+                .defaultReviewEffort("default_review_effort")
+                .build();
+    }
+
+    static GitHubSetOrganizationCodeReviewPolicyPayload setOrganizationCodeReviewPolicyPayload() {
+        return GitHubSetOrganizationCodeReviewPolicyPayloadBuilder.builder()
+                .state(GitHubSetOrganizationCodeReviewPolicyState.ENABLED)
+                .build();
+    }
+
+    static GitHubUpdateRepositoryCodeReviewSettingsPayload updateRepositoryCodeReviewSettingsPayload() {
+        return GitHubUpdateRepositoryCodeReviewSettingsPayloadBuilder.builder()
+                .reviewEffort("review_effort")
+                .severityFilter(GitHubUpdateRepositoryCodeReviewSettingsSeverityFilter.NO_FILTER)
+                .customInstructionsEnabled(true)
+                .mcpEnabled(true)
+                .build();
+    }
+
+    static GitHubGetCopilotTeamCustomizationsPluginAssignment getCopilotTeamCustomizationsPluginAssignment() {
+        return GitHubGetCopilotTeamCustomizationsPluginAssignmentBuilder.builder()
+                .state(GitHubGetCopilotTeamCustomizationsPluginAssignmentState.DEFAULT_ENABLED)
+                .build();
+    }
+
+    static GitHubSetCopilotTeamCustomizationsPluginAssignment setCopilotTeamCustomizationsPluginAssignment() {
+        return GitHubSetCopilotTeamCustomizationsPluginAssignmentBuilder.builder()
+                .state(GitHubSetCopilotTeamCustomizationsPluginAssignmentState.DEFAULT_ENABLED)
+                .build();
+    }
+
+    static GitHubSetCopilotTeamCustomizationsResponsePluginAssignment
+            setCopilotTeamCustomizationsResponsePluginAssignment() {
+        return GitHubSetCopilotTeamCustomizationsResponsePluginAssignmentBuilder.builder()
+                .state(GitHubSetCopilotTeamCustomizationsResponsePluginAssignmentState.DEFAULT_ENABLED)
+                .build();
+    }
+
+    static GitHubGetCopilotTeamCustomizationsResponse getCopilotTeamCustomizationsResponse() {
+        return GitHubGetCopilotTeamCustomizationsResponseBuilder.builder()
+                .pluginAssignments(
+                        Map.of("code-review@acme-marketplace", getCopilotTeamCustomizationsPluginAssignment()))
+                .extraKnownMarketplaces(Map.of("acme-marketplace", Map.of("source", "github")))
+                .additionalProperties(Map.of("futureSetting", "enabled"))
+                .build();
+    }
+
+    static GitHubSetCopilotTeamCustomizationsPayload setCopilotTeamCustomizationsPayload() {
+        return GitHubSetCopilotTeamCustomizationsPayloadBuilder.builder()
+                .pluginAssignments(
+                        Map.of("code-review@acme-marketplace", setCopilotTeamCustomizationsPluginAssignment()))
+                .extraKnownMarketplaces(Map.of("acme-marketplace", Map.of("source", "github")))
+                .additionalProperties(Map.of("futureSetting", "enabled"))
+                .build();
+    }
+
+    static GitHubSetCopilotTeamCustomizationsResponse setCopilotTeamCustomizationsResponse() {
+        return GitHubSetCopilotTeamCustomizationsResponseBuilder.builder()
+                .pluginAssignments(
+                        Map.of("code-review@acme-marketplace", setCopilotTeamCustomizationsResponsePluginAssignment()))
+                .extraKnownMarketplaces(Map.of("acme-marketplace", Map.of("source", "github")))
+                .additionalProperties(Map.of("futureSetting", "enabled"))
+                .build();
+    }
 }

@@ -10,7 +10,7 @@ GitHub Enterprise Cloud and GitHub Enterprise Server, with pagination and rate-l
 [![Codacy Coverage](https://app.codacy.com/project/badge/Coverage/b1f7def0919f47b88374ae4bd4fdc531)](https://app.codacy.com/gh/piotr-janczukowicz/github-rest-client/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b1f7def0919f47b88374ae4bd4fdc531)](https://app.codacy.com/gh/piotr-janczukowicz/github-rest-client/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
-**API version:** `2026-03-10` · **Last updated:** 2026-10-31
+**API version:** `2026-03-10` · **Last updated:** 2026-11-07
 
 ## Why this library
 

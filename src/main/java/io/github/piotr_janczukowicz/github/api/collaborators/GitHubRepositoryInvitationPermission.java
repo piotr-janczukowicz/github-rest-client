@@ -14,7 +14,7 @@ public enum GitHubRepositoryInvitationPermission {
     WRITE("write"),
     ADMIN("admin"),
     TRIAGE("triage"),
-    TRIAGE_PLUS("triage_plus"),
+    MODERATE("moderate"),
     MAINTAIN("maintain"),
     /** A value this library version does not know. */
     UNRECOGNIZED("unrecognized");

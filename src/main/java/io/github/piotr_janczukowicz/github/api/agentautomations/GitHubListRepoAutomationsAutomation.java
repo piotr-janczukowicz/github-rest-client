@@ -8,11 +8,13 @@ import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import java.time.Instant;
+import java.util.List;
 import org.jspecify.annotations.Nullable;
 
 /**
  * A summary representation of an automation (used in list responses).
  *
+ * @param tools The tools available to the automation. Omitted when no tools are configured.
  * @param id The unique identifier of the automation.
  * @param name The name of the automation.
  * @param enabled Whether the automation is currently enabled.
@@ -36,6 +38,7 @@ import org.jspecify.annotations.Nullable;
 @CatalogSchema("operations/agent-automations/list-repo-automations/200/properties/automations/items")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public record GitHubListRepoAutomationsAutomation(
+        @Nullable List<String> tools,
         String id,
         String name,
         @Nullable Boolean enabled,

@@ -1265,7 +1265,7 @@ final class EnterpriseAdminCatalogFixtures {
     static GitHubCustomPropertiesCreateOrUpdateEnterpriseDefinitionsPayload
             customPropertiesCreateOrUpdateEnterpriseDefinitionsPayload() {
         return GitHubCustomPropertiesCreateOrUpdateEnterpriseDefinitionsPayloadBuilder.builder()
-                .properties(List.of(OrganizationsCatalogFixtures.customProperty()))
+                .properties(List.of(OrganizationsCatalogFixtures.customPropertyBatchItemPayload()))
                 .build();
     }
 
@@ -2932,6 +2932,54 @@ final class EnterpriseAdminCatalogFixtures {
     static GitHubUpdateEnterpriseFeaturePoliciesResponse updateEnterpriseFeaturePoliciesResponse() {
         return GitHubUpdateEnterpriseFeaturePoliciesResponseBuilder.builder()
                 .defaultAvailability(updateEnterpriseFeaturePoliciesResponseDefaultAvailability())
+                .build();
+    }
+
+    static GitHubGetEnterpriseFusionModelPoliciesResponseModel getEnterpriseFusionModelPoliciesResponseModel() {
+        return GitHubGetEnterpriseFusionModelPoliciesResponseModelBuilder.builder()
+                .modelName("model_name")
+                .displayName("display_name")
+                .policyState(GitHubGetEnterpriseFusionModelPoliciesResponseModelPolicyState.ENABLED)
+                .enterprisePolicyState(GitHubGetEnterpriseFusionModelPoliciesResponseModelEnterprisePolicyState.ENABLED)
+                .editable(true)
+                .requiredForCopilotFusionMax(true)
+                .build();
+    }
+
+    static GitHubGetEnterpriseFusionModelPoliciesResponse getEnterpriseFusionModelPoliciesResponse() {
+        return GitHubGetEnterpriseFusionModelPoliciesResponseBuilder.builder()
+                .models(List.of(getEnterpriseFusionModelPoliciesResponseModel()))
+                .build();
+    }
+
+    static GitHubUpdateEnterpriseFusionModelPoliciesModel updateEnterpriseFusionModelPoliciesModel() {
+        return GitHubUpdateEnterpriseFusionModelPoliciesModelBuilder.builder()
+                .modelName("model_name")
+                .policyState(GitHubUpdateEnterpriseFusionModelPoliciesModelPolicyState.ENABLED)
+                .build();
+    }
+
+    static GitHubUpdateEnterpriseFusionModelPoliciesPayload updateEnterpriseFusionModelPoliciesPayload() {
+        return GitHubUpdateEnterpriseFusionModelPoliciesPayloadBuilder.builder()
+                .models(List.of(updateEnterpriseFusionModelPoliciesModel()))
+                .build();
+    }
+
+    static GitHubUpdateEnterpriseFusionModelPoliciesResponseModel updateEnterpriseFusionModelPoliciesResponseModel() {
+        return GitHubUpdateEnterpriseFusionModelPoliciesResponseModelBuilder.builder()
+                .modelName("model_name")
+                .displayName("display_name")
+                .policyState(GitHubUpdateEnterpriseFusionModelPoliciesResponseModelPolicyState.ENABLED)
+                .enterprisePolicyState(
+                        GitHubUpdateEnterpriseFusionModelPoliciesResponseModelEnterprisePolicyState.ENABLED)
+                .editable(true)
+                .requiredForCopilotFusionMax(true)
+                .build();
+    }
+
+    static GitHubUpdateEnterpriseFusionModelPoliciesResponse updateEnterpriseFusionModelPoliciesResponse() {
+        return GitHubUpdateEnterpriseFusionModelPoliciesResponseBuilder.builder()
+                .models(List.of(updateEnterpriseFusionModelPoliciesResponseModel()))
                 .build();
     }
 }

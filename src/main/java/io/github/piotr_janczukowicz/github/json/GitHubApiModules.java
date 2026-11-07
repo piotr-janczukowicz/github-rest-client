@@ -10,6 +10,12 @@ import io.github.piotr_janczukowicz.github.api.branches.GitHubStatusCheckContext
 import io.github.piotr_janczukowicz.github.api.branches.GitHubTeamAccessRestrictionsPayload;
 import io.github.piotr_janczukowicz.github.api.copilot.GitHubCopilotContentExclusionRule;
 import io.github.piotr_janczukowicz.github.api.copilot.GitHubCopilotEnterpriseContentExclusionRule;
+import io.github.piotr_janczukowicz.github.api.copilot.GitHubGetCopilotTeamCustomizationsPluginAssignment;
+import io.github.piotr_janczukowicz.github.api.copilot.GitHubGetCopilotTeamCustomizationsResponse;
+import io.github.piotr_janczukowicz.github.api.copilot.GitHubSetCopilotTeamCustomizationsPayload;
+import io.github.piotr_janczukowicz.github.api.copilot.GitHubSetCopilotTeamCustomizationsPluginAssignment;
+import io.github.piotr_janczukowicz.github.api.copilot.GitHubSetCopilotTeamCustomizationsResponse;
+import io.github.piotr_janczukowicz.github.api.copilot.GitHubSetCopilotTeamCustomizationsResponsePluginAssignment;
 import io.github.piotr_janczukowicz.github.api.copilotspaces.GitHubCopilotSpaceOwner;
 import io.github.piotr_janczukowicz.github.api.deployments.GitHubDeploymentPayloadValue;
 import io.github.piotr_janczukowicz.github.api.deployments.GitHubEnvironmentReviewer;
@@ -37,6 +43,7 @@ import io.github.piotr_janczukowicz.github.api.projects.GitHubProjectViewSort;
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubContentResult;
 import io.github.piotr_janczukowicz.github.api.scim.GitHubScimOperationValue;
 import io.github.piotr_janczukowicz.github.api.scim.GitHubUpdateAttributeForUserValue;
+import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubSecretScanningFirstDetectedLocation;
 import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubSecretScanningLocation;
 import io.github.piotr_janczukowicz.github.api.teams.GitHubTeam;
 import io.github.piotr_janczukowicz.github.api.users.GitHubSimpleUser;
@@ -263,6 +270,9 @@ final class GitHubApiModules {
         module.addDeserializer(GitHubOrgRulesetConditions.class, new GitHubOrgRulesetConditionsDeserializer());
         module.addSerializer(GitHubOrgRulesetConditions.class, new GitHubOrgRulesetConditionsSerializer());
         module.addDeserializer(GitHubSecretScanningLocation.class, new GitHubSecretScanningLocationDeserializer());
+        module.addDeserializer(
+                GitHubSecretScanningFirstDetectedLocation.class,
+                new GitHubSecretScanningFirstDetectedLocationDeserializer());
         module.addDeserializer(GitHubIssueFieldValueWire.class, new GitHubIssueFieldValueWireDeserializer());
         module.addSerializer(GitHubIssueFieldValueWire.class, new GitHubIssueFieldValueWireSerializer());
         module.addDeserializer(
@@ -273,6 +283,24 @@ final class GitHubApiModules {
         module.addDeserializer(GitHubProjectItemSimple.class, new GitHubProjectItemSimpleDeserializer());
         module.addDeserializer(GitHubIssueLabel.class, new GitHubIssueLabelDeserializer());
         module.addDeserializer(GitHubIntegrationPermissions.class, new GitHubIntegrationPermissionsDeserializer());
+        module.addDeserializer(
+                GitHubGetCopilotTeamCustomizationsResponse.class,
+                new GitHubCopilotTeamCustomizationsDeserializer<>(
+                        GitHubGetCopilotTeamCustomizationsResponse.class,
+                        GitHubGetCopilotTeamCustomizationsPluginAssignment.class,
+                        GitHubGetCopilotTeamCustomizationsResponse::new));
+        module.addDeserializer(
+                GitHubSetCopilotTeamCustomizationsPayload.class,
+                new GitHubCopilotTeamCustomizationsDeserializer<>(
+                        GitHubSetCopilotTeamCustomizationsPayload.class,
+                        GitHubSetCopilotTeamCustomizationsPluginAssignment.class,
+                        GitHubSetCopilotTeamCustomizationsPayload::new));
+        module.addDeserializer(
+                GitHubSetCopilotTeamCustomizationsResponse.class,
+                new GitHubCopilotTeamCustomizationsDeserializer<>(
+                        GitHubSetCopilotTeamCustomizationsResponse.class,
+                        GitHubSetCopilotTeamCustomizationsResponsePluginAssignment.class,
+                        GitHubSetCopilotTeamCustomizationsResponse::new));
         module.addDeserializer(GitHubAddProjectFieldPayload.class, new GitHubAddProjectFieldPayloadDeserializer());
         module.addDeserializer(GitHubAddFieldForUserPayload.class, new GitHubAddFieldForUserPayloadDeserializer());
         module.addDeserializer(

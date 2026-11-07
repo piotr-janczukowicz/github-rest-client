@@ -32,6 +32,7 @@ class GitHubAgentAutomationApiTest {
     private static final String OWNER = "octocat";
     private static final String REPO = "Hello-World";
     private static final String AUTOMATION_ID = "automation-1";
+    private static final String REVISION_ID = "revision-1";
 
     private HttpTransport transport;
 
@@ -402,6 +403,92 @@ class GitHubAgentAutomationApiTest {
         final GitHubAgentAutomationApi api = api();
 
         final Throwable thrown = catchThrowable(() -> api.deleteRepoAutomation(OWNER, " ", AUTOMATION_ID));
+
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void listAutomationRevisions_shouldReturnRevisions_whenResponseIsOk() throws Exception {
+        when(transport.execute(any()))
+                .thenReturn(response(HttpStatus.OK.code(), json("list-automation-revisions-response.json")));
+
+        final GitHubPage<GitHubListAutomationRevisionsRevision> page =
+                api().listAutomationRevisions(OWNER, REPO, AUTOMATION_ID);
+        final URI requestUri = captureSingleRequest().uri();
+
+        assertSoftly(softly -> {
+            softly.assertThat(page.items())
+                    .containsExactlyElementsOf(AgentAutomationsCatalogFixtures.listAutomationRevisionsResponse()
+                            .revisions());
+            softly.assertThat(page.totalCount()).isNull();
+            softly.assertThat(requestUri)
+                    .hasToString(
+                            "https://api.github.com/agents/repos/octocat/Hello-World/automations/automation-1/revisions?"
+                                    + TestClients.perPageQuery());
+        });
+    }
+
+    @Test
+    void listAutomationRevisions_shouldSendPerPage_whenRequestProvided() throws Exception {
+        when(transport.execute(any()))
+                .thenReturn(response(HttpStatus.OK.code(), json("list-automation-revisions-response.json")));
+
+        api().listAutomationRevisions(OWNER, REPO, AUTOMATION_ID, GitHubPageRequest.byDeliveryCursor());
+        final URI requestUri = captureSingleRequest().uri();
+
+        assertThat(requestUri.getQuery()).contains("per_page=");
+    }
+
+    @Test
+    void listAutomationRevisions_shouldThrow_whenAutomationIdBlank() {
+        final GitHubAgentAutomationApi api = api();
+
+        final Throwable thrown = catchThrowable(() -> api.listAutomationRevisions(OWNER, REPO, " "));
+
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void listAutomationRevisions_shouldThrow_whenRequestNull() {
+        final GitHubAgentAutomationApi api = api();
+
+        final Throwable thrown = catchThrowable(() -> api.listAutomationRevisions(OWNER, REPO, AUTOMATION_ID, null));
+
+        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("request");
+    }
+
+    @Test
+    void getAutomationRevision_shouldReturnRevision_whenResponseIsOk() throws Exception {
+        when(transport.execute(any()))
+                .thenReturn(response(HttpStatus.OK.code(), json("get-automation-revision-response.json")));
+
+        final Optional<GitHubGetAutomationRevisionResponse> revision =
+                api().getAutomationRevision(OWNER, REPO, AUTOMATION_ID, REVISION_ID);
+        final URI requestUri = captureSingleRequest().uri();
+
+        assertSoftly(softly -> {
+            softly.assertThat(revision).contains(AgentAutomationsCatalogFixtures.getAutomationRevisionResponse());
+            softly.assertThat(requestUri)
+                    .hasToString(
+                            "https://api.github.com/agents/repos/octocat/Hello-World/automations/automation-1/revisions/revision-1");
+        });
+    }
+
+    @Test
+    void getAutomationRevision_shouldReturnEmpty_whenResponseIsNotFound() throws Exception {
+        when(transport.execute(any())).thenReturn(response(HttpStatus.NOT_FOUND.code(), null));
+
+        final Optional<GitHubGetAutomationRevisionResponse> revision =
+                api().getAutomationRevision(OWNER, REPO, AUTOMATION_ID, REVISION_ID);
+
+        assertThat(revision).isEmpty();
+    }
+
+    @Test
+    void getAutomationRevision_shouldThrow_whenRevisionIdBlank() {
+        final GitHubAgentAutomationApi api = api();
+
+        final Throwable thrown = catchThrowable(() -> api.getAutomationRevision(OWNER, REPO, AUTOMATION_ID, " "));
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
     }

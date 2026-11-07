@@ -697,4 +697,14 @@ public final class SecretScanningCatalogFixtures {
                 GitHubListPublicMonitoringAlertsForEnterpriseAttribution.MEMBER_ACTIVITY,
                 "active");
     }
+
+    static GitHubSecretScanningLocationActionsLog secretScanningLocationActionsLog() {
+        return GitHubSecretScanningLocationActionsLogBuilder.builder()
+                .path(".github/workflows/build.yml")
+                .startLine(1)
+                .endLine(1)
+                .startColumn(1)
+                .endColumn(1)
+                .build();
+    }
 }

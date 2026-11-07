@@ -1,6 +1,7 @@
 package io.github.piotr_janczukowicz.github.api.pullrequests;
 
 import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonNull;
+import static io.github.piotr_janczukowicz.util.ValidationUtils.requireSizeAtMost;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,6 +14,7 @@ import io.github.piotr_janczukowicz.github.api.users.GitHubSimpleUser;
 import io.github.piotr_janczukowicz.json.OptionalNull;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import java.time.Instant;
+import java.util.List;
 import org.jspecify.annotations.Nullable;
 
 /** Pull request review comment. */
@@ -50,7 +52,9 @@ public record GitHubPullRequestReviewComment(
         @Nullable GitHubPullRequestReviewCommentSubjectType subjectType,
         @Nullable GitHubReactionRollup reactions,
         @Nullable String bodyHtml,
-        @Nullable String bodyText)
+        @Nullable String bodyText,
+        @Nullable List<GitHubPullRequestReviewCommentCopilotCodeReviewSource> copilotCodeReviewSources,
+        @Nullable Boolean isCopilotCodeReview)
         implements GitHubTimelineComment {
 
     public GitHubPullRequestReviewComment {
@@ -67,5 +71,8 @@ public record GitHubPullRequestReviewComment(
         requireNonNull(pullRequestUrl, "pullRequestUrl");
         requireNonNull(authorAssociation, "authorAssociation");
         requireNonNull(links, "links");
+        if (copilotCodeReviewSources != null) {
+            requireSizeAtMost(copilotCodeReviewSources, 16, "copilotCodeReviewSources");
+        }
     }
 }

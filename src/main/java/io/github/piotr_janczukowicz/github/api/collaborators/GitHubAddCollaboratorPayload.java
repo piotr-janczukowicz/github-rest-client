@@ -9,7 +9,7 @@ import org.jspecify.annotations.Nullable;
  * Add repository collaborator.
  *
  * @param permission The permission to grant the collaborator. Only valid on organization-owned repositories. We accept
- *     the following permissions to be set: {@code pull}, {@code triage}, {@code triage_plus}, {@code push},
+ *     the following permissions to be set: {@code pull}, {@code triage}, {@code moderate}, {@code push},
  *     {@code maintain}, {@code admin} and you can also specify a custom repository role name, if the owning
  *     organization has defined any.
  */

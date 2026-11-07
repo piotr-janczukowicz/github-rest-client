@@ -99,6 +99,58 @@ class GitHubEnterpriseAdminAiControlsApiTest {
         assertThat(((GitHubApiException) thrown).statusCode()).isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY.code());
     }
 
+    @ParameterizedTest
+    @EnumSource(
+            value = GitHubFlavor.class,
+            names = {"GHEC"},
+            mode = EnumSource.Mode.EXCLUDE)
+    void getEnterpriseFusionModelPolicies_shouldThrowBeforeAnyRequest_whenClientIsNotGhec(final GitHubFlavor flavor)
+            throws Exception {
+        final GitHubEnterpriseAdminAiControlsApi api = api(flavor);
+
+        final Throwable thrown = catchThrowable(() -> api.getEnterpriseFusionModelPolicies(PARAM));
+
+        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class).hasMessageContaining("exists in: [GHEC]");
+        verify(transport, never()).execute(any());
+    }
+
+    @ParameterizedTest
+    @EnumSource(
+            value = GitHubFlavor.class,
+            names = {"GHEC"},
+            mode = EnumSource.Mode.EXCLUDE)
+    void updateEnterpriseFusionModelPolicies_shouldThrowBeforeAnyRequest_whenClientIsNotGhec(final GitHubFlavor flavor)
+            throws Exception {
+        final GitHubEnterpriseAdminAiControlsApi api = api(flavor);
+        final GitHubUpdateEnterpriseFusionModelPoliciesPayload payload =
+                EnterpriseAdminCatalogFixtures.updateEnterpriseFusionModelPoliciesPayload();
+
+        final Throwable thrown = catchThrowable(() -> api.updateEnterpriseFusionModelPolicies(PARAM, payload));
+
+        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class).hasMessageContaining("exists in: [GHEC]");
+        verify(transport, never()).execute(any());
+    }
+
+    @Test
+    void updateEnterpriseFusionModelPolicies_shouldThrow_whenPayloadNull() {
+        final GitHubEnterpriseAdminAiControlsApi api = api(GitHubFlavor.GHEC);
+
+        final Throwable thrown = catchThrowable(() -> api.updateEnterpriseFusionModelPolicies(PARAM, null));
+
+        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("payload");
+    }
+
+    @Test
+    void updateEnterpriseFusionModelPolicies_shouldThrow_whenEnterpriseBlank() {
+        final GitHubEnterpriseAdminAiControlsApi api = api(GitHubFlavor.GHEC);
+        final GitHubUpdateEnterpriseFusionModelPoliciesPayload payload =
+                EnterpriseAdminCatalogFixtures.updateEnterpriseFusionModelPoliciesPayload();
+
+        final Throwable thrown = catchThrowable(() -> api.updateEnterpriseFusionModelPolicies(" ", payload));
+
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+    }
+
     private GitHubEnterpriseAdminAiControlsApi api(final GitHubFlavor flavor) {
         return new GitHubEnterpriseAdminAiControlsApi(GitHubCaller.of(TestGitHubClients.flavored(transport, flavor)));
     }

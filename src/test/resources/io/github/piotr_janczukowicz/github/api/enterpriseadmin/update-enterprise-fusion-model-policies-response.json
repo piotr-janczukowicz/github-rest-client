@@ -1,0 +1,12 @@
+{
+  "models": [
+    {
+      "model_name": "model_name",
+      "display_name": "display_name",
+      "policy_state": "enabled",
+      "enterprise_policy_state": "enabled",
+      "editable": true,
+      "required_for_copilot_fusion_max": true
+    }
+  ]
+}

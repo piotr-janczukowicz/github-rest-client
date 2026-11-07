@@ -864,7 +864,9 @@ public final class IssuesCatalogFixtures {
                 GitHubPullRequestReviewCommentSubjectType.LINE,
                 commentReactions(),
                 "<p>We should probably include a check for null values here.</p>",
-                "We should probably include a check for null values here.");
+                "We should probably include a check for null values here.",
+                null,
+                null);
     }
 
     static GitHubIssueArtifactCreator issueArtifactCreator() {
@@ -934,6 +936,8 @@ public final class IssuesCatalogFixtures {
     static GitHubGetIssueArtifactResponseWithVersions getIssueArtifactResponseWithVersions() {
         return GitHubGetIssueArtifactResponseWithVersionsBuilder.builder()
                 .artifact(issueArtifact())
+                .hasNextPage(false)
+                .totalCount(1)
                 .versions(List.of(getIssueArtifactResponseWithVersionsVersion()))
                 .build();
     }

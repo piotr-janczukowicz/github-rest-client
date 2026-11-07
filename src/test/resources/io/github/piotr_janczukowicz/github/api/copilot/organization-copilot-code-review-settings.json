@@ -1,0 +1,12 @@
+{
+  "default_review_effort": {
+    "configured": "configured",
+    "effective": "effective",
+    "github_default": "github_default",
+    "editable": true,
+    "managed_by": "enterprise"
+  },
+  "available_review_efforts": [
+    "available_review_efforts"
+  ]
+}

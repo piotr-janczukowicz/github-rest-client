@@ -12,7 +12,7 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 public enum GitHubCollaboratorPermission {
     PULL("pull"),
     TRIAGE("triage"),
-    TRIAGE_PLUS("triage_plus"),
+    MODERATE("moderate"),
     PUSH("push"),
     MAINTAIN("maintain"),
     ADMIN("admin");

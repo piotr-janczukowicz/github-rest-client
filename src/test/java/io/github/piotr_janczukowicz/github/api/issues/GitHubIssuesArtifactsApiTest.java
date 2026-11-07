@@ -9,6 +9,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import io.github.piotr_janczukowicz.github.pagination.GitHubPage;
+import io.github.piotr_janczukowicz.github.pagination.GitHubPageNumberRequest;
 import io.github.piotr_janczukowicz.github.pagination.GitHubPageRequest;
 import io.github.piotr_janczukowicz.http.HttpMethod;
 import io.github.piotr_janczukowicz.http.HttpRequest;
@@ -126,6 +127,27 @@ class GitHubIssuesArtifactsApiTest {
                 api().getIssueArtifact(OWNER, REPO, ISSUE_NUMBER, ARTIFACT_NUMBER);
 
         assertThat(artifact).contains(IssuesCatalogFixtures.getIssueArtifactResponseWithVersions());
+    }
+
+    @Test
+    void getIssueArtifact_shouldSendPageParameters_whenPageRequestProvided() throws Exception {
+        when(transport.execute(any()))
+                .thenReturn(response(HttpStatus.OK.code(), json("get-issue-artifact-response-with-versions.json")));
+
+        api().getIssueArtifact(OWNER, REPO, ISSUE_NUMBER, ARTIFACT_NUMBER, GitHubPageNumberRequest.of(2, 10));
+        final HttpRequest request = captureSingleRequest();
+
+        assertThat(request.uri()).hasParameter("page", "2").hasParameter("per_page", "10");
+    }
+
+    @Test
+    void getIssueArtifact_shouldThrow_whenRequestNull() {
+        final GitHubIssuesArtifactsApi api = api();
+
+        final Throwable thrown =
+                catchThrowable(() -> api.getIssueArtifact(OWNER, REPO, ISSUE_NUMBER, ARTIFACT_NUMBER, null));
+
+        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("request");
     }
 
     @Test

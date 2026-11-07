@@ -11,5 +11,6 @@
     "development"
   ],
   "values_editable_by": "org_actors",
+  "regex": "^[a-z0-9-]+$",
   "require_explicit_values": true
 }

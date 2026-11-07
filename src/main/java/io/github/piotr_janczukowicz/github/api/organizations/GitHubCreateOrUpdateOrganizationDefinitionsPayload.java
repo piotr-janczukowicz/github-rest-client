@@ -15,7 +15,8 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
 @CatalogSchema("operations/orgs/custom-properties-for-repos-create-or-update-organization-definitions/requestBody")
-public record GitHubCreateOrUpdateOrganizationDefinitionsPayload(List<GitHubCustomProperty> properties) {
+public record GitHubCreateOrUpdateOrganizationDefinitionsPayload(
+        List<GitHubCustomPropertyBatchItemPayload> properties) {
 
     private static final String PARAM_PROPERTIES = "properties";
 

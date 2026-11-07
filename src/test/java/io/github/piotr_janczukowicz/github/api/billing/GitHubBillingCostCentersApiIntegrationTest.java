@@ -228,4 +228,26 @@ class GitHubBillingCostCentersApiIntegrationTest {
                         GitHubGetAllCostCenters.class));
         HTTP.verifyRequested(GET, "/enterprises/octo-enterprise/settings/billing/cost-centers");
     }
+
+    @Test
+    void getCostCenterMembership_shouldReturnMembership_whenResponseIsOk() throws Exception {
+        HTTP.stub(
+                GET,
+                "/enterprises/octo-enterprise/settings/billing/cost-centers/memberships",
+                okJson(jsonBytes(
+                        GitHubBillingCostCentersApiIntegrationTest.class, "billing-cost-center-membership.json")));
+
+        final GitHubBillingCostCenterMembership result;
+        try (final GitHubApiWireMockSupport.BillingCostCentersApiClient api = billingCostCentersApi(HTTP)) {
+            result = api.api()
+                    .getCostCenterMembership("octo-enterprise", BillingCatalogFixtures.getCostCenterMembershipFilter());
+        }
+
+        assertThat(result).isEqualTo(BillingCatalogFixtures.billingCostCenterMembership());
+        HTTP.verifyRequested(GET, "/enterprises/octo-enterprise/settings/billing/cost-centers/memberships");
+        HTTP.verifyQueryParam(
+                GET, "/enterprises/octo-enterprise/settings/billing/cost-centers/memberships", "resource_type", "user");
+        HTTP.verifyQueryParam(
+                GET, "/enterprises/octo-enterprise/settings/billing/cost-centers/memberships", "name", "name");
+    }
 }

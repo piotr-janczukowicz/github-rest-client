@@ -13,6 +13,10 @@ import org.jspecify.annotations.Nullable;
  * Query filters for {@code GET /repos/{owner}/{repo}/notifications}, excluding pagination.
  *
  * @param all If {@code true}, show notifications marked as read.
+ * @param isDone Whether to return only done notifications ({@code true}) or exclude them ({@code false}). When omitted,
+ *     notifications are not filtered by done status. Use {@code all=true&is_done=true} for done notifications or
+ *     {@code all=true&is_done=false} for both read and unread inbox notifications. If {@code all} is omitted or
+ *     {@code false}, {@code is_done=true} returns no notifications.
  * @param participating If {@code true}, only shows notifications in which the user is directly participating or
  *     mentioned.
  * @param since Only show notifications updated after the given time.
@@ -23,6 +27,7 @@ import org.jspecify.annotations.Nullable;
 @RecordBuilder
 public record GitHubListRepoNotificationsForAuthenticatedUserFilter(
         @Nullable Boolean all,
+        @Nullable Boolean isDone,
         @Nullable Boolean participating,
         @Nullable Instant since,
         @Nullable Instant before) {
@@ -47,6 +52,9 @@ public record GitHubListRepoNotificationsForAuthenticatedUserFilter(
 
         if (all != null) {
             query.put("all", all.toString());
+        }
+        if (isDone != null) {
+            query.put("is_done", isDone.toString());
         }
         if (participating != null) {
             query.put("participating", participating.toString());

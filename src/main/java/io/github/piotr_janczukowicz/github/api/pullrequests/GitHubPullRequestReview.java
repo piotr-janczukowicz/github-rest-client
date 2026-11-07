@@ -28,7 +28,9 @@ public record GitHubPullRequestReview(
         @Nullable String commitId,
         @Nullable String bodyHtml,
         @Nullable String bodyText,
-        GitHubAuthorAssociation authorAssociation) {
+        GitHubAuthorAssociation authorAssociation,
+        @Nullable String copilotCodeReviewEffort,
+        @Nullable Boolean isCopilotCodeReview) {
 
     public GitHubPullRequestReview {
         requireNonNull(nodeId, "nodeId");

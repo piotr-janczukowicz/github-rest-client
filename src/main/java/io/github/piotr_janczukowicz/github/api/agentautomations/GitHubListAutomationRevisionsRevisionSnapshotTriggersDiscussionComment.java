@@ -1,0 +1,48 @@
+package io.github.piotr_janczukowicz.github.api.agentautomations;
+
+import static io.github.piotr_janczukowicz.util.ValidationUtils.requireNonEmpty;
+import static io.github.piotr_janczukowicz.util.ValidationUtils.requireSizeBetween;
+import static io.github.piotr_janczukowicz.util.ValidationUtils.requireUniqueItems;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import io.github.piotr_janczukowicz.annotation.RecordBuilder;
+import io.github.piotr_janczukowicz.github.api.Flavors;
+import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
+import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import java.util.List;
+import org.jspecify.annotations.Nullable;
+
+/**
+ * Discussion comment.
+ *
+ * @param commentTypes Top-level discussion comments and replies to match. Omit to match both.
+ * @param categories Discussion category names matched case-insensitively.
+ * @param bodySubstring A case-insensitive substring matched against the event body.
+ * @param writeScope Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope
+ *     (default {@code trigger}). Organization or repository policy may restrict the effective scope to {@code trigger}.
+ *     Explicitly setting {@code repository} on create or edit returns 422 when policy validation is enabled and that
+ *     policy applies.
+ * @param allowCopilotTriggers When true, events Copilot creates, including from other automations and Copilot sessions,
+ *     can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it
+ *     on: creating a trigger with true, or changing it from false to true, returns 422.
+ */
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@RecordBuilder
+@CatalogSchema(
+        "operations/agent-automations/list-automation-revisions/200/properties/revisions/items/properties/snapshot/properties/triggers/properties/discussion_comment")
+@Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+public record GitHubListAutomationRevisionsRevisionSnapshotTriggersDiscussionComment(
+        @Nullable List<GitHubListAutomationRevisionsRevisionSnapshotTriggersDiscussionCommentCommentType> commentTypes,
+        @Nullable List<String> categories,
+        @Nullable String bodySubstring,
+        @Nullable GitHubAutomationWriteScope writeScope,
+        @Nullable Boolean allowCopilotTriggers) {
+    public GitHubListAutomationRevisionsRevisionSnapshotTriggersDiscussionComment {
+        if (commentTypes != null) {
+            requireSizeBetween(commentTypes, 1, 2, "commentTypes");
+        }
+        if (categories != null) {
+            requireUniqueItems(requireNonEmpty(categories, "categories"), "categories");
+        }
+    }
+}

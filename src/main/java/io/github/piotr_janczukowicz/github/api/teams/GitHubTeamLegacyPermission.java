@@ -12,8 +12,7 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
  */
 @CatalogSchema({
     "operations/teams/update-in-org/requestBody/properties/permission",
-    "operations/teams/update-legacy/requestBody/properties/permission",
-    "operations/teams/add-or-update-repo-permissions-legacy/requestBody/properties/permission"
+    "operations/teams/update-legacy/requestBody/properties/permission"
 })
 public enum GitHubTeamLegacyPermission {
     PULL("pull"),

@@ -9,6 +9,7 @@ import io.github.piotr_janczukowicz.github.client.GitHubResourceApi;
 import io.github.piotr_janczukowicz.github.client.exception.GitHubApiException;
 import io.github.piotr_janczukowicz.github.pagination.GitHubPage;
 import io.github.piotr_janczukowicz.github.pagination.GitHubPageRequest;
+import io.github.piotr_janczukowicz.github.pagination.GitHubPageRequestKindValidators;
 import io.github.piotr_janczukowicz.json.JsonType;
 import io.github.piotr_janczukowicz.json.JsonTypes;
 import io.github.piotr_janczukowicz.uri.PathTemplate;
@@ -155,9 +156,46 @@ public final class GitHubIssuesArtifactsApi extends GitHubResourceApi {
     @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
     public Optional<GitHubGetIssueArtifactResponse> getIssueArtifact(
             final String owner, final String repo, final int issueNumber, final int artifactNumber) throws IOException {
+        return getIssueArtifact(owner, repo, issueNumber, artifactNumber, GitHubPageRequest.none());
+    }
+
+    /**
+     * Get an issue artifact ({@code GET /repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}}).
+     *
+     * <p>The version history of the artifact is paged. This method returns one page and does not follow the
+     * {@code Link} header: the caller requests later pages with {@code request} until a page returns fewer versions
+     * than {@code per_page}.
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param issueNumber issue number
+     * @param artifactNumber artifact number within the issue
+     * @param request pagination token for the version history
+     * @return the artifact, alone or with one page of its version history, or empty on HTTP 404
+     * @throws IllegalArgumentException if {@code owner} or {@code repo} is blank, or {@code request} is invalid
+     * @throws NullPointerException if {@code request} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful (HTTP 404 yields empty)
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public Optional<GitHubGetIssueArtifactResponse> getIssueArtifact(
+            final String owner,
+            final String repo,
+            final int issueNumber,
+            final int artifactNumber,
+            final GitHubPageRequest request)
+            throws IOException {
         requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
+        requireNonNull(request, PARAM_REQUEST);
+
         return caller.fetchOrEmpty(
-                get(ISSUE_ARTIFACT, owner, repo, issueNumber, artifactNumber), GitHubGetIssueArtifactResponse.class);
+                caller.pageParameters(
+                        get(ISSUE_ARTIFACT, owner, repo, issueNumber, artifactNumber),
+                        request,
+                        GitHubPageRequestKindValidators.PAGE),
+                GitHubGetIssueArtifactResponse.class);
     }
 
     /**

@@ -1,0 +1,11 @@
+{
+  "comment_types": [
+    "comment"
+  ],
+  "categories": [
+    "categories"
+  ],
+  "body_substring": "body_substring",
+  "write_scope": "trigger",
+  "allow_copilot_triggers": true
+}

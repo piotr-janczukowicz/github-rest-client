@@ -9,11 +9,13 @@ import io.github.piotr_janczukowicz.util.LazyValue;
 public final class GitHubCopilotApi {
 
     private final LazyValue<GitHubCopilotCloudAgentManagementApi> cloudAgentManagement;
+    private final LazyValue<GitHubCopilotCodeReviewApi> codeReview;
     private final LazyValue<GitHubCopilotCodingAgentManagementApi> codingAgentManagement;
     private final LazyValue<GitHubCopilotContentExclusionManagementApi> contentExclusionManagement;
     private final LazyValue<GitHubCopilotCustomAgentsApi> customAgents;
     private final LazyValue<GitHubCopilotFeaturePolicyManagementApi> featurePolicyManagement;
     private final LazyValue<GitHubCopilotModelPolicyManagementApi> modelPolicyManagement;
+    private final LazyValue<GitHubCopilotTeamCustomizationsApi> teamCustomizations;
     private final LazyValue<GitHubCopilotUsageMetricsApi> usageMetrics;
     private final LazyValue<GitHubCopilotUserManagementApi> userManagement;
 
@@ -26,11 +28,13 @@ public final class GitHubCopilotApi {
     public GitHubCopilotApi(final GitHubCaller caller) {
         requireNonNull(caller, "caller");
         this.cloudAgentManagement = new LazyValue<>(() -> new GitHubCopilotCloudAgentManagementApi(caller));
+        this.codeReview = new LazyValue<>(() -> new GitHubCopilotCodeReviewApi(caller));
         this.codingAgentManagement = new LazyValue<>(() -> new GitHubCopilotCodingAgentManagementApi(caller));
         this.contentExclusionManagement = new LazyValue<>(() -> new GitHubCopilotContentExclusionManagementApi(caller));
         this.customAgents = new LazyValue<>(() -> new GitHubCopilotCustomAgentsApi(caller));
         this.featurePolicyManagement = new LazyValue<>(() -> new GitHubCopilotFeaturePolicyManagementApi(caller));
         this.modelPolicyManagement = new LazyValue<>(() -> new GitHubCopilotModelPolicyManagementApi(caller));
+        this.teamCustomizations = new LazyValue<>(() -> new GitHubCopilotTeamCustomizationsApi(caller));
         this.usageMetrics = new LazyValue<>(() -> new GitHubCopilotUsageMetricsApi(caller));
         this.userManagement = new LazyValue<>(() -> new GitHubCopilotUserManagementApi(caller));
     }
@@ -42,6 +46,17 @@ public final class GitHubCopilotApi {
      */
     public GitHubCopilotCloudAgentManagementApi cloudAgentManagement() {
         return cloudAgentManagement.get();
+    }
+
+    /**
+     * Copilot code review operations ({@code subcategory=copilot-code-review}).
+     *
+     * <p>The {@code CLOUD} and {@code GHEC} flavors carry this resource.
+     *
+     * @return code review API
+     */
+    public GitHubCopilotCodeReviewApi codeReview() {
+        return codeReview.get();
     }
 
     /**
@@ -96,6 +111,17 @@ public final class GitHubCopilotApi {
      */
     public GitHubCopilotModelPolicyManagementApi modelPolicyManagement() {
         return modelPolicyManagement.get();
+    }
+
+    /**
+     * Copilot team customizations operations ({@code subcategory=copilot-team-customizations}).
+     *
+     * <p>The {@code CLOUD} and {@code GHEC} flavors carry this resource.
+     *
+     * @return team customizations API
+     */
+    public GitHubCopilotTeamCustomizationsApi teamCustomizations() {
+        return teamCustomizations.get();
     }
 
     /**

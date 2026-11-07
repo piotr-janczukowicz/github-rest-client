@@ -1,0 +1,12 @@
+{
+  "review_effort": {
+    "configured": "configured",
+    "effective": "effective"
+  },
+  "available_review_efforts": [
+    "available_review_efforts"
+  ],
+  "severity_filter": "no_filter",
+  "custom_instructions_enabled": true,
+  "mcp_enabled": true
+}

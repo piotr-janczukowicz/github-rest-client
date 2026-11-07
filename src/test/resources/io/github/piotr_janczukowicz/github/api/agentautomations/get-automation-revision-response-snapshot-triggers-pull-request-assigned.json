@@ -1,0 +1,11 @@
+{
+  "query": "query",
+  "paths": [
+    "paths"
+  ],
+  "assignees": [
+    "assignees"
+  ],
+  "write_scope": "trigger",
+  "allow_copilot_triggers": true
+}

@@ -28,8 +28,8 @@ class GitHubCreateOrUpdateOrganizationDefinitionsPayloadTest {
 
     @Test
     void constructor_shouldThrow_whenPropertiesExceedMax() {
-        final List<GitHubCustomProperty> properties = IntStream.range(0, 101)
-                .mapToObj(i -> OrganizationsCatalogFixtures.customProperty())
+        final List<GitHubCustomPropertyBatchItemPayload> properties = IntStream.range(0, 101)
+                .mapToObj(i -> OrganizationsCatalogFixtures.customPropertyBatchItemPayload())
                 .toList();
 
         final Throwable thrown =

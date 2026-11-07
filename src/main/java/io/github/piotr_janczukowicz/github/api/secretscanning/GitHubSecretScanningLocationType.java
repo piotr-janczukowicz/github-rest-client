@@ -26,6 +26,7 @@ public enum GitHubSecretScanningLocationType {
     PULL_REQUEST_COMMENT("pull_request_comment"),
     PULL_REQUEST_REVIEW("pull_request_review"),
     PULL_REQUEST_REVIEW_COMMENT("pull_request_review_comment"),
+    ACTIONS_LOG("actions_log"),
     /** A value this library version does not know. */
     UNRECOGNIZED("unrecognized");
 
