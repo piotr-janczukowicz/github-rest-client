@@ -24,7 +24,9 @@ class GitHubSecretScanningCustomPatternValidationErrorCodeTest {
         "name,NAME",
         "must_match,MUST_MATCH",
         "must_not_match,MUST_NOT_MATCH",
-        "custom_pattern_version_mismatch,CUSTOM_PATTERN_VERSION_MISMATCH"
+        "custom_pattern_version_mismatch,CUSTOM_PATTERN_VERSION_MISMATCH",
+        "invalid_state,INVALID_STATE",
+        "dry_run_in_progress,DRY_RUN_IN_PROGRESS"
     })
     void fromWire_shouldReturnCode_whenKnownValue(
             final String wire, final GitHubSecretScanningCustomPatternValidationErrorCode value) {

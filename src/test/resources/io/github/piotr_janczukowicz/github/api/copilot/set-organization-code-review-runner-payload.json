@@ -1,0 +1,8 @@
+{
+  "runner_type": "standard",
+  "runner_labels": [
+    "runner_labels"
+  ],
+  "runner_group_name": "runner_group_name",
+  "allow_repository_customization": true
+}

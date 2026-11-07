@@ -1,6 +1,7 @@
 package io.github.piotr_janczukowicz.github.json;
 
 import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubSecretScanningLocation;
+import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubSecretScanningLocationActionsLog;
 import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubSecretScanningLocationCommit;
 import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubSecretScanningLocationDetails;
 import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubSecretScanningLocationDiscussionBody;
@@ -78,6 +79,7 @@ final class GitHubSecretScanningLocationDeserializer extends StdDeserializer<Git
             case PULL_REQUEST_COMMENT -> GitHubSecretScanningLocationPullRequestComment.class;
             case PULL_REQUEST_REVIEW -> GitHubSecretScanningLocationPullRequestReview.class;
             case PULL_REQUEST_REVIEW_COMMENT -> GitHubSecretScanningLocationPullRequestReviewComment.class;
+            case ACTIONS_LOG -> GitHubSecretScanningLocationActionsLog.class;
             case UNRECOGNIZED -> null;
         };
     }

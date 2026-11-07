@@ -11,7 +11,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 @CatalogSchema("components/schemas/custom-property/properties/source_type")
 public enum GitHubCustomPropertySourceType {
     ORGANIZATION("organization"),
-    ENTERPRISE("enterprise");
+    ENTERPRISE("enterprise"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCustomPropertySourceType> WIRE_INDEX =
             EnumUtils.index(GitHubCustomPropertySourceType.class, GitHubCustomPropertySourceType::wireValue);
@@ -38,15 +40,11 @@ public enum GitHubCustomPropertySourceType {
      * @param value JSON value
      * @return matching source type
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known source type
      */
     @JsonCreator
     public static GitHubCustomPropertySourceType fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(
-                        () -> new IllegalArgumentException("Unknown GitHub custom property source type: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

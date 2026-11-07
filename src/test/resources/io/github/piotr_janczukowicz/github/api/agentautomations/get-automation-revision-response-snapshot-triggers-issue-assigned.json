@@ -1,0 +1,8 @@
+{
+  "query": "query",
+  "assignees": [
+    "assignees"
+  ],
+  "write_scope": "trigger",
+  "allow_copilot_triggers": true
+}

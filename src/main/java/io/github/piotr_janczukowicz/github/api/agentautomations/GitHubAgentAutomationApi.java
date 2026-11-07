@@ -17,12 +17,14 @@ import io.github.piotr_janczukowicz.json.JsonTypes;
 import io.github.piotr_janczukowicz.uri.PathTemplate;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /** GitHub agent automations REST resource for API version {@code 2026-03-10}. */
 public final class GitHubAgentAutomationApi extends GitHubResourceApi {
 
     private static final String PARAM_AUTOMATION_ID = "automationId";
+    private static final String PARAM_REVISION_ID = "revisionId";
 
     private static final PathTemplate AGENT_AUTOMATIONS = PathTemplate.of("/agents/automations");
     private static final PathTemplate AGENT_REPO_AUTOMATIONS =
@@ -33,6 +35,10 @@ public final class GitHubAgentAutomationApi extends GitHubResourceApi {
             PathTemplate.of("/agents/repos/{owner}/{repo}/automations/available-triggers");
     private static final PathTemplate AGENT_REPO_AUTOMATION =
             PathTemplate.of("/agents/repos/{owner}/{repo}/automations/{automation_id}");
+    private static final PathTemplate AGENT_REPO_AUTOMATION_REVISIONS =
+            PathTemplate.of("/agents/repos/{owner}/{repo}/automations/{automation_id}/revisions");
+    private static final PathTemplate AGENT_REPO_AUTOMATION_REVISION =
+            PathTemplate.of("/agents/repos/{owner}/{repo}/automations/{automation_id}/revisions/{revision_id}");
     private static final PathTemplate AGENT_REPO_AUTOMATION_TASKS =
             PathTemplate.of("/agents/repos/{owner}/{repo}/automations/{automation_id}/tasks");
 
@@ -40,6 +46,13 @@ public final class GitHubAgentAutomationApi extends GitHubResourceApi {
             JsonTypes.listOf(GitHubListAutomationsItem.class);
     private static final JsonType<List<GitHubListAvailableRepoAutomationTriggersItem>> AVAILABLE_TRIGGERS_TYPE =
             JsonTypes.listOf(GitHubListAvailableRepoAutomationTriggersItem.class);
+
+    private static final GitHubListSpec<GitHubListAutomationRevisionsRevision> AUTOMATION_REVISIONS_SPEC =
+            GitHubListSpec.wrapper(
+                    GitHubPageRequestKindValidators.DELIVERY_CURSOR,
+                    GitHubListAutomationRevisionsResponse.class,
+                    GitHubListAutomationRevisionsResponse::revisions,
+                    null);
 
     private static final GitHubListSpec<GitHubListRepoAutomationTasksTask> REPO_AUTOMATION_TASKS_SPEC =
             GitHubListSpec.wrapper(
@@ -445,5 +458,90 @@ public final class GitHubAgentAutomationApi extends GitHubResourceApi {
             throws IOException {
         requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
         caller.send(delete(AGENT_REPO_AUTOMATION, owner, repo, requireNotBlank(automationId, PARAM_AUTOMATION_ID)));
+    }
+
+    /**
+     * List revisions for an automation ({@code GET
+     * /agents/repos/{owner}/{repo}/automations/{automation_id}/revisions}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param automationId automation identifier
+     * @return first HTTP page of revisions, newest first
+     * @throws IllegalArgumentException if {@code owner}, {@code repo}, or {@code automationId} is blank
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public GitHubPage<GitHubListAutomationRevisionsRevision> listAutomationRevisions(
+            final String owner, final String repo, final String automationId) throws IOException {
+        return listAutomationRevisions(owner, repo, automationId, GitHubPageRequest.byDeliveryCursor());
+    }
+
+    /**
+     * List revisions for an automation ({@code GET
+     * /agents/repos/{owner}/{repo}/automations/{automation_id}/revisions}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param automationId automation identifier
+     * @param request opaque cursor pagination token
+     * @return HTTP page of revisions, newest first
+     * @throws IllegalArgumentException if {@code owner}, {@code repo}, or {@code automationId} is blank, or
+     *     {@code request} is invalid
+     * @throws NullPointerException if {@code request} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public GitHubPage<GitHubListAutomationRevisionsRevision> listAutomationRevisions(
+            final String owner, final String repo, final String automationId, final GitHubPageRequest request)
+            throws IOException {
+        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
+        requireNonNull(request, PARAM_REQUEST);
+
+        return list(
+                AGENT_REPO_AUTOMATION_REVISIONS,
+                Map.of(),
+                request,
+                AUTOMATION_REVISIONS_SPEC,
+                owner,
+                repo,
+                requireNotBlank(automationId, PARAM_AUTOMATION_ID));
+    }
+
+    /**
+     * Get an automation revision ({@code GET
+     * /agents/repos/{owner}/{repo}/automations/{automation_id}/revisions/{revision_id}}).
+     *
+     * @param owner repository owner
+     * @param repo repository name
+     * @param automationId automation identifier
+     * @param revisionId revision identifier
+     * @return revision, or empty on HTTP 404
+     * @throws IllegalArgumentException if {@code owner}, {@code repo}, {@code automationId}, or {@code revisionId} is
+     *     blank
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful (HTTP 404 yields empty)
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code CLOUD} or
+     *     {@code GHEC}
+     */
+    @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+    public Optional<GitHubGetAutomationRevisionResponse> getAutomationRevision(
+            final String owner, final String repo, final String automationId, final String revisionId)
+            throws IOException {
+        requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
+        return caller.fetchOrEmpty(
+                get(
+                        AGENT_REPO_AUTOMATION_REVISION,
+                        owner,
+                        repo,
+                        requireNotBlank(automationId, PARAM_AUTOMATION_ID),
+                        requireNotBlank(revisionId, PARAM_REVISION_ID)),
+                GitHubGetAutomationRevisionResponse.class);
     }
 }

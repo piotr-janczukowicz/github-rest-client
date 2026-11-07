@@ -8,13 +8,14 @@ import io.github.piotr_janczukowicz.util.LazyValue;
 /**
  * GitHub Dependabot REST resource aggregator for API version {@code 2026-03-10}.
  *
- * <p>Dependabot alerts, repository access, and organization and repository secrets.
+ * <p>Dependabot alerts, repository access, runner settings, and organization and repository secrets.
  */
 public final class GitHubDependabotApi {
 
     private final LazyValue<GitHubDependabotAlertDismissalRequestsApi> alertDismissalRequests;
     private final LazyValue<GitHubDependabotAlertsApi> alerts;
     private final LazyValue<GitHubDependabotRepositoryAccessApi> repositoryAccess;
+    private final LazyValue<GitHubDependabotRunnerSettingsApi> runnerSettings;
     private final LazyValue<GitHubDependabotSecretsApi> secrets;
 
     /**
@@ -28,6 +29,7 @@ public final class GitHubDependabotApi {
         this.alertDismissalRequests = new LazyValue<>(() -> new GitHubDependabotAlertDismissalRequestsApi(caller));
         this.alerts = new LazyValue<>(() -> new GitHubDependabotAlertsApi(caller));
         this.repositoryAccess = new LazyValue<>(() -> new GitHubDependabotRepositoryAccessApi(caller));
+        this.runnerSettings = new LazyValue<>(() -> new GitHubDependabotRunnerSettingsApi(caller));
         this.secrets = new LazyValue<>(() -> new GitHubDependabotSecretsApi(caller));
     }
 
@@ -59,6 +61,18 @@ public final class GitHubDependabotApi {
      */
     public GitHubDependabotRepositoryAccessApi repositoryAccess() {
         return repositoryAccess.get();
+    }
+
+    /**
+     * Dependabot runner settings operations ({@code subcategory=runner-settings}).
+     *
+     * <p>Only the {@code CLOUD} and {@code GHEC} flavors carry this resource. On a client limited to another flavor,
+     * its methods throw {@link UnsupportedOperationException}.
+     *
+     * @return runner settings API
+     */
+    public GitHubDependabotRunnerSettingsApi runnerSettings() {
+        return runnerSettings.get();
     }
 
     /**

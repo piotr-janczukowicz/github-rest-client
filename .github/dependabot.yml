@@ -10,18 +10,12 @@ registries:
     url: https://maven.pkg.github.com/piotr-janczukowicz/common-core
     username: ${{secrets.PACKAGES_USERNAME}}
     password: ${{secrets.PACKAGES_TOKEN}}
-  github-common-test-support:
-    type: maven-repository
-    url: https://maven.pkg.github.com/piotr-janczukowicz/common-test-support
-    username: ${{secrets.PACKAGES_USERNAME}}
-    password: ${{secrets.PACKAGES_TOKEN}}
 updates:
   - package-ecosystem: maven
     directory: /
     registries:
       - github-common-parent
       - github-common-core
-      - github-common-test-support
     schedule:
       interval: weekly
     commit-message:

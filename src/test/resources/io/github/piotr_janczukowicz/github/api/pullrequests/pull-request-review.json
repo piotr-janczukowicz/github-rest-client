@@ -41,5 +41,7 @@
   "commit_id": "54bb654c9e6025347f57900a4a5c2313a96b8035",
   "author_association": "OWNER",
   "body_html": "<p>This looks great.</p>",
-  "body_text": "This looks great."
+  "body_text": "This looks great.",
+  "copilot_code_review_effort": "balanced",
+  "is_copilot_code_review": true
 }

@@ -15,8 +15,8 @@ class GitHubCustomPropertySetPayloadTest {
 
     @Test
     void constructor_shouldThrow_whenValueTypeNull() {
-        final Throwable thrown =
-                catchThrowable(() -> new GitHubCustomPropertySetPayload(null, null, null, null, null, null, null));
+        final Throwable thrown = catchThrowable(
+                () -> new GitHubCustomPropertySetPayload(null, null, null, null, null, null, null, null));
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("valueType");
     }

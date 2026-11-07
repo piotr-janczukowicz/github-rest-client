@@ -21,6 +21,8 @@ import org.jspecify.annotations.Nullable;
  * @param description Short description
  * @param allowedValues Allowed values
  * @param valuesEditableBy Who can edit values
+ * @param regex Regular expression (RE2 syntax) that values of the property must match; only present for string
+ *     properties that define one
  * @param requireExplicitValues Whether setting property values is mandatory
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -36,6 +38,7 @@ public record GitHubCustomProperty(
         @Nullable String description,
         @Nullable List<String> allowedValues,
         @Nullable GitHubCustomPropertyValuesEditableBy valuesEditableBy,
+        @Nullable String regex,
         @Nullable Boolean requireExplicitValues) {
 
     private static final String PARAM_PROPERTY_NAME = "propertyName";
@@ -44,11 +47,5 @@ public record GitHubCustomProperty(
     public GitHubCustomProperty {
         requireNonNull(propertyName, PARAM_PROPERTY_NAME);
         requireNonNull(valueType, PARAM_VALUE_TYPE);
-        if (defaultValue != null) {
-            defaultValue = List.copyOf(defaultValue);
-        }
-        if (allowedValues != null) {
-            allowedValues = List.copyOf(allowedValues);
-        }
     }
 }

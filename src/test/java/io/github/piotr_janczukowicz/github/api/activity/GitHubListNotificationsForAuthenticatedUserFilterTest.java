@@ -27,6 +27,7 @@ class GitHubListNotificationsForAuthenticatedUserFilterTest {
         assertThat(query)
                 .containsOnly(
                         Map.entry("all", "true"),
+                        Map.entry("is_done", "false"),
                         Map.entry("participating", "false"),
                         Map.entry("since", "2024-01-01T00:00:00Z"),
                         Map.entry("before", "2024-06-01T00:00:00Z"));

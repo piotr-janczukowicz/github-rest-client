@@ -9,8 +9,8 @@ import org.jspecify.annotations.Nullable;
  * Upsert team repository permission.
  *
  * @param permission The permission to grant the team on this repository. We accept the following permissions to be set:
- *     `pull`, `push`, and `admin`. If no permission is specified, the team's `permission` attribute will be used to
- *     determine what permission to grant the team on this repository.
+ *     `pull`, `moderate`, `push`, and `admin`. If no permission is specified, the team's `permission` attribute will be
+ *     used to determine what permission to grant the team on this repository.
  * @deprecated Endpoint closing down notice: this endpoint route is closing down and will be removed from the Teams API.
  *     Deprecation date {@code 2020-01-21}; removal date {@code 2021-02-01}.
  */
@@ -19,4 +19,4 @@ import org.jspecify.annotations.Nullable;
 @RecordBuilder
 @CatalogSchema("operations/teams/add-or-update-repo-permissions-legacy/requestBody")
 public record GitHubUpsertTeamRepositoryPermissionLegacyPayload(
-        @Nullable GitHubTeamLegacyPermission permission) {}
+        @Nullable GitHubUpsertTeamRepositoryPermissionLegacyPermission permission) {}

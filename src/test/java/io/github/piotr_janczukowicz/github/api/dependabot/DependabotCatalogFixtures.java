@@ -359,4 +359,20 @@ final class DependabotCatalogFixtures {
                 .reason(GitHubDependabotAlertWithRepositoryReachabilityReason.UNKNOWN)
                 .build();
     }
+
+    static GitHubDependabotRunnerSettings dependabotRunnerSettings() {
+        return GitHubDependabotRunnerSettingsBuilder.builder()
+                .runnerType(GitHubDependabotRunnerSettingsRunnerType.STANDARD)
+                .runnerLabels(List.of("runner_labels"))
+                .runnerGroup("runner_group")
+                .build();
+    }
+
+    static GitHubSetRepositoryRunnerSettingsPayload setRepositoryRunnerSettingsPayload() {
+        return GitHubSetRepositoryRunnerSettingsPayloadBuilder.builder()
+                .runnerType(GitHubSetRepositoryRunnerSettingsRunnerType.STANDARD)
+                .runnerLabels(List.of("runner_labels"))
+                .runnerGroup("runner_group")
+                .build();
+    }
 }

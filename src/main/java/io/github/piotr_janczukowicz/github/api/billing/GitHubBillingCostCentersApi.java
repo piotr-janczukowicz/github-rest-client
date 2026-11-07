@@ -18,6 +18,8 @@ public final class GitHubBillingCostCentersApi extends GitHubResourceApi {
 
     private static final PathTemplate ENTERPRISE_COST_CENTERS =
             PathTemplate.of("/enterprises/{enterprise}/settings/billing/cost-centers");
+    private static final PathTemplate ENTERPRISE_COST_CENTER_MEMBERSHIPS =
+            PathTemplate.of("/enterprises/{enterprise}/settings/billing/cost-centers/memberships");
     private static final PathTemplate ENTERPRISE_COST_CENTER =
             PathTemplate.of("/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}");
     private static final PathTemplate ENTERPRISE_COST_CENTER_RESOURCE =
@@ -235,5 +237,29 @@ public final class GitHubBillingCostCentersApi extends GitHubResourceApi {
         return caller.fetch(
                 caller.json(delete(ENTERPRISE_COST_CENTER_RESOURCE, enterprise, costCenterId), payload),
                 GitHubRemoveResourceFromCostCenterResponse.class);
+    }
+
+    /**
+     * Get cost center membership for a resource ({@code GET
+     * /enterprises/{enterprise}/settings/billing/cost-centers/memberships}).
+     *
+     * @param enterprise the slug version of the enterprise name
+     * @param filter the resource to look up
+     * @return cost center memberships of the resource
+     * @throws IllegalArgumentException if {@code enterprise} is blank
+     * @throws NullPointerException if {@code filter} is {@code null}
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code GHEC}
+     */
+    @Flavors(GitHubFlavor.GHEC)
+    public GitHubBillingCostCenterMembership getCostCenterMembership(
+            final String enterprise, final GitHubGetCostCenterMembershipFilter filter) throws IOException {
+        requireFlavor(GitHubFlavor.GHEC);
+        requireNonNull(filter, PARAM_FILTER);
+
+        return caller.fetch(
+                get(ENTERPRISE_COST_CENTER_MEMBERSHIPS, enterprise).withQuery(filter.toQueryParameters()),
+                GitHubBillingCostCenterMembership.class);
     }
 }

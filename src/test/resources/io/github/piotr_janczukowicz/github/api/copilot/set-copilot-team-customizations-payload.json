@@ -1,0 +1,13 @@
+{
+  "pluginAssignments": {
+    "code-review@acme-marketplace": {
+      "state": "defaultEnabled"
+    }
+  },
+  "extraKnownMarketplaces": {
+    "acme-marketplace": {
+      "source": "github"
+    }
+  },
+  "futureSetting": "enabled"
+}

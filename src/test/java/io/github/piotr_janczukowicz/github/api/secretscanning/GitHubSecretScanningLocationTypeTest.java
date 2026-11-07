@@ -26,7 +26,8 @@ class GitHubSecretScanningLocationTypeTest {
         "pull_request_body,PULL_REQUEST_BODY",
         "pull_request_comment,PULL_REQUEST_COMMENT",
         "pull_request_review,PULL_REQUEST_REVIEW",
-        "pull_request_review_comment,PULL_REQUEST_REVIEW_COMMENT"
+        "pull_request_review_comment,PULL_REQUEST_REVIEW_COMMENT",
+        "actions_log,ACTIONS_LOG"
     })
     void fromWire_shouldReturnType_whenKnownValue(final String wire, final GitHubSecretScanningLocationType value) {
         final GitHubSecretScanningLocationType decoded = GitHubSecretScanningLocationType.fromWire(wire);

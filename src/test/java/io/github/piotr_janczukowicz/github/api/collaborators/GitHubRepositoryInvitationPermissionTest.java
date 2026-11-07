@@ -16,14 +16,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 class GitHubRepositoryInvitationPermissionTest {
 
     @ParameterizedTest
-    @CsvSource({
-        "read,READ",
-        "write,WRITE",
-        "admin,ADMIN",
-        "triage,TRIAGE",
-        "triage_plus,TRIAGE_PLUS",
-        "maintain,MAINTAIN"
-    })
+    @CsvSource({"read,READ", "write,WRITE", "admin,ADMIN", "triage,TRIAGE", "moderate,MODERATE", "maintain,MAINTAIN"})
     void fromWire_shouldReturnType_whenKnownValue(final String wire, final GitHubRepositoryInvitationPermission value) {
         final GitHubRepositoryInvitationPermission decoded = GitHubRepositoryInvitationPermission.fromWire(wire);
 

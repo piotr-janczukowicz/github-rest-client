@@ -32,4 +32,16 @@ class GitHubGetIssueArtifactResponseWithVersionsTest {
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("versions");
     }
+
+    @Test
+    void constructor_shouldThrow_whenTotalCountNegative() {
+        final GitHubGetIssueArtifactResponseWithVersionsBuilder builder =
+                GitHubGetIssueArtifactResponseWithVersionsBuilder.builder(
+                                IssuesCatalogFixtures.getIssueArtifactResponseWithVersions())
+                        .totalCount(-1);
+
+        final Throwable thrown = catchThrowable(builder::build);
+
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("totalCount");
+    }
 }

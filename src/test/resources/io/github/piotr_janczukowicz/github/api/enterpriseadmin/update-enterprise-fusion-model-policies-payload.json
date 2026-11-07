@@ -1,0 +1,8 @@
+{
+  "models": [
+    {
+      "model_name": "model_name",
+      "policy_state": "enabled"
+    }
+  ]
+}

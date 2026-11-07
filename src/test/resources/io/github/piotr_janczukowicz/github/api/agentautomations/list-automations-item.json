@@ -1,4 +1,7 @@
 {
+  "tools": [
+    "tools"
+  ],
   "id": "id",
   "repository": {
     "id": 1,

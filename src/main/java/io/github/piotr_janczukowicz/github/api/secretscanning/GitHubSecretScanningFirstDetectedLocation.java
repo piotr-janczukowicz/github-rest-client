@@ -6,8 +6,11 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 
 /**
  * Details on the location where the token was initially detected. This can be a commit, wiki commit, issue, discussion,
- * pull request. A shape that matches none of them is kept raw as {@link GitHubSecretScanningUnknownLocationDetails}, so
- * that one new location shape does not fail the whole alert or list it is in.
+ * pull request, or Actions job log. {@code GitHubSecretScanningFirstDetectedLocationDeserializer} picks the record by
+ * its discriminating properties, because the {@code actions_log} shape is a subset of the commit shapes and Jackson
+ * deduction cannot tell it apart. A shape that matches none of them is kept raw as
+ * {@link GitHubSecretScanningUnknownLocationDetails}, so that one new location shape does not fail the whole alert or
+ * list it is in.
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.DEDUCTION, defaultImpl = GitHubSecretScanningUnknownLocationDetails.class)
 @JsonSubTypes({
@@ -23,7 +26,8 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
     @JsonSubTypes.Type(GitHubSecretScanningLocationPullRequestBody.class),
     @JsonSubTypes.Type(GitHubSecretScanningLocationPullRequestComment.class),
     @JsonSubTypes.Type(GitHubSecretScanningLocationPullRequestReview.class),
-    @JsonSubTypes.Type(GitHubSecretScanningLocationPullRequestReviewComment.class)
+    @JsonSubTypes.Type(GitHubSecretScanningLocationPullRequestReviewComment.class),
+    @JsonSubTypes.Type(GitHubSecretScanningLocationActionsLog.class)
 })
 @CatalogSchema("components/schemas/secret-scanning-first-detected-location")
 public sealed interface GitHubSecretScanningFirstDetectedLocation
@@ -40,4 +44,5 @@ public sealed interface GitHubSecretScanningFirstDetectedLocation
                 GitHubSecretScanningLocationPullRequestComment,
                 GitHubSecretScanningLocationPullRequestReview,
                 GitHubSecretScanningLocationPullRequestReviewComment,
+                GitHubSecretScanningLocationActionsLog,
                 GitHubSecretScanningUnknownLocationDetails {}

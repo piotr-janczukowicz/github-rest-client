@@ -1,6 +1,9 @@
 {
   "automations": [
     {
+      "tools": [
+        "tools"
+      ],
       "id": "id",
       "name": "name",
       "enabled": true,

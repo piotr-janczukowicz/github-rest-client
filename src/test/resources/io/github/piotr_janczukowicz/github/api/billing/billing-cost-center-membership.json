@@ -1,0 +1,16 @@
+{
+  "resource": {
+    "type": "user",
+    "identifier": {
+      "login": "login"
+    }
+  },
+  "memberships": [
+    {
+      "cost_center": {
+        "id": "id",
+        "name": "name"
+      }
+    }
+  ]
+}

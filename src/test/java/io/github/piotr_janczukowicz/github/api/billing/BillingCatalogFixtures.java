@@ -1021,4 +1021,65 @@ public final class BillingCatalogFixtures {
                 .advancedSecurityProduct(GitHubGetAdvancedSecurityBillingOrgProduct.CODE_SECURITY)
                 .build();
     }
+
+    static GitHubBillingCostCenterMembershipResourceIdentifier billingCostCenterMembershipResourceIdentifier() {
+        return GitHubBillingCostCenterMembershipResourceIdentifierBuilder.builder()
+                .login("login")
+                .build();
+    }
+
+    static GitHubBillingCostCenterMembershipResourceIdentifier
+            billingCostCenterMembershipResourceIdentifierOrganization() {
+        return GitHubBillingCostCenterMembershipResourceIdentifierBuilder.builder()
+                .name("name")
+                .build();
+    }
+
+    static GitHubBillingCostCenterMembershipResourceIdentifier
+            billingCostCenterMembershipResourceIdentifierRepository() {
+        return GitHubBillingCostCenterMembershipResourceIdentifierBuilder.builder()
+                .owner("owner")
+                .name("name")
+                .build();
+    }
+
+    static GitHubBillingCostCenterMembershipResourceIdentifier billingCostCenterMembershipResourceIdentifierTeam() {
+        return GitHubBillingCostCenterMembershipResourceIdentifierBuilder.builder()
+                .slug("slug")
+                .build();
+    }
+
+    static GitHubBillingCostCenterMembershipResource billingCostCenterMembershipResource() {
+        return GitHubBillingCostCenterMembershipResourceBuilder.builder()
+                .type(GitHubBillingCostCenterMembershipResourceType.USER)
+                .identifier(billingCostCenterMembershipResourceIdentifier())
+                .build();
+    }
+
+    static GitHubBillingCostCenterMembershipMembershipCostCenter billingCostCenterMembershipMembershipCostCenter() {
+        return GitHubBillingCostCenterMembershipMembershipCostCenterBuilder.builder()
+                .id("id")
+                .name("name")
+                .build();
+    }
+
+    static GitHubBillingCostCenterMembershipMembership billingCostCenterMembershipMembership() {
+        return GitHubBillingCostCenterMembershipMembershipBuilder.builder()
+                .costCenter(billingCostCenterMembershipMembershipCostCenter())
+                .build();
+    }
+
+    static GitHubBillingCostCenterMembership billingCostCenterMembership() {
+        return GitHubBillingCostCenterMembershipBuilder.builder()
+                .resource(billingCostCenterMembershipResource())
+                .memberships(List.of(billingCostCenterMembershipMembership()))
+                .build();
+    }
+
+    static GitHubGetCostCenterMembershipFilter getCostCenterMembershipFilter() {
+        return GitHubGetCostCenterMembershipFilterBuilder.builder()
+                .resourceType(GitHubGetCostCenterMembershipResourceType.USER)
+                .name("name")
+                .build();
+    }
 }

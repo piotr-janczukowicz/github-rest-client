@@ -1,0 +1,12 @@
+{
+  "comment_types": [
+    "timeline_comment"
+  ],
+  "query": "query",
+  "paths": [
+    "paths"
+  ],
+  "body_substring": "body_substring",
+  "write_scope": "trigger",
+  "allow_copilot_triggers": true
+}

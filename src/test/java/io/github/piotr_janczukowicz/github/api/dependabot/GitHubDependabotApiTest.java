@@ -75,4 +75,16 @@ class GitHubDependabotApiTest {
 
         assertThat(alertDismissalRequests).isNotNull();
     }
+
+    @Test
+    void runnerSettings_shouldReturnApi_whenConstructed() {
+        final GitHubDependabotApi api;
+        try (final GitHubClient client = TestClients.client(transport)) {
+            api = new GitHubDependabotApi(TestClients.caller(client));
+        }
+
+        final GitHubDependabotRunnerSettingsApi runnerSettings = api.runnerSettings();
+
+        assertThat(runnerSettings).isNotNull();
+    }
 }

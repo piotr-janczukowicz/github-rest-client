@@ -72,6 +72,14 @@
       "rocket": 0
     },
     "body_html": "<p>Great stuff</p>",
-    "body_text": "Great stuff"
+    "body_text": "Great stuff",
+    "copilot_code_review_sources": [
+      {
+        "kind": "SKILL",
+        "name": "name",
+        "path": "path"
+      }
+    ],
+    "is_copilot_code_review": true
   }
 ]

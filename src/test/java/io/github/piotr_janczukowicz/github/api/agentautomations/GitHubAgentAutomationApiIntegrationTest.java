@@ -40,6 +40,10 @@ class GitHubAgentAutomationApiIntegrationTest {
     private static final String AVAILABLE_TOOLS_PATH = "/agents/repos/octocat/Hello-World/automations/available-tools";
     private static final String AVAILABLE_TRIGGERS_PATH =
             "/agents/repos/octocat/Hello-World/automations/available-triggers";
+    private static final String AUTOMATION_REVISIONS_PATH =
+            "/agents/repos/octocat/Hello-World/automations/automation-1/revisions";
+    private static final String AUTOMATION_REVISION_PATH =
+            "/agents/repos/octocat/Hello-World/automations/automation-1/revisions/revision-1";
     private static final String AUTOMATION_TASKS_PATH =
             "/agents/repos/octocat/Hello-World/automations/automation-1/tasks";
 
@@ -283,5 +287,54 @@ class GitHubAgentAutomationApiIntegrationTest {
         }
 
         HTTP.verifyRequested(DELETE, REPO_AUTOMATION_PATH);
+    }
+
+    @Test
+    void listAutomationRevisions_shouldReturnRevisions_whenResponseIsOk() throws Exception {
+        HTTP.stub(
+                GET,
+                AUTOMATION_REVISIONS_PATH,
+                okJson(jsonBytes(
+                        GitHubAgentAutomationApiIntegrationTest.class, "list-automation-revisions-response.json")));
+
+        final GitHubPage<GitHubListAutomationRevisionsRevision> page;
+        try (final GitHubApiWireMockSupport.AgentAutomationsApiClient automations = agentAutomationsApi(HTTP)) {
+            page = automations.api().listAutomationRevisions(OWNER, REPO, AUTOMATION_ID);
+        }
+
+        assertThat(page.items())
+                .containsExactlyElementsOf(AgentAutomationsCatalogFixtures.listAutomationRevisionsResponse()
+                        .revisions());
+        HTTP.verifyRequested(GET, AUTOMATION_REVISIONS_PATH);
+        HTTP.verifyQueryParam(GET, AUTOMATION_REVISIONS_PATH, "per_page", "100");
+    }
+
+    @Test
+    void getAutomationRevision_shouldReturnRevision_whenResponseIsOk() throws Exception {
+        HTTP.stub(
+                GET,
+                AUTOMATION_REVISION_PATH,
+                okJson(jsonBytes(
+                        GitHubAgentAutomationApiIntegrationTest.class, "get-automation-revision-response.json")));
+
+        final Optional<GitHubGetAutomationRevisionResponse> revision;
+        try (final GitHubApiWireMockSupport.AgentAutomationsApiClient automations = agentAutomationsApi(HTTP)) {
+            revision = automations.api().getAutomationRevision(OWNER, REPO, AUTOMATION_ID, "revision-1");
+        }
+
+        assertThat(revision).contains(AgentAutomationsCatalogFixtures.getAutomationRevisionResponse());
+        HTTP.verifyRequested(GET, AUTOMATION_REVISION_PATH);
+    }
+
+    @Test
+    void getAutomationRevision_shouldReturnEmpty_whenResponseIsNotFound() throws Exception {
+        HTTP.stub(GET, AUTOMATION_REVISION_PATH, notFound());
+
+        final Optional<GitHubGetAutomationRevisionResponse> revision;
+        try (final GitHubApiWireMockSupport.AgentAutomationsApiClient automations = agentAutomationsApi(HTTP)) {
+            revision = automations.api().getAutomationRevision(OWNER, REPO, AUTOMATION_ID, "revision-1");
+        }
+
+        assertThat(revision).isEmpty();
     }
 }

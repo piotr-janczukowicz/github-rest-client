@@ -18,6 +18,8 @@ public final class GitHubEnterpriseAdminAiControlsApi extends GitHubResourceApi 
             PathTemplate.of("/enterprises/{enterprise}/copilot/apps/model-policies");
     private static final PathTemplate FEATURE_POLICIES =
             PathTemplate.of("/enterprises/{enterprise}/copilot/feature-policies");
+    private static final PathTemplate FUSION_MODEL_POLICIES =
+            PathTemplate.of("/enterprises/{enterprise}/copilot/fusion/model-policies");
     private static final PathTemplate MODEL_POLICIES =
             PathTemplate.of("/enterprises/{enterprise}/copilot/model-policies");
     private static final PathTemplate TEAM_MODEL_POLICIES =
@@ -202,5 +204,49 @@ public final class GitHubEnterpriseAdminAiControlsApi extends GitHubResourceApi 
         return caller.fetch(
                 caller.json(patch(TEAM_MODEL_POLICIES, enterprise, teamId), payload),
                 GitHubUpdateEnterpriseTeamModelPoliciesResponse.class);
+    }
+
+    /**
+     * Get the Copilot Fusion model policies of an enterprise ({@code GET
+     * /enterprises/{enterprise}/copilot/fusion/model-policies}).
+     *
+     * @param enterprise the slug version of the enterprise name
+     * @return Copilot Fusion model policies of the enterprise
+     * @throws IllegalArgumentException if {@code enterprise} is empty
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code GHEC}
+     */
+    @Flavors(GitHubFlavor.GHEC)
+    public GitHubGetEnterpriseFusionModelPoliciesResponse getEnterpriseFusionModelPolicies(final String enterprise)
+            throws IOException {
+        requireFlavor(GitHubFlavor.GHEC);
+        return caller.fetch(
+                get(FUSION_MODEL_POLICIES, enterprise), GitHubGetEnterpriseFusionModelPoliciesResponse.class);
+    }
+
+    /**
+     * Update the Copilot Fusion model policies of an enterprise ({@code PATCH
+     * /enterprises/{enterprise}/copilot/fusion/model-policies}).
+     *
+     * @param enterprise the slug version of the enterprise name
+     * @param payload the model policies to update
+     * @return Copilot Fusion model policies of the enterprise after the update
+     * @throws NullPointerException if {@code payload} is {@code null}
+     * @throws IllegalArgumentException if {@code enterprise} is empty
+     * @throws IOException if the transport fails
+     * @throws GitHubApiException if the response is unsuccessful
+     * @throws UnsupportedOperationException if the client is limited to a flavor other than {@code GHEC}
+     */
+    @Flavors(GitHubFlavor.GHEC)
+    public GitHubUpdateEnterpriseFusionModelPoliciesResponse updateEnterpriseFusionModelPolicies(
+            final String enterprise, final GitHubUpdateEnterpriseFusionModelPoliciesPayload payload)
+            throws IOException {
+        requireFlavor(GitHubFlavor.GHEC);
+        requireNonNull(payload, PARAM_PAYLOAD);
+
+        return caller.fetch(
+                caller.json(patch(FUSION_MODEL_POLICIES, enterprise), payload),
+                GitHubUpdateEnterpriseFusionModelPoliciesResponse.class);
     }
 }

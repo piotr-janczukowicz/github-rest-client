@@ -15,8 +15,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 class GitHubCollaboratorPermissionTest {
 
     @ParameterizedTest
-    @CsvSource({"pull,PULL", "triage,TRIAGE", "triage_plus,TRIAGE_PLUS", "push,PUSH", "maintain,MAINTAIN", "admin,ADMIN"
-    })
+    @CsvSource({"pull,PULL", "triage,TRIAGE", "moderate,MODERATE", "push,PUSH", "maintain,MAINTAIN", "admin,ADMIN"})
     void fromWire_shouldReturnType_whenKnownValue(final String wire, final GitHubCollaboratorPermission value) {
         final GitHubCollaboratorPermission decoded = GitHubCollaboratorPermission.fromWire(wire);
 

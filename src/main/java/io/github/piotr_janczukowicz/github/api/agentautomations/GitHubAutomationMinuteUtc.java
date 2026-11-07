@@ -14,7 +14,9 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
     "operations/agent-automations/edit-repo-automation/200/properties/triggers/properties/interval/properties/minute_utc",
     "operations/agent-automations/get-repo-automation/200/properties/triggers/properties/interval/properties/minute_utc",
     "operations/agent-automations/list-automations/200/items/properties/triggers/properties/interval/properties/minute_utc",
-    "operations/agent-automations/list-repo-automations/200/properties/automations/items/properties/triggers/properties/interval/properties/minute_utc"
+    "operations/agent-automations/list-repo-automations/200/properties/automations/items/properties/triggers/properties/interval/properties/minute_utc",
+    "operations/agent-automations/get-automation-revision/200/properties/snapshot/properties/triggers/properties/interval/properties/minute_utc",
+    "operations/agent-automations/list-automation-revisions/200/properties/revisions/items/properties/snapshot/properties/triggers/properties/interval/properties/minute_utc"
 })
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public enum GitHubAutomationMinuteUtc {

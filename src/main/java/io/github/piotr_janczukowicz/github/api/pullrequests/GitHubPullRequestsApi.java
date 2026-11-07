@@ -11,6 +11,7 @@ public final class GitHubPullRequestsApi {
     private final LazyValue<GitHubPullRequestApi> pullRequest;
     private final LazyValue<GitHubPullsAgentMergeApi> agentMerge;
     private final LazyValue<GitHubPullsCommentsApi> comments;
+    private final LazyValue<GitHubPullsCopilotCodeReviewApi> copilotCodeReview;
     private final LazyValue<GitHubPullsReviewRequestsApi> reviewRequests;
     private final LazyValue<GitHubPullsReviewsApi> reviews;
     private final LazyValue<GitHubPullsStacksApi> stacks;
@@ -26,6 +27,7 @@ public final class GitHubPullRequestsApi {
         this.pullRequest = new LazyValue<>(() -> new GitHubPullRequestApi(caller));
         this.agentMerge = new LazyValue<>(() -> new GitHubPullsAgentMergeApi(caller));
         this.comments = new LazyValue<>(() -> new GitHubPullsCommentsApi(caller));
+        this.copilotCodeReview = new LazyValue<>(() -> new GitHubPullsCopilotCodeReviewApi(caller));
         this.reviewRequests = new LazyValue<>(() -> new GitHubPullsReviewRequestsApi(caller));
         this.reviews = new LazyValue<>(() -> new GitHubPullsReviewsApi(caller));
         this.stacks = new LazyValue<>(() -> new GitHubPullsStacksApi(caller));
@@ -58,6 +60,17 @@ public final class GitHubPullRequestsApi {
      */
     public GitHubPullsCommentsApi comments() {
         return comments.get();
+    }
+
+    /**
+     * Pull request Copilot code review operations ({@code subcategory=copilot-code-review}).
+     *
+     * <p>The {@code CLOUD} and {@code GHEC} flavors carry this resource.
+     *
+     * @return Copilot code review API
+     */
+    public GitHubPullsCopilotCodeReviewApi copilotCodeReview() {
+        return copilotCodeReview.get();
     }
 
     /**

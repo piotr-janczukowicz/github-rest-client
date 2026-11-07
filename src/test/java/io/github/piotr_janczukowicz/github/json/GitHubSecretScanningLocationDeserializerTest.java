@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubSecretScanningLocation;
+import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubSecretScanningLocationActionsLog;
 import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubSecretScanningLocationCommit;
 import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubSecretScanningLocationDetails;
 import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubSecretScanningLocationDiscussionBody;
@@ -106,6 +107,7 @@ class GitHubSecretScanningLocationDeserializerTest {
             case PULL_REQUEST_COMMENT -> GitHubSecretScanningLocationPullRequestComment.class;
             case PULL_REQUEST_REVIEW -> GitHubSecretScanningLocationPullRequestReview.class;
             case PULL_REQUEST_REVIEW_COMMENT -> GitHubSecretScanningLocationPullRequestReviewComment.class;
+            case ACTIONS_LOG -> GitHubSecretScanningLocationActionsLog.class;
             case UNRECOGNIZED -> GitHubSecretScanningUnknownLocationDetails.class;
         };
     }

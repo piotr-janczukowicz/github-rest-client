@@ -24,6 +24,7 @@ final class ActivityCatalogFixtures {
     static GitHubListNotificationsForAuthenticatedUserFilter listNotificationsFilter() {
         return GitHubListNotificationsForAuthenticatedUserFilterBuilder.builder()
                 .all(true)
+                .isDone(false)
                 .participating(false)
                 .since(SINCE)
                 .before(BEFORE)
@@ -33,6 +34,7 @@ final class ActivityCatalogFixtures {
     static GitHubListRepoNotificationsForAuthenticatedUserFilter listRepoNotificationsFilter() {
         return GitHubListRepoNotificationsForAuthenticatedUserFilterBuilder.builder()
                 .all(true)
+                .isDone(false)
                 .participating(false)
                 .since(SINCE)
                 .before(BEFORE)
