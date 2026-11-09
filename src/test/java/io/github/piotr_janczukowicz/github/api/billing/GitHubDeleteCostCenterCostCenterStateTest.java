@@ -32,10 +32,14 @@ class GitHubDeleteCostCenterCostCenterStateTest {
     }
 
     @Test
-    void fromWire_shouldThrow_whenValueNotKnown() {
-        final Throwable thrown =
-                catchThrowable(() -> GitHubDeleteCostCenterCostCenterState.fromWire("brand_new_value"));
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
+        final String wire = "brand_new_value";
 
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+        final GitHubDeleteCostCenterCostCenterState decoded = GitHubDeleteCostCenterCostCenterState.fromWire(wire);
+
+        assertSoftly(softly -> {
+            softly.assertThat(decoded).isEqualTo(GitHubDeleteCostCenterCostCenterState.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
+        });
     }
 }

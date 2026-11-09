@@ -14,7 +14,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
         "operations/copilot/get-copilot-team-customizations/200/properties/pluginAssignments/additionalProperties/properties/state")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public enum GitHubGetCopilotTeamCustomizationsPluginAssignmentState {
-    DEFAULT_ENABLED("defaultEnabled");
+    DEFAULT_ENABLED("defaultEnabled"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubGetCopilotTeamCustomizationsPluginAssignmentState> WIRE_INDEX =
             EnumUtils.index(
@@ -41,17 +43,13 @@ public enum GitHubGetCopilotTeamCustomizationsPluginAssignmentState {
      * Resolves the constant from its wire value.
      *
      * @param value JSON value
-     * @return matching constant
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known value
      */
     @JsonCreator
     public static GitHubGetCopilotTeamCustomizationsPluginAssignmentState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException(
-                        "Unknown GitHub get copilot team customizations plugin assignment state: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

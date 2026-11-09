@@ -26,18 +26,24 @@ class GitHubGetAutomationRevisionResponseSnapshotTriggersWorkflowRunConclusionTe
     }
 
     @Test
-    void fromWire_shouldThrow_whenValueUnknown() {
-        final Throwable thrown = catchThrowable(
-                () -> GitHubGetAutomationRevisionResponseSnapshotTriggersWorkflowRunConclusion.fromWire("other"));
-
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("other");
-    }
-
-    @Test
     void fromWire_shouldThrow_whenValueNull() {
         final Throwable thrown = catchThrowable(
                 () -> GitHubGetAutomationRevisionResponseSnapshotTriggersWorkflowRunConclusion.fromWire(null));
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("value");
+    }
+
+    @Test
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
+        final String wire = "brand_new_value";
+
+        final GitHubGetAutomationRevisionResponseSnapshotTriggersWorkflowRunConclusion decoded =
+                GitHubGetAutomationRevisionResponseSnapshotTriggersWorkflowRunConclusion.fromWire(wire);
+
+        assertSoftly(softly -> {
+            softly.assertThat(decoded)
+                    .isEqualTo(GitHubGetAutomationRevisionResponseSnapshotTriggersWorkflowRunConclusion.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
+        });
     }
 }

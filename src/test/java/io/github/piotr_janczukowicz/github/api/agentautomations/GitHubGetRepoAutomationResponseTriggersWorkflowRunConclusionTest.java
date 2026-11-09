@@ -26,18 +26,24 @@ class GitHubGetRepoAutomationResponseTriggersWorkflowRunConclusionTest {
     }
 
     @Test
-    void fromWire_shouldThrow_whenValueUnknown() {
-        final Throwable thrown =
-                catchThrowable(() -> GitHubGetRepoAutomationResponseTriggersWorkflowRunConclusion.fromWire("other"));
-
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("other");
-    }
-
-    @Test
     void fromWire_shouldThrow_whenValueNull() {
         final Throwable thrown =
                 catchThrowable(() -> GitHubGetRepoAutomationResponseTriggersWorkflowRunConclusion.fromWire(null));
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("value");
+    }
+
+    @Test
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
+        final String wire = "brand_new_value";
+
+        final GitHubGetRepoAutomationResponseTriggersWorkflowRunConclusion decoded =
+                GitHubGetRepoAutomationResponseTriggersWorkflowRunConclusion.fromWire(wire);
+
+        assertSoftly(softly -> {
+            softly.assertThat(decoded)
+                    .isEqualTo(GitHubGetRepoAutomationResponseTriggersWorkflowRunConclusion.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
+        });
     }
 }

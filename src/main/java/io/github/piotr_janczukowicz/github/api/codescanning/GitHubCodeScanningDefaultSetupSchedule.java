@@ -10,7 +10,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 /** The frequency of the periodic analysis. */
 @CatalogSchema("components/schemas/code-scanning-default-setup/properties/schedule")
 public enum GitHubCodeScanningDefaultSetupSchedule {
-    WEEKLY("weekly");
+    WEEKLY("weekly"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeScanningDefaultSetupSchedule> WIRE_INDEX = EnumUtils.index(
             GitHubCodeScanningDefaultSetupSchedule.class, GitHubCodeScanningDefaultSetupSchedule::wireValue);
@@ -37,15 +39,11 @@ public enum GitHubCodeScanningDefaultSetupSchedule {
      * @param value JSON value
      * @return matching GitHubCodeScanningDefaultSetupSchedule
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known code scanning default setup schedule
      */
     @JsonCreator
     public static GitHubCodeScanningDefaultSetupSchedule fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() ->
-                        new IllegalArgumentException("Unknown GitHub code scanning default setup schedule: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

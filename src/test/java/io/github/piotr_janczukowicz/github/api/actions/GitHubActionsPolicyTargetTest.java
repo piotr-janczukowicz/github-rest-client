@@ -2,6 +2,7 @@ package io.github.piotr_janczukowicz.github.api.actions;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
 import org.junit.jupiter.api.Test;
@@ -17,9 +18,14 @@ class GitHubActionsPolicyTargetTest {
     }
 
     @Test
-    void fromWire_shouldThrowIllegalArgumentException_whenValueUnknown() {
-        final Throwable thrown = catchThrowable(() -> GitHubActionsPolicyTarget.fromWire("unknown-value"));
+    void fromWire_shouldReturnUnrecognized_whenValueNotKnown() {
+        final String wire = "brand_new_value";
 
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+        final GitHubActionsPolicyTarget decoded = GitHubActionsPolicyTarget.fromWire(wire);
+
+        assertSoftly(softly -> {
+            softly.assertThat(decoded).isEqualTo(GitHubActionsPolicyTarget.UNRECOGNIZED);
+            softly.assertThat(decoded.wireValue()).isEqualTo("unrecognized");
+        });
     }
 }

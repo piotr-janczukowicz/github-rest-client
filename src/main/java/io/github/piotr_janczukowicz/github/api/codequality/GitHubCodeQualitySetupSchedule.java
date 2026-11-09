@@ -13,7 +13,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 @CatalogSchema("components/schemas/code-quality-setup/properties/schedule")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public enum GitHubCodeQualitySetupSchedule {
-    WEEKLY("weekly");
+    WEEKLY("weekly"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCodeQualitySetupSchedule> WIRE_INDEX =
             EnumUtils.index(GitHubCodeQualitySetupSchedule.class, GitHubCodeQualitySetupSchedule::wireValue);
@@ -40,15 +42,11 @@ public enum GitHubCodeQualitySetupSchedule {
      * @param value JSON value
      * @return matching GitHubCodeQualitySetupSchedule
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known code quality setup schedule
      */
     @JsonCreator
     public static GitHubCodeQualitySetupSchedule fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(
-                        () -> new IllegalArgumentException("Unknown GitHub code quality setup schedule: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

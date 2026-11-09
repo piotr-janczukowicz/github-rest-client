@@ -193,7 +193,8 @@ class GitHubOrganizationsOutsideCollaboratorsApiTest {
         when(transport.execute(any()))
                 .thenReturn(response(
                         HttpStatus.UNPROCESSABLE_ENTITY.code(),
-                        FileUtils.readString(GitHubClient.class, "validation-failed.json")));
+                        FileUtils.readString(
+                                GitHubOrganizationsOutsideCollaboratorsApiTest.class, "validation-failed.json")));
         try (GitHubClient client = TestClients.client(transport)) {
             final GitHubOrganizationsOutsideCollaboratorsApi api =
                     new GitHubOrganizationsOutsideCollaboratorsApi(TestClients.caller(client));
