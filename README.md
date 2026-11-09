@@ -23,7 +23,8 @@ GitHub Enterprise Cloud and GitHub Enterprise Server, with pagination and rate-l
 - **The boring parts are handled.** Rate limits are waited out, pagination is followed and responses are immutable.
 - **An escape hatch.** If a typed method has a bug or an endpoint is missing, `github.generic()` sends any REST call
   through the same client, so you can work around it without waiting for a release.
-- **Small on purpose.** Synchronous REST only: no GraphQL and no async API.
+- **Small on purpose.** Synchronous REST only: no async API, and GraphQL is a separate library,
+  [github-graphql-client](https://github.com/piotr-janczukowicz/github-graphql-client).
 
 ## Install
 
