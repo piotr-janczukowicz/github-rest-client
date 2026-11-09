@@ -42,10 +42,10 @@ import org.jspecify.annotations.Nullable;
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public record GitHubCreateRepoAutomationPayload(
         String name,
-        @Nullable GitHubCreateRepoAutomationTriggers triggers,
+        @Nullable GitHubAutomationTriggerPayload triggers,
         String prompt,
         @Nullable String model,
-        @Nullable GitHubCreateRepoAutomationReasoningEffort reasoningEffort,
+        @Nullable GitHubAutomationReasoningEffort reasoningEffort,
         @Nullable List<String> tools,
         @Nullable Boolean enabled,
         @Nullable GitHubCreateRepoAutomationType type,

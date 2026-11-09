@@ -16,7 +16,7 @@ class GitHubListRepoAutomationsFilterTest {
     @Test
     void toQueryParameters_shouldEncodeField_whenSet() {
         final GitHubListRepoAutomationsFilter filter = GitHubListRepoAutomationsFilterBuilder.builder()
-                .type(GitHubListRepoAutomationsType.PERSONAL)
+                .type(GitHubAutomationListType.PERSONAL)
                 .build();
 
         assertThat(filter.toQueryParameters()).containsEntry("type", "personal");

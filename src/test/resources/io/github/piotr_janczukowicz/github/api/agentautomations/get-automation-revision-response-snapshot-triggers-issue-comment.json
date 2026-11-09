@@ -1,6 +1,0 @@
-{
-  "query": "query",
-  "body_substring": "body_substring",
-  "write_scope": "trigger",
-  "allow_copilot_triggers": true
-}

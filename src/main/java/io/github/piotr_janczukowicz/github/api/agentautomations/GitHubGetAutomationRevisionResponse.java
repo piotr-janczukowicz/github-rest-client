@@ -36,10 +36,10 @@ public record GitHubGetAutomationRevisionResponse(
         String id,
         String automationId,
         long revisionNumber,
-        GitHubGetAutomationRevisionResponseChangeType changeType,
+        GitHubAutomationRevisionChangeType changeType,
         @Nullable GitHubGetAutomationRevisionResponseCreator creator,
         @Nullable GitHubGetAutomationRevisionResponseEditor editor,
-        @Nullable GitHubGetAutomationRevisionResponseEditorType editorType,
+        @Nullable GitHubAutomationRevisionEditorType editorType,
         Instant changedAt,
         @Nullable String restoredFromRevisionId,
         @Nullable GitHubGetAutomationRevisionResponseSnapshot snapshot) {

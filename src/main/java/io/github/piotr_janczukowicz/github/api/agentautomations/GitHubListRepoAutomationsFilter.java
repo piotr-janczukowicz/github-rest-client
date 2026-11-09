@@ -18,7 +18,7 @@ import org.jspecify.annotations.Nullable;
 @RecordBuilder
 @CatalogSchema("operations/agent-automations/list-repo-automations/parameters")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
-public record GitHubListRepoAutomationsFilter(@Nullable GitHubListRepoAutomationsType type) {
+public record GitHubListRepoAutomationsFilter(@Nullable GitHubAutomationListType type) {
 
     /**
      * Filter with all query parameters unset.
