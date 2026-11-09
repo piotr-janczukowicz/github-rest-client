@@ -13,7 +13,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 @CatalogSchema("components/schemas/actions-policy/properties/target")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public enum GitHubActionsPolicyTarget {
-    ACTIONS("actions");
+    ACTIONS("actions"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubActionsPolicyTarget> WIRE_INDEX =
             EnumUtils.index(GitHubActionsPolicyTarget.class, GitHubActionsPolicyTarget::wireValue);
@@ -40,14 +42,11 @@ public enum GitHubActionsPolicyTarget {
      * @param value JSON value
      * @return matching value
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known value
      */
     @JsonCreator
     public static GitHubActionsPolicyTarget fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException("Unknown GitHubActionsPolicyTarget value: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

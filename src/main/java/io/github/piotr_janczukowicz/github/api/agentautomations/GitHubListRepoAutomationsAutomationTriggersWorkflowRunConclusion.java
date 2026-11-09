@@ -14,7 +14,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
         "operations/agent-automations/list-repo-automations/200/properties/automations/items/properties/triggers/properties/workflow_run/properties/conclusions/items")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public enum GitHubListRepoAutomationsAutomationTriggersWorkflowRunConclusion {
-    FAILURE("failure");
+    FAILURE("failure"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubListRepoAutomationsAutomationTriggersWorkflowRunConclusion>
             WIRE_INDEX = EnumUtils.index(
@@ -41,17 +43,13 @@ public enum GitHubListRepoAutomationsAutomationTriggersWorkflowRunConclusion {
      * Resolves the constant from its wire value.
      *
      * @param value JSON value
-     * @return matching constant
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known value
      */
     @JsonCreator
     public static GitHubListRepoAutomationsAutomationTriggersWorkflowRunConclusion fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException(
-                        "Unknown GitHub list repo automations automation triggers workflow run conclusion: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

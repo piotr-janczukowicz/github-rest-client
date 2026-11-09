@@ -1,10 +1,6 @@
 module io.github.piotr_janczukowicz.githubrestclient {
-    requires transitive okhttp3;
-    requires okio;
-    requires transitive tools.jackson.databind;
-    requires org.slf4j;
+    requires transitive io.github.piotr_janczukowicz.githubclient;
     requires org.jspecify;
-    requires transitive common.core;
     requires static io.soabase.recordbuilder.core;
     requires static java.compiler;
 
@@ -66,13 +62,7 @@ module io.github.piotr_janczukowicz.githubrestclient {
     exports io.github.piotr_janczukowicz.github.api.securityadvisories;
     exports io.github.piotr_janczukowicz.github.api.teams;
     exports io.github.piotr_janczukowicz.github.api.users;
-    exports io.github.piotr_janczukowicz.github.client;
-    exports io.github.piotr_janczukowicz.github.client.app;
-    exports io.github.piotr_janczukowicz.github.client.exception;
-    exports io.github.piotr_janczukowicz.github.client.pagination;
-    exports io.github.piotr_janczukowicz.github.client.ratelimit;
-    exports io.github.piotr_janczukowicz.github.json;
-    exports io.github.piotr_janczukowicz.github.pagination;
+    exports io.github.piotr_janczukowicz.github.rest.json;
 
     opens io.github.piotr_janczukowicz.github.api to
             tools.jackson.databind,
@@ -245,25 +235,12 @@ module io.github.piotr_janczukowicz.githubrestclient {
     opens io.github.piotr_janczukowicz.github.api.users to
             tools.jackson.databind,
             common.core;
-    opens io.github.piotr_janczukowicz.github.client to
+    opens io.github.piotr_janczukowicz.github.rest.json to
             tools.jackson.databind,
             common.core;
-    opens io.github.piotr_janczukowicz.github.client.app to
-            tools.jackson.databind,
-            common.core;
-    opens io.github.piotr_janczukowicz.github.client.exception to
-            tools.jackson.databind,
-            common.core;
-    opens io.github.piotr_janczukowicz.github.client.pagination to
-            tools.jackson.databind,
-            common.core;
-    opens io.github.piotr_janczukowicz.github.client.ratelimit to
-            tools.jackson.databind,
-            common.core;
-    opens io.github.piotr_janczukowicz.github.json to
-            tools.jackson.databind,
-            common.core;
-    opens io.github.piotr_janczukowicz.github.pagination to
-            tools.jackson.databind,
-            common.core;
+
+    uses io.github.piotr_janczukowicz.github.json.GitHubJsonModule;
+
+    provides io.github.piotr_janczukowicz.github.json.GitHubJsonModule with
+            io.github.piotr_janczukowicz.github.rest.json.GitHubRestJsonModule;
 }

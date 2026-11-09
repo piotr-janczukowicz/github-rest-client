@@ -11,8 +11,8 @@ import io.github.piotr_janczukowicz.github.api.apps.GitHubAppsOauthApplicationsA
 import io.github.piotr_janczukowicz.github.api.apps.GitHubCheckTokenPayload;
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubRepositoryApi;
 import io.github.piotr_janczukowicz.github.client.GitHubCaller;
-import io.github.piotr_janczukowicz.github.client.TestGitHubClients;
 import io.github.piotr_janczukowicz.http.transport.HttpTransport;
+import io.github.piotr_janczukowicz.test.TestGitHubClients;
 import io.github.piotr_janczukowicz.test.http.HttpTransportMocks;
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
 import org.junit.jupiter.api.BeforeEach;

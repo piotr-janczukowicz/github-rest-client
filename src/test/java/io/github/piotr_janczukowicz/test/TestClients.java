@@ -2,7 +2,6 @@ package io.github.piotr_janczukowicz.test;
 
 import io.github.piotr_janczukowicz.github.client.GitHubCaller;
 import io.github.piotr_janczukowicz.github.client.GitHubClient;
-import io.github.piotr_janczukowicz.github.client.TestGitHubClients;
 import io.github.piotr_janczukowicz.http.client.HttpClientConfiguration;
 import io.github.piotr_janczukowicz.http.client.authentication.AuthenticationProvider;
 import io.github.piotr_janczukowicz.http.client.authentication.AuthenticationProviders;

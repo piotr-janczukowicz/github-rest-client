@@ -14,7 +14,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
         "operations/agent-automations/get-automation-revision/200/properties/snapshot/properties/triggers/properties/workflow_run/properties/conclusions/items")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public enum GitHubGetAutomationRevisionResponseSnapshotTriggersWorkflowRunConclusion {
-    FAILURE("failure");
+    FAILURE("failure"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubGetAutomationRevisionResponseSnapshotTriggersWorkflowRunConclusion>
             WIRE_INDEX = EnumUtils.index(
@@ -41,19 +43,14 @@ public enum GitHubGetAutomationRevisionResponseSnapshotTriggersWorkflowRunConclu
      * Resolves the constant from its wire value.
      *
      * @param value JSON value
-     * @return matching constant
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known value
      */
     @JsonCreator
     public static GitHubGetAutomationRevisionResponseSnapshotTriggersWorkflowRunConclusion fromWire(
             final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException(
-                        "Unknown GitHub get automation revision response snapshot triggers workflow run conclusion: "
-                                + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

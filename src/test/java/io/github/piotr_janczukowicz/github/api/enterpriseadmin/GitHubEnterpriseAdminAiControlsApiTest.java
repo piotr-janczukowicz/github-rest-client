@@ -10,10 +10,10 @@ import static org.mockito.Mockito.when;
 
 import io.github.piotr_janczukowicz.github.client.GitHubCaller;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
-import io.github.piotr_janczukowicz.github.client.TestGitHubClients;
 import io.github.piotr_janczukowicz.github.client.exception.GitHubApiException;
 import io.github.piotr_janczukowicz.http.HttpStatus;
 import io.github.piotr_janczukowicz.http.transport.HttpTransport;
+import io.github.piotr_janczukowicz.test.TestGitHubClients;
 import io.github.piotr_janczukowicz.test.http.HttpTransportMocks;
 import io.github.piotr_janczukowicz.testsupport.UnitTest;
 import org.junit.jupiter.api.BeforeEach;

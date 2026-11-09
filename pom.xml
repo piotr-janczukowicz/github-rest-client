@@ -18,7 +18,8 @@
   <url>https://github.com/piotr-janczukowicz/github-rest-client</url>
 
   <properties>
-    <common-core.version>3</common-core.version>
+    <common-core.version>4</common-core.version>
+    <github-client.version>2</github-client.version>
     <junit.parallel.enabled>true</junit.parallel.enabled>
     <test.module.args>--add-modules jdk.httpserver --add-reads io.github.piotr_janczukowicz.githubrestclient=jdk.httpserver --add-opens io.github.piotr_janczukowicz.githubrestclient/io.github.piotr_janczukowicz.test.support=common.core --add-opens io.github.piotr_janczukowicz.githubrestclient/io.github.piotr_janczukowicz.test=ALL-UNNAMED</test.module.args>
   </properties>
@@ -26,23 +27,8 @@
   <dependencies>
     <dependency>
       <groupId>io.github.piotr-janczukowicz</groupId>
-      <artifactId>common-core</artifactId>
-      <version>${common-core.version}</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>tools.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.squareup.okhttp3</groupId>
-      <artifactId>okhttp-jvm</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
+      <artifactId>github-client</artifactId>
+      <version>${github-client.version}</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -60,11 +46,6 @@
     <dependency>
       <groupId>org.wiremock</groupId>
       <artifactId>wiremock</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.github.hakky54</groupId>
-      <artifactId>logcaptor</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>

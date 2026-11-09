@@ -13,7 +13,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 @CatalogSchema("operations/agent-automations/create-repo-automation-task/202/properties/event")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public enum GitHubCreateRepoAutomationTaskResponseEvent {
-    MANUAL("manual");
+    MANUAL("manual"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubCreateRepoAutomationTaskResponseEvent> WIRE_INDEX = EnumUtils.index(
             GitHubCreateRepoAutomationTaskResponseEvent.class, GitHubCreateRepoAutomationTaskResponseEvent::wireValue);
@@ -38,17 +40,13 @@ public enum GitHubCreateRepoAutomationTaskResponseEvent {
      * Resolves the constant from its wire value.
      *
      * @param value JSON value
-     * @return matching constant
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known value
      */
     @JsonCreator
     public static GitHubCreateRepoAutomationTaskResponseEvent fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() -> new IllegalArgumentException(
-                        "Unknown GitHub create repo automation task response event: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }

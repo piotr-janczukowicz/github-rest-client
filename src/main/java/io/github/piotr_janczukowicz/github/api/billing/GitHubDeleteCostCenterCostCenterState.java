@@ -13,7 +13,9 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 @CatalogSchema("components/schemas/delete-cost-center/properties/costCenterState")
 @Flavors(GitHubFlavor.GHEC)
 public enum GitHubDeleteCostCenterCostCenterState {
-    COST_CENTER_ARCHIVED("CostCenterArchived");
+    COST_CENTER_ARCHIVED("CostCenterArchived"),
+    /** A value this library version does not know. */
+    UNRECOGNIZED("unrecognized");
 
     private static final EnumUtils.WireIndex<GitHubDeleteCostCenterCostCenterState> WIRE_INDEX = EnumUtils.index(
             GitHubDeleteCostCenterCostCenterState.class, GitHubDeleteCostCenterCostCenterState::wireValue);
@@ -38,17 +40,13 @@ public enum GitHubDeleteCostCenterCostCenterState {
      * Resolves the constant of this enum from its wire value.
      *
      * @param value JSON value
-     * @return matching constant
+     * @return matching constant, or {@link #UNRECOGNIZED} when the value is not known
      * @throws NullPointerException if {@code value} is {@code null}
-     * @throws IllegalArgumentException if {@code value} is not a known value
      */
     @JsonCreator
     public static GitHubDeleteCostCenterCostCenterState fromWire(final String value) {
         requireNonNull(value, "value");
 
-        return WIRE_INDEX
-                .fromWire(value)
-                .orElseThrow(() ->
-                        new IllegalArgumentException("Unknown GitHubDeleteCostCenterCostCenterState value: " + value));
+        return WIRE_INDEX.fromWire(value, UNRECOGNIZED);
     }
 }
