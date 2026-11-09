@@ -23,7 +23,8 @@ GitHub Enterprise Cloud and GitHub Enterprise Server, with pagination and rate-l
 - **The boring parts are handled.** Rate limits are waited out, pagination is followed and responses are immutable.
 - **An escape hatch.** If a typed method has a bug or an endpoint is missing, `github.generic()` sends any REST call
   through the same client, so you can work around it without waiting for a release.
-- **Small on purpose.** Synchronous REST only: no GraphQL and no async API.
+- **Small on purpose.** Synchronous REST only: no async API, and GraphQL is a separate library,
+  [github-graphql-client](https://github.com/piotr-janczukowicz/github-graphql-client).
 
 ## Install
 
@@ -145,13 +146,10 @@ The [user guide](docs/guide/README.md) has a chapter for each topic below.
 
 | Topic | In short |
 |---|---|
-| [Configuration](docs/guide/configuration.md) | The defaults follow GitHub's advice; every option, its default and its limits on github.com, Enterprise Cloud and Enterprise Server |
+| [Transport guide](https://github.com/piotr-janczukowicz/github-client/blob/main/docs/guide/README.md) | Configuration, authentication in depth, rate limiting and exception handling, described once in the `github-client` user guide |
 | [Flavors and GitHub Enterprise](docs/guide/flavors.md) | The `@Flavors` markers, fail-fast, data residency, Enterprise Server releases and the management console |
 | [Pagination](docs/guide/pagination.md) | A `GitHubPage` per HTTP page; `all()`, `stream()` and `forEachPage(...)` walk the rest, with a configurable page cap |
-| [Rate limiting](docs/guide/rate-limiting.md) | Waited out for you; a wait over `maxRateLimitWait` (5 minutes) throws `GitHubRateLimitException` with `retryAt()` |
-| [Authentication in depth](docs/guide/authentication.md) | Installations, token renewal, authenticating as the app, SAML single sign-on, security notes |
 | [Immutability](docs/guide/immutability.md) | Immutable records, unmodifiable response collections, absent fields are `null`, your inputs are copied |
-| [Exception handling](docs/guide/exception-handling.md) | HTTP errors are unchecked `GitHubApiException` subclasses (401, 403, 404, 422, rate limit); transport failures are `IOException` |
 | [Performance](docs/guide/performance.md) | About 0.1 ms and 90 KB of allocation per call on top of the network round trip, with the measurements |
 | [Generic API](docs/guide/generic-api.md) | `github.generic()` sends any REST call through the same client when a typed method is broken or missing; the API version stays fixed |
 | [Good to know](docs/guide/good-to-know.md) | Newer GitHub data, file uploads, deprecated operations, logging, and the caveats of the schema descriptions |
