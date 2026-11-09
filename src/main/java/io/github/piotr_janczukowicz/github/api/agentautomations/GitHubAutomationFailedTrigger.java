@@ -1,0 +1,53 @@
+package io.github.piotr_janczukowicz.github.api.agentautomations;
+
+import static io.github.piotr_janczukowicz.util.ValidationUtils.requireSizeBetween;
+import static io.github.piotr_janczukowicz.util.ValidationUtils.requireUniqueItems;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import io.github.piotr_janczukowicz.annotation.RecordBuilder;
+import io.github.piotr_janczukowicz.github.api.Flavors;
+import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
+import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
+import java.util.List;
+import org.jspecify.annotations.Nullable;
+
+/**
+ * Failed trigger. Shared by the 5 schemas that have this shape: automation_failed,
+ * automation_triggers_automation_failed, item_triggers_automation_failed, revision_snapshot_triggers_automation_failed,
+ * snapshot_triggers_automation_failed.
+ *
+ * @param automationIds Upstream Automation IDs in the same repository. An Automation cannot list itself, and a
+ *     user-owned Automation can only be listed by its creator's user-owned Automations.
+ * @param reasons Failure reasons to match. Omit to match only reported failures.
+ * @param writeScope Override the Automation {@code write_scope} for runs started by this trigger. If omitted, the
+ *     automation's {@code write_scope} is used. Organization or repository policy may restrict the effective scope to
+ *     {@code trigger}. Explicitly setting {@code repository} on create or edit returns 422 when policy validation is
+ *     enabled and that policy applies.
+ * @param allowCopilotTriggers When true, events Copilot creates, including from other automations and Copilot sessions,
+ *     can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it
+ *     on: creating a trigger with true, or changing it from false to true, returns 422.
+ */
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@RecordBuilder
+@CatalogSchema({
+    "operations/agent-automations/create-repo-automation/201/properties/triggers/properties/automation_failed",
+    "operations/agent-automations/edit-repo-automation/200/properties/triggers/properties/automation_failed",
+    "operations/agent-automations/get-automation-revision/200/properties/snapshot/properties/triggers/properties/automation_failed",
+    "operations/agent-automations/get-repo-automation/200/properties/triggers/properties/automation_failed",
+    "operations/agent-automations/list-automation-revisions/200/properties/revisions/items/properties/snapshot/properties/triggers/properties/automation_failed",
+    "operations/agent-automations/list-automations/200/items/properties/triggers/properties/automation_failed",
+    "operations/agent-automations/list-repo-automations/200/properties/automations/items/properties/triggers/properties/automation_failed"
+})
+@Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
+public record GitHubAutomationFailedTrigger(
+        List<String> automationIds,
+        @Nullable List<GitHubAutomationFailedReason> reasons,
+        @Nullable GitHubAutomationWriteScope writeScope,
+        @Nullable Boolean allowCopilotTriggers) {
+    public GitHubAutomationFailedTrigger {
+        requireUniqueItems(requireSizeBetween(automationIds, 1, 3, "automationIds"), "automationIds");
+        if (reasons != null) {
+            requireSizeBetween(reasons, 1, 3, "reasons");
+        }
+    }
+}

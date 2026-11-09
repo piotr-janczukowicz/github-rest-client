@@ -44,11 +44,11 @@ public record GitHubListAutomationsItem(
         GitHubListAutomationsItemRepository repository,
         String name,
         @Nullable Boolean enabled,
-        @Nullable GitHubListAutomationsItemType type,
+        @Nullable GitHubAutomationType type,
         @Nullable Boolean requireActorWritePermission,
         @Nullable String model,
         @Nullable String reasoningEffort,
-        @Nullable GitHubListAutomationsItemTriggers triggers,
+        @Nullable GitHubAutomationTriggers triggers,
         Instant createdAt,
         Instant updatedAt,
         GitHubListAutomationsItemCreatedBy createdBy) {

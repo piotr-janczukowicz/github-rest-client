@@ -42,11 +42,11 @@ public record GitHubListRepoAutomationsAutomation(
         String id,
         String name,
         @Nullable Boolean enabled,
-        @Nullable GitHubListRepoAutomationsAutomationType type,
+        @Nullable GitHubAutomationType type,
         @Nullable Boolean requireActorWritePermission,
         @Nullable String model,
         @Nullable String reasoningEffort,
-        @Nullable GitHubListRepoAutomationsAutomationTriggers triggers,
+        @Nullable GitHubAutomationTriggers triggers,
         Instant createdAt,
         Instant updatedAt,
         GitHubListRepoAutomationsAutomationCreatedBy createdBy) {

@@ -40,8 +40,8 @@ public record GitHubEditRepoAutomationPayload(
         @Nullable Boolean requireActorWritePermission,
         @Nullable Boolean continuousHistory,
         @Nullable String model,
-        @Nullable GitHubEditRepoAutomationReasoningEffort reasoningEffort,
-        @Nullable GitHubEditRepoAutomationTriggers triggers,
+        @Nullable GitHubAutomationReasoningEffort reasoningEffort,
+        @Nullable GitHubAutomationTriggerPayload triggers,
         @Nullable String prompt,
         @Nullable List<String> tools) {
     public GitHubEditRepoAutomationPayload {

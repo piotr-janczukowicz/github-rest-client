@@ -25,7 +25,7 @@ import org.jspecify.annotations.Nullable;
         "operations/agent-automations/list-available-repo-automation-triggers/200/items/properties/fields/items/properties/schema/oneOf/0")
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public record GitHubListAvailableRepoAutomationTriggersItemFieldSchemaString(
-        GitHubListAvailableRepoAutomationTriggersItemFieldSchemaStringType type,
+        GitHubAutomationTriggerFieldSchemaArrayItemsType type,
         @JsonProperty("enum") @Nullable List<String> enumValues,
         @JsonProperty("minLength") @Nullable Integer minLength)
         implements GitHubListAvailableRepoAutomationTriggersItemFieldSchema {
