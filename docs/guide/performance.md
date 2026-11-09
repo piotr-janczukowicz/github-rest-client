@@ -1,6 +1,6 @@
 # Performance
 
-Previous: [Authentication in depth](authentication.md) · [Guide index](README.md)
+[Guide index](README.md)
 
 These figures were measured on a single machine against a local stub server. They show the cost the library adds to a
 call: request building, rate-limit bookkeeping, the conditional cache, reading the body and JSON decoding. They do not
@@ -68,7 +68,7 @@ All walks start from a 16 MiB heap. The per-item figures for the 10-page walks i
 
 ## Concurrency and throughput
 
-By default a client sends one request at a time (see [Concurrency and pacing](rate-limiting.md#concurrency-and-pacing)). Its throughput
+By default a client sends one request at a time (see [Concurrency and pacing](https://github.com/piotr-janczukowicz/github-client/blob/main/docs/guide/rate-limiting.md#concurrency-and-pacing)). Its throughput
 therefore stays flat however many threads share it: about 5,700 to 5,900 small `GET`s per second here. Raising
 `maxConcurrentRequests` raises throughput until the machine is saturated. Threads waiting for a request slot hold little
 memory, and 1,000 virtual threads ran without pinning events.
@@ -133,7 +133,7 @@ handler can wait for its own slot", and the client keeps working afterwards.
 | Heap retained by a client with a full conditional cache, defaults (200 clients × 300 distinct URLs) | 0.88 MiB per client |
 | Heap after closing all of them | back to baseline (9.3 MiB and 12.3 MiB) |
 
-The cache limits are described in [Conditional requests](rate-limiting.md#conditional-requests).
+The cache limits are described in [Conditional requests](https://github.com/piotr-janczukowicz/github-client/blob/main/docs/guide/rate-limiting.md#conditional-requests).
 
 </details>
 
@@ -180,4 +180,4 @@ no longer need (see [Client lifecycle](../../README.md#usage)) and share one per
 
 ---
 
-Previous: [Authentication in depth](authentication.md) · [Guide index](README.md)
+[Guide index](README.md)

@@ -24,7 +24,7 @@ List<GitHubIssue> open = generic.fetch(request, JsonTypes.listOf(GitHubIssue.cla
 A generic call goes through the same stack as every typed call: the conditional cache, retry and rate-limit waiting,
 mutation pacing, the concurrency limit, error mapping and credential renewal. HTTP errors become
 `GitHubApiException` subclasses and transport failures are `IOException`, as described in
-[Exception handling](exception-handling.md).
+[Exception handling](https://github.com/piotr-janczukowicz/github-client/blob/main/docs/guide/exception-handling.md).
 
 ## Describing a call
 
