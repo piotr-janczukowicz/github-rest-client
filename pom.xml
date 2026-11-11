@@ -18,8 +18,8 @@
   <url>https://github.com/piotr-janczukowicz/github-rest-client</url>
 
   <properties>
-    <common-core.version>4</common-core.version>
-    <github-client.version>2</github-client.version>
+    <common-core.version>5</common-core.version>
+    <github-client.version>3</github-client.version>
     <junit.parallel.enabled>true</junit.parallel.enabled>
     <test.module.args>--add-modules jdk.httpserver --add-reads io.github.piotr_janczukowicz.githubrestclient=jdk.httpserver --add-opens io.github.piotr_janczukowicz.githubrestclient/io.github.piotr_janczukowicz.test.support=common.core --add-opens io.github.piotr_janczukowicz.githubrestclient/io.github.piotr_janczukowicz.test=ALL-UNNAMED</test.module.args>
   </properties>
