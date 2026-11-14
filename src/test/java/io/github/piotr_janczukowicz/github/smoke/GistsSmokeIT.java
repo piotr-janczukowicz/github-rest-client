@@ -7,11 +7,14 @@ import io.github.piotr_janczukowicz.github.api.gists.GitHubBaseGist;
 import io.github.piotr_janczukowicz.github.api.gists.GitHubCreateCommentPayload;
 import io.github.piotr_janczukowicz.github.api.gists.GitHubCreateGistFile;
 import io.github.piotr_janczukowicz.github.api.gists.GitHubCreatePayload;
+import io.github.piotr_janczukowicz.github.api.gists.GitHubGistComment;
 import io.github.piotr_janczukowicz.github.api.gists.GitHubGistSimple;
 import io.github.piotr_janczukowicz.github.api.gists.GitHubUpdateGistFile;
 import io.github.piotr_janczukowicz.github.api.gists.GitHubUpdatePayload;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -82,7 +85,7 @@ class GistsSmokeIT {
         final GitHubGistSimple created = createSecretGist(github, ENV.name("gone") + ".txt", "gone");
         github.gists().gist().deleteGist(created.id());
 
-        final var gist = github.gists().gist().getGist(created.id());
+        final Optional<GitHubGistSimple> gist = github.gists().gist().getGist(created.id());
 
         assertThat(gist).isEmpty();
     }
@@ -92,14 +95,14 @@ class GistsSmokeIT {
         final GitHub github = ENV.github();
         final GitHubGistSimple created = createSecretGist(github, ENV.name("comment") + ".txt", "comment");
         try {
-            final var comment =
+            final GitHubGistComment comment =
                     github.gists().comments().createComment(created.id(), new GitHubCreateCommentPayload("smoke"));
-            final var listed =
+            final List<GitHubGistComment> listed =
                     github.gists().comments().listComments(created.id()).all();
             github.gists().comments().deleteComment(created.id(), comment.id());
 
             assertThat(comment.body()).isEqualTo("smoke");
-            assertThat(listed).extracting(item -> item.id()).contains(comment.id());
+            assertThat(listed).extracting(GitHubGistComment::id).contains(comment.id());
         } finally {
             github.gists().gist().deleteGist(created.id());
         }

@@ -50,6 +50,9 @@ class GitHubSecurityAdvisoriesApiIntegrationTest {
             "/repos/octocat/hello-world/security-advisories/" + REPOSITORY_GHSA_ID;
     private static final String REPO_ADVISORY_CVE_PATH = REPO_ADVISORY_PATH + "/cve";
     private static final String REPO_ADVISORY_FORKS_PATH = REPO_ADVISORY_PATH + "/forks";
+    private static final String ADVISORY_COMMENTS_PATH =
+            "/repos/octocat/hello-world/security-advisories/GHSA-49wp-qq6x-g2rf/comments";
+    private static final String ADVISORY_COMMENT_PATH = ADVISORY_COMMENTS_PATH + "/42";
 
     private static final JsonType<List<GitHubGlobalAdvisory>> GLOBAL_ADVISORIES_TYPE =
             JsonTypes.listOf(GitHubGlobalAdvisory.class);
@@ -411,10 +414,6 @@ class GitHubSecurityAdvisoriesApiIntegrationTest {
                 listJsonBytes(GitHubSecurityAdvisoriesApiIntegrationTest.class, "global-advisory.json"),
                 GLOBAL_ADVISORIES_TYPE);
     }
-
-    private static final String ADVISORY_COMMENTS_PATH =
-            "/repos/octocat/hello-world/security-advisories/GHSA-49wp-qq6x-g2rf/comments";
-    private static final String ADVISORY_COMMENT_PATH = ADVISORY_COMMENTS_PATH + "/42";
 
     @Test
     void listRepositoryAdvisoryComments_shouldReturnComments_whenResponseIsOk() throws Exception {
