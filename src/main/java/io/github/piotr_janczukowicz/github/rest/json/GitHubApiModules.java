@@ -47,10 +47,7 @@ import io.github.piotr_janczukowicz.github.api.secretscanning.GitHubSecretScanni
 import io.github.piotr_janczukowicz.github.api.teams.GitHubTeam;
 import io.github.piotr_janczukowicz.github.api.users.GitHubSimpleUser;
 import io.github.piotr_janczukowicz.github.api.users.GitHubUserView;
-import io.github.piotr_janczukowicz.json.OptionalNull;
 import io.github.piotr_janczukowicz.json.jackson.ArrayOrWrappedAdapters;
-import io.github.piotr_janczukowicz.json.jackson.OptionalNullDeserializer;
-import io.github.piotr_janczukowicz.json.jackson.OptionalNullMixin;
 import io.github.piotr_janczukowicz.json.jackson.PolymorphicObjectAdapters;
 import io.github.piotr_janczukowicz.json.jackson.StringOrObjectAdapters;
 import java.util.List;
@@ -313,7 +310,5 @@ final class GitHubApiModules {
         module.addSerializer(
                 GitHubCopilotEnterpriseContentExclusionRule.class,
                 new GitHubCopilotEnterpriseContentExclusionRuleSerializer());
-        module.addDeserializer(OptionalNull.class, new OptionalNullDeserializer());
-        module.setMixInAnnotation(OptionalNull.class, OptionalNullMixin.class);
     }
 }

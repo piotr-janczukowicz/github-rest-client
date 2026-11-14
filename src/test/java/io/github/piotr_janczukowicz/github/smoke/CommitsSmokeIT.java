@@ -9,10 +9,12 @@ import io.github.piotr_janczukowicz.github.api.commits.GitHubCommitStatus;
 import io.github.piotr_janczukowicz.github.api.commits.GitHubCommitStatusState;
 import io.github.piotr_janczukowicz.github.api.commits.GitHubCreateCommitCommentPayload;
 import io.github.piotr_janczukowicz.github.api.commits.GitHubCreateCommitStatusPayload;
+import io.github.piotr_janczukowicz.github.api.commits.GitHubSimpleCommitStatus;
 import io.github.piotr_janczukowicz.github.api.reactions.GitHubCreateForCommitCommentPayload;
 import io.github.piotr_janczukowicz.github.api.reactions.GitHubReaction;
 import io.github.piotr_janczukowicz.github.api.reactions.GitHubReactionContent;
 import java.io.IOException;
+import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -54,13 +56,15 @@ class CommitsSmokeIT {
                 .statuses()
                 .getCombinedStatusForRef(ENV.owner(), ENV.repo(), sha)
                 .orElseThrow();
-        final var listed = github.commits()
+        final List<GitHubCommitStatus> listed = github.commits()
                 .statuses()
                 .listCommitStatusesForRef(ENV.owner(), ENV.repo(), sha)
                 .items();
 
         assertThat(created.state()).isEqualTo("success");
-        assertThat(combined.statuses()).extracting(status -> status.context()).contains(context);
+        assertThat(combined.statuses())
+                .extracting(GitHubSimpleCommitStatus::context)
+                .contains(context);
         assertThat(listed).extracting(GitHubCommitStatus::id).contains(created.id());
     }
 

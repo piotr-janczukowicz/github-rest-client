@@ -62,6 +62,9 @@ class GitHubSecretScanningApiIntegrationTest {
     private static final String REPO_PUSH_PROTECTION_BYPASSES_PATH =
             "/repos/octocat/hello-world/secret-scanning/push-protection-bypasses";
     private static final String REPO_SCAN_HISTORY_PATH = "/repos/octocat/hello-world/secret-scanning/scan-history";
+    private static final String PUBLIC_MONITORING_ALERTS_PATH =
+            "/enterprises/octo-ent/secret-scanning/public-monitoring-alerts";
+    private static final String PUBLIC_MONITORING_ALERT_PATH = PUBLIC_MONITORING_ALERTS_PATH + "/42";
 
     private static final JsonType<List<GitHubOrganizationSecretScanningAlert>> ORG_ALERTS_TYPE =
             JsonTypes.listOf(GitHubOrganizationSecretScanningAlert.class);
@@ -630,10 +633,6 @@ class GitHubSecretScanningApiIntegrationTest {
     interface UpdateCustomPatternCall {
         GitHubSecretScanningCustomPattern execute(GitHubSecretScanningApi api) throws Exception;
     }
-
-    private static final String PUBLIC_MONITORING_ALERTS_PATH =
-            "/enterprises/octo-ent/secret-scanning/public-monitoring-alerts";
-    private static final String PUBLIC_MONITORING_ALERT_PATH = PUBLIC_MONITORING_ALERTS_PATH + "/42";
 
     @Test
     void listPublicMonitoringAlertsForEnterprise_shouldReturnAlerts_whenResponseIsOk() throws Exception {
