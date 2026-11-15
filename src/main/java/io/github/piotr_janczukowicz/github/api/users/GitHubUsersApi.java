@@ -17,6 +17,8 @@ public final class GitHubUsersApi {
     private final LazyValue<GitHubUsersEmailsApi> emails;
     private final LazyValue<GitHubUsersFollowersApi> followers;
     private final LazyValue<GitHubUsersGpgKeysApi> gpgKeys;
+    private final LazyValue<GitHubUsersIssueFieldsApi> issueFields;
+    private final LazyValue<GitHubUsersIssueTypesApi> issueTypes;
     private final LazyValue<GitHubUsersKeysApi> keys;
     private final LazyValue<GitHubUsersSocialAccountsApi> socialAccounts;
     private final LazyValue<GitHubUsersSshSigningKeysApi> sshSigningKeys;
@@ -35,6 +37,8 @@ public final class GitHubUsersApi {
         this.emails = new LazyValue<>(() -> new GitHubUsersEmailsApi(caller));
         this.followers = new LazyValue<>(() -> new GitHubUsersFollowersApi(caller));
         this.gpgKeys = new LazyValue<>(() -> new GitHubUsersGpgKeysApi(caller));
+        this.issueFields = new LazyValue<>(() -> new GitHubUsersIssueFieldsApi(caller));
+        this.issueTypes = new LazyValue<>(() -> new GitHubUsersIssueTypesApi(caller));
         this.keys = new LazyValue<>(() -> new GitHubUsersKeysApi(caller));
         this.socialAccounts = new LazyValue<>(() -> new GitHubUsersSocialAccountsApi(caller));
         this.sshSigningKeys = new LazyValue<>(() -> new GitHubUsersSshSigningKeysApi(caller));
@@ -84,6 +88,28 @@ public final class GitHubUsersApi {
      */
     public GitHubUsersGpgKeysApi gpgKeys() {
         return gpgKeys.get();
+    }
+
+    /**
+     * User issue field operations ({@code subcategory=issue-fields}).
+     *
+     * <p>Only the {@code CLOUD} and {@code GHEC} flavors carry this resource.
+     *
+     * @return issue fields API
+     */
+    public GitHubUsersIssueFieldsApi issueFields() {
+        return issueFields.get();
+    }
+
+    /**
+     * User issue type operations ({@code subcategory=issue-types}).
+     *
+     * <p>Only the {@code CLOUD} and {@code GHEC} flavors carry this resource.
+     *
+     * @return issue types API
+     */
+    public GitHubUsersIssueTypesApi issueTypes() {
+        return issueTypes.get();
     }
 
     /**

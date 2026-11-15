@@ -39,6 +39,8 @@ class GitHubUsersApiTest {
             final GitHubUsersEmailsApi emails = api.emails();
             final GitHubUsersFollowersApi followers = api.followers();
             final GitHubUsersGpgKeysApi gpgKeys = api.gpgKeys();
+            final GitHubUsersIssueFieldsApi issueFields = api.issueFields();
+            final GitHubUsersIssueTypesApi issueTypes = api.issueTypes();
             final GitHubUsersKeysApi keys = api.keys();
             final GitHubUsersSocialAccountsApi socialAccounts = api.socialAccounts();
             final GitHubUsersSshSigningKeysApi sshSigningKeys = api.sshSigningKeys();
@@ -50,6 +52,8 @@ class GitHubUsersApiTest {
                 softly.assertThat(emails).isInstanceOf(GitHubUsersEmailsApi.class);
                 softly.assertThat(followers).isInstanceOf(GitHubUsersFollowersApi.class);
                 softly.assertThat(gpgKeys).isInstanceOf(GitHubUsersGpgKeysApi.class);
+                softly.assertThat(issueFields).isInstanceOf(GitHubUsersIssueFieldsApi.class);
+                softly.assertThat(issueTypes).isInstanceOf(GitHubUsersIssueTypesApi.class);
                 softly.assertThat(keys).isInstanceOf(GitHubUsersKeysApi.class);
                 softly.assertThat(socialAccounts).isInstanceOf(GitHubUsersSocialAccountsApi.class);
                 softly.assertThat(sshSigningKeys).isInstanceOf(GitHubUsersSshSigningKeysApi.class);

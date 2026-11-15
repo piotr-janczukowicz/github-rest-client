@@ -15,7 +15,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 class GitHubIssueFieldVisibilityTest {
 
     @ParameterizedTest
-    @CsvSource({"organization_members_only,ORGANIZATION_MEMBERS_ONLY", "all,ALL"})
+    @CsvSource({"organization_members_only,ORGANIZATION_MEMBERS_ONLY", "all,ALL", "restricted,RESTRICTED"})
     void fromWire_shouldReturnType_whenKnownValue(final String wire, final GitHubIssueFieldVisibility visibility) {
         final GitHubIssueFieldVisibility decoded = GitHubIssueFieldVisibility.fromWire(wire);
 

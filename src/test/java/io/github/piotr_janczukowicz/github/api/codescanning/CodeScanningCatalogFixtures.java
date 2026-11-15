@@ -1,6 +1,7 @@
 package io.github.piotr_janczukowicz.github.api.codescanning;
 
 import io.github.piotr_janczukowicz.github.api.GitHubDirection;
+import io.github.piotr_janczukowicz.github.api.organizations.OrganizationsCatalogFixtures;
 import io.github.piotr_janczukowicz.github.api.repositories.RepositoriesCatalogFixtures;
 import io.github.piotr_janczukowicz.github.api.users.UsersCatalogFixtures;
 import java.net.URI;
@@ -51,6 +52,7 @@ public final class CodeScanningCatalogFixtures {
                 .dismissalApprovedBy(UsersCatalogFixtures.octocat())
                 .assignees(List.of(UsersCatalogFixtures.octocat()))
                 .linkedPullRequests(List.of(RepositoriesCatalogFixtures.pullRequestSimple()))
+                .linkedIssues(List.of(codeScanningAlertLinkedIssue()))
                 .build();
     }
 
@@ -73,6 +75,8 @@ public final class CodeScanningCatalogFixtures {
                 .mostRecentInstance(codeScanningAlertInstance())
                 .dismissalApprovedBy(UsersCatalogFixtures.octocat())
                 .assignees(List.of(UsersCatalogFixtures.octocat()))
+                .linkedPullRequests(List.of(pullRequestsOnAlerts()))
+                .linkedIssues(List.of(codeScanningAlertLinkedIssue()))
                 .build();
     }
 
@@ -274,24 +278,28 @@ public final class CodeScanningCatalogFixtures {
     public static GitHubCodeScanningAiScanEnablement codeScanningAiScanEnablement() {
         return GitHubCodeScanningAiScanEnablementBuilder.builder()
                 .prScan(GitHubCodeScanningAiScanPrScan.ENABLED)
+                .repositoryScan(GitHubCodeScanningAiScanPrScan.ENABLED)
                 .build();
     }
 
     public static GitHubCodeScanningAiScanEnablementUpdate codeScanningAiScanEnablementUpdate() {
         return GitHubCodeScanningAiScanEnablementUpdateBuilder.builder()
                 .prScan(GitHubCodeScanningAiScanPrScan.ENABLED)
+                .repositoryScan(GitHubCodeScanningAiScanPrScan.ENABLED)
                 .build();
     }
 
     public static GitHubCodeScanningAiScanOrgEnablementUpdate codeScanningAiScanOrgEnablementUpdate() {
         return GitHubCodeScanningAiScanOrgEnablementUpdateBuilder.builder()
                 .prScan(GitHubCodeScanningAiScanPrScan.ENABLED)
+                .repositoryScan(GitHubCodeScanningAiScanPrScan.ENABLED)
                 .build();
     }
 
     public static GitHubCodeScanningAiScanOrgSettings codeScanningAiScanOrgSettings() {
         return GitHubCodeScanningAiScanOrgSettingsBuilder.builder()
                 .prScan(GitHubCodeScanningAiScanPrScan.ENABLED)
+                .repositoryScan(GitHubCodeScanningAiScanPrScan.ENABLED)
                 .build();
     }
 
@@ -687,6 +695,32 @@ public final class CodeScanningCatalogFixtures {
                 .state(GitHubCodeScanningAlertStateQuery.OPEN)
                 .sort(GitHubListAlertsForEnterpriseSort.CREATED)
                 .assignees("octocat")
+                .build();
+    }
+
+    static GitHubCodeScanningAlertLinkedIssue codeScanningAlertLinkedIssue() {
+        return GitHubCodeScanningAlertLinkedIssueBuilder.builder()
+                .number(1)
+                .title("title")
+                .state("state")
+                .url("https://api.github.com/url")
+                .htmlUrl("https://api.github.com/html_url")
+                .repository(RepositoriesCatalogFixtures.helloWorldSimpleRepository())
+                .issueType(OrganizationsCatalogFixtures.issueType())
+                .build();
+    }
+
+    static GitHubPullRequestsOnAlerts pullRequestsOnAlerts() {
+        return GitHubPullRequestsOnAlertsBuilder.builder()
+                .number(1)
+                .id(1L)
+                .repository(RepositoriesCatalogFixtures.helloWorldSimpleRepository())
+                .title("title")
+                .state(GitHubPullRequestsOnAlertsState.OPEN)
+                .mergedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .htmlUrl("https://api.github.com/html_url")
+                .url("https://api.github.com/url")
+                .draft(true)
                 .build();
     }
 }

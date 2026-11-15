@@ -14,6 +14,9 @@ import org.jspecify.annotations.Nullable;
  *
  * @param title issue title
  * @param body issue body
+ * @param status The initial status of the issue. Can be {@code Backlog}, {@code Todo}, {@code In progress}, or
+ *     {@code In review}. If omitted, the issue starts in {@code Backlog}. Ignored when issue statuses aren't available
+ *     in the repository. Issue statuses are in preview.
  * @param milestone milestone reference
  * @param labels labels to associate with the issue
  * @param assignees assignee logins
@@ -27,6 +30,7 @@ import org.jspecify.annotations.Nullable;
 public record GitHubCreatePayload(
         @CatalogSimpleXor("string|integer") String title,
         @Nullable String body,
+        @Nullable String status,
         @Nullable GitHubIssueMilestoneReference milestone,
         @Nullable List<GitHubCreateIssueLabel> labels,
         @Nullable List<String> assignees,

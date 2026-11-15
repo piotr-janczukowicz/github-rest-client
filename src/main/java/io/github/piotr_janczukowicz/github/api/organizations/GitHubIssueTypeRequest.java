@@ -11,18 +11,25 @@ import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Update issue type request body.
+ * Issue type request body, shared by the organization and the authenticated user operations that create or replace an
+ * issue type.
  *
  * @param name Name of the issue type
- * @param isEnabled Whether or not the issue type is enabled at the organization level
+ * @param isEnabled Whether or not the issue type is enabled
  * @param description Description of the issue type
  * @param color Color for the issue type
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
-@CatalogSchema({"components/schemas/organization-update-issue-type", "operations/orgs/update-issue-type/requestBody"})
+@CatalogSchema({
+    "components/schemas/issue-type-request",
+    "operations/orgs/create-issue-type/requestBody",
+    "operations/orgs/update-issue-type/requestBody",
+    "operations/users/create-issue-type-for-authenticated-user/requestBody",
+    "operations/users/update-issue-type-for-authenticated-user/requestBody"
+})
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
-public record GitHubUpdateIssueTypePayload(
+public record GitHubIssueTypeRequest(
         String name,
         boolean isEnabled,
         @Nullable OptionalNull<String> description,
@@ -30,7 +37,7 @@ public record GitHubUpdateIssueTypePayload(
 
     private static final String PARAM_NAME = "name";
 
-    public GitHubUpdateIssueTypePayload {
+    public GitHubIssueTypeRequest {
         requireNonNull(name, PARAM_NAME);
     }
 }

@@ -2247,4 +2247,12 @@ public final class RepositoriesCatalogFixtures {
                 .lastSync(Instant.parse("2026-01-01T00:00:00Z"))
                 .build();
     }
+
+    static GitHubPlanningStatus planningStatus() {
+        return GitHubPlanningStatusBuilder.builder()
+                .id(1L)
+                .name("In progress")
+                .category("started")
+                .build();
+    }
 }

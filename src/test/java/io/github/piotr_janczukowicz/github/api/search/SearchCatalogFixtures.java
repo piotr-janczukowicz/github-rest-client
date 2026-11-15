@@ -335,6 +335,7 @@ public final class SearchCatalogFixtures {
                                 new GitHubIssueFieldValue.SelectOption(4L, "Frontend", "green"),
                                 List.of(new GitHubIssueFieldValue.SelectOption(2L, "Backend", "blue")))),
                 "open",
+                new GitHubIssueSearchResultItem.Status(4L, "In progress", "started"),
                 "completed",
                 spoonKnifeMilestoneV1(),
                 5,

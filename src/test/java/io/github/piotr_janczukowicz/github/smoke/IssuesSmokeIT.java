@@ -54,6 +54,7 @@ class IssuesSmokeIT {
                             new GitHubCreatePayload(
                                     ENV.name("issue"),
                                     "created by a smoke test",
+                                    null,
                                     new GitHubIssueMilestoneReference((long) milestone.number(), null),
                                     List.of(new GitHubCreateIssueLabel(labelName, null)),
                                     null,
@@ -76,6 +77,7 @@ class IssuesSmokeIT {
                                     null,
                                     null,
                                     GitHubIssueUpdateState.CLOSED,
+                                    null,
                                     null,
                                     null,
                                     null,

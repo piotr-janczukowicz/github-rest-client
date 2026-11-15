@@ -42,6 +42,8 @@ import org.jspecify.annotations.Nullable;
  * @param issueDependenciesSummary Issue dependencies summary
  * @param issueFieldValues Issue field values
  * @param state State
+ * @param status The status of the issue, or {@code null} if it has none. Issue statuses are in preview and only
+ *     available to accounts enrolled in the preview.
  * @param stateReason State reason
  * @param milestone Milestone
  * @param comments Comments
@@ -86,6 +88,7 @@ public record GitHubIssue(
         @Nullable GitHubIssueDependenciesSummary issueDependenciesSummary,
         @Nullable List<GitHubIssueFieldValue> issueFieldValues,
         String state,
+        @Nullable GitHubIssueStatus status,
         @Nullable GitHubIssueStateReason stateReason,
         @Nullable GitHubMilestone milestone,
         int comments,

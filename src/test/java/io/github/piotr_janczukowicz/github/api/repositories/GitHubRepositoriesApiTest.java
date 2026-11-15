@@ -49,6 +49,13 @@ class GitHubRepositoriesApiTest {
     }
 
     @Test
+    void planningStatuses_shouldReturnPlanningStatusesApi_whenCalled() {
+        final GitHubRepositoriesApi reposApi = new GitHubRepositoriesApi(TestClients.caller(client));
+
+        assertThat(reposApi.planningStatuses()).isInstanceOf(GitHubRepositoriesPlanningStatusesApi.class);
+    }
+
+    @Test
     void issueTypes_shouldReturnIssueTypesApi_whenCalled() {
         final GitHubRepositoriesApi reposApi = new GitHubRepositoriesApi(TestClients.caller(client));
 

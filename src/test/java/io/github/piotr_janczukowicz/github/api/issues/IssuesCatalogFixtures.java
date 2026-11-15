@@ -65,6 +65,7 @@ public final class IssuesCatalogFixtures {
                 new GitHubIssueDependenciesSummary(1, 2, 1, 2),
                 List.of(issueFieldValue()),
                 "open",
+                issueStatus(),
                 GitHubIssueStateReason.COMPLETED,
                 milestone(),
                 5,
@@ -108,6 +109,7 @@ public final class IssuesCatalogFixtures {
                 new GitHubIssueDependenciesSummary(1, 2, 1, 2),
                 List.of(issueFieldValue()),
                 "open",
+                issueStatus(),
                 GitHubIssueStateReason.COMPLETED,
                 milestone(),
                 5,
@@ -205,6 +207,10 @@ public final class IssuesCatalogFixtures {
                 UsersCatalogFixtures.octocat());
     }
 
+    static GitHubIssueStatus issueStatus() {
+        return new GitHubIssueStatus(4L, "In progress", "started");
+    }
+
     static GitHubIssuePullRequest issuePullRequest() {
         return new GitHubIssuePullRequest(
                 "https://github.com/octocat/Spoon-Knife/pull/1309.diff",
@@ -252,6 +258,7 @@ public final class IssuesCatalogFixtures {
         return new GitHubCreatePayload(
                 "n",
                 "Issue body",
+                "In progress",
                 GitHubIssueMilestoneReference.ofNumber(1L),
                 List.of(createIssueLabelName()),
                 List.of("octocat"),
@@ -284,6 +291,7 @@ public final class IssuesCatalogFixtures {
                 OptionalNull.of("Updated title"),
                 OptionalNull.of("Updated body"),
                 GitHubIssueUpdateState.OPEN,
+                "In progress",
                 OptionalNull.of(GitHubIssueStateReason.REOPENED),
                 99L,
                 OptionalNull.of(GitHubIssueMilestoneReference.ofNumber(1L)),

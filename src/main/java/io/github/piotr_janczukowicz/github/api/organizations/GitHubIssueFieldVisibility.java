@@ -14,7 +14,8 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public enum GitHubIssueFieldVisibility {
     ORGANIZATION_MEMBERS_ONLY("organization_members_only"),
-    ALL("all");
+    ALL("all"),
+    RESTRICTED("restricted");
 
     private static final EnumUtils.WireIndex<GitHubIssueFieldVisibility> WIRE_INDEX =
             EnumUtils.index(GitHubIssueFieldVisibility.class, GitHubIssueFieldVisibility::wireValue);

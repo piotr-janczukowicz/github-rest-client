@@ -1,6 +1,7 @@
 {
   "title": "n",
   "body": "Issue body",
+  "status": "In progress",
   "milestone": 1,
   "labels": [
     "bug"

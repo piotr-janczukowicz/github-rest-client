@@ -2,6 +2,7 @@
   "title": "Updated title",
   "body": "Updated body",
   "state": "open",
+  "status": "In progress",
   "state_reason": "reopened",
   "duplicate_issue_id": 99,
   "milestone": 1,
