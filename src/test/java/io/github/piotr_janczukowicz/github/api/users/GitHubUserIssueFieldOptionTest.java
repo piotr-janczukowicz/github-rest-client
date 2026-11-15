@@ -1,4 +1,4 @@
-package io.github.piotr_janczukowicz.github.api.organizations;
+package io.github.piotr_janczukowicz.github.api.users;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -7,11 +7,15 @@ import io.github.piotr_janczukowicz.testsupport.UnitTest;
 import org.junit.jupiter.api.Test;
 
 @UnitTest
-class GitHubCreateIssueTypePayloadTest {
+class GitHubUserIssueFieldOptionTest {
 
     @Test
     void constructor_shouldThrow_whenNameNull() {
-        final Throwable thrown = catchThrowable(() -> new GitHubCreateIssueTypePayload(null, true, null, null));
+        final GitHubUserIssueFieldOptionBuilder builder = GitHubUserIssueFieldOptionBuilder.builder(
+                        UsersCatalogFixtures.userIssueFieldOption())
+                .name(null);
+
+        final Throwable thrown = catchThrowable(builder::build);
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("name");
     }

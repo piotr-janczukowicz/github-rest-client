@@ -1,5 +1,6 @@
 package io.github.piotr_janczukowicz.github.api.users;
 
+import io.github.piotr_janczukowicz.json.OptionalNull;
 import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -352,5 +353,69 @@ public final class UsersCatalogFixtures {
         digests.put("sha512:def456", null);
         return new GitHubAttestationsBulk(
                 digests, new GitHubAttestationsPageInfo(true, false, "cursor-next", "cursor-prev"));
+    }
+
+    static GitHubUserIssueFieldOption userIssueFieldOption() {
+        return GitHubUserIssueFieldOptionBuilder.builder()
+                .id(1L)
+                .name("name")
+                .description("description")
+                .color(GitHubUserIssueFieldOptionColor.GRAY)
+                .priority(1)
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .build();
+    }
+
+    static GitHubUserIssueField userIssueField() {
+        return GitHubUserIssueFieldBuilder.builder()
+                .id(1L)
+                .nodeId("node_id")
+                .name("name")
+                .description("description")
+                .dataType(GitHubUserIssueFieldDataType.TEXT)
+                .visibility(GitHubUserIssueFieldVisibility.RESTRICTED)
+                .options(List.of(userIssueFieldOption()))
+                .createdAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .updatedAt(Instant.parse("2026-01-01T00:00:00Z"))
+                .build();
+    }
+
+    static GitHubCreateUserIssueFieldOption createUserIssueFieldOption() {
+        return GitHubCreateUserIssueFieldOptionBuilder.builder()
+                .name("name")
+                .description(OptionalNull.of("description"))
+                .color(GitHubCreateUserIssueFieldOptionColor.GRAY)
+                .priority(1)
+                .build();
+    }
+
+    static GitHubCreateUserIssueFieldPayload createUserIssueFieldPayload() {
+        return GitHubCreateUserIssueFieldPayloadBuilder.builder()
+                .name("name")
+                .description(OptionalNull.of("description"))
+                .dataType(GitHubCreateUserIssueFieldDataType.TEXT)
+                .visibility(GitHubCreateUserIssueFieldVisibility.RESTRICTED)
+                .options(List.of(createUserIssueFieldOption()))
+                .build();
+    }
+
+    static GitHubUpdateUserIssueFieldOption updateUserIssueFieldOption() {
+        return GitHubUpdateUserIssueFieldOptionBuilder.builder()
+                .id(1L)
+                .name("name")
+                .description(OptionalNull.of("description"))
+                .color(GitHubUpdateUserIssueFieldOptionColor.GRAY)
+                .priority(1)
+                .build();
+    }
+
+    static GitHubUpdateUserIssueFieldPayload updateUserIssueFieldPayload() {
+        return GitHubUpdateUserIssueFieldPayloadBuilder.builder()
+                .name("name")
+                .description(OptionalNull.of("description"))
+                .visibility(GitHubUpdateUserIssueFieldVisibility.RESTRICTED)
+                .options(List.of(updateUserIssueFieldOption()))
+                .build();
     }
 }

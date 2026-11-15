@@ -36,6 +36,8 @@ import org.jspecify.annotations.Nullable;
  * @param issueDependenciesSummary Issue dependencies summary
  * @param issueFieldValues Issue field values
  * @param state State
+ * @param status The status of the issue, or {@code null} if it has none. Issue statuses are in preview and only
+ *     available to accounts enrolled in the preview.
  * @param stateReason State reason
  * @param milestone Milestone
  * @param comments Comments
@@ -80,6 +82,7 @@ public record GitHubIssueSearchResultItem(
         @Nullable GitHubIssueDependenciesSummary issueDependenciesSummary,
         @Nullable List<GitHubIssueFieldValue> issueFieldValues,
         String state,
+        @Nullable Status status,
         @Nullable String stateReason,
         @Nullable GitHubMilestone milestone,
         int comments,
@@ -115,6 +118,25 @@ public record GitHubIssueSearchResultItem(
         requireNonNull(createdAt, "createdAt");
         requireNonNull(updatedAt, "updatedAt");
         requireNonNull(authorAssociation, "authorAssociation");
+    }
+
+    /**
+     * The status of an issue search result.
+     *
+     * @param id The stable identifier of the planning status.
+     * @param name The display name of the planning status, which may change in the future.
+     * @param category A stable identifier for the category, such as {@code backlog}, {@code planned}, {@code started},
+     *     {@code completed}, {@code not_planned} or {@code duplicate}. Clients should expect new keys to be added.
+     */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @RecordBuilder
+    @CatalogSchema("components/schemas/issue-search-result-item/properties/status")
+    public record Status(long id, String name, String category) {
+
+        public Status {
+            requireNonNull(name, "name");
+            requireNonNull(category, "category");
+        }
     }
 
     /**

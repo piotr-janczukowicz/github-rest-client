@@ -16,7 +16,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 class GitHubOrganizationRoleBaseRoleTest {
 
     @ParameterizedTest
-    @CsvSource({"read,READ", "triage,TRIAGE", "write,WRITE", "maintain,MAINTAIN", "admin,ADMIN"})
+    @CsvSource({"read,READ", "triage,TRIAGE", "moderate,MODERATE", "write,WRITE", "maintain,MAINTAIN", "admin,ADMIN"})
     void fromWire_shouldReturnBaseRole_whenKnownValue(
             final String wire, final GitHubOrganizationRoleBaseRole baseRole) {
         final GitHubOrganizationRoleBaseRole decoded = GitHubOrganizationRoleBaseRole.fromWire(wire);

@@ -87,6 +87,7 @@ public record GitHubIssueUpdate(
         @Nullable GitHubIssueDependenciesSummary issueDependenciesSummary,
         @Nullable List<GitHubIssueFieldValue> issueFieldValues,
         String state,
+        @Nullable GitHubIssueStatus status,
         @Nullable GitHubIssueStateReason stateReason,
         @Nullable GitHubMilestone milestone,
         int comments,

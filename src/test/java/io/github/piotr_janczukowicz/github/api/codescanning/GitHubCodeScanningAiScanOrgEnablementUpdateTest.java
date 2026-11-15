@@ -10,9 +10,25 @@ import org.junit.jupiter.api.Test;
 class GitHubCodeScanningAiScanOrgEnablementUpdateTest {
 
     @Test
-    void constructor_shouldThrowNullPointerException_whenPrScanNull() {
-        final Throwable thrown = catchThrowable(() -> new GitHubCodeScanningAiScanOrgEnablementUpdate(null));
+    void constructor_shouldThrowIllegalArgumentException_whenNoPropertyGiven() {
+        final Throwable thrown = catchThrowable(() -> new GitHubCodeScanningAiScanOrgEnablementUpdate(null, null));
 
-        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("prScan");
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("prScan");
+    }
+
+    @Test
+    void constructor_shouldAccept_whenOnlyPrScanGiven() {
+        final GitHubCodeScanningAiScanOrgEnablementUpdate update =
+                new GitHubCodeScanningAiScanOrgEnablementUpdate(GitHubCodeScanningAiScanPrScan.ENABLED, null);
+
+        assertThat(update.prScan()).isEqualTo(GitHubCodeScanningAiScanPrScan.ENABLED);
+    }
+
+    @Test
+    void constructor_shouldAccept_whenOnlyRepositoryScanGiven() {
+        final GitHubCodeScanningAiScanOrgEnablementUpdate update =
+                new GitHubCodeScanningAiScanOrgEnablementUpdate(null, GitHubCodeScanningAiScanPrScan.DISABLED);
+
+        assertThat(update.repositoryScan()).isEqualTo(GitHubCodeScanningAiScanPrScan.DISABLED);
     }
 }

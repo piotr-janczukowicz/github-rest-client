@@ -1,0 +1,14 @@
+{
+  "name": "name",
+  "description": "description",
+  "data_type": "text",
+  "visibility": "restricted",
+  "options": [
+    {
+      "name": "name",
+      "description": "description",
+      "color": "gray",
+      "priority": 1
+    }
+  ]
+}

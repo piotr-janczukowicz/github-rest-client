@@ -153,6 +153,11 @@
       } ]
     } ],
     "state" : "open",
+    "status" : {
+        "id" : 4,
+        "name" : "In progress",
+        "category" : "started"
+    },
     "state_reason" : "completed",
     "milestone" : {
       "url" : "https://api.github.com/repos/octocat/Spoon-Knife/milestones/1",

@@ -11,6 +11,7 @@ public final class GitHubRepositoriesApi {
     private final LazyValue<GitHubRepositoryApi> repository;
     private final LazyValue<GitHubRepositoriesForksApi> forks;
     private final LazyValue<GitHubRepositoriesIssueTypesApi> issueTypes;
+    private final LazyValue<GitHubRepositoriesPlanningStatusesApi> planningStatuses;
     private final LazyValue<GitHubRepositoriesAutolinksApi> autolinks;
     private final LazyValue<GitHubRepositoriesContentsApi> contents;
     private final LazyValue<GitHubRepositoriesWebhooksApi> webhooks;
@@ -32,6 +33,7 @@ public final class GitHubRepositoriesApi {
         this.repository = new LazyValue<>(() -> new GitHubRepositoryApi(caller));
         this.forks = new LazyValue<>(() -> new GitHubRepositoriesForksApi(caller));
         this.issueTypes = new LazyValue<>(() -> new GitHubRepositoriesIssueTypesApi(caller));
+        this.planningStatuses = new LazyValue<>(() -> new GitHubRepositoriesPlanningStatusesApi(caller));
         this.autolinks = new LazyValue<>(() -> new GitHubRepositoriesAutolinksApi(caller));
         this.contents = new LazyValue<>(() -> new GitHubRepositoriesContentsApi(caller));
         this.webhooks = new LazyValue<>(() -> new GitHubRepositoriesWebhooksApi(caller));
@@ -68,6 +70,17 @@ public final class GitHubRepositoriesApi {
      */
     public GitHubRepositoriesIssueTypesApi issueTypes() {
         return issueTypes.get();
+    }
+
+    /**
+     * Repository planning status operations ({@code subcategory=planning-statuses}, not in the docs sidebar).
+     *
+     * <p>Only the {@code CLOUD} and {@code GHEC} flavors carry this resource.
+     *
+     * @return planning statuses API
+     */
+    public GitHubRepositoriesPlanningStatusesApi planningStatuses() {
+        return planningStatuses.get();
     }
 
     /**

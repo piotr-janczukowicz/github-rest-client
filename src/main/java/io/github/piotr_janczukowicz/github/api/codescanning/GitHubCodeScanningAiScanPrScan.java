@@ -9,12 +9,16 @@ import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
 import io.github.piotr_janczukowicz.util.EnumUtils;
 
-/** Whether AI Scan is enabled for the repository. */
+/** Whether AI Scan is enabled. */
 @CatalogSchema({
     "components/schemas/code-scanning-ai-scan-enablement/properties/pr_scan",
     "components/schemas/code-scanning-ai-scan-enablement-update/properties/pr_scan",
     "components/schemas/code-scanning-ai-scan-org-enablement-update/properties/pr_scan",
-    "components/schemas/code-scanning-ai-scan-org-settings/properties/pr_scan"
+    "components/schemas/code-scanning-ai-scan-org-settings/properties/pr_scan",
+    "components/schemas/code-scanning-ai-scan-enablement/properties/repository_scan",
+    "components/schemas/code-scanning-ai-scan-enablement-update/properties/repository_scan",
+    "components/schemas/code-scanning-ai-scan-org-enablement-update/properties/repository_scan",
+    "components/schemas/code-scanning-ai-scan-org-settings/properties/repository_scan"
 })
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
 public enum GitHubCodeScanningAiScanPrScan {

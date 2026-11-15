@@ -86,7 +86,7 @@ class GitHubOrganizationsIssueTypesApiTest {
     @Test
     void create_shouldPostPayload_whenCalled() throws Exception {
         when(transport.execute(any())).thenReturn(response(HttpStatus.OK.code(), issueTypeJson()));
-        final GitHubCreateIssueTypePayload payload = OrganizationsCatalogFixtures.createIssueTypePayload();
+        final GitHubIssueTypeRequest payload = OrganizationsCatalogFixtures.issueTypeRequest();
 
         final GitHubIssueType created = callApi(api -> api.create(ORG, payload));
         final HttpRequest request = captureSingleRequest();
@@ -116,7 +116,7 @@ class GitHubOrganizationsIssueTypesApiTest {
     @Test
     void update_shouldPutPayload_whenCalled() throws Exception {
         when(transport.execute(any())).thenReturn(response(HttpStatus.OK.code(), issueTypeJson()));
-        final GitHubUpdateIssueTypePayload payload = OrganizationsCatalogFixtures.updateIssueTypePayload();
+        final GitHubIssueTypeRequest payload = OrganizationsCatalogFixtures.issueTypeRequest();
 
         final GitHubIssueType updated = callApi(api -> api.update(ORG, ISSUE_TYPE_ID, payload));
         final HttpRequest request = captureSingleRequest();

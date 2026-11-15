@@ -15,6 +15,10 @@ import org.jspecify.annotations.Nullable;
  * @param title issue title
  * @param body issue body
  * @param state open or closed state
+ * @param status The status to give the issue. Can be {@code Backlog}, {@code Todo}, {@code In progress}, {@code In
+ *     review}, {@code Done}, {@code Not planned}, or {@code Duplicate}. If omitted, the current status is preserved
+ *     unless {@code state} or {@code state_reason} changes. Ignored when issue statuses aren't available in the
+ *     repository. Issue statuses are in preview.
  * @param stateReason reason for the state change
  * @param duplicateIssueId The ID of the issue that this issue duplicates, used when marking this issue as a duplicate
  *     with {@code status: Duplicate} or {@code state_reason: duplicate}. The issue must exist and be accessible to the
@@ -32,6 +36,7 @@ public record GitHubUpdatePayload(
         @Nullable OptionalNull<String> title,
         @Nullable OptionalNull<String> body,
         @Nullable GitHubIssueUpdateState state,
+        @Nullable String status,
         @Nullable OptionalNull<GitHubIssueStateReason> stateReason,
         @Nullable Long duplicateIssueId,
         @Nullable OptionalNull<GitHubIssueMilestoneReference> milestone,

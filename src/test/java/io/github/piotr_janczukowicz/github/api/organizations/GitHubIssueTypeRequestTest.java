@@ -7,11 +7,11 @@ import io.github.piotr_janczukowicz.testsupport.UnitTest;
 import org.junit.jupiter.api.Test;
 
 @UnitTest
-class GitHubUpdateIssueTypePayloadTest {
+class GitHubIssueTypeRequestTest {
 
     @Test
     void constructor_shouldThrow_whenNameNull() {
-        final Throwable thrown = catchThrowable(() -> new GitHubUpdateIssueTypePayload(null, true, null, null));
+        final Throwable thrown = catchThrowable(() -> new GitHubIssueTypeRequest(null, true, null, null));
 
         assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("name");
     }

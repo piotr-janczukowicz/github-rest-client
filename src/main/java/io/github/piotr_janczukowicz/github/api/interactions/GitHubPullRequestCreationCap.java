@@ -7,7 +7,6 @@ import io.github.piotr_janczukowicz.annotation.RecordBuilder;
 import io.github.piotr_janczukowicz.github.api.Flavors;
 import io.github.piotr_janczukowicz.github.client.GitHubFlavor;
 import io.github.piotr_janczukowicz.openapi.model.CatalogSchema;
-import org.jspecify.annotations.Nullable;
 
 /**
  * Pull request creation cap.
@@ -25,8 +24,7 @@ import org.jspecify.annotations.Nullable;
 })
 @RecordBuilder
 @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
-public record GitHubPullRequestCreationCap(
-        boolean enabled, int maxOpenPullRequests, @Nullable Boolean includeDrafts) {
+public record GitHubPullRequestCreationCap(boolean enabled, int maxOpenPullRequests, boolean includeDrafts) {
 
     public GitHubPullRequestCreationCap {
         requireBetween(maxOpenPullRequests, 1, 1000, "maxOpenPullRequests");

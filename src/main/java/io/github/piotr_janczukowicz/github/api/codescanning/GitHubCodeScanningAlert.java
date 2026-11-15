@@ -34,6 +34,7 @@ import org.jspecify.annotations.Nullable;
  * @param dismissalApprovedBy A GitHub user.
  * @param assignees Assignees.
  * @param linkedPullRequests Pull requests linked to this alert.
+ * @param linkedIssues Issues linked to this alert.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @RecordBuilder
@@ -56,7 +57,8 @@ public record GitHubCodeScanningAlert(
         GitHubCodeScanningAlertInstance mostRecentInstance,
         @Nullable GitHubSimpleUser dismissalApprovedBy,
         @Nullable List<GitHubSimpleUser> assignees,
-        @Nullable List<GitHubPullRequestSimple> linkedPullRequests) {
+        @Nullable List<GitHubPullRequestSimple> linkedPullRequests,
+        @Nullable List<GitHubCodeScanningAlertLinkedIssue> linkedIssues) {
     public GitHubCodeScanningAlert {
         requireNonNull(createdAt, "createdAt");
         requireNonNull(url, "url");

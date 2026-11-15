@@ -98,7 +98,7 @@ class ProtocolSmokeIT {
         final GitHubIssue created = issues.create(
                 ENV.owner(),
                 ENV.repo(),
-                new GitHubCreatePayload(ENV.name("lock"), null, null, null, null, null, null, null));
+                new GitHubCreatePayload(ENV.name("lock"), null, null, null, null, null, null, null, null));
         try {
             issues.lock(ENV.owner(), ENV.repo(), created.number());
             final boolean locked = issues.get(ENV.owner(), ENV.repo(), created.number())
@@ -117,7 +117,7 @@ class ProtocolSmokeIT {
                     ENV.repo(),
                     created.number(),
                     new GitHubUpdatePayload(
-                            null, null, GitHubIssueUpdateState.CLOSED, null, null, null, null, null, null, null));
+                            null, null, GitHubIssueUpdateState.CLOSED, null, null, null, null, null, null, null, null));
         }
     }
 

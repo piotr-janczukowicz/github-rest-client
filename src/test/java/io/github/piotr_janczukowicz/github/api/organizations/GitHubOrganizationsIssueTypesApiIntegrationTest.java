@@ -61,7 +61,7 @@ class GitHubOrganizationsIssueTypesApiIntegrationTest {
                 POST,
                 ISSUE_TYPES_PATH,
                 okJson(jsonBytes(GitHubOrganizationsIssueTypesApiIntegrationTest.class, "issue-type.json")));
-        final GitHubCreateIssueTypePayload payload = OrganizationsCatalogFixtures.createIssueTypePayload();
+        final GitHubIssueTypeRequest payload = OrganizationsCatalogFixtures.issueTypeRequest();
 
         final GitHubIssueType issueType;
         try (final GitHubApiWireMockSupport.OrganizationsApiClient organizations = organizationsApi(HTTP)) {
@@ -84,7 +84,7 @@ class GitHubOrganizationsIssueTypesApiIntegrationTest {
                 PUT,
                 ISSUE_TYPE_PATH,
                 okJson(jsonBytes(GitHubOrganizationsIssueTypesApiIntegrationTest.class, "issue-type.json")));
-        final GitHubUpdateIssueTypePayload payload = OrganizationsCatalogFixtures.updateIssueTypePayload();
+        final GitHubIssueTypeRequest payload = OrganizationsCatalogFixtures.issueTypeRequest();
 
         final GitHubIssueType issueType;
         try (final GitHubApiWireMockSupport.OrganizationsApiClient organizations = organizationsApi(HTTP)) {

@@ -62,7 +62,7 @@ public final class GitHubOrganizationsIssueTypesApi extends GitHubResourceApi {
      *     {@code GHEC}
      */
     @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
-    public GitHubIssueType create(final String org, final GitHubCreateIssueTypePayload payload) throws IOException {
+    public GitHubIssueType create(final String org, final GitHubIssueTypeRequest payload) throws IOException {
         requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
         requireNonNull(payload, PARAM_PAYLOAD);
 
@@ -84,7 +84,7 @@ public final class GitHubOrganizationsIssueTypesApi extends GitHubResourceApi {
      *     {@code GHEC}
      */
     @Flavors({GitHubFlavor.CLOUD, GitHubFlavor.GHEC})
-    public GitHubIssueType update(final String org, final long issueTypeId, final GitHubUpdateIssueTypePayload payload)
+    public GitHubIssueType update(final String org, final long issueTypeId, final GitHubIssueTypeRequest payload)
             throws IOException {
         requireFlavor(GitHubFlavor.CLOUD, GitHubFlavor.GHEC);
         requireNonNull(payload, PARAM_PAYLOAD);

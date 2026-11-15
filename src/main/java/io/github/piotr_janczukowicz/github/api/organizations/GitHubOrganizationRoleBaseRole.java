@@ -12,6 +12,7 @@ import io.github.piotr_janczukowicz.util.EnumUtils;
 public enum GitHubOrganizationRoleBaseRole {
     READ("read"),
     TRIAGE("triage"),
+    MODERATE("moderate"),
     WRITE("write"),
     MAINTAIN("maintain"),
     ADMIN("admin"),

@@ -124,6 +124,32 @@ class GitHubIssueSearchResultItemTest {
         assertThat(thrown).isInstanceOf(type).hasMessageContaining(message);
     }
 
+    @Test
+    void status_shouldKeepComponents_whenAllGiven() {
+        final GitHubIssueSearchResultItem.Status status =
+                new GitHubIssueSearchResultItem.Status(4L, "In progress", "started");
+
+        assertSoftly(softly -> {
+            softly.assertThat(status.id()).isEqualTo(4L);
+            softly.assertThat(status.name()).isEqualTo("In progress");
+            softly.assertThat(status.category()).isEqualTo("started");
+        });
+    }
+
+    @Test
+    void status_shouldThrow_whenNameNull() {
+        final Throwable thrown = catchThrowable(() -> new GitHubIssueSearchResultItem.Status(4L, null, "started"));
+
+        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("name");
+    }
+
+    @Test
+    void status_shouldThrow_whenCategoryNull() {
+        final Throwable thrown = catchThrowable(() -> new GitHubIssueSearchResultItem.Status(4L, "In progress", null));
+
+        assertThat(thrown).isInstanceOf(NullPointerException.class).hasMessageContaining("category");
+    }
+
     private static Stream<Arguments> invalidSortWire() {
         return Stream.of(
                 Arguments.of("unknown", IllegalArgumentException.class, "unknown"),

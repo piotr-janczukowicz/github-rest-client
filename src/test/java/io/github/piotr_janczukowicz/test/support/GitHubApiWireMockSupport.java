@@ -86,6 +86,7 @@ import io.github.piotr_janczukowicz.github.api.repositories.GitHubRepositoriesCo
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubRepositoriesCustomPropertiesApi;
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubRepositoriesForksApi;
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubRepositoriesIssueTypesApi;
+import io.github.piotr_janczukowicz.github.api.repositories.GitHubRepositoriesPlanningStatusesApi;
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubRepositoriesRuleSuitesApi;
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubRepositoriesRulesApi;
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubRepositoriesWebhooksApi;
@@ -229,6 +230,12 @@ public final class GitHubApiWireMockSupport {
         final WireMockClient wireMock = client(http);
         final GitHubRepositoriesForksApi api = new GitHubRepositoriesForksApi(wireMock.caller());
         return new ReposForksApiClient(wireMock, api);
+    }
+
+    public static ReposPlanningStatusesApiClient reposPlanningStatusesApi(final StubHttpServer http) {
+        final WireMockClient wireMock = client(http);
+        final GitHubRepositoriesPlanningStatusesApi api = new GitHubRepositoriesPlanningStatusesApi(wireMock.caller());
+        return new ReposPlanningStatusesApiClient(wireMock, api);
     }
 
     public static ReposIssueTypesApiClient reposIssueTypesApi(final StubHttpServer http) {
@@ -1110,6 +1117,27 @@ public final class GitHubApiWireMockSupport {
     }
 
     public record ReposForksApiClient(WireMockClient wireMock, GitHubRepositoriesForksApi api)
+            implements AutoCloseable {
+
+        public HttpTransport transport() {
+            return wireMock.transport();
+        }
+
+        public GitHubClient client() {
+            return wireMock.client();
+        }
+
+        public GitHubCaller caller() {
+            return wireMock.caller();
+        }
+
+        @Override
+        public void close() throws Exception {
+            wireMock.close();
+        }
+    }
+
+    public record ReposPlanningStatusesApiClient(WireMockClient wireMock, GitHubRepositoriesPlanningStatusesApi api)
             implements AutoCloseable {
 
         public HttpTransport transport() {

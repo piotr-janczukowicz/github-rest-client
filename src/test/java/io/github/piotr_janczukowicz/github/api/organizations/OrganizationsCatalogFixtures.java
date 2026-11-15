@@ -19,6 +19,7 @@ import io.github.piotr_janczukowicz.github.api.repositories.GitHubRuleSuiteListR
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubRuleSuiteTimePeriod;
 import io.github.piotr_janczukowicz.github.api.repositories.GitHubWebhookConfigInsecureSsl;
 import io.github.piotr_janczukowicz.github.api.repositories.RepositoriesCatalogFixtures;
+import io.github.piotr_janczukowicz.github.api.search.SearchCatalogFixtures;
 import io.github.piotr_janczukowicz.github.api.teams.GitHubTeamOrganizationPlan;
 import io.github.piotr_janczukowicz.github.api.teams.GitHubTeamOwnershipType;
 import io.github.piotr_janczukowicz.github.api.teams.GitHubTeamSimple;
@@ -36,6 +37,10 @@ import java.util.Map;
 public final class OrganizationsCatalogFixtures {
 
     private OrganizationsCatalogFixtures() {}
+
+    public static GitHubIssueType issueType() {
+        return SearchCatalogFixtures.issueType();
+    }
 
     public static GitHubAuditLogEvent auditLogEvent() {
         return GitHubAuditLogEventBuilder.builder()
@@ -156,8 +161,8 @@ public final class OrganizationsCatalogFixtures {
                 OptionalNull.of(List.of(createIssueFieldOption())));
     }
 
-    static GitHubCreateIssueTypePayload createIssueTypePayload() {
-        return new GitHubCreateIssueTypePayload(
+    public static GitHubIssueTypeRequest issueTypeRequest() {
+        return new GitHubIssueTypeRequest(
                 "Epic",
                 true,
                 OptionalNull.of("Large body of work spanning multiple issues"),
@@ -982,11 +987,6 @@ public final class OrganizationsCatalogFixtures {
                 OptionalNull.of("Issue priority for triage"),
                 GitHubIssueFieldVisibility.ORGANIZATION_MEMBERS_ONLY,
                 List.of(updateIssueFieldOption()));
-    }
-
-    static GitHubUpdateIssueTypePayload updateIssueTypePayload() {
-        return new GitHubUpdateIssueTypePayload(
-                "Epic", true, OptionalNull.of("Large body of work"), OptionalNull.of(GitHubIssueTypeColor.PURPLE));
     }
 
     static GitHubUpdateNetworkConfigurationPayload updateNetworkConfigurationPayload() {

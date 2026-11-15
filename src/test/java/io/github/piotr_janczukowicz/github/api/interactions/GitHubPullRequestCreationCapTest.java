@@ -11,23 +11,23 @@ class GitHubPullRequestCreationCapTest {
 
     @Test
     void constructor_shouldThrow_whenMaxOpenPullRequestsBelowMinimum() {
-        final Throwable thrown = catchThrowable(() -> new GitHubPullRequestCreationCap(true, 0, null));
+        final Throwable thrown = catchThrowable(() -> new GitHubPullRequestCreationCap(true, 0, true));
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("maxOpenPullRequests");
     }
 
     @Test
     void constructor_shouldThrow_whenMaxOpenPullRequestsAboveMaximum() {
-        final Throwable thrown = catchThrowable(() -> new GitHubPullRequestCreationCap(true, 1001, null));
+        final Throwable thrown = catchThrowable(() -> new GitHubPullRequestCreationCap(true, 1001, true));
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("maxOpenPullRequests");
     }
 
     @Test
     void constructor_shouldAcceptValue_whenAtDumpBounds() {
-        assertThat(new GitHubPullRequestCreationCap(true, 1, null).maxOpenPullRequests())
+        assertThat(new GitHubPullRequestCreationCap(true, 1, true).maxOpenPullRequests())
                 .isEqualTo(1);
-        assertThat(new GitHubPullRequestCreationCap(false, 1000, null).maxOpenPullRequests())
+        assertThat(new GitHubPullRequestCreationCap(false, 1000, true).maxOpenPullRequests())
                 .isEqualTo(1000);
     }
 }
